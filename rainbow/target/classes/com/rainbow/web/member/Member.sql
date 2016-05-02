@@ -8,18 +8,19 @@ CREATE TABLE RainbowMember(
 	gender VARCHAR(10),
 	birth VARCHAR(30),
 	addr VARCHAR(70),
+	email VARCHAR(50),
 	point INT,
 	grade VARCHAR(10),
 	reg_date DATETIME
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ----------------------------------------
 
 -------------------------
--- Member 테이블의 모든 내용 검색
+-- RainbowMember 테이블의 모든 내용 검색
 SELECT * FROM RainbowMember;
 -------------------------
 
 ---------------------------
--- Member 테이블 삭제하기
+-- RainbowMember 테이블 삭제하기
 DROP TABLE RainbowMember CASCADE;
 ---------------------------

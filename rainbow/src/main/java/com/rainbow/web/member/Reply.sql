@@ -5,8 +5,23 @@ CREATE TABLE RainbowReply(
 	writer_name VARCHAR(20),
 	reg_time DATETIME,
 	reply_content TEXT,
-	movie_seq INT,
-	CONSTRAINT movie_seq_fk FOREIGN KEY(movie_seq)
-	REFERENCES RainbowMovie(movie_seq) ON DELETE CASCADE
-);
+	movie_seq INT
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ----------------------------------------
+
+---------------------------------------------------------
+-- 외래키 추가 ==> 하지말자
+ALTER TABLE RainbowReply
+ADD FOREIGN KEY (member_seq)
+REFERENCES RainbowReply(member_seq) ON DELETE CASCADE;
+---------------------------------------------------------
+
+-------------------------
+-- RainbowReply 테이블의 모든 내용 검색
+SELECT * FROM RainbowReply;
+-------------------------
+
+---------------------------
+-- RainbowReply 테이블 삭제하기
+DROP TABLE RainbowReply CASCADE;
+---------------------------

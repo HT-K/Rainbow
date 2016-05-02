@@ -12,5 +12,15 @@ CREATE TABLE RainbowMovie(
 	actor VARCHAR(70),
 	content TEXT,
 	image VARCHAR(50)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ----------------------------------------
+
+-------------------------
+-- RainbowMovie 테이블의 모든 내용 검색
+SELECT * FROM RainbowMovie;
+-------------------------
+
+---------------------------
+-- RainbowMovie 테이블 삭제하기
+DROP TABLE RainbowMovie CASCADE;
+---------------------------
