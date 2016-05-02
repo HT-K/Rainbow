@@ -28,12 +28,18 @@ create table Vod(
 	vod_country VARCHAR(40) null
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+	    UPDATE Vod 
+	    set 
+	    vod_content = '니 내랑 부산 접수할랭???',
+	    vod_country = '한쿡인'
 
+	    WHERE vod_name = '친구2';
+		
 show tables;
 drop table RainbowVod;
 
 SELECT * FROM RainbowMovie;
-SELECT * FROM RainbowVod;
+SELECT * FROM Vod;
 SELECT * FROM RainbowMember;
 SELECT * FROM RainbowVod WHERE vod_name = '친구2';
 

@@ -2,9 +2,12 @@ package com.rainbow.web.mapper;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.rainbow.app.vod.VodDTO;
 import com.rainbow.web.member.MemberDTO;
 
+@Repository
 public interface VodMapper {
 	// C 영화 (등록) 
 	public int addMovie(VodDTO vod); // 추상 메소드

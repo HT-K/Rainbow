@@ -14,10 +14,25 @@
 
 
 	<select id="getVodList" resultType="com.rainbow.app.vod.VodDTO">
-	    SELECT * FROM Vod
+	    SELECT
+			vod_name AS vodName,
+			vod_content  AS vodContent,
+			vod_price AS vodPrice,
+			vod_category AS vodCategory,
+			vod_time AS vodTime,
+			vod_rating AS vodRating,
+			vod_url  AS vodUrl,
+			vod_image 	AS vodImage,
+			vod_date AS vodDate,
+			vod_free AS vodFree,
+			vod_grade AS vodGrade,
+			vod_actor AS vodActor,
+			vod_director AS vodDirector,
+			vod_country AS vodCountry 
+		FROM Vod
 	</select>
 	
-	<select id="getByVodName" parameterType="com.rainbow.app.vod.VodDTO" resultType="string"> 
+	<select id="getByVodName" parameterType="string" resultType="com.rainbow.app.vod.VodDTO"> 
 	SELECT 
 		vod_name AS vodName,
 		vod_content  AS vodContent,
@@ -33,7 +48,7 @@
 		vod_actor AS vodActor,
 		vod_director AS vodDirector,
 		vod_country AS vodCountry
-		FROM Vod WHERE vod_name = #{vodName}
+	FROM Vod WHERE vod_name = #{vodName}
 	</select>
 	
 	<select id="vodLogin" parameterType="com.rainbow.web.member.MemberDTO" resultType="com.rainbow.web.member.MemberDTO">
@@ -75,6 +90,7 @@
 	</update>
 	
 	<delete id="VodDelete" parameterType="com.rainbow.app.vod.VodDTO">
+	    DELETE FROM Vod where vod_name = #{vodName}
 	</delete>
 	
 </mapper>
