@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class MemberController {
+	
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+	
 	@Autowired MemberDTO member;
 	@Autowired MemberService service; 
 }

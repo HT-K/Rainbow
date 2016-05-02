@@ -14,8 +14,21 @@
 	</select>
 	
 	<select id="login" parameterType="com.rainbow.web.member.MemberDTO" resultType="com.rainbow.web.member.MemberDTO">
-	</select>
-	
+      SELECT 
+       id,
+       password,
+       name,
+       gender,
+       birth,
+       addr,
+       email,
+       point,
+       grade,
+       DATE_FORMAT(reg_date,'%Y-%m-%d %T') AS regDate
+       FROM RainbowMember
+       WHERE id = #{id} and password = #{password}
+   </select>
+   
 	<select id="selectById" parameterType="com.rainbow.web.member.MemberDTO" resultType="com.rainbow.web.member.MemberDTO"> 
 	</select>
 	
