@@ -1,6 +1,6 @@
 ---------------------------------------
 -- 완성된 영화테이블
-CREATE TABLE RainbowMovie( 
+CREATE TABLE Movie( 
 	movie_seq INT PRIMARY KEY AUTO_INCREMENT,
 	title VARCHAR(70),
 	rating INT,
@@ -12,5 +12,15 @@ CREATE TABLE RainbowMovie(
 	actor VARCHAR(70),
 	content TEXT,
 	image VARCHAR(50)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ----------------------------------------
+
+-------------------------
+-- Movie 테이블의 모든 내용 검색
+SELECT * FROM Movie;
+-------------------------
+
+---------------------------
+-- Movie 테이블 삭제하기
+DROP TABLE Movie CASCADE;
+---------------------------
