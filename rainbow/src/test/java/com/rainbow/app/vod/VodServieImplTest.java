@@ -29,14 +29,14 @@ public class VodServieImplTest {
 
 	private static final Logger logger = LoggerFactory
 			.getLogger(MemberController.class);
-
+	
+	@Autowired VodDTO vod;
 	@Autowired
 	SqlSession session;
 
 
 	public void testInsert() {
 
-		VodDTO vod = new VodDTO();
 		VodMapper mapper = session.getMapper(VodMapper.class);
 		vod.setVodName("친구3");
 		vod.setVodContent("니 내랑 부산 접수할래?");
@@ -66,7 +66,6 @@ public class VodServieImplTest {
 	}
 	
 	public void testGetByName() {
-		VodDTO vod = new VodDTO();
 		VodMapper mapper = session.getMapper(VodMapper.class);
 		vod.setVodName("친구2");
 		vod = mapper.getByVodName(vod.getVodName());
@@ -93,22 +92,25 @@ public class VodServieImplTest {
 	}
 
 	
-	@Test
+	
 	public void testUpdate() {
 		
-		VodDTO vod = new VodDTO();
 		VodMapper mapper = session.getMapper(VodMapper.class);
 		vod.setVodName("친구3");
-		vod = mapper.getByVodName("친구3");
-		logger.info(" === VodServiceImplTest <> testUpdate(){} ===", vod);
-		vod.setVodContent("니 내랑 부산 접수할랭???");
+		vod = mapper.getByVodName(vod.getVodName());
+		logger.info(" === VodServiceImplTest <> getByVodName(){} ===", vod);
+		vod.setVodContent("니 내랑 부산 접수할랭??? 시롱");
 		vod.setVodCountry("한쿡인");
-//		logger.info(" === VodServiceImplTest <> testInsert(){} ===", mapper.addMovie(vod));
+		logger.info(" === VodServiceImplTest <> testUpdate(){} ===", mapper.VodUpdate(vod));
 		
 	}
 
+	@Test
 	public void testDelete() {
-		fail("Not yet implemented");
+		vod.setVodName("친구3");
+		VodMapper mapper = session.getMapper(VodMapper.class);
+		
+		logger.info(" === VodServiceImplTest <> testDelete(){} ===", mapper.VodDelete(vod));
 	}
 
 }

@@ -102,6 +102,8 @@ public class VodDTO {
 				+ ", vodCountry=" + vodCountry + ", vodTime=" + vodTime + "]";
 	}
 
+
+
 	
 	
 	
