@@ -25,7 +25,7 @@ public class MemberServiceImplTest {
 	@Autowired MemberDTO member;
 	@Autowired SqlSession session;
 	
-/*	@Test
+	@Test
 	public void testInsert() {
 		MemberMapper mapper = session.getMapper(MemberMapper.class);
 		member.setId("kim");
@@ -37,9 +37,9 @@ public class MemberServiceImplTest {
 		member.setEmail("propose0506@naver.com");
 		int check = mapper.insert(member);
 		assertThat(check, is(1)); // 회원가입 성공 시 리턴 값은 1(초록불) 아니면 빨간불
-	}*/
+	}
 	
-/*	@Test
+	@Test
 	public void testSelectList() { // SELECT * FROM RainbowMember
 		MemberMapper mapper = session.getMapper(MemberMapper.class);
 		List<MemberDTO> list = new ArrayList<MemberDTO>();
@@ -63,7 +63,7 @@ public class MemberServiceImplTest {
 		member.setPassword("1");
 		MemberDTO check = mapper.login(member);
 		assertThat(check.getId(), is(member.getId())); // 입력한 Id와 데이터베이스를 통해 가져온 ID가 같으면 로그인 성공 (초록불) 아니면 빨간불
-	}*/
+	}
 	
 	@Test
 	public void testSelectById() { // Id로 회원 조회
@@ -73,7 +73,7 @@ public class MemberServiceImplTest {
 		assertThat(check.getId(), is(member.getId())); // 입력한 Id와 데이터베이스를 통해 가져온 ID가 같으면 로그인 성공 (초록불) 아니면 빨간불
 	}
 	
-	/*@Test
+	@Test
 	public void testCount() { // RainbowMember Count
 		MemberMapper mapper = session.getMapper(MemberMapper.class);
 		int count = mapper.count();
@@ -97,6 +97,5 @@ public class MemberServiceImplTest {
 		member.setId("kim");
 		int check = mapper.delete(member);
 		assertThat(check, is(1)); // 삭제 성공하면 1이 리턴됨(초록불) 아니면 빨간불
-	}*/
-
+	}
 }
