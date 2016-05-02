@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.rainbow.web.mapper.MemberMapper"> 
 	<insert id="insert" parameterType="com.rainbow.web.member.MemberDTO"> 
-		INSERT INTO RainbowMember(id, password, name, gender, birth, addr, email, point, grade, reg_date) 
+		INSERT INTO Member(id, password, name, gender, birth, addr, email, point, grade, reg_date) 
 		VALUES(#{id}, #{password}, #{name}, #{gender}, #{birth}, #{addr}, #{email}, 1000, '브론즈', SYSDATE())
 	</insert>
 	
@@ -20,7 +20,7 @@
    			point,
    			grade,
    			DATE_FORMAT(reg_date,'%Y-%m-%d %T') AS regDate
-    	FROM RainbowMember
+    	FROM Member
 	</select>
 	
 	<select id="selectByName" parameterType="com.rainbow.web.member.MemberDTO" resultType="com.rainbow.web.member.MemberDTO"> 
@@ -35,7 +35,7 @@
    			point,
    			grade,
    			DATE_FORMAT(reg_date,'%Y-%m-%d %T') AS regDate
-    	FROM RainbowMember
+    	FROM Member
     	WHERE name = #{name}
 	</select>
 	
@@ -51,7 +51,7 @@
    			point,
    			grade,
    			DATE_FORMAT(reg_date,'%Y-%m-%d %T') AS regDate
-    	FROM RainbowMember
+    	FROM Member
     	WHERE id = #{id} and password = #{password}
 	</select>
 	
@@ -67,7 +67,7 @@
    			point,
    			grade,
    			DATE_FORMAT(reg_date,'%Y-%m-%d %T') AS regDate
-    	FROM RainbowMember
+    	FROM Member
     	WHERE id = #{id}
 	</select>
 	
@@ -76,7 +76,7 @@
 	</select>
 	
 	<update id="update" parameterType="com.rainbow.web.member.MemberDTO">
-		UPDATE RainbowMember 
+		UPDATE Member 
 		SET password = #{password},
 			addr = #{addr},
 			email = #{email}
@@ -85,7 +85,7 @@
 	
 	<delete id="delete" parameterType="com.rainbow.web.member.MemberDTO">
 		DELETE 
-		FROM RainbowMember 
+		FROM Member 
 		WHERE id = #{id}
 	</delete>
 </mapper>

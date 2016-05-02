@@ -1,6 +1,6 @@
 ---------------------------------------
 -- 완성된 멤버테이블
-CREATE TABLE RainbowMember( 
+CREATE TABLE Member( 
 	member_seq INT PRIMARY KEY AUTO_INCREMENT,
 	id VARCHAR(30) NOT NULL,
 	password VARCHAR(30) NOT NULL,
@@ -16,11 +16,11 @@ CREATE TABLE RainbowMember(
 ----------------------------------------
 
 -------------------------
--- RainbowMember 테이블의 모든 내용 검색
-SELECT * FROM RainbowMember;
+-- Member 테이블의 모든 내용 검색
+SELECT * FROM Member;
 -------------------------
 
 ---------------------------
--- RainbowMember 테이블 삭제하기
-DROP TABLE RainbowMember CASCADE;
+-- Member 테이블 삭제하기
+DROP TABLE Member CASCADE;
 ---------------------------

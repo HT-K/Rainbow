@@ -1,6 +1,6 @@
 ---------------------------------------
 -- 완성된 멤버테이블
-CREATE TABLE RainbowAdmin( 
+CREATE TABLE Admin( 
 	admin_seq INT PRIMARY KEY AUTO_INCREMENT,
 	id VARCHAR(30) NOT NULL,
 	password VARCHAR(30) NOT NULL
@@ -8,15 +8,15 @@ CREATE TABLE RainbowAdmin(
 ----------------------------------------
 
 -------------------------
--- RainbowAdmin 테이블의 모든 내용 검색
-SELECT * FROM RainbowAdmin;
+-- Admin 테이블의 모든 내용 검색
+SELECT * FROM Admin;
 -------------------------
 
 ---------------------------
--- RainbowAdmin 테이블 삭제하기
-DROP TABLE RainbowAdmin CASCADE;
+-- Admin 테이블 삭제하기
+DROP TABLE Admin CASCADE;
 ---------------------------
 
 ---------------------------------------
-INSERT INTO RainbowAdmin(id, password)
+INSERT INTO Admin(id, password)
 VALUES('admin', '1');
