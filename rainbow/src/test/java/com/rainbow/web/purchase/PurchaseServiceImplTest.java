@@ -23,7 +23,7 @@ public class PurchaseServiceImplTest {
 	@Autowired PurchaseDTO purchase;
 	@Autowired SqlSession session;
 
-	/*@Test
+/*	@Test
 	public void testInsert() {
 		PurchaseMapper mapper = session.getMapper(PurchaseMapper.class);
 		purchase.setMemberId("hong");
