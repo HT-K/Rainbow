@@ -2,6 +2,9 @@ package com.rainbow.web.reply;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.hamcrest.Matcher;
 import org.hamcrest.core.Is;
@@ -30,24 +33,23 @@ public class ReplyServieImplTest {
 		assertThat(mapper.insert(reply),is(1));
 	}
 
-	/*@Test
+	@Test
 	public void testGetList() {
 		  ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
 	      List<ReplyDTO> list = new ArrayList<ReplyDTO>();
-	      list = mapper.selectList();
+	      list = mapper.getList();
 	      assertThat(list.size(), is(not(0))); // 전체 회원 조회 시 리턴되는 값이 0이 아니면 성공(초록불) 아니면 빨간불
-	
-
-	@Test
-	public void testGetByName() {
-		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testGetById() {
-		fail("Not yet implemented");
+	public void testGetByReplySeq() {
+		ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
+	      List<ReplyDTO> list = new ArrayList<ReplyDTO>();
+	      list = mapper.getList();
+	      assertThat(list.size(), is(not(0)));
 	}
-*/
+
+
 	@Test
 	public void testCount() {
 		ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
@@ -66,7 +68,7 @@ public class ReplyServieImplTest {
 	public void testDelete() {
 		ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
 		reply.setReplySeq(1);
-		assertThat(mapper.delete(reply),is(1));
+		assertNotNull(mapper.delete(reply));
 	}
 
 

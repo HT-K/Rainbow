@@ -19,6 +19,6 @@ WHERE writer_name = 'hong';
 
 
 
-DELETE FROM Reply WHERE id = 'choi';
+SELECT * FROM Reply WHERE reply_seq = '2';
 
 DROP TABLE Reply;
