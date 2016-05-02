@@ -49,10 +49,10 @@
 			 </div></li>
 	
 			<li id='purchasetab' style="display:none;"><a href="#" data-ajax="false">Purchase history</a></li>
-			<li><a href="#" data-ajax="false">Info</a></li>
-			<li><a href="#" data-ajax="false">Q/A</a></li>
-			<li><a href="#" data-ajax="false">Setting</a></li>
-			<li><a href="#" data-ajax="false">Developer</a></li>
+			<li><a href="#" data-ajax="false" id="info">Info</a></li>
+			<li><a href="#" data-ajax="false" id="qna">Q/A</a></li>
+			<li><a href="#" data-ajax="false" id="setting">Setting</a></li>
+			<li><a href="#" data-ajax="false" id="developer">Developer</a></li>
 			 
 		</ul>
 	</div>

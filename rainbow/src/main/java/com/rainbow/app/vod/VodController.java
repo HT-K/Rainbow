@@ -17,8 +17,8 @@ public class VodController {
 	@Autowired VodDTO vod;
 	@Autowired VodService service; 
 	
-	@RequestMapping("/login")
-	public String login() {
-		return "member/login.user";
+	@RequestMapping("/search")
+	public String search() {
+		return "vod_search/vodSearch";
 	}
 }

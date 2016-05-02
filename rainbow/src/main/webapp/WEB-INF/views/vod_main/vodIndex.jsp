@@ -1,19 +1,3 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Gist
- @bingoori
- Unwatch 8
-  Star 0
-  Fork 0 HT-K/Rainbow
- Code  Issues 0  Pull requests 0  Wiki  Pulse  Graphs
-Branch: bingoori Find file Copy pathRainbow/rainbow/WebContent/WEB-INF/views/vod_main/main.jsp
-d0e554d  on 1 Apr
-@bingoori bingoori ㅇㅋㄷㅋ
-1 contributor
-RawBlameHistory     86 lines (81 sloc)  3.83 KB
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <jsp:include page="../vod_global/header.jsp" />

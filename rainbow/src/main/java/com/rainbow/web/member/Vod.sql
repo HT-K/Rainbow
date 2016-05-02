@@ -40,7 +40,7 @@ drop table RainbowVod;
 
 SELECT * FROM RainbowMovie;
 SELECT * FROM Vod;
-SELECT * FROM RainbowMember;
+SELECT * FROM Member;
 SELECT * FROM RainbowVod WHERE vod_name = '친구2';
 
 		SELECT 

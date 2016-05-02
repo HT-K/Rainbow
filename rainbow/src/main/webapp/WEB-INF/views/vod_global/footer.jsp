@@ -2,7 +2,7 @@
 <footer>
                 <div class="navbar navbar-default navbar-static-bottom">
                     <p class="navbar-text pull-left">
-                        Built by <a href="http://google.com" target="_blank">Master Vs Slaves
+                        Built by <a href="http://google.com" target="_blank"> Bingoori
                     </p>
                 </div>
  
@@ -15,39 +15,70 @@
  	 if(user == null || user == ''){
  		 alert("null");
  		 }else{
- 			 
 		document.getElementById('logintab').style.display = 'none';
 		document.getElementById('logouttab').style.display = '';
 		document.getElementById('purchasetab').style.display = '';
-		
  		}
- 	 $('#logoutBtn').click(function() {
- 	      window.location.assign("${context}/vod_main/main.do?logout=y");    
- 	   });
-   $('#loginForm').click(function() {
-      window.location.assign("${context}/vod_member/login_form.do");    
    });
-   $('#joinForm').click(function() {
-      window.location.assign("${context}/vod_member/join_form.do");    
+  	 $('#logoutBtn').click(function(e) {
+  	   e.preventDefault();
+       location.href = "${context}/member/vod_logout";     
+ 	   }); 
+   $('#loginForm').click(function(e) {
+	   e.preventDefault();
+     location.href = "${context}/member/vod_login";    
    });
-   $('#home').click(function() {
-      window.location.assign("${context}/vod_main/main.do");    
+   $('#joinForm').click(function(e) {
+	   e.preventDefault();
+	   location.href = "${context}/member/vod_join";    
    });
-   $('#new').click(function() {
-      window.location.assign("${context}/vod_menu/new_form.do");    
+   $('#home').click(function(e) {
+	   e.preventDefault();
+	   alert("home");
+      //window.location.assign("${context}/vod_main/main.do");    
    });
-   $('#normal').click(function() {
-      window.location.assign("${context}/vod_menu/normal_form.do");    
+   $('#new').click(function(e) {
+	   e.preventDefault();
+	   alert("new");
+     // window.location.assign("${context}/vod_menu/new_form.do");    
    });
-   $('#free').click(function() {
-      window.location.assign("${context}/vod_menu/free_form.do");    
+   $('#normal').click(function(e) {
+	   e.preventDefault();
+	   alert("normal");
+     // window.location.assign("${context}/vod_menu/normal_form.do");    
    });
-   $('#search').click(function() {
-      window.location.assign("${context}/vod_menu/search_form.do");    
+   $('#free').click(function(e) {
+	   e.preventDefault();
+	   alert("free");
+     // window.location.assign("${context}/vod_menu/free_form.do");    
    });
-});
-   
-   function myFunction() {
+   $('#search').click(function(e) {
+	   e.preventDefault();
+	   alert("search");
+	   location.href = "${context}/vod/search";     
+   });
+   $('#info').click(function(e) {
+  	   e.preventDefault();
+  	   alert("info");
+       //location.href = "${context}/member/vod_logout";     
+ 	   }); 
+   $('#qna').click(function(e) {
+	   e.preventDefault();
+	   alert("qna");
+     //location.href = "${context}/member/vod_login";    
+   });
+   $('#setting').click(function(e) {
+	   e.preventDefault();
+	   alert("setting");
+	  // location.href = "${context}/member/vod_join";    
+   });
+   $('#developer').click(function(e) {
+	   e.preventDefault();
+	   alert("developer");
+	 //  location.href = "${context}/member/vod_join";    
+   });
+ 	
+ /*  function myFunction() {
 	
       var txt;
        var r = confirm("구매하시겠습니까?");
@@ -58,5 +89,6 @@
           return false;
        } 
        document.getElementById("demo").innerHTML = txt;
-   };
+   };*/
+   
 </script>
