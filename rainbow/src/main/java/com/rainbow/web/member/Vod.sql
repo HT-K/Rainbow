@@ -12,13 +12,15 @@ CREATE TABLE Member(
 );
 
 create table Vod(
-	vod_name VARCHAR(50) PRIMARY KEY,
+	vod_name_kor VARCHAR(50) PRIMARY KEY,
+	vod_name_eng VARCHAR(50),
+	vod_content_title VARCHAR(300) null,
 	vod_content VARCHAR(3000) NULL,
 	vod_price INT NOT NULL,
 	vod_category VARCHAR(50) NOT NULL,
 	vod_time INT NOT NULL,
 	vod_rating varchar(10) null, 
-	vod_url VARCHAR(100) not null, 
+	vod_url VARCHAR(1000) not null, 
 	vod_image VARCHAR(50) not null,
 	vod_date datetime not null,
 	vod_free VARCHAR(10) default 'n',
@@ -27,7 +29,7 @@ create table Vod(
 	vod_director VARCHAR(30) not null,
 	vod_country VARCHAR(40) null
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+drop table Vod;
 	    UPDATE Vod 
 	    set 
 	    vod_content = '니 내랑 부산 접수할랭???',
@@ -88,11 +90,8 @@ values ('bingoori','1','빙구리','여','18840101','인천시','bingoor@.com','
        FROM RainbowMember
        WHERE id = 'bingoori' and password = '1';
 
-insert into Vod(vod_name,vod_content,vod_price,vod_category,vod_time,vod_rating,vod_url,vod_image,vod_date,vod_free,vod_grade,vod_actor,vod_director,vod_country) 
-values('친구2','"니 내랑 부산 접수할래?" 그 날, 끝나지 않은 이야기가 시작된다!',1000,'느와르,액션',124,
-'6.26','/youtube/friend','/vod_image/noir/friend2.png'
-,'2013-11-24','n','18세이상관람가','유오성,주진모','곽경택','한국');
-
+ 
+truncate table Vod;
 SELECT * FROM Vod WHERE vod_name = '친구2';
 insert into Vod(vod_name,vod_content,vod_price,vod_category
 ,vod_time,vod_rating,vod_url,vod_image,vod_date,vod_free,vod_grade,vod_actor,vod_director,vod_country) 

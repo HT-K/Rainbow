@@ -41,7 +41,7 @@ public class VodServiceImpl implements VodService{
 	public VodDTO getByName(VodDTO vod) {
 		logger.info("=== ServiceImpl <> getByName()");
 		VodMapper mapper = sqlSession.getMapper(VodMapper.class);
-		return mapper.getByVodName(vod.getVodName());
+		return mapper.getByVodName(vod.getVodNameKor());
 	}
 
 	@Override
