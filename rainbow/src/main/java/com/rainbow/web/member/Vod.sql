@@ -12,8 +12,7 @@ CREATE TABLE Member(
 );
 
 create table Vod(
-	vod_name_kor VARCHAR(50) PRIMARY KEY,
-	vod_name_eng VARCHAR(50),
+	vod_name VARCHAR(200) PRIMARY KEY,
 	vod_content_title VARCHAR(300) null,
 	vod_content VARCHAR(3000) NULL,
 	vod_price INT NOT NULL,
@@ -26,8 +25,8 @@ create table Vod(
 	vod_free VARCHAR(10) default 'n',
 	vod_grade VARCHAR(20) null,
 	vod_actor VARCHAR(60) null,
-	vod_director VARCHAR(30) not null,
-	vod_country VARCHAR(40) null
+	vod_director VARCHAR(100) not null,
+	vod_country VARCHAR(100) null
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 drop table Vod;
 	    UPDATE Vod 

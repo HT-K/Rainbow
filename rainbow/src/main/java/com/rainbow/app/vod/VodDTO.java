@@ -5,21 +5,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class VodDTO {
 
-	private String vodNameKor,vodNameEng,vodContent,vodContentTitle,vodPrice,vodCategory,vodRating,vodUrl,vodImage,vodDate,vodFree,vodGrade,vodActor,vodDirector,vodCountry;
+	private String vodName,vodContent,vodContentTitle,vodPrice,vodCategory,vodRating,vodUrl,vodImage,vodDate,vodFree,vodGrade,vodActor,vodDirector,vodCountry;
 	private int vodTime;
 	
-	
-	public String getVodNameKor() {
-		return vodNameKor;
+
+	public String getVodName() {
+		return vodName;
 	}
-	public void setVodNameKor(String vodNameKor) {
-		this.vodNameKor = vodNameKor;
-	}
-	public String getVodNameEng() {
-		return vodNameEng;
-	}
-	public void setVodNameEng(String vodNameEng) {
-		this.vodNameEng = vodNameEng;
+	public void setVodName(String vodName) {
+		this.vodName = vodName;
 	}
 	public String getVodContentTitle() {
 		return vodContentTitle;
