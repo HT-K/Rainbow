@@ -8,14 +8,15 @@
 		VALUES (#{writerName}, SYSDATE(), #{replyContent});
 	</insert>
 	
-	<select id="selectList" resultType="com.rainbow.web.reply.ReplyDTO">
+	<select id="getList" resultType="com.rainbow.web.reply.ReplyDTO">
+	    	SELECT * FROM Reply;
 	</select>
 	
-	<select id="selectByName" parameterType="com.rainbow.web.reply.ReplyDTO" resultType="com.rainbow.web.reply.ReplyDTO"> 
+	<select id="getByReplySeq" parameterType="com.rainbow.web.reply.ReplyDTO" resultType="com.rainbow.web.reply.ReplyDTO"> 
+	SELECT * FROM Reply WHERE reply_seq = #{reply_seq};
+	
 	</select>
 	
-	<select id="selectById" parameterType="com.rainbow.web.reply.ReplyDTO" resultType="com.rainbow.web.reply.ReplyDTO"> 
-	</select>
 	
 	<select id="count" resultType="int">
 	    SELECT COUNT(*) FROM Reply

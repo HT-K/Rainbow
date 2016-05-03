@@ -3,8 +3,7 @@ package com.rainbow.web.admin;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 import org.apache.ibatis.session.SqlSession;
 import org.hamcrest.Matcher;

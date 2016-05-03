@@ -27,21 +27,16 @@ public class ReplyServiceImpl implements ReplyService{
 
 	@Override
 	public List<ReplyDTO> getList() {
-		// 댓글 리스트
-		return null;
+		logger.info("=== RecordService : getList() === ");
+		ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
+		return mapper.getList();
 	}
 
 	@Override
-	public List<ReplyDTO> getByName(ReplyDTO reply) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public ReplyDTO getById(ReplyDTO reply) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ReplyDTO> getByRelySeq(ReplyDTO reply) {
+		logger.info("=== RecordService : getByRelySeq() === ");
+		ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
+		return mapper.getList();
 	}
 
 	@Override
