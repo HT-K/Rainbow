@@ -215,3 +215,105 @@ values(
 	,'밀라 요보비치(케이트 애벗), 피어스 브로스넌(내쉬)'
 	,'미국, 영국'
 	);	
+			---------------------------------------
+insert into Vod(vod_name,vod_content_title,vod_content,vod_price,vod_category
+,vod_time,vod_rating,vod_url,vod_image,vod_date,vod_free,vod_grade,vod_actor,vod_director,vod_country) 
+values(
+	'구스범스 : Goosebumps, 2015'
+	,'책 속에 갇혀 있던 몬스터들이 깨어난다!'
+	,'뉴욕에서 작은 마을로 이사 오게 된 잭(딜런 미네트)은 첫 날부터 옆집 소녀 헤나(오데야 러쉬)에게 호감을 느낀다. 하지만 전세계 베스트셀러 ‘구스범스’의 작가인 헤나의 아버지 스타인(잭 블랙)은 무언가를 숨기려는 듯 자신들의 집에 얼씬거리지 말라며 경고한다. 어느 날, 헤나의 비명 소리를 듣게 된 잭은 절친 챔프(라이언 리)를 불러 몰래 잠입하고, 그곳에서 자물쇠로 잠겨 있는 베스트셀러 소설 ‘구스범스’ 책들을 발견한다. 잭의 황당한 실수로 책이 펼쳐지자 책 속에 잠들었던 몬스터들이 하나 둘 깨어나기 시작하고 세상은 순식간에 쑥대밭이 되는데.... 몬스터들의 공격에 맞선 잭, 헤나, 챔프 그리고 스타인은 이 위기를 원상복구 시킬 수 있을까? 세상에서 가장 소름 돋는 판타지 어드벤처가 시작된다!'
+ 	,'4900'
+	,'액션, 모험, 코미디, 판타지, 공포'
+	,103
+	,'8.4'
+	,'http://movie.naver.com/movie/bi/mi/videoPlayer.nhn?code=127866&type=movie&videoId=DED10805584D7191B354D9C1190C15EDA601&videoInKey=V127e5586222884ecd03f19e3ee1bb08efd89897f9a403f4b6aad6b66e19a50d9ec5719e3ee1bb08efd89&coverImage=/multimedia/MOVIECLIP/FEATURE/29652_20160118111538.jpg&mid=29652&autoPlay=true&playerSize=665x480'
+	,'/vod_image/action/Goosebumps.png'
+	,'2016-01-14'
+	,'n'
+	,'[국내] 12세 관람가 '
+	,'롭 레터맨'
+	,'잭 블랙(R. L. 스타인), 딜런 미네트(잭), 오데야 러쉬(헤나)'
+	,'미국'
+	);	
+				---------------------------------------
+insert into Vod(vod_name,vod_content_title,vod_content,vod_price,vod_category
+,vod_time,vod_rating,vod_url,vod_image,vod_date,vod_free,vod_grade,vod_actor,vod_director,vod_country) 
+values(
+	'버스 657 : Heist, Bus 657, 2015'
+	,''
+	,'딸의 병원비를 구하기 위해 ‘본’은 마피아 보스 ‘실바’가 운영하는 카지노의 돈을 털기로 결심하고 동료들과 치밀한 계획을 세운다. 계획대로 작전이 성공하는 듯 했지만, 예상치 못한 사건 전개로 인해 ‘본’과 동료들은 위기에 빠지고 급기야 승객을 태우고 달리던 버스 657을 납치하게 되는데… 딸을 살리기 위해 자신의 목숨을 건 ‘본’ 자신의 돈과 명예를 지켜야 하는 마피아 보스 ‘실바’ 카지노의 검은 돈을 노리는 ‘콕스’ 1월, 목적이 다른 세 남자의 숨 막히는 추격이 시작된다!'
+	,'4900'
+	,'액션, 스릴러'
+	,92
+	,'8.04'
+	,'http://movie.naver.com/movie/bi/mi/videoPlayer.nhn?code=131579&type=movie&videoId=F86A07ABAD338DCE22A89494B3B568AAE544&videoInKey=V125bd638261336b4bd3959498e28e4722ca953dea0b8bc79716a351fafeddb1e913359498e28e4722ca9&coverImage=/multimedia/MOVIECLIP/FEATURE/29584_20160112111011.jpg&mid=29584&autoPlay=true&playerSize=665x480'
+	,'/vod_image/action/Bus657.png'
+	,'2016-01-14'
+	,'n'
+	,'[국내] 15세 관람가 '
+	,'스콧 만'
+	,'로버트 드 니로(실바), 제프리 딘 모건(본)'
+	,'미국'
+	);
+	----------------------------
+insert into Vod(vod_name,vod_content_title,vod_content,vod_price,vod_category
+,vod_time,vod_rating,vod_url,vod_image,vod_date,vod_free,vod_grade,vod_actor,vod_director,vod_country) 
+values(
+	'로미오와 줄리엣 : Romeo + Juliet, 1996'
+	,'누구도 따라 할 수 없는 사랑… 이 사랑에 홀릭하다!'
+	,'정열의 도시 베로나, 태양의 열기가 가득한 이 도시에서 두 가문 몬태규가와 캐플릿가는 끝없이 혈투를 벌인다. 어느 날 캐플릿가의 파티에 몰래 참석한 몬태규가의 로미오는, 아름다운 줄리엣을 만나 첫눈에 사랑에 빠진다. 로미오와 줄리엣은 부모 몰래 결혼식을 올리고, 이 결혼이 두 가문의 화해를 가져다 줄 거라 믿은 신부는 그들을 축복한다. 그러나 싸움에 휘말려 줄리엣의 사촌 티볼트를 죽이게 된 로미오가 베로나에서 추방당하게 되고, 줄리엣은 그녀를 좋은 가문에 강제로 결혼시키려는 부모를 피해 수면제를 먹고 죽은 것처럼 가장하는데..'
+	,'4400'
+	,'드라마, 멜로/로맨스'
+	,120
+	,'8.10'
+	,'http://movie.naver.com/movie/bi/mi/videoPlayer.nhn?code=17875&type=movie&videoId=A62E86E726CB8E18812D592C139885ABC2A0&videoInKey=V127b6e6def2ab0eed143f5dae765f5e79700bd03e764cbeb3153f569ac2fc2916fd3f5dae765f5e79700&coverImage=/multimedia/MOVIECLIP/TRAILER/23207_20140317032307.jpg&mid=23207&autoPlay=true&playerSize=665x480'
+	,'/vod_image/drama/RemeoJuliet.png'
+	,'1996-12-28'
+	,'n'
+	,'[국내] 15세 관람가 '
+	,'바즈 루어만'
+	,'레오나르도 디카프리오(로미오), 클레어 데인즈(줄리엣)'
+	,'미국'
+	);
+	----------------------------
+insert into Vod(vod_name,vod_content_title,vod_content,vod_price,vod_category
+,vod_time,vod_rating,vod_url,vod_image,vod_date,vod_free,vod_grade,vod_actor,vod_director,vod_country) 
+values(
+	'볼트 : Bolt, 2008'
+	,'당신이 꿈꾸던 가장 이상적인 슈퍼독(?)이 온다!'
+	,'슈퍼독 ‘볼트’는 온갖 모험과 위험으로 가득 찬 흥미 진진한 하루 하루를 보낸다. 단, 그가 카메라 앞에 있는 순간까지만! 최고의 TV스타 볼트가 어느 날 우연히 헐리우드 촬영장을 떠나 머나먼 뉴욕까지 오게 되면서 견생(犬生) 최대의 도전이 시작된다. 그의 주인이자 연기 파트너인 ‘페니’에게 돌아가려면, 미국 대륙을 가로질러야만 하니까! 믿을 거라곤 TV 속 멋진 전투 기술과 초능력밖에 없는데 그마저도 볼트의 착각일 뿐, 그가 뛰어든 현실 세상에선 무용지물이다. 그래도 다행인지 불행인지, 볼트는 심상치 않은 동지들을 만나게 된다. 왕년에 사랑 받던 고양이였지만 지금은 버림받고 좀 까칠해진 ‘미튼스’, 엄청난 TV 매니아이자 볼트의 열혈 팬인 햄스터 ‘라이노’ 가 바로 그들. 그리고 이 어설픈 두 친구와 함께하는 우리의 액션 영웅 볼트의 완전 리얼 액션 어드벤처가 시작된다!'
+	,'5000'
+	,'모험, 코미디, 가족, 판타지, 애니메이션'
+	,96
+	,'9.04'
+	,'http://movie.naver.com/movie/bi/mi/videoPlayer.nhn?code=47411&type=movie&videoId=D1F4158CA73DD50D52181A2AD503EED023BA&videoInKey=V1252c8c82fd47e67401666fb526a2c868b1eeae4ba0db1f621b26d1c408559fd9e0b66fb526a2c868b1e&coverImage=&mid=9919&autoPlay=true&playerSize=665x480'
+	,'/vod_image/action/Bolt.png'
+	,'2008-12-31'
+	,'n'
+	,'[국내] 전체 관람가'
+	,'바이론 하워드, 크리스 윌리엄스'
+	,'존 트라볼타(볼트 목소리), 마일리 사이러스(페니 목소리)'
+	,'미국'
+	);
+	----------------------------
+insert into Vod(vod_name,vod_content_title,vod_content,vod_price,vod_category
+,vod_time,vod_rating,vod_url,vod_image,vod_date,vod_free,vod_grade,vod_actor,vod_director,vod_country) 
+values(
+	'겨울왕국 : Frozen, 2013'
+	,'얼어붙은 세상을 녹일 자매가 온다!'
+	,'서로가 최고의 친구였던 자매 ‘엘사’와 ‘안나’. 하지만 언니 ‘엘사’에게는 하나뿐인 동생에게조차 말 못할 비밀이 있다. 모든 것을 얼려버리는 신비로운 힘이 바로 그것. ‘엘사’는 통제할 수 없는 자신의 힘이 두려워 왕국을 떠나고, 얼어버린 왕국의 저주를 풀기 위해 ‘안나’는 언니를 찾아 환상적인 여정을 떠나는데……'
+	,'6500'
+	,'애니메이션, 모험, 코미디, 가족, 판타지, 뮤지컬'
+	,103
+	,'9.12'
+	,'http://movie.naver.com/movie/bi/mi/videoPlayer.nhn?code=100931&type=movie&videoId=12D48328D8331BC56CF9AA4071DDAE538365&videoInKey=V1295b24dbb2529e1489a4cb9596de5048aef1afcab32d9920cd3a8f6147efab4f7114cb9596de5048aef&coverImage=/multimedia/MOVIECLIP/TRAILER/22456_20131226122504.jpg&mid=22456&autoPlay=true&playerSize=665x480'
+	,'/vod_image/animation/Frozen.png'
+	,'2014-01-16'
+	,'n'
+	,'[국내] 전체 관람가'
+	,'크리스 벅, 제니퍼 리'
+	,'크리스틴 벨(안나 목소리), 이디나 멘젤(엘사 목소리)'
+	,'미국'
+	);	
+	
+	

@@ -21,15 +21,15 @@
          <div class="row" >
             <div class="col-xs-4 well" style="background: white;">
                <!-- <legend id="anch1"></legend> -->
-               <a href="${context}/vod_detail/vod_detailForm.do?vodName=친구(Friend)"><img class="col-xs-12" src="${context}/resources/vod_image/noir/friend1.png"></a>
+               <a href="${context}/vod_detail/vod_detailForm.do?vodName=친구(Friend)"><img class="col-xs-12" src="${context}/resources/vod_image/action/Dracano.png"></a>
             </div>
             <div class="col-xs-4 well" style="background: white;">
                <!-- <legend id="anch1"></legend> -->
-               <img class="col-xs-12" src="${context}/resources/vod_image/noir/friend.png">
+               <img class="col-xs-12" src="${context}/resources/vod_image/action/InsideMen.png">
             </div>
             <div class="col-xs-4 well" style="background: white;">
                <!-- <legend id="anch1"></legend> -->
-               <img class="col-xs-12" src="${context}/resources/vod_image/noir/friend.png">
+               <img class="col-xs-12" src="${context}/resources/vod_image/action/StarWarsSTheForceAwakens.png">
             </div>
          </div>
          <!--  -->
@@ -44,15 +44,15 @@
          <div class="row">
             <div class="col-xs-4 well" style="background: white;">
                <!-- <legend id="anch1"></legend> -->
-               <img class="col-xs-12" src="${context}/resources/vod_image/noir/friend.png">
+               <img class="col-xs-12" src="${context}/resources/vod_image/comedy/ManUp.png">
             </div>
             <div class="col-xs-4 well" style="background: white;">
                <!-- <legend id="anch1"></legend> -->
-               <img class="col-xs-12" src="${context}/resources/vod_image/noir/friend.png">
+               <img class="col-xs-12" src="${context}/resources/vod_image/comedy/Trainwreck.png">
             </div>
             <div class="col-xs-4 well" style="background: white;">
                <!-- <legend id="anch1"></legend> -->
-               <img class="col-xs-12" src="${context}/resources/vod_image/noir/friend.png">
+               <img class="col-xs-12" src="${context}/resources/vod_image/drama/BridgeofSpies.png">
             </div>
          </div>
          <!--  -->
@@ -67,15 +67,15 @@
          <div class="row">
             <div class="col-xs-4 well" style="background: white;">
                <!-- <legend id="anch1"></legend> -->
-               <img class="col-xs-12" src="${context}/resources/vod_image/noir/friend.png">
+               <img class="col-xs-12" src="${context}/resources/vod_image/drama/GodBlessAmerica.png">
             </div>
             <div class="col-xs-4 well" style="background: white;">
                <!-- <legend id="anch1"></legend> -->
-               <img class="col-xs-12" src="${context}/resources/vod_image/noir/friend.png">
+               <img class="col-xs-12" src="${context}/resources/vod_image/drama/TokyoFamily.png">
             </div>
             <div class="col-xs-4 well" style="background: white;">
                <!-- <legend id="anch1"></legend> -->
-               <img class="col-xs-12" src="${context}/resources/vod_image/noir/friend.png">
+               <img class="col-xs-12" src="${context}/resources/vod_image/thriller/BerkshireCounty.png">
             </div>
          </div>
          <!--  -->

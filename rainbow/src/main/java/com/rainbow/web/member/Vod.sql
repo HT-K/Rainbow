@@ -89,31 +89,31 @@ values ('bingoori','1','빙구리','여','18840101','인천시','bingoor@.com','
        FROM RainbowMember
        WHERE id = 'bingoori' and password = '1';
 
- 
+SELECT *
+FROM Vod
+WHERE DATE_FORMAT(now(),'%Y-%m-%d') - DATE_FORMAT(vod_date,'%Y-%m-%d') > 30;  
+SELECT DATEDIFF(NOW(),DATE_FORMAT(vod_date,'%Y-%m-%d'))
+FROM Vod;
+
+select *
+from Vod
+WHERE DATE_FORMAT(vod_date,'%Y-%m-%d') ;
+
+-- 100일 미만이면 최신 2
+SELECT * 
+FROM Vod
+WHERE DATEDIFF(NOW(),DATE_FORMAT(vod_date,'%Y-%m-%d')) < 100;
+-- 365일 미만 일반 7
+SELECT *
+FROM Vod
+WHERE DATEDIFF(NOW(),DATE_FORMAT(vod_date,'%Y-%m-%d')) < 365 AND DATEDIFF(NOW(),DATE_FORMAT(vod_date,'%Y-%m-%d')) > 100;
+-- 365일 보다 크면 무료 영화 6
+SELECT *
+FROM Vod
+WHERE DATEDIFF(NOW(),DATE_FORMAT(vod_date,'%Y-%m-%d')) > 365;
+
+
+
 truncate table Vod;
 SELECT * FROM Vod WHERE vod_name = '친구2';
-insert into Vod(vod_name,vod_content,vod_price,vod_category
-,vod_time,vod_rating,vod_url,vod_image,vod_date,vod_free,vod_grade,vod_actor,vod_director,vod_country) 
-values('대배우','대배우를 꿈꾸는 20년차 무명배우 장성필! 
-  
- 아동극 ‘플란다스의 개’의 파트라슈 역할 전문으로 20년째 대학로를 지키고 있는 ‘성필’. 
- 극단 생활을 함께했던 ‘설강식’이 국민배우로 승승장구하는 것을 보며 언젠가 자신도 대배우가 되리라 다짐한다. 
- 하지만 여전히 대사 한마디 없는 개 역할에서 벗어나기 어렵고, 이제는 가족들마저 짐처럼 느껴지기 시작한다. 
-  
- 세계적인 깐느박 감독 작품 신인 배우 모집! 
-  
- 전세계가 인정한 대한민국 대표감독 ‘깐느박’. 그가 새영화 <악마의 피>의 사제 역할로 뉴페이스를 찾고 있다. 
- ‘성필’에게는 자신의 연기를 만인 앞에 선보일 수 있는 절호의 찬스! ‘성필’은 일생일대의 메소드 연기를 준비하는데…'
- 	,5000
-	,'코미디'
-	,108
-	,'7.36'
-	,'/youtube/friend'
-	,'/vod_image/comics/thegreatactor.jpg'
-	,'2016-03-30'
-	,'n'
-	,'[국내]12세관람가'
-	,'석민우'
-	,'오달수, 윤제문, 이경영'
-	,'한국'
-	);
+SELECT * FROM Vod;
