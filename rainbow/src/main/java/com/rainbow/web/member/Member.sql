@@ -5,7 +5,6 @@ CREATE TABLE Member(
 	id VARCHAR(30) NOT NULL,
 	password VARCHAR(30) NOT NULL,
 	name VARCHAR(30) NOT NULL,
-	gender VARCHAR(10),
 	birth VARCHAR(30),
 	addr VARCHAR(70),
 	email VARCHAR(50),

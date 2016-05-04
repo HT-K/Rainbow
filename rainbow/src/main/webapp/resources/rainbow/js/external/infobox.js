@@ -315,6 +315,9 @@ InfoBox.prototype.panBox_ = function (disablePan) {
 
     if (map instanceof google.maps.Map) { // Only pan if attached to map, not panorama
 
+   /* 	서울특별시 창천동 신촌역
+    	(Lat, Lng) = (37.555242, 126.93735800000002)*/
+    	 new google.maps.LatLng(37.5651, 126.98955)
       if (!map.getBounds().contains(this.position_)) {
       // Marker not in visible area of map, so set center
       // of map to the marker position first.
