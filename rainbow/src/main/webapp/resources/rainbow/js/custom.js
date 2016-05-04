@@ -98,7 +98,7 @@ function init_Elements () {
             
 
     //3. Datapicker init
-    $(".datepicker__input").datepicker({
+    $j(".datepicker__input").datepicker({
         showOtherMonths: true,
         selectOtherMonths: true,
         showAnim:"fade"
