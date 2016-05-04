@@ -51,4 +51,3 @@ FROM Movie;
 --삭제
 DELETE FROM Movie
 WHERE movie_seq= #{movie_seq};
-

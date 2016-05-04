@@ -38,7 +38,7 @@ public class MovieServiceImpl implements MovieService{
 	}
 
 	@Override
-	public List<MovieDTO> getList(MovieDTO movie) {
+	public List<MovieDTO> getList() {
 		logger.info("MovieService-getList{}");
 		MovieMapper mapper = session.getMapper(MovieMapper.class);
 		return mapper.selectList();

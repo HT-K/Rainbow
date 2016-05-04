@@ -81,40 +81,46 @@
 </div> --%>
 
 <!-- JavaScript-->
-<!-- jQuery 1.9.1--> 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="${context}/resources/rainbow/js/external/jquery-1.10.1.min.js"><\/script>')</script>
+<!-- CDN 모아두기 -->
+   <!-- jQuery 1.9.1--> 
+   <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script> -->
+   <!-- Bootstrap 3--> 
+   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+<!-- CDN 모아두기 끝 -->
 
-<!-- Migrate --> 
-<script src="${context}/resources/rainbow/js/external/jquery-migrate-1.2.1.min.js"></script>
-
-<!-- Bootstrap 3--> 
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
-
-<!-- jQuery REVOLUTION Slider -->
-<script type="text/javascript" src="${context}/resources/rainbow/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
-<script type="text/javascript" src="${context}/resources/rainbow/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-
-<!-- Mobile menu -->
-<script src="${context}/resources/rainbow/js/jquery.mobile.menu.js"></script>
-
-<!-- Select -->
-<script src="${context}/resources/rainbow/js/external/jquery.selectbox-0.2.min.js"></script>
-
-<!-- Stars rate -->
-<script src="${context}/resources/rainbow/js/external/jquery.raty.js"></script>
-
-<!-- Swiper slider -->
-<script src="${context}/resources/rainbow/js/external/idangerous.swiper.min.js"></script>
-
-<!-- Form element -->
-<script src="${context}/resources/rainbow/js/external/form-element.js"></script>
-
-<%-- <!-- Form validation -->
-<script src="${context}/resources/rainbow/js/form.js"></script>
-
-<!-- Twitter feed -->
-<script src="${context}/resources/rainbow/js/external/twitterfeed.js"></script> --%>
-
-<!-- Custom -->
-<script src="${context}/resources/rainbow/js/custom.js"></script>
+<!-- 폴더 내용 모아두기 -->
+   <!-- rainbow / js -->
+   <script src="${context}/resources/rainbow/js/external/jquery.selectbox-0.2.min.js"></script>
+   <script src="${context}/resources/rainbow/js/min/jquery.mobile.menu.min.js"></script>
+   <script src="${context}/resources/rainbow/js/jquery.mobile.menu.js"></script>
+   <script src="${context}/resources/rainbow/js/external/modernizr.custom.js"></script>
+  
+   <script src="${context}/resources/rainbow/js/form.js"></script>
+   
+   <!-- rainbow / js / external -->
+   <script src="${context}/resources/rainbow/js/external/count.down.js"></script>
+   <script src="${context}/resources/rainbow/js/external/form-element.js"></script>
+   <script src="${context}/resources/rainbow/js/external/idangerous.swiper.min.js"></script>
+   <%-- <script src="${context}/resources/rainbow/js/external/infobox.js"></script> --%>
+   <%-- <script src="${context}/resources/rainbow/js/external/jquery-1.10.1.min.js"></script> --%>
+   <script src="${context}/resources/rainbow/js/external/jquery-migrate-1.2.1.min.js"></script>
+   <script src="${context}/resources/rainbow/js/external/jquery.inview.js"></script>
+   <%-- <script src="${context}/resources/rainbow/js/external/jquery.knob.js"></script> --%>
+   <script src="${context}/resources/rainbow/js/external/jquery.magnific-popup.min.js"></script>
+   <script src="${context}/resources/rainbow/js/external/jquery.raty.js"></script>
+   <%-- <script src="${context}/resources/rainbow/js/external/twitterfeed.js"></script> --%>
+   
+   <!-- rainbow / js / external / min -->
+   <%-- <script src="${context}/resources/rainbow/js/external/min/count.down.min.js"></script>
+   <script src="${context}/resources/rainbow/js/external/min/jquery.knob.min.js"></script>
+   <script src="${context}/resources/rainbow/js/external/min/twitterfeed.min.js"></script>
+    --%>
+   <!-- rainbow / js / min -->
+   <script src="${context}/resources/rainbow/js/min/form.min.js"></script>
+   
+   <!-- rainbow / rs-plugin / js -->
+   <script src="${context}/resources/rainbow/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+   <%-- <script src="${context}/resources/rainbow/rs-plugin/js/jquery.themepunch.revolution.js"></script> --%>
+   <script src="${context}/resources/rainbow/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+   <%--  <script src="${context}/resources/rainbow/js/custom.js"></script> --%>
+   <script src="${context}/resources/rainbow/js/min/custom.min.js"></script>
