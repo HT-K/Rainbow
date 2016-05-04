@@ -76,11 +76,11 @@ public class MovieServiceImplTest {
 //	@Test
 //	public void testUpdate() {
 //		MovieMapper mapper = session.getMapper(MovieMapper.class);
-//		movie.setMovie_seq(5);
+//		movie.setMovieSeq(5);
 //		movie.setRating(8);
 //		movie.setTitle("시간이탈자");
 //		movie.setGenre("스릴러");
-//		movie.setOpen_date("2016-04-13");
+//		movie.setOpenDate("2016-04-13");
 //		movie.setGrade("15세 관람가");
 //		movie.setRunningtime("107분");
 //		movie.setDirector("곽재용");
@@ -94,7 +94,7 @@ public class MovieServiceImplTest {
 	@Test
 	public void testRemove() {
 		MovieMapper mapper = session.getMapper(MovieMapper.class);
-		movie.setMovie_seq(5);
+		movie.setMovieSeq(5);
 		assertThat(mapper.delete(movie),is(1));
 	}
 

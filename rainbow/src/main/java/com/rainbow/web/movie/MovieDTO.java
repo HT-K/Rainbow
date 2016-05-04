@@ -4,19 +4,19 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MovieDTO {
-int movie_seq, rating;
-String title, genre, open_date, grade, runningtime,director,actor,content,image;
+int movieSeq, rating;
+String title, genre, openDate, grade, runningtime,director,actor,content,image;
 
 public MovieDTO() {}
-public MovieDTO(int movie_seq,int rating,
-		String title,String genre,String open_date,
+public MovieDTO(int movieSeq,int rating,
+		String title,String genre,String openDate,
 		String grade,String runningtime,String director,
 		String actor,String content,String image) {
-	this.movie_seq = movie_seq;
+	this.movieSeq = movieSeq;
 	this.rating = rating;
 	this.title = title;
 	this.genre = genre;
-	this.open_date = open_date; 
+	this.openDate = openDate; 
 	this.grade = genre; 
 	this.runningtime = runningtime;
 	this.director = director;
@@ -24,11 +24,11 @@ public MovieDTO(int movie_seq,int rating,
 	this.content = content;
 	this.image = image;
 }
-public int getMovie_seq() {
-	return movie_seq;
+public int getMovieSeq() {
+	return movieSeq;
 }
-public void setMovie_seq(int movie_seq) {
-	this.movie_seq = movie_seq;
+public void setMovieSeq(int movieSeq) {
+	this.movieSeq = movieSeq;
 }
 public int getRating() {
 	return rating;
@@ -48,11 +48,11 @@ public String getGenre() {
 public void setGenre(String genre) {
 	this.genre = genre;
 }
-public String getOpen_date() {
-	return open_date;
+public String getOpenDate() {
+	return openDate;
 }
-public void setOpen_date(String open_date) {
-	this.open_date = open_date;
+public void setOpenDate(String openDate) {
+	this.openDate = openDate;
 }
 public String getGrade() {
 	return grade;
@@ -92,8 +92,8 @@ public void setImage(String image) {
 }
 @Override
 public String toString() {
-	return "MovieDTO [movie_seq=" + movie_seq + ", rating=" + rating + ", 제목=" + title + ", 장르=" + genre
-			+ ", 개봉일=" + open_date + ", 등급 =" + grade + ", 상영시간 =" + runningtime + ", 감독 ="
+	return "MovieDTO [movieSeq=" + movieSeq + ", rating=" + rating + ", 제목=" + title + ", 장르=" + genre
+			+ ", 개봉일=" + openDate + ", 등급 =" + grade + ", 상영시간 =" + runningtime + ", 감독 ="
 			+ director + ", 배우 =" + actor + ", 내용 =" + content + ", 이미지 =" + image + "]";
 }
 

@@ -5,16 +5,16 @@
 <mapper namespace="com.rainbow.web.mapper.MovieMapper"> 
 	<insert id="insert" parameterType="com.rainbow.web.movie.MovieDTO"> 
 		INSERT INTO Movie( rating, title, genre, open_date, grade, runningtime,director,actor,content,image)
-		VALUES( #{rating}, #{title}, #{genre}, #{open_date}, #{grade}, #{runningtime}, #{director}, #{actor}, #{content}, #{image});
+		VALUES( #{rating}, #{title}, #{genre}, #{openDate}, #{grade}, #{runningtime}, #{director}, #{actor}, #{content}, #{image});
 	</insert>
 	
 	<select id="selectList" resultType="com.rainbow.web.movie.MovieDTO">
-	select movie_seq, rating, title, genre, open_date, grade, runningtime,director,actor,content,image 
+	select movie_seq AS movieSeq, rating, title, genre, open_date AS openDate, grade, runningtime,director,actor,content,image 
 	from Movie
 	</select>
 	
 	<select id="selectByName" parameterType="com.rainbow.web.movie.MovieDTO" resultType="com.rainbow.web.movie.MovieDTO"> 
-	select movie_seq, rating, title, genre, open_date, grade, runningtime,director,actor,content,image 
+	select movie_seq AS movieSeq, rating, title, genre, open_date AS openDate, grade, runningtime,director,actor,content,image 
 	from Movie
 	WHERE title = #{title}
 	</select>
@@ -29,8 +29,8 @@
 	</select>
 	
 	<update id="update" parameterType="com.rainbow.web.movie.MovieDTO">
-	UPDATE Movie SET rating=#{rating}, title=#{title}, genre=#{genre}, open_date=#{open_date}, grade=#{grade}, runningtime=#{runningtime},director=#{director},actor=#{actor},content=#{content},image=#{image}
-	WHERE movie_seq = #{movie_seq}
+	UPDATE Movie SET rating=#{rating}, title=#{title}, genre=#{genre}, open_date=#{openDate}, grade=#{grade}, runningtime=#{runningtime},director=#{director},actor=#{actor},content=#{content},image=#{image}
+	WHERE movie_seq = #{movieSeq}
 	</update>
 	
 	<delete id="delete" parameterType="com.rainbow.web.movie.MovieDTO">
