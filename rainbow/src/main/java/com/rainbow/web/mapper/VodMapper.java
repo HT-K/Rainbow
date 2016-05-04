@@ -14,13 +14,15 @@ public interface VodMapper {
 	// R 모든 영화ㅣ조회
 	public List<VodDTO> getVodList();
 	// R 이름으로 영화 조회 (중복된 이름 허용)
-	public VodDTO getByVodName(String string);
+	public VodDTO getByVodName(String vodName);
 	// R 로그인 한 회원 조회
 	public MemberDTO vodLogin(MemberDTO member);
 	// R 아이디로 영화 조회
 	public VodDTO getByVodId(VodDTO vod);
 	// R 영화 수 카운트
 	public int VodCount();
+	// R 검색
+	public List<VodDTO> VodSearch(String vodName);
 	// U 영화 정보 수정
 	public int VodUpdate(VodDTO vod);
 	// D 영화 정보 삭제

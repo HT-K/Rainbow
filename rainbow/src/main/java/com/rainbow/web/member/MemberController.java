@@ -53,7 +53,42 @@ public class MemberController {
 		return view;
 	}
 	
+	@RequestMapping(value = "/vod_login", method = RequestMethod.POST)
+	public String vodLogin(@RequestParam("id") String id, 
+			@RequestParam("password") String password, 
+			HttpSession session,
+			Model model) { // @RequestParam("id") 는 String id =
+							// request.getParameter("id");
+		logger.info("로그인 컨트롤러 파라미터 ID : {}", id);
+		logger.info("로그인 컨트롤러 파라미터 PW : {}", password);
+		MemberDTO param = new MemberDTO();
+		param.setId(id);
+		param.setPassword(password);
+		member = service.login(param);
+		logger.info(member.toString() + "@MemberController");
+		String view = "";
+		if (member != null) {
+			logger.info("로그인 성공");
+			// 복수의 세션값 저장시 사용
+			//model.addAttribute("user", member);
+			session.setAttribute("user", member);
+			//세션 값 삭제 시 아래 메소드 사용
+			// 현재 model 현재의 객체만 status.setComplete();
+			/* === [비고] ===
+			 * 단수의 세션값 저장시 사용
+			 * session.setAttribute("user",member);
+			 * 세션값 삭제 시 아래 메소드 사용
+			 * session.invalidate();
+			 * */
+			//model.addAttribute("member", member);
+			view = "vod_main/vodIndex";
+		} else {
+			logger.info("로그인 실패");
+			view = "vod_member/login";
+		}
+		return view;
 	
+	}
 	
 	
 	@RequestMapping("/logout")
@@ -63,6 +98,12 @@ public class MemberController {
 		return "global/main.user";
 	}
 	
+	@RequestMapping("/vod_logout")
+	public String vodLogout(HttpSession session) {
+		session.setAttribute("user", null);
+		session.invalidate(); // 세션 무효화
+		return "vod_main/vodIndex";
+	}
 	@RequestMapping("/vod_join")
 	public String join() {
 		return "vod_member/join";

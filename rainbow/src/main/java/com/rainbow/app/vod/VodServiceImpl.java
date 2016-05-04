@@ -71,6 +71,13 @@ public class VodServiceImpl implements VodService{
 		VodMapper mapper = sqlSession.getMapper(VodMapper.class);
 		return mapper.VodDelete(vod);
 	}
+
+	@Override
+	public List<VodDTO> Search(String vodName) {
+		logger.info("=== ServiceImpl <> Search()");
+		VodMapper mapper = sqlSession.getMapper(VodMapper.class);
+		return mapper.VodSearch(vodName);
+	}
 	
 	
 	

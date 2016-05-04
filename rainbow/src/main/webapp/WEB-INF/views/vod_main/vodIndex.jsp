@@ -48,11 +48,11 @@
             </div>
             <div class="col-xs-4 well" style="background: white;">
                <!-- <legend id="anch1"></legend> -->
-               <img class="col-xs-12" src="${context}/resources/vod_image/comedy/Trainwreck.png">
+               <img class="col-xs-12 " src="${context}/resources/vod_image/comedy/Trainwreck.png">
             </div>
             <div class="col-xs-4 well" style="background: white;">
                <!-- <legend id="anch1"></legend> -->
-               <img class="col-xs-12" src="${context}/resources/vod_image/drama/BridgeofSpies.png">
+               <img class="col-xs-12 " src="${context}/resources/vod_image/drama/BridgeofSpies.png">
             </div>
          </div>
          <!--  -->

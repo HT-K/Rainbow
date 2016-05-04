@@ -95,25 +95,30 @@ WHERE DATE_FORMAT(now(),'%Y-%m-%d') - DATE_FORMAT(vod_date,'%Y-%m-%d') > 30;
 SELECT DATEDIFF(NOW(),DATE_FORMAT(vod_date,'%Y-%m-%d'))
 FROM Vod;
 
+
+17
+
 select *
 from Vod
 WHERE DATE_FORMAT(vod_date,'%Y-%m-%d') ;
 
--- 100일 미만이면 최신 2
+-- 100일 미만이면 최신 8
 SELECT * 
 FROM Vod
-WHERE DATEDIFF(NOW(),DATE_FORMAT(vod_date,'%Y-%m-%d')) < 100;
+WHERE DATEDIFF(NOW(),DATE_FORMAT(vod_date,'%Y-%m-%d')) <= 180;
 -- 365일 미만 일반 7
 SELECT *
 FROM Vod
-WHERE DATEDIFF(NOW(),DATE_FORMAT(vod_date,'%Y-%m-%d')) < 365 AND DATEDIFF(NOW(),DATE_FORMAT(vod_date,'%Y-%m-%d')) > 100;
+WHERE DATEDIFF(NOW(),DATE_FORMAT(vod_date,'%Y-%m-%d')) < 365 AND DATEDIFF(NOW(),DATE_FORMAT(vod_date,'%Y-%m-%d')) > 180;
 -- 365일 보다 크면 무료 영화 6
 SELECT *
 FROM Vod
 WHERE DATEDIFF(NOW(),DATE_FORMAT(vod_date,'%Y-%m-%d')) > 365;
 
-
+select * from Vod where vod_name like '%스%';
 
 truncate table Vod;
-SELECT * FROM Vod WHERE vod_name = '친구2';
+
 SELECT * FROM Vod;
+
+	  

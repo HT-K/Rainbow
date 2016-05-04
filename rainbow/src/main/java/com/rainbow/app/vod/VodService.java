@@ -11,6 +11,8 @@ public interface VodService {
 	public int insert(VodDTO vod); // 추상 메소드
 	// R 모든 영화ㅣ조회
 	public List<VodDTO> getList();
+	// R 검색
+	public List<VodDTO> Search(String vodName);
 	// R 이름으로 영화 조회 (중복된 이름 허용)
 	public VodDTO getByName(VodDTO vod);
 	// R 로그인 한 회원 조회
