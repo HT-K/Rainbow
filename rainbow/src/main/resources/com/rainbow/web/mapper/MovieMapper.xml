@@ -8,9 +8,11 @@
 		VALUES( #{rating}, #{title}, #{genre}, #{openDate}, #{grade}, #{runningtime}, #{director}, #{actor}, #{content}, #{image});
 	</insert>
 	
-	<select id="selectList" resultType="com.rainbow.web.movie.MovieDTO">
+	<select id="selectList" parameterType="com.rainbow.web.movie.MovieDTO" resultType="com.rainbow.web.movie.MovieDTO">
 	select movie_seq AS movieSeq, rating, title, genre, open_date AS openDate, grade, runningtime,director,actor,content,image 
 	from Movie
+	ORDER BY rating DESC
+	LIMIT #{start}, #{end}
 	</select>
 	
 	<select id="selectByName" parameterType="com.rainbow.web.movie.MovieDTO" resultType="com.rainbow.web.movie.MovieDTO"> 

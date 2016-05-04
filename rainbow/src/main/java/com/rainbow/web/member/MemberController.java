@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MemberController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
-	
 	@Autowired MemberDTO member;
 	@Autowired MemberService service; 
 	
@@ -53,15 +52,101 @@ public class MemberController {
 		return view;
 	}
 	
-	
-	
-	
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
-		session.setAttribute("user", null);
-		session.invalidate(); // 세션 무효화
+		member.setId(null);
+		member.setName("비회원");
+		session.setAttribute("user", member);
+		//session.invalidate(); // 세션 무효화
 		return "global/main.user";
 	}
+	
+	@RequestMapping("/join_form")
+	public String join_form() {
+		return "member/join_form.user";
+	}
+	
+	@RequestMapping(value="/join", method=RequestMethod.POST)
+	public String join(@RequestParam("id")String id, 
+			@RequestParam("password")String password,
+			@RequestParam("name")String name,
+			@RequestParam("birth")String birth,
+			@RequestParam("addr")String addr,
+			@RequestParam("email")String email,
+			HttpSession session){
+		
+		logger.info("=== id {} ===",id);
+		logger.info("=== password {} ===",password);
+		logger.info("=== name {} ===",name);
+		logger.info("=== birth {} ===",birth);
+		logger.info("=== addr {} ===",addr);
+		logger.info("=== email {} ===",email);
+		
+		member.setId(id);
+		member.setPassword(password);
+		member.setName(name);
+		member.setBirth(birth);
+		member.setAddr(addr);
+		member.setEmail(email);
+		
+		int res = service.insert(member);
+		String view = "";
+		
+		if (res == 1) {
+			logger.info("회원가입 성공");
+			member.setId(null);
+			member.setName("비회원");
+			session.setAttribute("user", member);
+			view = "global/main.user";
+		} else {
+			view = "member/join_form.user";
+		}	
+		return view;
+	}
+	
+	@RequestMapping("/profile")
+	public String profile() {
+		return "member/profile.user";
+	}
+	
+	@RequestMapping("/update_form")
+	public String update_form() {
+		return "member/update_form.user";
+	}
+	
+	@RequestMapping(value="/update", method=RequestMethod.POST)
+	public String update(
+			@RequestParam("id")String id,
+			@RequestParam("password")String password,
+			@RequestParam("addr")String addr,
+			@RequestParam("email")String email,
+			HttpSession session) {
+		logger.info("=== id {} ===",id);
+		logger.info("=== password {} ===",password);
+		logger.info("=== addr {} ===",addr);
+		logger.info("=== email {} ===",email);
+		
+		member.setId(id);
+		member.setPassword(password);
+		member.setAddr(addr);
+		member.setEmail(email);
+		
+		int res = service.update(member);
+		String view = "";
+		
+		if (res == 1) {
+			logger.info("업데이트 성공");
+			member = service.getById(member);
+			session.setAttribute("user", member); // 세션에 업데이트된 회원정보로 다시 넣기
+			view = "global/main.user";
+		} else {
+			logger.info("업데이트 실패");
+			view = "member/update_form";
+		}
+		return view;
+		
+	}
+	
 	
 	@RequestMapping("/vod_join")
 	public String join() {
@@ -75,7 +160,6 @@ public class MemberController {
 			, @RequestParam("name") String name
 			, @RequestParam("email") String email
 			, @RequestParam("addr") String addr
-			, @RequestParam("gender") String gender
 			, @RequestParam("year") String year
 			, @RequestParam("month") String month
 			, @RequestParam("day") String day){
@@ -83,7 +167,6 @@ public class MemberController {
 		logger.info("=== name {} ===",name);
 		logger.info("=== email {} ===",email);
 		logger.info("=== addr {} ===",addr);
-		logger.info("=== gender {} ===",gender);
 		logger.info("=== year {} ===",year);
 		logger.info("=== month {} ===",month);
 		logger.info("=== day {} ===",day);
@@ -92,7 +175,6 @@ public class MemberController {
 		member.setName(name);
 		member.setAddr(email);
 		member.setBirth(year+"-"+month+"-"+day);
-		member.setGender(gender);
 		member.setEmail(email);
 		service.insert(member);
 		return "vod_main/vodIndex";

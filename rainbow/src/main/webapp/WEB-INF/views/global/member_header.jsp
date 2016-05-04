@@ -61,7 +61,7 @@
 	<section class="container">
 		<div class="col-sm-4 col-sm-offset-4">
 			<button type="button" class="overlay-close">Close</button>
-				<form class="login">
+				<form class="login" id="nav_login">
                         <p class="login__title">sign in <br>
                         	<span class="login-edition">welcome to Rainbow Cinema</span>
                         </p>
@@ -84,7 +84,7 @@
 					$(function() {
 						$('#nav_loginBtn').click(function(e) { // 로그인 버튼 클릭 시 $() 로 form 태그를 찾아서 객체로 리턴받아 action을 걸고 post방식으로 보낸다.
 							e.preventDefault();
-							$('form').attr('action',"${context}/member/login").attr('method',"post").submit();
+							$('#nav_login').attr('action',"${context}/member/login").attr('method',"post").submit();
 						});
 					});
 				</script>

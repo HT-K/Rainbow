@@ -22,14 +22,14 @@ public class MovieServiceImpl implements MovieService{
 		MovieMapper mapper = session.getMapper(MovieMapper.class);
 		return mapper.insert(movie);
 	}
-
+	
 	@Override
-	public MovieDTO getById(MovieDTO movie) {
-		logger.info("MovieService-getById{}");
+	public List<MovieDTO> getList(MovieDTO movie) {
+		logger.info("MovieService-getList{}");
 		MovieMapper mapper = session.getMapper(MovieMapper.class);
-		return mapper.selectById(movie);
+		return mapper.selectList(movie);
 	}
-
+	
 	@Override
 	public List<MovieDTO> getByName(MovieDTO movie) {
 		logger.info("MovieService-getByName{}");
@@ -38,10 +38,10 @@ public class MovieServiceImpl implements MovieService{
 	}
 
 	@Override
-	public List<MovieDTO> getList(MovieDTO movie) {
-		logger.info("MovieService-getList{}");
+	public MovieDTO getById(MovieDTO movie) {
+		logger.info("MovieService-getById{}");
 		MovieMapper mapper = session.getMapper(MovieMapper.class);
-		return mapper.selectList();
+		return mapper.selectById(movie);
 	}
 
 	@Override

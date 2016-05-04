@@ -52,3 +52,9 @@ FROM Movie;
 DELETE FROM Movie
 WHERE movie_seq= #{movie_seq};
 
+-----------------------------
+INSERT INTO Movie(title, rating, genre, open_date, grade, runningtime, director, actor, content, image)
+VALUES('캡틴아메리카2', null, '액션', '2016-02-17', '12세', '147분', '하워드', '지니퍼', '룰루랄라', 'captain_america_2.jpg');
+INSERT INTO Movie(title, rating, genre, open_date, grade, runningtime, director, actor, content, image)
+VALUES('해리포터5', null, '판타지', '2016-03-15', '12세', '180분', '롤링', '엠마왓슨', '너무이뻐요yes', 'harry_potter_5.jpg');
+

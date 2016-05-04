@@ -31,7 +31,6 @@ public class MemberServiceImplTest {
 		member.setId("kim");
 		member.setPassword("1");
 		member.setName("김희태");
-		member.setGender("남");
 		member.setBirth("1990-10-13");
 		member.setAddr("인천광역시 남동구 구월2동 구월힐스테이트 1107동 1501호");
 		member.setEmail("propose0506@naver.com");

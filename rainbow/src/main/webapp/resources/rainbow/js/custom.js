@@ -1,14 +1,13 @@
     "use strict";
     // Date 구하기
-    
-    
+
     
     //General function for all pages
 
     //Modernizr touch detect
     Modernizr.load({
             test: Modernizr.touch,
-            yep :['css/touch.css?v=1'],
+            yep :['./css/touch.css?v=1'],
             nope: [] 
     });
 

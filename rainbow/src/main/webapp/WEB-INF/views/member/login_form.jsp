@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!-- login content -->
-<form class="login" style="margin-top: 30px;">
+<form class="login" id="login_form" style="margin-top: 30px;">
 	<p class="login__title">
 		sign in <br>
 		<span class="login-edition">welcome to Rainbow Cinema</span>
@@ -27,8 +27,9 @@
 <!-- login content End -->
 <script type="text/javascript">
 	$(function() {
-		$('#loginBtn').click(function() { // 로그인 버튼 클릭 시 $() 로 form 태그를 찾아서 객체로 리턴받아 action을 걸고 post방식으로 보낸다.
-			$('form').attr('action',"${context}/member/login").attr('method',"post").submit();
+		$('#loginBtn').click(function(e) { // 로그인 버튼 클릭 시 $() 로 form 태그를 찾아서 객체로 리턴받아 action을 걸고 post방식으로 보낸다.
+			e.preventDefault();
+			$('#login_form').attr('action',"${context}/member/login").attr('method',"post").submit();
 		});
 	});
 </script>

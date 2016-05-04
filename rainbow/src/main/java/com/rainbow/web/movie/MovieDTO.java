@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 public class MovieDTO {
 int movieSeq, rating;
 String title, genre, openDate, grade, runningtime,director,actor,content,image;
+int start, end;
 
 public MovieDTO() {}
 public MovieDTO(int movieSeq,int rating,
@@ -24,6 +25,7 @@ public MovieDTO(int movieSeq,int rating,
 	this.content = content;
 	this.image = image;
 }
+
 public int getMovieSeq() {
 	return movieSeq;
 }
@@ -90,6 +92,19 @@ public String getImage() {
 public void setImage(String image) {
 	this.image = image;
 }
+public int getStart() {
+	return start;
+}
+public void setStart(int start) {
+	this.start = start;
+}
+public int getEnd() {
+	return end;
+}
+public void setEnd(int end) {
+	this.end = end;
+}
+
 @Override
 public String toString() {
 	return "MovieDTO [movieSeq=" + movieSeq + ", rating=" + rating + ", 제목=" + title + ", 장르=" + genre
