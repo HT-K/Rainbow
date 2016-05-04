@@ -6,9 +6,11 @@ import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.rainbow.web.mapper.MovieMapper;
 
+@Service
 public class MovieServiceImpl implements MovieService{
 	private static final Logger logger = LoggerFactory.getLogger(MovieService.class);
 	@Autowired MovieDTO movie;
