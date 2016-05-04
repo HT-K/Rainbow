@@ -72,7 +72,7 @@ public class VodServieImplTest {
 		logger.info(" === VodServiceImplTest <> testGetByName(){} ===", vod.getVodName());
 	
 	}
-	@Test
+ 
 	public void testVodSearch() {
 		List<VodDTO> list = new ArrayList<VodDTO>();
 		VodMapper mapper = session.getMapper(VodMapper.class);
@@ -80,6 +80,33 @@ public class VodServieImplTest {
 		logger.info(" === VodServiceImplTest <> testVodSearch(){} ===", list.size());
 	}
 
+	@Test
+	public void testVodAtLeast() {
+		List<VodDTO> list = new ArrayList<VodDTO>();
+		VodMapper mapper = session.getMapper(VodMapper.class);
+		list = mapper.getAtLeastVodLimit();
+		logger.info(" === VodServiceImplTest <> testVodAtLeast(){} ===", list.size());
+	
+		assertThat(list.size(), is(not(0))); // 이름으로 조회 시 리턴되는 값이 0이 아니면 성공(초록불) 아니면 빨간불
+	}
+ 
+	
+	public void testVodCommon() {
+		List<VodDTO> list = new ArrayList<VodDTO>();
+		VodMapper mapper = session.getMapper(VodMapper.class);
+		list = mapper.getCommonVodLimit();
+		logger.info(" === VodServiceImplTest <> testVodCommon(){} ===", list.size());
+		assertThat(list.size(), is(not(0))); // 이름으로 조회 시 리턴되는 값이 0이 아니면 성공(초록불) 아니면 빨간불
+		 
+	}
+	
+	public void testVodFree() {
+		List<VodDTO> list = new ArrayList<VodDTO>();
+		VodMapper mapper = session.getMapper(VodMapper.class);
+		list = mapper.getFreeVodLimit();
+		logger.info(" === VodServiceImplTest <> testVodFree(){} ===", list.size());
+		assertThat(list.size(), is(not(0))); // 이름으로 조회 시 리턴되는 값이 0이 아니면 성공(초록불) 아니면 빨간불
+	}
 	public void testLogin() {
 		MemberDTO check = new MemberDTO();
 		VodMapper mapper = session.getMapper(VodMapper.class);

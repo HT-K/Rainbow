@@ -96,29 +96,56 @@ SELECT DATEDIFF(NOW(),DATE_FORMAT(vod_date,'%Y-%m-%d'))
 FROM Vod;
 
 
-17
 
-select *
+select DATEDIFF(NOW(),DATE_FORMAT(vod_date,'%Y-%m-%d'))
 from Vod
-WHERE DATE_FORMAT(vod_date,'%Y-%m-%d') ;
+order by vod_date;
+select DATE_FORMAT(vod_date,'%Y-%m-%d') AS a
+from Vod
+order by vod_date
 
--- 100일 미만이면 최신 8
+-- 180일 미만이면 최신 8
 SELECT * 
 FROM Vod
-WHERE DATEDIFF(NOW(),DATE_FORMAT(vod_date,'%Y-%m-%d')) <= 180;
+WHERE DATEDIFF(NOW(),DATE_FORMAT(vod_date,'%Y-%m-%d')) <= 180
+order by vod_date
+limit 9
 -- 365일 미만 일반 7
 SELECT *
 FROM Vod
-WHERE DATEDIFF(NOW(),DATE_FORMAT(vod_date,'%Y-%m-%d')) < 365 AND DATEDIFF(NOW(),DATE_FORMAT(vod_date,'%Y-%m-%d')) > 180;
+WHERE DATEDIFF(NOW(),DATE_FORMAT(vod_date,'%Y-%m-%d')) < 365 AND DATEDIFF(NOW(),DATE_FORMAT(vod_date,'%Y-%m-%d')) > 180
 -- 365일 보다 크면 무료 영화 6
 SELECT *
 FROM Vod
 WHERE DATEDIFF(NOW(),DATE_FORMAT(vod_date,'%Y-%m-%d')) > 365;
 
+		SELECT		
+		vod_name AS vodName,
+		vod_content_title AS vodContentTitle,
+		vod_content AS
+		vodContent,
+		vod_price AS vodPrice,
+		vod_category AS vodCategory,
+		vod_time
+		AS vodTime,
+		vod_rating AS vodRating,
+		vod_url AS vodUrl,
+		vod_image AS vodImage,
+		vod_date AS vodDate,
+		vod_free AS vodFree,
+		vod_grade AS vodGrade,
+		vod_actor AS vodActor,
+		vod_director AS vodDirector,
+		vod_country AS vodCountry
+		FROM Vod
+		WHERE DATEDIFF(NOW(),DATE_FORMAT(vod_date,'%Y-%m-%d')) <= 365 AND DATEDIFF(NOW(),DATE_FORMAT(vod_date,'%Y-%m-%d')) > 180
 select * from Vod where vod_name like '%스%';
 
 truncate table Vod;
 
 SELECT * FROM Vod;
+
+
+
 
 	  

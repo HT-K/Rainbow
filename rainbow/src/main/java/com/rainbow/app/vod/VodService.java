@@ -13,6 +13,20 @@ public interface VodService {
 	public List<VodDTO> getList();
 	// R 검색
 	public List<VodDTO> Search(String vodName);
+	// R 검색 최신영화
+	public List<VodDTO> atLeastVodLimit( );
+	// R 검색 일반영화
+	public List<VodDTO> commonVodLimit( );
+	// R 검색 무료영화
+	public List<VodDTO> freeVodLimit( );
+	// R 검색 최신영화
+	public List<VodDTO> atLeastVodUn( );
+	// R 검색 일반영화
+	public List<VodDTO> commonVodUn( );
+	// R 검색 무료영화
+	public List<VodDTO> freeVodUn( );
+	// R 관리자 무료영화 업데이트
+	
 	// R 이름으로 영화 조회 (중복된 이름 허용)
 	public VodDTO getByName(VodDTO vod);
 	// R 로그인 한 회원 조회

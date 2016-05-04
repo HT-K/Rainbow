@@ -23,6 +23,18 @@ public interface VodMapper {
 	public int VodCount();
 	// R 검색
 	public List<VodDTO> VodSearch(String vodName);
+	// R 검색 최신영화
+	public List<VodDTO> getAtLeastVodLimit( );
+	// R 검색 일반영화
+	public List<VodDTO> getCommonVodLimit( );
+	// R 검색 무료영화
+	public List<VodDTO> getFreeVodLimit( );
+	// R 검색 최신영화
+	public List<VodDTO> getAtLeastVodUn( );
+	// R 검색 일반영화
+	public List<VodDTO> getCommonVodUn( );
+	// R 검색 무료영화
+	public List<VodDTO> getFreeVodUn( );
 	// U 영화 정보 수정
 	public int VodUpdate(VodDTO vod);
 	// D 영화 정보 삭제

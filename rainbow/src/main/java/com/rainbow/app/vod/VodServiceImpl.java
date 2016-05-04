@@ -78,6 +78,48 @@ public class VodServiceImpl implements VodService{
 		VodMapper mapper = sqlSession.getMapper(VodMapper.class);
 		return mapper.VodSearch(vodName);
 	}
+
+	@Override
+	public List<VodDTO> atLeastVodLimit( ) {
+		logger.info("=== ServiceImpl <> atLeastVod()");
+		VodMapper mapper = sqlSession.getMapper(VodMapper.class);
+		return mapper.getAtLeastVodLimit();
+	}
+
+	@Override
+	public List<VodDTO> commonVodLimit( ) {
+		logger.info("=== ServiceImpl <> commonVod()");
+		VodMapper mapper = sqlSession.getMapper(VodMapper.class);
+		return mapper.getCommonVodLimit();
+	}
+
+	@Override
+	public List<VodDTO> freeVodLimit( ) {
+		logger.info("=== ServiceImpl <> freeVod()");
+		VodMapper mapper = sqlSession.getMapper(VodMapper.class);
+		return mapper.getFreeVodLimit( );
+	}
+
+	@Override
+	public List<VodDTO> atLeastVodUn() {
+		logger.info("=== ServiceImpl <> atLeastVodUn()");
+		VodMapper mapper = sqlSession.getMapper(VodMapper.class);
+		return mapper.getAtLeastVodUn();
+	}
+
+	@Override
+	public List<VodDTO> commonVodUn() {
+		logger.info("=== ServiceImpl <> commonVodUn()");
+		VodMapper mapper = sqlSession.getMapper(VodMapper.class);
+		return mapper.getCommonVodUn();
+	}
+
+	@Override
+	public List<VodDTO> freeVodUn() {
+		logger.info("=== ServiceImpl <> freeVodUn()");
+		VodMapper mapper = sqlSession.getMapper(VodMapper.class);
+		return mapper.getFreeVodUn();
+	}
 	
 	
 	

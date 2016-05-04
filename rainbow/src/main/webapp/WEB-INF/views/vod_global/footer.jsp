@@ -9,8 +9,14 @@
 </footer>
 </body>
 </html>
+<script src="${js}/vod_js/vodMain.js"></script>
+<script src="${js}/vod_js/vodMenu.js"></script>
+<script src="${js}/vod_js/vodLogin.js"></script>
 <script>
    $(function() {
+	   var context  = '${context}';
+	   	vodMain.vodMainForm(context);
+	   
  	 var user = '${user.id}';
  	 if(user == null || user == ''){
  		 alert("null");
@@ -20,13 +26,30 @@
 		document.getElementById('purchasetab').style.display = '';
  		}
    });
+   $('#new').click(function(e) {
+	   e.preventDefault(); 
+	   vodMenu.vodAtLeastForm('${context}'); 
+   });
+   $('#normal').click(function(e) {
+	   e.preventDefault();
+	   vodMenu.vodCommonForm('${context}'); 
+     // window.location.assign("${context}/vod_menu/normal_form.do");    
+   });
+   $('#free').click(function(e) {
+	   e.preventDefault();
+	   vodMenu.vodFreeForm('${context}'); 
+     // window.location.assign("${context}/vod_menu/free_form.do");    
+   });
   	 $('#logoutBtn').click(function(e) {
   	   e.preventDefault();
        location.href = "${context}/member/vod_logout";     
  	   }); 
    $('#loginForm').click(function(e) {
 	   e.preventDefault();
-     location.href = "${context}/member/vod_login";    
+	   alert('로그인 버튼 클릭!!!');
+	   //location.href = "${context}/member/vod_login";
+	   vodLogin.vodLoginForm('${context}');
+	   
    });
    $('#joinForm').click(function(e) {
 	   e.preventDefault();
@@ -34,24 +57,10 @@
    });
    $('#home').click(function(e) {
 	   e.preventDefault();
-	   alert("home");
+	   vodMain.vodMainForm('${context}');
       //window.location.assign("${context}/vod_main/main.do");    
    });
-   $('#new').click(function(e) {
-	   e.preventDefault();
-	   alert("new");
-     // window.location.assign("${context}/vod_menu/new_form.do");    
-   });
-   $('#normal').click(function(e) {
-	   e.preventDefault();
-	   alert("normal");
-     // window.location.assign("${context}/vod_menu/normal_form.do");    
-   });
-   $('#free').click(function(e) {
-	   e.preventDefault();
-	   alert("free");
-     // window.location.assign("${context}/vod_menu/free_form.do");    
-   });
+  
    $('#search').click(function(e) {
 	   e.preventDefault();
 	   alert("search");

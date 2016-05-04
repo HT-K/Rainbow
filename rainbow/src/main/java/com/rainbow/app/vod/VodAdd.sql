@@ -375,3 +375,24 @@ values(
 	,'맥 로프그렌'
 	,'미국'
 	);		
+	----------------------------
+insert into Vod(vod_name,vod_content_title,vod_content,vod_price,vod_category
+,vod_time,vod_rating,vod_url,vod_image,vod_date,vod_free,vod_grade,vod_actor,vod_director,vod_country) 
+values(
+	'연인들 : Die geliebten Schwestern, Beloved Sisters, 2014'
+	,'천재시인 프리드리히 쉴러의 숨겨졌던 러브 스토리 세상이 허락하지 않은 사랑이 시작된다!'
+	,'몰락한 귀족집안의 두 딸 카롤린과 샬롯은 서로를 자신처럼 아끼는 둘도 없는 자매다. 쓰러져 가는 가문을 살리기 위해 17세의 어린 나이에 부유한 귀족의 아내가 된 장녀 카롤린은 원치 않았던 결혼이었음에도 불구하고 어머니와 샬롯을 위해 모든 걸 이겨낸다. 그런 언니의 모습을 안타깝게 지켜보던 동생 샬롯은 어느 날, 가난하지만 장래가 촉망되는 시인 프리드리히 쉴러를 운명처럼 만나 사랑에 빠진다. 그러던 중 결혼 승낙을 받기 위해 노력하던 두 사람 앞에 언니 카롤린이 나타나면서 세 사람의 운명은 예측할 수 없는 길을 향해 흘러가는데...'
+	,'3500'
+	,'드라마, 멜로/로맨스'
+	,139
+	,'7.11'
+	,'http://movie.naver.com/movie/bi/mi/videoPlayer.nhn?code=121367&type=movie&videoId=A6779EFD9CDBC0B8E56A0298BD90FA246E42&videoInKey=V128777d039c23c0f1984cfd91956b6c53e9e5954c74976f66879e025b29b016376bbcfd91956b6c53e9e&coverImage=/multimedia/MOVIECLIP/TRAILER/29256_20151204101240.jpg&mid=29256&autoPlay=true&playerSize=665x480'
+	,'/vod_image/drama/DiegeliebtenSchwestern.png'
+	,'2015-12-31'
+	,'n'
+	,'[국내] 청소년 관람불가'
+	,'도미닉 그래프'
+	,'한나 헤르츠스프룽(캐롤라인 본 렝필드), 플로리안 슈테터(프레드리히 쉴러 역)'
+	,'독일, 오스트리아, 스위스'
+	);		
+	
