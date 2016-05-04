@@ -8,7 +8,6 @@ public class MemberDTO {
 	private String id;
 	private String password;
 	private String name;
-	private String gender;
 	private String birth;
 	private String addr;
 	private String email;
@@ -38,12 +37,6 @@ public class MemberDTO {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public String getGender() {
-		return gender;
-	}
-	public void setGender(String gender) {
-		this.gender = gender;
 	}
 	public String getBirth() {
 		return birth;

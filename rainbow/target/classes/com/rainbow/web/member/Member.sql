@@ -5,7 +5,6 @@ CREATE TABLE Member(
 	id VARCHAR(30) NOT NULL,
 	password VARCHAR(30) NOT NULL,
 	name VARCHAR(30) NOT NULL,
-	gender VARCHAR(10),
 	birth VARCHAR(30),
 	addr VARCHAR(70),
 	email VARCHAR(50),
@@ -24,3 +23,5 @@ SELECT * FROM Member;
 -- Member 테이블 삭제하기
 DROP TABLE Member CASCADE;
 ---------------------------
+
+INSERT INTO Member (id, password, name) VALUES('admin','1','관리자');
