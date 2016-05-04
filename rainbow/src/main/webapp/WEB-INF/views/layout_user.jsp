@@ -15,8 +15,7 @@
 	 <!-- Mobile Specific Metas-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta content="telephone=no" name="format-detection">
-
-<!-- CDN 모아두기 -->
+	   
 	<!-- Fonts -->
 	<!-- Font awesome - icon font -->
 	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
@@ -24,31 +23,38 @@
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,700' rel='stylesheet' type='text/css'>
 	<!-- Open Sans -->
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:800italic' rel='stylesheet' type='text/css'>
+	
 	<!-- jQuery UI --> 
 	<link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
-
- 	<!-- 부트스트랩 & 제이쿼리 -->
+ 
+	<!-- Mobile menu -->
+	<link href="${context}/resources/rainbow/css/gozha-nav.css" rel="stylesheet" />
+	<!-- Select -->
+	<link href="${context}/resources/rainbow/css/external/jquery.selectbox.css" rel="stylesheet" />
+	
+	<!-- REVOLUTION BANNER CSS SETTINGS -->
+	<link rel="stylesheet" type="text/css" href="${context}/resources/rainbow/rs-plugin/css/settings.css" media="screen" />
+	
+	<!-- Custom -->
+	<link href="${context}/resources/rainbow/css/style.css?v=1" rel="stylesheet" />
+	
+	<!-- Modernizr --> 
+	<script src="${context}/resources/rainbow/js/external/modernizr.custom.js"></script>
+	
+	<!-- jQuery UI -->
+    <link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
+	
+	<!-- Swiper slider -->
+    <link href="${context}/resources/rainbow/css/external/idangerous.swiper.css" rel="stylesheet" />
+    
+	<!-- 로그인 때매 여기서 필요. -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	
+	<!-- 부트스트랩 & 제이쿼리 -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> <!-- 부트스트랩 홈페이지에서 CDN으로 가져온다. -->
-<!-- CDN 모아두기 끝 -->
- 
-<!-- 폴더 내용 모아두기 -->
-	<!-- rainbow / css -->
-		<link href="${context}/resources/rainbow/css/gozha-nav.css" rel="stylesheet" />
-		<link href="${context}/resources/rainbow/css/style.css?v=1" rel="stylesheet" />
-		<%-- <link href="${context}/resources/rainbow/css/touch.css" rel="stylesheet" /> --%>
-	
-	<!-- rainbow / css / external -->
-		<link href="${context}/resources/rainbow/css/external/idangerous.swiper.css" rel="stylesheet" />
-		<link href="${context}/resources/rainbow/css/external/jquery.selectbox.css" rel="stylesheet" />
-		<link href="${context}/resources/rainbow/css/external/magnific-popup.css" rel="stylesheet" />
-	
-	<!-- rainbow / rs-plugin / css -->
-		<link href="${context}/resources/rainbow/rs-plugin/css/settings.css" rel="stylesheet" type="text/css"  media="screen" />
-		<%-- <link href="${context}/resources/rainbow/rs-plugin/css/settings-ie8.css" rel="stylesheet" type="text/css"  media="screen" /> --%>
-<!-- 폴더 내용 모아두기 끝 -->
 </head>
 
 <body>
@@ -78,7 +84,7 @@
 				+	'</li>'
 				+	'<li>'
 				+		'<span class="sub-nav-toggle plus"></span>' 
-				+		'<a href="${context}/purchase/purchase_step1">Ticketing</a>'
+				+		'<a href="${context}/purchase/step1">Ticketing</a>'
 				+	'</li>'
 				+	'<li>'
 				+		'<span class="sub-nav-toggle plus"></span>'
@@ -105,7 +111,7 @@
 				+	'</li>'
 				+	'<li>'
 				+		'<span class="sub-nav-toggle plus"></span>' 
-				+		'<a href="${context}/purchase/purchase_step1">Ticketing</a>'
+				+		'<a href="${context}/purchase/step1">Ticketing</a>'
 				+	'</li>'
 				+	'<li>'
 				+		'<span class="sub-nav-toggle plus"></span>'
@@ -124,4 +130,5 @@
 	</script>
 </c:otherwise>
 </c:choose>
+
 </html>

@@ -482,7 +482,7 @@ function init_BookingOne() {
 
     
     //5. Datepicker init
-                $(".datepicker__input").datepicker({
+                $('.datepicker__input').datepicker({
                   showOtherMonths: true,
                   selectOtherMonths: true,
                   showAnim:"fade"
