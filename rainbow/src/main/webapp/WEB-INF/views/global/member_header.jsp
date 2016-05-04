@@ -35,7 +35,7 @@
 				<div class="auth__show">
 				<span class="auth__image"> <img alt="" src="http://placehold.it/31x31"></span>
 				</div>
-				<a href="#" class="btn btn--sign btn--singin">LogIn</a>
+				<a href="#" class="btn btn--sign btn--singin">${sessionScope.user.name}</a>
 			</div>
 			<button class="btn btn-md btn--warning btn--book btn-control--home login-window" style="font-size: 11px;" id="bookBtn">Book a ticket</button>
 			<input type="hidden" id="sessionVar" value="${sessionScope.user.id}">

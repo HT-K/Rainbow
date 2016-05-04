@@ -53,6 +53,9 @@ public class MemberController {
 		return view;
 	}
 	
+	
+	
+	
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
 		session.setAttribute("user", null);

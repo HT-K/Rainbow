@@ -71,7 +71,7 @@
         $('.overlay').removeClass('open').addClass('close');
 
         setTimeout(function(){
-            $('.overlay').removeClass('close');}, 500);
+            $('.overlay').removeClass('close');}, 50);
     });
 
 function init_Elements () {
