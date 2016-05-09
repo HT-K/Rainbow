@@ -36,7 +36,7 @@
 			<div class="choose-container choose-container--short">
 				<div class="datepicker">
 					<span class="datepicker__marker"><i class="fa fa-calendar"></i>Date</span>
-					<input type="text" id="datepicker" value='09/05/2016' class="datepicker__input">
+					<input type="text" id="datepicker" value='05/02/2016' class="datepicker__input">
 				</div>
 			</div>
 						

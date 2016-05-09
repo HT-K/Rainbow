@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.rainbow.web.movie.MovieService;
 import com.rainbow.web.reserveSeat.ReserveSeatDTO;
+import com.rainbow.web.reserveSeat.ReserveSeatService;
 
 @Controller
 @RequestMapping("/purchase")
@@ -20,6 +21,7 @@ public class PurchaseController {
 	@Autowired ReserveSeatDTO reserve;
 	@Autowired PurchaseService service;
 	@Autowired MovieService movieService;
+	@Autowired ReserveSeatService reserveService;
 	
 	@RequestMapping("/step1")
 	public String step1(Model model) {
@@ -39,6 +41,7 @@ public class PurchaseController {
 		reserve.setReserveDate(date);
 		reserve.setBeginTime(time);
 		model.addAttribute("reserveData", reserve);
+		model.addAttribute("seat", reserveService.getByReserve(reserve));
 		
 		return "purchase/step2.user";
 	}
