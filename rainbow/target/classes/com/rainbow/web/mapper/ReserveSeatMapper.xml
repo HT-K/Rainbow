@@ -30,7 +30,6 @@
 		FROM ReserveSeat
 		WHERE 
 			movie_title = #{movieTitle} AND
-			screen_number = #{screenNumber} AND
 			reserve_date = #{reserveDate} AND
 			begin_time = #{beginTime}
 	

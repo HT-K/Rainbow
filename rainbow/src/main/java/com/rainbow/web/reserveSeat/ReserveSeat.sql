@@ -23,3 +23,6 @@ DROP TABLE ReserveSeat CASCADE;
 ---------------------------------
 SELECT COUNT(*) FROM ReserveSeat
 ---------------------------------
+
+UPDATE ReserveSeat
+		SET begin_time = '09:40';
