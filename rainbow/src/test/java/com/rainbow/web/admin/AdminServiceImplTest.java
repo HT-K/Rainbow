@@ -16,7 +16,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import static org.hamcrest.CoreMatchers.*;
 
-import com.rainbow.web.mapper.AdminMapper;
 
 import com.rainbow.web.mapper.ReplyMapper;
 import com.rainbow.web.reply.ReplyDTO;
@@ -24,7 +23,6 @@ import com.rainbow.web.reply.ReplyDTO;
 @WebAppConfiguration
 @ContextConfiguration("classpath:META-INF/*-context.xml")
 public class AdminServiceImplTest {
-	@Autowired AdminDTO admin;
 	@Autowired SqlSession sqlSession;
 	//@Autowired MovieDTO movie;
 	@Autowired ReplyDTO reply;
@@ -56,14 +54,7 @@ public class AdminServiceImplTest {
 	
 
 
-	@Test
-	public void testLogin() {
-		AdminMapper mapper = sqlSession.getMapper(AdminMapper.class);
-		admin.setId("admin");
-		admin.setPassword("1");
-		admin = mapper.login(admin);
-		assertEquals("admin",admin.getId());
-	}
+	
 
 /*	@Test
 	public void TestUpdate(){

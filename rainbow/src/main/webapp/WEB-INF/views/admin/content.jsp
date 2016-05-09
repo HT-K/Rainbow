@@ -1,38 +1,49 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<div class="container" style="width:1000px; margin:0 auto;">
-	<div class="row display-table">
-    <div class="col-xs-12 col-sm-4 display-cell" >
-	    <ul id="admin_sidebar" class="nav nav-pills nav-stacked">
-	    	<li ><a href="#" id="member_list">전체학생 목록보기</a></li>
-	    	<li ><a href="#" id="grade_list">전체성적 목록보기</a>	</li>
-	    </ul>
-    </div>
-    <div class="col-xs-12 col-sm-8 display-cell" id="result" style="border: 1px solid black;height: 500px">
-       <%--  <jsp:include page="../member/member_list.jsp"/> --%>
-    </div>
-</div>
-</div>
-<script src="${context}/resources/js/admin.js"></script>	
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<style>
+	#content{border : 1px solid black}
+	#content th {border : 1px solid black; text-align : center}
+	#content tr td{border : 1px solid black; text-align : center}
+	#content tr {border : 1px solid black}
+</style>
+<table id="content" style="width: 100%; margin-top: 30px">
+	<tr style="background-color: yellow;">
+		<th style="text-align: center;">movie_seq</th>
+		<th>title</th>
+		<th>rating</th>
+		<th>genre</th>
+		<th>open_date</th>
+		<th>grade</th>
+		<th>runningtime</th>
+		<th>director</th>
+		<th>actor</th>
+		<th>content</th>
+		<th>image</th>
+	</tr>
+	<c:forEach items="${requestScope['list']}" var="movie">
+		<tr>
+			<td>${movie.movieSeq}</td>
+			<td><a href="${context}/admin/edit/${movie.title}">${movie.title}</a></td>
+			<td>${movie.rating}</td>
+			<td>${movie.genre}</td>
+			<td>${movie.openDate}</td>
+			<td>${movie.grade}</td>
+			<td>${movie.runningtime}</td>
+			<td>${movie.director}</td>
+			<td>${movie.actor}</td>
+			<td>${movie.content}</td>
+			<td><img src="${movie.image}" alt="" style="width:200px;height:230px"/></td>
+		</tr>
+	</c:forEach>
+</table>
 <script type="text/javascript">
-$(document).ready(function() {
-	$('#result').load('${context}/member/list');
-	$('#admin_sidebar').children().first().addClass('dropdown active');
-	$('#admin_sidebar').children().click(function() {
-		$(this).addClass('dropdown active');
-		$(this).siblings().removeClass('dropdown active');
-	});
-	$('#member_list').click(function() {
-		$('#result').empty();
-		$('#result').load('${context}/member/list');
-	});
-	$('#grade_list').click(function() {
-		$('#result').empty();
-		$('#result').load('${context}/grade/list');
-	});
-	$('grade_regist').click(function() {
-		$('#result').empty();
-		$('#result').load('${context}/grade/grade_add');
-	});
-});
-</script>
+	$(function() {
+		$('#movie').css('border', '1px solid black');
+		$('#movie th').css('border', '1px solid black').css('text-align',
+				'center');
+		$('#movie tr').css('border', '1px solid black');
+		$('#movie tr td').css('border', '1px solid black').css(
+				'text-align', 'center');
 
+	});
+</script>
