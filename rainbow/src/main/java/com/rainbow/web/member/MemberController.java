@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.tools.JavaFileManager.Location;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,8 +38,8 @@ public class MemberController {
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String login(@RequestParam("id")String id, 
 						@RequestParam("password")String password,
-						HttpSession session, 
-						Model model) { 
+						Model model,
+						HttpSession session) { 
 		logger.info("로그인 컨트롤러 파라미터 ID : {}", id);
 		logger.info("로그인 컨트롤러 파라미터 PW : {}", password);
 		
@@ -52,21 +53,11 @@ public class MemberController {
 			logger.info("로그인 성공");
 			session.setAttribute("user", member); // 로그인 성공 시 session에 로그인에 성공한 유저의 정보가 담긴 member 객체를 담는다.
 			model.addAttribute("member", member); // 로그인 성공 시 다음 페이지에 request와 같은 역할을 하는 model에 member 객체를 담아 보낸다.
-			movie.setStart(1);
-			movie.setEnd(8);
-			List<MovieDTO> list = new ArrayList<MovieDTO>();
-			list = movieService.getList(movie);
-			model.addAttribute("movieList", list);
-			view = "global/main.user"; 
+			view = "redirect:/home/main"; // HomeController의 /home/main 호출, redirect는 Context 경로를 포함하고 있다. 다른 컨트롤러의 URL에 접근 가능
 		}else if (member.getId().equals("admin")){
 			logger.info("로그인 성공");
 			session.setAttribute("user", member);
 			model.addAttribute("member", member);
-			/*movie.setStart(1);
-			movie.setEnd(8);
-			List<MovieDTO> list = new ArrayList<MovieDTO>();
-			list = movieService.getList(movie);
-			model.addAttribute("movieList", list);*/
 			view = "admin/main.admin";
 		} else {
 			logger.info("로그인 실패");
@@ -76,20 +67,12 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/logout")
-	public String logout(
-			Model model,
-			HttpSession session) {
+	public String logout(HttpSession session) {
 		member.setId(null);
 		member.setName("비회원");
 		session.setAttribute("user", member);
-		
-		movie.setStart(1);
-		movie.setEnd(8);
-		List<MovieDTO> list = new ArrayList<MovieDTO>();
-		list = movieService.getList(movie);
-		model.addAttribute("movieList", list);
 		//session.invalidate(); // 세션 무효화
-		return "global/main.user";
+		return "redirect:/home/main";
 	}
 	
 	@RequestMapping("/join_form")
@@ -104,7 +87,6 @@ public class MemberController {
 			@RequestParam("birth")String birth,
 			@RequestParam("addr")String addr,
 			@RequestParam("email")String email,
-			Model model,
 			HttpSession session){
 		
 		logger.info("=== id {} ===",id);
@@ -126,15 +108,10 @@ public class MemberController {
 		
 		if (res == 1) {
 			logger.info("회원가입 성공");
-			member.setId(null);
+			/*member.setId(null);
 			member.setName("비회원");
-			session.setAttribute("user", member);
-			movie.setStart(1);
-			movie.setEnd(8);
-			List<MovieDTO> list = new ArrayList<MovieDTO>();
-			list = movieService.getList(movie);
-			model.addAttribute("movieList", list);
-			view = "global/main.user";
+			session.setAttribute("user", member);*/
+			view = "redirect:/home/main";
 		} else {
 			view = "member/join_form.user";
 		}	
@@ -157,7 +134,6 @@ public class MemberController {
 			@RequestParam("password")String password,
 			@RequestParam("addr")String addr,
 			@RequestParam("email")String email,
-			Model model,
 			HttpSession session) {
 		logger.info("=== id {} ===",id);
 		logger.info("=== password {} ===",password);
@@ -176,12 +152,7 @@ public class MemberController {
 			logger.info("업데이트 성공");
 			member = service.getById(member);
 			session.setAttribute("user", member); // 세션에 업데이트된 회원정보로 다시 넣기
-			movie.setStart(1);
-			movie.setEnd(8);
-			List<MovieDTO> list = new ArrayList<MovieDTO>();
-			list = movieService.getList(movie);
-			model.addAttribute("movieList", list);
-			view = "global/main.user";
+			view = "redirect:/home/main";
 		} else {
 			logger.info("업데이트 실패");
 			view = "member/update_form";

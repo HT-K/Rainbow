@@ -3,24 +3,11 @@
 <div class="bannercontainer">
 	<div class="banner">
 		<ul>
-			<li data-transition="fade" data-slotamount="7" class="slide" data-slide='IronMan3'>
-				<img alt='' src="${context}/resources/rainbow/images/main/IronMan3.jpg">
-			</li>
-			<li data-transition="fade" data-slotamount="7" class="slide fading-slide" data-slide='HarryPotter5'>
-				<img alt='' src="${context}/resources/rainbow/images/main/HarryPotter5.jpg">
-			</li>
-			<li data-transition="fade" data-slotamount="7" class="slide fading-slide" data-slide='Thor2'>
-				<img alt='' src="${context}/resources/rainbow/images/main/thor2.jpg">
-			</li>
-			<li data-transition="fade" data-slotamount="7" class="slide fading-slide" data-slide='Matrix4'>
-				<img alt='' src="${context}/resources/rainbow/images/main/matrix4.jpg">
-			</li>
-			<li data-transition="fade" data-slotamount="7" class="slide fading-slide" data-slide='Captain America2'>
-				<img alt='' src="${context}/resources/rainbow/images/main/captain2.jpg">
-			</li>
-			<li data-transition="fade" data-slotamount="7" class="slide fading-slide" data-slide='Terminator3'>
-				<img alt='' src="${context}/resources/rainbow/images/main/Terminator3.jpg">
-			</li>
+			<c:forEach var="list" items="${mainList}">
+				<li data-transition="fade" data-slotamount="7" class="slide" data-slide='${list.title}'>
+					<img alt='' src="${context}/resources/rainbow/images/main/${list.image}">
+				</li>
+			</c:forEach> 
 		</ul>
 	</div>
 </div>
@@ -31,9 +18,9 @@
             <div class="movie-best">
                  <div class="col-sm-10 col-sm-offset-1 movie-best__rating">Today Best choice</div>
                  <div class="col-sm-12 change--col">
-	                 <%-- <c:forEach var="list" items="${movieList}">
+	                 <c:forEach var="list" items="${bestList}">
 	                     <div class="movie-beta__item ">
-	                        <img alt='' src="${context}/resources/rainbow/images/best${list.image}">
+	                        <img alt='' src="${context}/resources/rainbow/images/main/${list.image}" width="380" height="200">
 	                         <!-- <span class="best-rate">5.0</span> -->
 	
 	                         <ul class="movie-beta__info">
@@ -48,7 +35,7 @@
 	                             </li>
 	                         </ul>
 	                     </div>
-	                 </c:forEach>    --%>
+	                 </c:forEach>   
                  </div>
                 <div class="col-sm-10 col-sm-offset-1 movie-best__check">check all movies now playing</div>
             </div>
@@ -64,7 +51,7 @@
                                 <div class="movie__images">
                                     <a href="movie-page-left.html" class="movie-beta__link">
                                         <!-- <img alt='' src="http://placehold.it/424x424"> -->
-                                        <img alt='' src="${context}/resources/rainbow/images/best/${list.image}">
+                                        <img alt='' src="${context}/resources/rainbow/images/main/${list.image}" width="424" height="200">
                                     </a>
                                 </div>
 
