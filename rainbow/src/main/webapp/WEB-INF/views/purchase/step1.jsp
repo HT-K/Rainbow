@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div class="wrapper">
 	<!-- Main content -->
 	<section class="container">
@@ -71,21 +71,23 @@
 			</button>
 		</div>
 	</form>
-</div>
+</div> --%>
+<div id="content"></div>
 <script type="text/javascript">
 	
-	$(document).ready(function() {
+	/* $(document).ready(function() {
 		
 	    init_BookingOne();
 	});
 	/* choose-movie.val() */
 	
-	 $('#nextBtn').click(function (e) {
+	 /* $('#nextBtn').click(function (e) {
 		 var movie = $('#choosen-movie').val();
 		 var date = $('#choosen-date').val();
 		 var time = $('#choosen-time').val();
 		 alert('영화제목 >> ' + movie + ', 날짜 >> ' + date + ', 시간 >> ' + time);
 		 
 		 $('form').attr('action', '${context}/purchase/step2').attr('method', 'post').submit();
-    })
+    })  */
+    
 </script> 

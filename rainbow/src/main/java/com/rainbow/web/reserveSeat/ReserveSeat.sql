@@ -25,4 +25,4 @@ SELECT COUNT(*) FROM ReserveSeat
 ---------------------------------
 
 UPDATE ReserveSeat
-		SET begin_time = '09:40';
+		SET movie_title = '아이언맨3';

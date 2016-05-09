@@ -334,8 +334,20 @@
 			</a>
 		</div>
 	</form>
+	<c:forEach var="seat" items="${seat}">
+		<div class="swiper-slide" data-film='${movie.title}'> 
+			<div class="film-images"><img alt='' src="${context}/resources/rainbow/images/movie/${movie.image}"></div>
+			<p class="choose-film__title">${movie.title}</p>
+		</div>
+	</c:forEach>
 </div>
 <script type="text/javascript">
+	var seat = '${seat}';
+	
+	alert(seat);
+	for (var i = 0; i < seat.size; i++) {
+		alert(seat[i]);
+	}
 	$(document).ready(function() {
 		init_BookingTwo();
 	});

@@ -1,5 +1,7 @@
 package com.rainbow.web.purchase;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +31,29 @@ public class PurchaseController {
 	public String step1(Model model) {
 		logger.info("purchase - step1()");
 		model.addAttribute("list", movieService.getList(movie));
+		logger.info("model : {}", model);
 		return "purchase/step1.user";
 	}
-	
 	@RequestMapping(value="/step2", method=RequestMethod.POST)
+	public String step2(@RequestParam("movie")String movie,
+			@RequestParam("date")String date,
+			@RequestParam("time")String time, 
+			Model model) {
+		logger.info("purchase - step2()");
+		logger.info("movie : {}", movie);
+		logger.info("date : {}", date);
+		logger.info("time : {}", time);
+		reserve.setMovieTitle(movie);
+		reserve.setReserveDate(date);
+		reserve.setBeginTime(time);
+		model.addAttribute("reserveData", reserve);
+		List<ReserveSeatDTO> list = reserveService.getByReserve(reserve);
+		model.addAttribute("seat", list);
+		logger.info("list : {}", list.size());
+		logger.info("model : {}", model);
+		return "purchase/step2.user";
+	}
+	/*@RequestMapping(value="/step2", method=RequestMethod.POST)
 	public String step2(@RequestParam("choosen-movie")String movie, @RequestParam("choosen-date")String date,
 			@RequestParam("choosen-time")String time, Model model) {
 		logger.info("purchase - step2()");
@@ -43,10 +64,12 @@ public class PurchaseController {
 		reserve.setReserveDate(date);
 		reserve.setBeginTime(time);
 		model.addAttribute("reserveData", reserve);
-		model.addAttribute("seat", reserveService.getByReserve(reserve));
-		
+		List<ReserveSeatDTO> list = reserveService.getByReserve(reserve);
+		model.addAttribute("seat", list);
+		logger.info("list : {}", list.size());
+		logger.info("model : {}", model);
 		return "purchase/step2.user";
-	}
+	}*/
 	
 	@RequestMapping("/step3")
 	public String step3() {

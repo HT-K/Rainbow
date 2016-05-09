@@ -108,9 +108,9 @@
             '<li><span class="sub-nav-toggle plus"></span>'
             +      '<a href="${context}/movie/movie_list">Movies</a>'
             +   '</li>'
-            +   '<li>'
+            +   '<li id="ticketing">'
             +      '<span class="sub-nav-toggle plus"></span>' 
-            +      '<a href="${context}/purchase/step1">Ticketing</a>'
+            +      '<a href="#">Ticketing</a>'
             +   '</li>'
             +   '<li>'
             +      '<span class="sub-nav-toggle plus"></span>'
@@ -130,4 +130,18 @@
 </c:otherwise>
 </c:choose>
 
+<script src="${context}/resources/js/Purchase.js"></script>
+<script src="${context}/resources/js/Global.js"></script>
+<script src="${context}/resources/js/Rainbow.js"></script>
+
+<script type="text/javascript">
+	$(function(){
+		var context = $.fn.global('${context}').getContext();
+		var purchase = $.fn.purchase(); 
+		$('#ticketing').click(function(e){
+			e.preventDefault();
+		 	purchase.step1Form(context); 
+		});	
+	});
+</script>
 </html>

@@ -44,10 +44,11 @@ public class ReserveSeatDTO {
 	}
 	@Override
 	public String toString() {
-		return "ReserveSeatDTO [reserveSeq=" + reserveSeq + ", movieTitle="
+		return seat;
+		/*return "ReserveSeatDTO [reserveSeq=" + reserveSeq + ", movieTitle="
 				+ movieTitle + ", screenNumber=" + screenNumber
 				+ ", reserveDate=" + reserveDate + ", beginTime=" + beginTime
-				+ ", seat=" + seat + "]";
+				+ ", seat=" + seat + "]";*/
 	}
 	
 	
