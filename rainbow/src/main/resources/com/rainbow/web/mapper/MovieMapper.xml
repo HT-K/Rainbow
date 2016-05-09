@@ -24,7 +24,13 @@
 	<select id="selectById" parameterType="com.rainbow.web.movie.MovieDTO" resultType="com.rainbow.web.movie.MovieDTO"> 
 	select * 
 	from Movie
-	WHERE title = ${title}
+	WHERE title = {title}
+	</select>
+	
+	<select id="selectBySeq" parameterType="com.rainbow.web.movie.MovieDTO" resultType="com.rainbow.web.movie.MovieDTO"> 
+	select movie_seq AS movieSeq, rating, title, genre, open_date AS openDate, grade, runningtime,director,actor,content,image 
+	from Movie
+	WHERE movie_seq = ${movieSeq} 
 	</select>
 	
 	<select id="count" resultType="int">

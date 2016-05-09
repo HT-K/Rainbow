@@ -38,15 +38,17 @@ public class MovieServiceImpl implements MovieService{
 	}
 
 	@Override
-<<<<<<< HEAD
 	public MovieDTO getById(MovieDTO movie) {
 		logger.info("MovieService-getById{}");
-=======
-	public List<MovieDTO> getList() {
-		logger.info("MovieService-getList{}");
->>>>>>> hyehyeon
 		MovieMapper mapper = session.getMapper(MovieMapper.class);
 		return mapper.selectById(movie);
+	}
+	
+	@Override
+	public MovieDTO getBySeq(MovieDTO movie) {
+		logger.info("MovieService-getBySeq{}");
+		MovieMapper mapper = session.getMapper(MovieMapper.class);
+		return mapper.selectBySeq(movie);
 	}
 
 	@Override

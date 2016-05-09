@@ -9,6 +9,7 @@ import java.util.List;
 
 
 
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.rainbow.web.member.MemberDTO;
 import com.rainbow.web.movie.MovieDTO;
+import com.rainbow.web.movie.MovieService;
 
 
 
@@ -35,23 +37,26 @@ public class AdminController {
    @Autowired MemberDTO member;
    @Autowired MovieDTO movie;
    @Autowired AdminService service;
+   @Autowired MovieService movieService;
    
    @RequestMapping("/content")
    public String getAdminPage(Model model){
       logger.info("===movie-list(GET)===");
 		List<MovieDTO> list =  new ArrayList<MovieDTO>();
-		list = service.getList();
+		movie.setStart(1);
+		movie.setEnd(movieService.count());
+		list = service.getList(movie);
 		model.addAttribute("list",list);
       return "/admin/content";
 	}
    
 
-   @RequestMapping("/edit/{title}")
-	public String getByName(@PathVariable("title")String title, 
+   @RequestMapping("/edit/{movieSeq}")
+	public String getBySeq(@PathVariable("movieSeq")int movieSeq, 
 			Model model){
-		logger.info("=== movie-getByName() === {}", title);
-			movie.setTitle(title);
-			movie = service.getByName(movie);
+		logger.info("=== movie-getBySeq() === {}", movieSeq);
+			movie.setMovieSeq(movieSeq);
+			movie = service.getBySeq(movie);
 			model.addAttribute("movie",movie);
 		
 			

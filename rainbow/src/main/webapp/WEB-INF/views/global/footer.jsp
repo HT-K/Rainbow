@@ -103,10 +103,10 @@
    <script src="${context}/resources/rainbow/js/external/jquery.raty.js"></script>
    <!-- Form element -->
    <script src="${context}/resources/rainbow/js/external/form-element.js"></script>
-   <!-- Form validation -->
+   <%-- <!-- Form validation -->
    <script src="${context}/resources/rainbow/js/form.js"></script>
    <!-- Twitter feed -->
-   <script src="${context}/resources/rainbow/js/external/twitterfeed.js"></script>
+   <script src="${context}/resources/rainbow/js/external/twitterfeed.js"></script> --%>
    <!-- Custom -->
    <script src="${context}/resources/rainbow/js/custom.js"></script>
 

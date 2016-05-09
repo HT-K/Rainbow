@@ -19,16 +19,16 @@ public class AdminServiceImpl implements AdminService{
 	@Autowired SqlSession sqlSession; 
 	
 	@Override
-	public List<MovieDTO> getList() {
+	public List<MovieDTO> getList(MovieDTO movie) {
 		logger.info("MovieService-getList{}");
 		MovieMapper mapper = sqlSession.getMapper(MovieMapper.class);
-		return mapper.selectList();
+		return mapper.selectList(movie);
 	}
 	@Override
-	public MovieDTO getByName(MovieDTO movie) {
-		logger.info("MovieService-getListByName{}");
+	public MovieDTO getBySeq(MovieDTO movie) {
+		logger.info("MovieService-getBySeq{}");
 		MovieMapper mapper = sqlSession.getMapper(MovieMapper.class);
-		return mapper.selectByName(movie);
+		return mapper.selectBySeq(movie);
 	}
 	@Override
 	public int update(MovieDTO movie) {

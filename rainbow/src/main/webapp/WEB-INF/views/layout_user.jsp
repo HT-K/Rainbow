@@ -40,7 +40,20 @@
    <!-- Modernizr --> 
    <script src="${context}/resources/rainbow/js/external/modernizr.custom.js"></script>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+
+	<!-- 부트스트랩 & 제이쿼리 -->
+	<!-- 로그인 때매 여기서 필요. -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> <!-- 부트스트랩 홈페이지에서 CDN으로 가져온다. -->
+
+	<!--*** Google map  ***-->
+   <script src="https://maps.google.com/maps/api/js?sensor=true"></script> 
+   <%-- <!--*** Google map infobox  ***-->
+   <script src="${context}/resources/rainbow/js/external/infobox.js"></script> --%>
+     
 </head>
 
 <body>
@@ -74,7 +87,7 @@
             +   '</li>'
             +   '<li>'
             +      '<span class="sub-nav-toggle plus"></span>'
-            +      '<a href="#">Cinema</a>'
+            +      '<a href="${context}/member/cinema">Cinema</a>'
             +   '</li>'
             +   '<li>'
             +      '<span class="sub-nav-toggle plus"></span>' 
@@ -101,7 +114,7 @@
             +   '</li>'
             +   '<li>'
             +      '<span class="sub-nav-toggle plus"></span>'
-            +      '<a href="#">Cinema</a>'
+            +      '<a href="${context}/member/cinema">Cinema</a>'
             +   '</li>'
             +   '<li>'
             +      '<span class="suzb-nav-toggle plus"></span>' 

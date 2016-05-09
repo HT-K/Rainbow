@@ -23,7 +23,7 @@
 	<c:forEach items="${requestScope['list']}" var="movie">
 		<tr>
 			<td>${movie.movieSeq}</td>
-			<td><a href="${context}/admin/edit/${movie.title}">${movie.title}</a></td>
+			<td><a href="${context}/admin/edit/${movie.movieSeq}">${movie.title}</a></td>
 			<td>${movie.rating}</td>
 			<td>${movie.genre}</td>
 			<td>${movie.openDate}</td>
@@ -32,7 +32,7 @@
 			<td>${movie.director}</td>
 			<td>${movie.actor}</td>
 			<td>${movie.content}</td>
-			<td><img src="${movie.image}" alt="" style="width:200px;height:230px"/></td>
+			<td><img src="${img}/movie/${movie.image}" alt="" style="width:200px;height:230px"/></td>
 		</tr>
 	</c:forEach>
 </table>

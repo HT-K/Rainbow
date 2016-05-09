@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.rainbow.web.movie.MovieDTO;
 import com.rainbow.web.movie.MovieService;
 import com.rainbow.web.reserveSeat.ReserveSeatDTO;
 import com.rainbow.web.reserveSeat.ReserveSeatService;
@@ -22,11 +23,12 @@ public class PurchaseController {
 	@Autowired PurchaseService service;
 	@Autowired MovieService movieService;
 	@Autowired ReserveSeatService reserveService;
+	@Autowired MovieDTO movie;
 	
 	@RequestMapping("/step1")
 	public String step1(Model model) {
 		logger.info("purchase - step1()");
-		model.addAttribute("list", movieService.getList());
+		model.addAttribute("list", movieService.getList(movie));
 		return "purchase/step1.user";
 	}
 	

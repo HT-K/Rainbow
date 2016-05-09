@@ -48,6 +48,8 @@ public class HomeController {
 	
 	@RequestMapping("/home/main")
 	public String main(Model model) {
+		movie.setStart(1);
+		movie.setEnd(8);
 		List<MovieDTO> list = new ArrayList<MovieDTO>();
 		list = movieService.getList(movie);
 		model.addAttribute("movieList", list);

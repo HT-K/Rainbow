@@ -31,11 +31,11 @@ public class MovieController {
 		logger.info("=== 제목 ===",movie.getTitle());
 		logger.info("=== 감독 ===",movie.getDirector());
 		if (title.equals("none")) {
-			list = service.getByName(movie);
+			movie = service.getByName(movie);
 			 model.addAttribute("list",list);
 			 logger.info("검색된 글 목록1 : {} ",list);
 		} else {
-			list = service.getByName(movie);
+			movie = service.getByName(movie);
 			 model.addAttribute("list",list);
 			 logger.info("검색된 글 목록2 : {} ",list);
 		}
@@ -55,7 +55,7 @@ public class MovieController {
 		logger.info("=== 감독 ===",movie.getDirector());
 		logger.info("=== 배우 ===",movie.getActor());
 		logger.info("=== 이미지 ===",movie.getImage());
-		list = service.getList();
+		list = service.getList(movie);
 		model.addAttribute("list", list);
 		return "movie/movie_list.user";
 	}
