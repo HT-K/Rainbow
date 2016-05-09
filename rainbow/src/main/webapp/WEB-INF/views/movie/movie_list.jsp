@@ -5,16 +5,16 @@
                 <form id='search-form' method='get' class="search">
                     <input id="keyField" type="text" class="search__field" placeholder="Search">
                     <select name="sorting_item" id="search-sort" class="search__sort" tabindex="0">
-                        <option value="1" selected='selected'>By title</option>
-                        <option value="2">By director</option>
+                        <option value="title" selected='selected'>By title</option>
+                        <option value="director">By director</option>
                     </select>
-                    <button type='submit' class="btn btn-md btn--danger search__button">search a movie</button>
+                    <button type='submit' class="btn btn-md btn--danger search__button" onclick="searchBtn()">search a movie</button>
                 </form>
             </div>
         </div>
         
         <!-- Main content -->
-        <section class="container">
+        <section id="wrapper" class="container">
             <div class="col-sm-12">
                 <h2 class="page-heading">Movies</h2>
                 
@@ -38,7 +38,7 @@
                        </div>
    
                        <div class="col-sm-9 col-md-10 col-lg-10 movie__about">
-                            <a href='movie-page-full.html' class="movie__title link--huge">${list.title}</a>
+                            <a href="${content}/movie/movie_detail" class="movie__title link--huge">${list.title}</a>
 
                             <p class="movie__time">${list.runningtime}</p>
 
@@ -78,15 +78,18 @@
         </section>
 
 <script type="text/javascript">
-function search() {
-    
-	e.preventDefault();	
-	var title = $('select[name=title] option:selected').val();
+function searchBtn() {
+	alert('버튼이 클릭되었습니다');
+	var title = $('select[name=sorting_item] option:selected').val();
+	alert(title);
 	var keyField = $('#keyField').val();
+	alert(keyField);
 	$('#wrapper').empty();
 	$('#wrapper').load(context+'/movie/search?keyField='+keyField+'&title='+title);
-});
-$(document).ready(function() {
+	alert('check');
+}
+$(document).ready(function(e) {
+	e.preventDefault();
     init_MovieList();
 });
 </script>

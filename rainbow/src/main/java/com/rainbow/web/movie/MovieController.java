@@ -31,7 +31,7 @@ public class MovieController {
 		logger.info("=== 제목 ===",movie.getTitle());
 		logger.info("=== 감독 ===",movie.getDirector());
 		if (title.equals("none")) {
-			list = service.getList();
+			list = service.getByName(movie);
 			 model.addAttribute("list",list);
 			 logger.info("검색된 글 목록1 : {} ",list);
 		} else {
@@ -73,5 +73,11 @@ public class MovieController {
 	@RequestMapping("/dalete")
 	public String delete() {
 		return "";
+	}
+	
+	@RequestMapping("/movie_detail")
+	public String detail() {
+		logger.info("=== MovieController-detail{} ===");
+		return "movie/movie_detail";
 	}
 }

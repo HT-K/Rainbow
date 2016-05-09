@@ -20,7 +20,9 @@
 	</select>
 		
 	<select id="selectById" parameterType="com.rainbow.web.movie.MovieDTO" resultType="com.rainbow.web.movie.MovieDTO"> 
-	
+	select * 
+	from Movie
+	WHERE title = ${title}
 	</select>
 	
 	<select id="count" resultType="int">
