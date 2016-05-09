@@ -179,5 +179,9 @@ public class MemberController {
 		service.insert(member);
 		return "vod_main/vodIndex";
 	}
-	
+
+	@RequestMapping("/cinema")
+	public String cineame() {
+		return "global/cinema.user";
+	}
 }
