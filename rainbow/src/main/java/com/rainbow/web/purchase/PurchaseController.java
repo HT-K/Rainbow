@@ -6,14 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.rainbow.web.movie.MovieService;
+import com.rainbow.web.reserveSeat.ReserveSeatDTO;
 
 @Controller
 @RequestMapping("/purchase")
 public class PurchaseController {
 	private static final Logger logger = LoggerFactory.getLogger(PurchaseController.class);
 	@Autowired PurchaseDTO purchase;
+	@Autowired ReserveSeatDTO reserve;
 	@Autowired PurchaseService service;
 	@Autowired MovieService movieService;
 	
@@ -24,9 +28,18 @@ public class PurchaseController {
 		return "purchase/step1.user";
 	}
 	
-	@RequestMapping("/step2")
-	public String step2() {
+	@RequestMapping(value="/step2", method=RequestMethod.POST)
+	public String step2(@RequestParam("choosen-movie")String movie, @RequestParam("choosen-date")String date,
+			@RequestParam("choosen-time")String time, Model model) {
 		logger.info("purchase - step2()");
+		logger.info("movie : {}", movie);
+		logger.info("date : {}", date);
+		logger.info("time : {}", time);
+		reserve.setMovieTitle(movie);
+		reserve.setReserveDate(date);
+		reserve.setBeginTime(time);
+		model.addAttribute("reserveData", reserve);
+		
 		return "purchase/step2.user";
 	}
 	

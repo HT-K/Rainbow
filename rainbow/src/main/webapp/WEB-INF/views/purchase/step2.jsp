@@ -15,26 +15,12 @@
 			</div>
        		<div class="choose-sits">
 				<div class="choose-sits__info choose-sits__info--first">
-					<form id='select' class="select" method='get'>
-						<select name="select_item" id="select-sort" class="select__sort" tabindex="0">
-							<option value="0" selected='selected'>일반</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-                        </select>
-					</form>
-				</div>
-				<div class="choose-sits__info choose-sits__info--first">
-                    <form id='select' class="select" method='get'>
-						<select name="select_item" id="select-sort" class="select__sort" tabindex="0">
-							<option value="0" selected='selected'>학생</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-                        </select>
-                    </form>
+					<ul>
+						<li class="sits-price marker--none"><strong>Price</strong></li>
+						<li class="sits-price sits-price--cheap">8000원</li>
+						<li class="sits-price sits-price--middle">9000원</li>
+						<li class="sits-price sits-price--expensive">10000원</li>
+					</ul>
 				</div>
 				<div class="choose-sits__info">
 					<ul>
@@ -60,196 +46,197 @@
 								<span class="sits__indecator">L</span>
 							</aside>
 							<div class="sits__row">
-								<span class="sits__place sits-price--cheap" data-place='A2' data-price='10'>A2</span>
-								<span class="sits__place sits-price--cheap" data-place='A3' data-price='10'>A3</span>
-								<span class="sits__place sits-price--cheap" data-place='A4' data-price='10'>A4</span>
-								<span class="sits__place sits-price--cheap" data-place='A5' data-price='10'>A5</span>
-								<span class="sits__place sits-price--cheap" data-place='A6' data-price='10'>A6</span>
-								<span class="sits__place sits-price--cheap" data-place='A7' data-price='10'>A7</span>
-								<span class="sits__place sits-price--cheap" data-place='A8' data-price='10'>A8</span>
-								<span class="sits__place sits-price--cheap" data-place='A9' data-price='10'>A9</span>
-								<span class="sits__place sits-price--cheap" data-place='A10' data-price='10'>A10</span>
-								<span class="sits__place sits-price--cheap" data-place='A11' data-price='10'>A11</span>
-								<span class="sits__place sits-price--cheap" data-place='A12' data-price='10'>A12</span>
-								<span class="sits__place sits-price--cheap" data-place='A13' data-price='10'>A13</span>
-								<span class="sits__place sits-price--cheap" data-place='A14' data-price='10'>A14</span>
-								<span class="sits__place sits-price--cheap" data-place='A15' data-price='10'>A15</span>
-								<span class="sits__place sits-price--cheap" data-place='A16' data-price='10'>A16</span>
-								<span class="sits__place sits-price--cheap" data-place='A17' data-price='10'>A17</span>
+								<span class="sits__place sits-price--cheap" data-place='A2' data-price='8000'>A2</span>
+								<span class="sits__place sits-price--cheap" data-place='A3' data-price='8000'>A3</span>
+								<span class="sits__place sits-price--cheap" data-place='A4' data-price='8000'>A4</span>
+								<span class="sits__place sits-price--cheap" data-place='A5' data-price='8000'>A5</span>
+								<span class="sits__place sits-price--cheap" data-place='A6' data-price='8000'>A6</span>
+								<span class="sits__place sits-price--cheap" data-place='A7' data-price='8000'>A7</span>
+								<span class="sits__place sits-price--cheap" data-place='A8' data-price='8000'>A8</span>
+								<span class="sits__place sits-price--cheap" data-place='A9' data-price='8000'>A9</span>
+								<span class="sits__place sits-price--cheap" data-place='A10' data-price='8000'>A10</span>
+								<span class="sits__place sits-price--cheap" data-place='A11' data-price='8000'>A11</span>
+								<span class="sits__place sits-price--cheap" data-place='A12' data-price='8000'>A12</span>
+								<span class="sits__place sits-price--cheap" data-place='A13' data-price='8000'>A13</span>
+								<span class="sits__place sits-price--cheap" data-place='A14' data-price='8000'>A14</span>
+								<span class="sits__place sits-price--cheap" data-place='A15' data-price='8000'>A15</span>
+								<span class="sits__place sits-price--cheap" data-place='A16' data-price='8000'>A16</span>
+								<span class="sits__place sits-price--cheap" data-place='A17' data-price='8000'>A17</span>
 							</div>
 							<div class="sits__row">
-								<span class="sits__place sits-price--cheap" data-place='B1' data-price='10'>B1</span>
-								<span class="sits__place sits-price--cheap" data-place='B2' data-price='10'>B2</span>
-								<span class="sits__place sits-price--cheap" data-place='B3' data-price='10'>B3</span>
-								<span class="sits__place sits-price--cheap" data-place='B4' data-price='10'>B4</span>
-								<span class="sits__place sits-price--cheap" data-place='B5' data-price='10'>B5</span>
-								<span class="sits__place sits-price--cheap" data-place='B6' data-price='10'>B6</span>
-								<span class="sits__place sits-price--cheap" data-place='B7' data-price='10'>B7</span>
-								<span class="sits__place sits-price--cheap" data-place='B8' data-price='10'>B8</span>
-								<span class="sits__place sits-price--cheap" data-place='B9' data-price='10'>B9</span>
-								<span class="sits__place sits-price--cheap" data-place='B10' data-price='10'>B10</span>
-								<span class="sits__place sits-price--cheap" data-place='B11' data-price='10'>B11</span>
-								<span class="sits__place sits-price--cheap" data-place='B12' data-price='10'>B12</span>
-								<span class="sits__place sits-price--cheap" data-place='B13' data-price='10'>B13</span>
-								<span class="sits__place sits-price--cheap" data-place='B14' data-price='10'>B14</span>
-								<span class="sits__place sits-price--cheap" data-place='B15' data-price='10'>B15</span>
-								<span class="sits__place sits-price--cheap" data-place='B16' data-price='10'>B16</span>
-								<span class="sits__place sits-price--cheap" data-place='B17' data-price='10'>B17</span>
-								<span class="sits__place sits-price--cheap" data-place='B18' data-price='10'>B18</span>
+								<span class="sits__place sits-price--cheap" data-place='B1' data-price='8000'>B1</span>
+								<span class="sits__place sits-price--cheap" data-place='B2' data-price='8000'>B2</span>
+								<span class="sits__place sits-price--cheap" data-place='B3' data-price='8000'>B3</span>
+								<span class="sits__place sits-price--cheap" data-place='B4' data-price='8000'>B4</span>
+								<span class="sits__place sits-price--cheap" data-place='B5' data-price='8000'>B5</span>
+								<span class="sits__place sits-price--cheap" data-place='B6' data-price='8000'>B6</span>
+								<span class="sits__place sits-price--cheap" data-place='B7' data-price='8000'>B7</span>
+								<span class="sits__place sits-price--cheap" data-place='B8' data-price='8000'>B8</span>
+								<span class="sits__place sits-price--cheap" data-place='B9' data-price='8000'>B9</span>
+								<span class="sits__place sits-price--cheap" data-place='B10' data-price='8000'>B10</span>
+								<span class="sits__place sits-price--cheap" data-place='B11' data-price='8000'>B11</span>
+								<span class="sits__place sits-price--cheap" data-place='B12' data-price='8000'>B12</span>
+								<span class="sits__place sits-price--cheap" data-place='B13' data-price='8000'>B13</span>
+								<span class="sits__place sits-price--cheap" data-place='B14' data-price='8000'>B14</span>
+								<span class="sits__place sits-price--cheap" data-place='B15' data-price='8000'>B15</span>
+								<span class="sits__place sits-price--cheap" data-place='B16' data-price='8000'>B16</span>
+								<span class="sits__place sits-price--cheap" data-place='B17' data-price='8000'>B17</span>
+								<span class="sits__place sits-price--cheap" data-place='B18' data-price='8000'>B18</span>
 							</div>
 							<div class="sits__row">
-								<span class="sits__place sits-price--cheap" data-place='C1' data-price='10'>C1</span>
-								<span class="sits__place sits-price--cheap" data-place='C2' data-price='10'>C2</span>
-								<span class="sits__place sits-price--cheap" data-place='C3' data-price='10'>C3</span>
-								<span class="sits__place sits-price--cheap" data-place='C4' data-price='10'>C4</span>
-								<span class="sits__place sits-price--cheap" data-place='C5' data-price='10'>C5</span>
-								<span class="sits__place sits-price--cheap" data-place='C6' data-price='10'>C6</span>
-								<span class="sits__place sits-price--cheap" data-place='C7' data-price='10'>C7</span>
-								<span class="sits__place sits-price--cheap" data-place='C8' data-price='10'>C8</span>
-								<span class="sits__place sits-price--cheap" data-place='C9' data-price='10'>C9</span>
-								<span class="sits__place sits-price--cheap" data-place='C10' data-price='10'>C10</span>
-								<span class="sits__place sits-price--cheap" data-place='C11' data-price='10'>C11</span>
-								<span class="sits__place sits-price--cheap" data-place='C12' data-price='10'>C12</span>
-								<span class="sits__place sits-price--cheap" data-place='C13' data-price='10'>C13</span>
-								<span class="sits__place sits-price--cheap" data-place='C14' data-price='10'>C14</span>
-								<span class="sits__place sits-price--cheap" data-place='C15' data-price='10'>C15</span>
-								<span class="sits__place sits-price--cheap" data-place='C16' data-price='10'>C16</span>
-								<span class="sits__place sits-price--cheap" data-place='C17' data-price='10'>C17</span>
-								<span class="sits__place sits-price--cheap" data-place='C18' data-price='10'>C18</span>
+								<span class="sits__place sits-price--cheap" data-place='C1' data-price='8000'>C1</span>
+								<span class="sits__place sits-price--cheap" data-place='C2' data-price='8000'>C2</span>
+								<span class="sits__place sits-price--cheap" data-place='C3' data-price='8000'>C3</span>
+								<span class="sits__place sits-price--cheap" data-place='C4' data-price='8000'>C4</span>
+								<span class="sits__place sits-price--cheap" data-place='C5' data-price='8000'>C5</span>
+								<span class="sits__place sits-price--cheap" data-place='C6' data-price='8000'>C6</span>
+								<span class="sits__place sits-price--cheap" data-place='C7' data-price='8000'>C7</span>
+								<span class="sits__place sits-price--cheap" data-place='C8' data-price='8000'>C8</span>
+								<span class="sits__place sits-price--cheap" data-place='C9' data-price='8000'>C9</span>
+								<span class="sits__place sits-price--cheap" data-place='C10' data-price='8000'>C10</span>
+								<span class="sits__place sits-price--cheap" data-place='C11' data-price='8000'>C11</span>
+								<span class="sits__place sits-price--cheap" data-place='C12' data-price='8000'>C12</span>
+								<span class="sits__place sits-price--cheap" data-place='C13' data-price='8000'>C13</span>
+								<span class="sits__place sits-price--cheap" data-place='C14' data-price='8000'>C14</span>
+								<span class="sits__place sits-price--cheap" data-place='C15' data-price='8000'>C15</span>
+								<span class="sits__place sits-price--cheap" data-place='C16' data-price='8000'>C16</span>
+								<span class="sits__place sits-price--cheap" data-place='C17' data-price='8000'>C17</span>
+								<span class="sits__place sits-price--cheap" data-place='C18' data-price='8000'>C18</span>
 							</div>
 							<div class="sits__row">
-								<span class="sits__place sits-price--cheap" data-place='D1' data-price='10'>D1</span>
-								<span class="sits__place sits-price--cheap" data-place='D2' data-price='10'>D2</span>
-								<span class="sits__place sits-price--cheap" data-place='D3' data-price='10'>D3</span>
-								<span class="sits__place sits-price--cheap" data-place='D4' data-price='10'>D4</span>
-								<span class="sits__place sits-price--cheap" data-place='D5' data-price='10'>D5</span>
-								<span class="sits__place sits-price--cheap" data-place='D6' data-price='10'>D6</span>
-								<span class="sits__place sits-price--cheap sits-state--not" data-place='D7' data-price='10'>D7</span>
-								<span class="sits__place sits-price--cheap sits-state--not" data-place='D8' data-price='10'>D8</span>
-								<span class="sits__place sits-price--cheap" data-place='D9' data-price='10'>D9</span>
-								<span class="sits__place sits-price--cheap" data-place='D10' data-price='10'>D10</span>
-								<span class="sits__place sits-price--cheap" data-place='D11' data-price='10'>D11</span>
-								<span class="sits__place sits-price--cheap" data-place='D12' data-price='10'>D12</span>
-								<span class="sits__place sits-price--cheap" data-place='D13' data-price='10'>D13</span>
-								<span class="sits__place sits-price--cheap" data-place='D14' data-price='10'>D14</span>
-								<span class="sits__place sits-price--cheap" data-place='D15' data-price='10'>D15</span>
-								<span class="sits__place sits-price--cheap" data-place='D16' data-price='10'>D16</span>
-								<span class="sits__place sits-price--cheap" data-place='D17' data-price='10'>D17</span>
-								<span class="sits__place sits-price--cheap" data-place='D18' data-price='10'>D18</span>
+								<span class="sits__place sits-price--cheap" data-place='D1' data-price='8000'>D1</span>
+								<span class="sits__place sits-price--cheap" data-place='D2' data-price='8000'>D2</span>
+								<span class="sits__place sits-price--cheap" data-place='D3' data-price='8000'>D3</span>
+								<span class="sits__place sits-price--cheap" data-place='D4' data-price='8000'>D4</span>
+								<span class="sits__place sits-price--cheap" data-place='D5' data-price='8000'>D5</span>
+								<span class="sits__place sits-price--cheap" data-place='D6' data-price='8000'>D6</span>
+								<span class="sits__place sits-price--cheap" data-place='D7' data-price='8000'>D7</span>
+								<span class="sits__place sits-price--cheap" data-place='D8' data-price='8000'>D8</span>
+								<!-- <span class="sits__place sits-price--cheap sits-state--not" data-place='D8' data-price='8000'>D8</span> -->
+								<span class="sits__place sits-price--cheap" data-place='D9' data-price='8000'>D9</span>
+								<span class="sits__place sits-price--cheap" data-place='D10' data-price='8000'>D10</span>
+								<span class="sits__place sits-price--cheap" data-place='D11' data-price='8000'>D11</span>
+								<span class="sits__place sits-price--cheap" data-place='D12' data-price='8000'>D12</span>
+								<span class="sits__place sits-price--cheap" data-place='D13' data-price='8000'>D13</span>
+								<span class="sits__place sits-price--cheap" data-place='D14' data-price='8000'>D14</span>
+								<span class="sits__place sits-price--cheap" data-place='D15' data-price='8000'>D15</span>
+								<span class="sits__place sits-price--cheap" data-place='D16' data-price='8000'>D16</span>
+								<span class="sits__place sits-price--cheap" data-place='D17' data-price='8000'>D17</span>
+								<span class="sits__place sits-price--cheap" data-place='D18' data-price='8000'>D18</span>
 							</div>
 							<div class="sits__row">
-								<span class="sits__place sits-price--middle" data-place='E1' data-price='20'>E1</span>
-								<span class="sits__place sits-price--middle" data-place='E2' data-price='20'>E2</span>
-								<span class="sits__place sits-price--middle" data-place='E3' data-price='20'>E3</span>
-								<span class="sits__place sits-price--middle" data-place='E4' data-price='20'>E4</span>
-								<span class="sits__place sits-price--middle" data-place='E5' data-price='20'>E5</span>
-								<span class="sits__place sits-price--middle" data-place='E6' data-price='20'>E6</span>
-								<span class="sits__place sits-price--middle" data-place='E7' data-price='20'>E7</span>
-								<span class="sits__place sits-price--middle" data-place='E8' data-price='20'>E8</span>
-								<span class="sits__place sits-price--middle" data-place='E9' data-price='20'>E9</span>
-								<span class="sits__place sits-price--middle" data-place='E10' data-price='20'>E10</span>
-								<span class="sits__place sits-price--middle" data-place='E11' data-price='20'>E11</span>
-								<span class="sits__place sits-price--middle" data-place='E12' data-price='20'>E12</span>
-								<span class="sits__place sits-price--middle" data-place='E13' data-price='20'>E13</span>
-								<span class="sits__place sits-price--middle" data-place='E14' data-price='20'>E14</span>
-								<span class="sits__place sits-price--middle" data-place='E15' data-price='20'>E15</span>
-								<span class="sits__place sits-price--middle" data-place='E16' data-price='20'>E16</span>
-								<span class="sits__place sits-price--middle" data-place='E17' data-price='20'>E17</span>
-								<span class="sits__place sits-price--middle" data-place='E18' data-price='20'>E18</span>
+								<span class="sits__place sits-price--middle" data-place='E1' data-price='9000'>E1</span>
+								<span class="sits__place sits-price--middle" data-place='E2' data-price='9000'>E2</span>
+								<span class="sits__place sits-price--middle" data-place='E3' data-price='9000'>E3</span>
+								<span class="sits__place sits-price--middle" data-place='E4' data-price='9000'>E4</span>
+								<span class="sits__place sits-price--middle" data-place='E5' data-price='9000'>E5</span>
+								<span class="sits__place sits-price--middle" data-place='E6' data-price='9000'>E6</span>
+								<span class="sits__place sits-price--middle" data-place='E7' data-price='9000'>E7</span>
+								<span class="sits__place sits-price--middle" data-place='E8' data-price='9000'>E8</span>
+								<span class="sits__place sits-price--middle" data-place='E9' data-price='9000'>E9</span>
+								<span class="sits__place sits-price--middle" data-place='E10' data-price='9000'>E10</span>
+								<span class="sits__place sits-price--middle" data-place='E11' data-price='9000'>E11</span>
+								<span class="sits__place sits-price--middle" data-place='E12' data-price='9000'>E12</span>
+								<span class="sits__place sits-price--middle" data-place='E13' data-price='9000'>E13</span>
+								<span class="sits__place sits-price--middle" data-place='E14' data-price='9000'>E14</span>
+								<span class="sits__place sits-price--middle" data-place='E15' data-price='9000'>E15</span>
+								<span class="sits__place sits-price--middle" data-place='E16' data-price='9000'>E16</span>
+								<span class="sits__place sits-price--middle" data-place='E17' data-price='9000'>E17</span>
+								<span class="sits__place sits-price--middle" data-place='E18' data-price='9000'>E18</span>
 							</div>
 							<div class="sits__row">
-								<span class="sits__place sits-price--middle" data-place='F1' data-price='20'>F1</span>
-								<span class="sits__place sits-price--middle" data-place='F2' data-price='20'>F2</span>
-								<span class="sits__place sits-price--middle" data-place='F3' data-price='20'>F3</span>
-								<span class="sits__place sits-price--middle" data-place='F4' data-price='20'>F4</span>
-								<span class="sits__place sits-price--middle" data-place='F5' data-price='20'>F5</span>
-								<span class="sits__place sits-price--middle" data-place='F6' data-price='20'>F6</span>
-								<span class="sits__place sits-price--middle" data-place='F7' data-price='20'>F7</span>
-								<span class="sits__place sits-price--middle" data-place='F8' data-price='20'>F8</span>
-								<span class="sits__place sits-price--middle" data-place='F9' data-price='20'>F9</span>
-								<span class="sits__place sits-price--middle" data-place='F10' data-price='20'>F10</span>
-								<span class="sits__place sits-price--middle" data-place='F11' data-price='20'>F11</span>
-								<span class="sits__place sits-price--middle" data-place='F12' data-price='20'>F12</span>
-								<span class="sits__place sits-price--middle" data-place='F13' data-price='20'>F13</span>
-								<span class="sits__place sits-price--middle" data-place='F14' data-price='20'>F14</span>
-								<span class="sits__place sits-price--middle" data-place='F15' data-price='20'>F15</span>
-								<span class="sits__place sits-price--middle" data-place='F16' data-price='20'>F16</span>
-								<span class="sits__place sits-price--middle" data-place='F17' data-price='20'>F17</span>
-								<span class="sits__place sits-price--middle" data-place='F18' data-price='20'>F18</span>
+								<span class="sits__place sits-price--middle" data-place='F1' data-price='9000'>F1</span>
+								<span class="sits__place sits-price--middle" data-place='F2' data-price='9000'>F2</span>
+								<span class="sits__place sits-price--middle" data-place='F3' data-price='9000'>F3</span>
+								<span class="sits__place sits-price--middle" data-place='F4' data-price='9000'>F4</span>
+								<span class="sits__place sits-price--middle" data-place='F5' data-price='9000'>F5</span>
+								<span class="sits__place sits-price--middle" data-place='F6' data-price='9000'>F6</span>
+								<span class="sits__place sits-price--middle" data-place='F7' data-price='9000'>F7</span>
+								<span class="sits__place sits-price--middle" data-place='F8' data-price='9000'>F8</span>
+								<span class="sits__place sits-price--middle" data-place='F9' data-price='9000'>F9</span>
+								<span class="sits__place sits-price--middle" data-place='F10' data-price='9000'>F10</span>
+								<span class="sits__place sits-price--middle" data-place='F11' data-price='9000'>F11</span>
+								<span class="sits__place sits-price--middle" data-place='F12' data-price='9000'>F12</span>
+								<span class="sits__place sits-price--middle" data-place='F13' data-price='9000'>F13</span>
+								<span class="sits__place sits-price--middle" data-place='F14' data-price='9000'>F14</span>
+								<span class="sits__place sits-price--middle" data-place='F15' data-price='9000'>F15</span>
+								<span class="sits__place sits-price--middle" data-place='F16' data-price='9000'>F16</span>
+								<span class="sits__place sits-price--middle" data-place='F17' data-price='9000'>F17</span>
+								<span class="sits__place sits-price--middle" data-place='F18' data-price='9000'>F18</span>
 							</div>
 							<div class="sits__row">
-								<span class="sits__place sits-price--middle" data-place='G1' data-price='20'>G1</span>
-								<span class="sits__place sits-price--middle" data-place='G2' data-price='20'>G2</span>
-								<span class="sits__place sits-price--middle" data-place='G3' data-price='20'>G3</span>
-								<span class="sits__place sits-price--middle" data-place='G4' data-price='20'>G4</span>
-								<span class="sits__place sits-price--middle" data-place='G5' data-price='20'>G5</span>
-								<span class="sits__place sits-price--middle" data-place='G6' data-price='20'>G6</span>
-								<span class="sits__place sits-price--middle" data-place='G7' data-price='20'>G7</span>
-								<span class="sits__place sits-price--middle" data-place='G8' data-price='20'>G8</span>
-								<span class="sits__place sits-price--middle" data-place='G9' data-price='20'>G9</span>
-								<span class="sits__place sits-price--middle" data-place='G10' data-price='20'>G10</span>
-								<span class="sits__place sits-price--middle" data-place='G11' data-price='20'>G11</span>
-								<span class="sits__place sits-price--middle" data-place='G12' data-price='20'>G12</span>
-								<span class="sits__place sits-price--middle" data-place='G13' data-price='20'>G13</span>
-								<span class="sits__place sits-price--middle" data-place='G14' data-price='20'>G14</span>
-								<span class="sits__place sits-price--middle" data-place='G15' data-price='20'>G15</span>
-								<span class="sits__place sits-price--middle" data-place='G16' data-price='20'>G16</span>
-								<span class="sits__place sits-price--middle" data-place='G17' data-price='20'>G17</span>
-								<span class="sits__place sits-price--middle" data-place='G18' data-price='20'>G18</span>
+								<span class="sits__place sits-price--middle" data-place='G1' data-price='9000'>G1</span>
+								<span class="sits__place sits-price--middle" data-place='G2' data-price='9000'>G2</span>
+								<span class="sits__place sits-price--middle" data-place='G3' data-price='9000'>G3</span>
+								<span class="sits__place sits-price--middle" data-place='G4' data-price='9000'>G4</span>
+								<span class="sits__place sits-price--middle" data-place='G5' data-price='9000'>G5</span>
+								<span class="sits__place sits-price--middle" data-place='G6' data-price='9000'>G6</span>
+								<span class="sits__place sits-price--middle" data-place='G7' data-price='9000'>G7</span>
+								<span class="sits__place sits-price--middle" data-place='G8' data-price='9000'>G8</span>
+								<span class="sits__place sits-price--middle" data-place='G9' data-price='9000'>G9</span>
+								<span class="sits__place sits-price--middle" data-place='G10' data-price='9000'>G10</span>
+								<span class="sits__place sits-price--middle" data-place='G11' data-price='9000'>G11</span>
+								<span class="sits__place sits-price--middle" data-place='G12' data-price='9000'>G12</span>
+								<span class="sits__place sits-price--middle" data-place='G13' data-price='9000'>G13</span>
+								<span class="sits__place sits-price--middle" data-place='G14' data-price='9000'>G14</span>
+								<span class="sits__place sits-price--middle" data-place='G15' data-price='9000'>G15</span>
+								<span class="sits__place sits-price--middle" data-place='G16' data-price='9000'>G16</span>
+								<span class="sits__place sits-price--middle" data-place='G17' data-price='9000'>G17</span>
+								<span class="sits__place sits-price--middle" data-place='G18' data-price='9000'>G18</span>
 							</div>
 							<div class="sits__row">
-								<span class="sits__place sits-price--middle" data-place='I3' data-price='20'>I3</span>
-								<span class="sits__place sits-price--middle" data-place='I4' data-price='20'>I4</span>
-								<span class="sits__place sits-price--middle" data-place='I5' data-price='20'>I5</span>
-								<span class="sits__place sits-price--middle" data-place='I6' data-price='20'>I6</span>
-								<span class="sits__place sits-price--middle" data-place='I7' data-price='20'>I7</span>
-								<span class="sits__place sits-price--middle" data-place='I8' data-price='20'>I8</span>
-								<span class="sits__place sits-price--middle" data-place='I9' data-price='20'>I9</span>
-								<span class="sits__place sits-price--middle" data-place='I10' data-price='20'>I10</span>
-								<span class="sits__place sits-price--middle" data-place='I11' data-price='20'>I11</span>
-								<span class="sits__place sits-price--middle" data-place='I12' data-price='20'>I12</span>
-								<span class="sits__place sits-price--middle" data-place='I13' data-price='20'>I13</span>
-								<span class="sits__place sits-price--middle" data-place='I14' data-price='20'>I14</span>
-								<span class="sits__place sits-price--middle" data-place='I15' data-price='20'>I15</span>
-								<span class="sits__place sits-price--middle" data-place='I16' data-price='20'>I16</span>
+								<span class="sits__place sits-price--middle" data-place='I3' data-price='9000'>I3</span>
+								<span class="sits__place sits-price--middle" data-place='I4' data-price='9000'>I4</span>
+								<span class="sits__place sits-price--middle" data-place='I5' data-price='9000'>I5</span>
+								<span class="sits__place sits-price--middle" data-place='I6' data-price='9000'>I6</span>
+								<span class="sits__place sits-price--middle" data-place='I7' data-price='9000'>I7</span>
+								<span class="sits__place sits-price--middle" data-place='I8' data-price='9000'>I8</span>
+								<span class="sits__place sits-price--middle" data-place='I9' data-price='9000'>I9</span>
+								<span class="sits__place sits-price--middle" data-place='I10' data-price='9000'>I10</span>
+								<span class="sits__place sits-price--middle" data-place='I11' data-price='9000'>I11</span>
+								<span class="sits__place sits-price--middle" data-place='I12' data-price='9000'>I12</span>
+								<span class="sits__place sits-price--middle" data-place='I13' data-price='9000'>I13</span>
+								<span class="sits__place sits-price--middle" data-place='I14' data-price='9000'>I14</span>
+								<span class="sits__place sits-price--middle" data-place='I15' data-price='9000'>I15</span>
+								<span class="sits__place sits-price--middle" data-place='I16' data-price='9000'>I16</span>
 							</div>
 							<div class="sits__row additional-margin">
-								<span class="sits__place sits-price--expensive" data-place='J5' data-price='30'>J5</span>
-								<span class="sits__place sits-price--expensive" data-place='J6' data-price='30'>J6</span>
-								<span class="sits__place sits-price--expensive" data-place='J7' data-price='30'>J7</span>
-								<span class="sits__place sits-price--expensive" data-place='J8' data-price='30'>J8</span>
-								<span class="sits__place sits-price--expensive" data-place='J9' data-price='30'>J9</span>
-								<span class="sits__place sits-price--expensive" data-place='J10' data-price='30'>J10</span>
-								<span class="sits__place sits-price--expensive" data-place='J11' data-price='30'>J11</span>
-								<span class="sits__place sits-price--expensive" data-place='J12' data-price='30'>J12</span>
-								<span class="sits__place sits-price--expensive" data-place='J13' data-price='30'>J13</span>
-								<span class="sits__place sits-price--expensive" data-place='J14' data-price='30'>J14</span>
+								<span class="sits__place sits-price--expensive" data-place='J5' data-price='10000'>J5</span>
+								<span class="sits__place sits-price--expensive" data-place='J6' data-price='10000'>J6</span>
+								<span class="sits__place sits-price--expensive" data-place='J7' data-price='10000'>J7</span>
+								<span class="sits__place sits-price--expensive" data-place='J8' data-price='10000'>J8</span>
+								<span class="sits__place sits-price--expensive" data-place='J9' data-price='10000'>J9</span>
+								<span class="sits__place sits-price--expensive" data-place='J10' data-price='10000'>J10</span>
+								<span class="sits__place sits-price--expensive" data-place='J11' data-price='10000'>J11</span>
+								<span class="sits__place sits-price--expensive" data-place='J12' data-price='10000'>J12</span>
+								<span class="sits__place sits-price--expensive" data-place='J13' data-price='10000'>J13</span>
+								<span class="sits__place sits-price--expensive" data-place='J14' data-price='10000'>J14</span>
 							</div>
 							<div class="sits__row">
-								<span class="sits__place sits-price--expensive" data-place='K5' data-price='30'>K5</span>
-								<span class="sits__place sits-price--expensive" data-place='K6' data-price='30'>K6</span>
-								<span class="sits__place sits-price--expensive" data-place='K7' data-price='30'>K7</span>
-								<span class="sits__place sits-price--expensive" data-place='K8' data-price='30'>K8</span>
-								<span class="sits__place sits-price--expensive" data-place='K9' data-price='30'>K9</span>
-								<span class="sits__place sits-price--expensive" data-place='K10' data-price='30'>K10</span>
-								<span class="sits__place sits-price--expensive" data-place='K11' data-price='30'>K11</span>
-								<span class="sits__place sits-price--expensive" data-place='K12' data-price='30'>K12</span>
-								<span class="sits__place sits-price--expensive" data-place='K13' data-price='30'>K13</span>
-								<span class="sits__place sits-price--expensive" data-place='K14' data-price='30'>K14</span>
+								<span class="sits__place sits-price--expensive" data-place='K5' data-price='10000'>K5</span>
+								<span class="sits__place sits-price--expensive" data-place='K6' data-price='10000'>K6</span>
+								<span class="sits__place sits-price--expensive" data-place='K7' data-price='10000'>K7</span>
+								<span class="sits__place sits-price--expensive" data-place='K8' data-price='10000'>K8</span>
+								<span class="sits__place sits-price--expensive" data-place='K9' data-price='10000'>K9</span>
+								<span class="sits__place sits-price--expensive" data-place='K10' data-price='10000'>K10</span>
+								<span class="sits__place sits-price--expensive" data-place='K11' data-price='10000'>K11</span>
+								<span class="sits__place sits-price--expensive" data-place='K12' data-price='10000'>K12</span>
+								<span class="sits__place sits-price--expensive" data-place='K13' data-price='10000'>K13</span>
+								<span class="sits__place sits-price--expensive" data-place='K14' data-price='10000'>K14</span>
 							</div>
 							<div class="sits__row">
-								<span class="sits__place sits-price--expensive" data-place='L6' data-price='30'>L6</span>
-								<span class="sits__place sits-price--expensive" data-place='L7' data-price='30'>L7</span>
-								<span class="sits__place sits-price--expensive" data-place='L8' data-price='30'>L8</span>
-								<span class="sits__place sits-price--expensive" data-place='L9' data-price='30'>L9</span>
-								<span class="sits__place sits-price--expensive" data-place='L10' data-price='30'>L10</span>
-								<span class="sits__place sits-price--expensive" data-place='L11' data-price='30'>L11</span>
-								<span class="sits__place sits-price--expensive" data-place='L12' data-price='30'>L12</span>
-								<span class="sits__place sits-price--expensive" data-place='L13' data-price='30'>L13</span>
+								<span class="sits__place sits-price--expensive" data-place='L6' data-price='10000'>L6</span>
+								<span class="sits__place sits-price--expensive" data-place='L7' data-price='10000'>L7</span>
+								<span class="sits__place sits-price--expensive" data-place='L8' data-price='10000'>L8</span>
+								<span class="sits__place sits-price--expensive" data-place='L9' data-price='10000'>L9</span>
+								<span class="sits__place sits-price--expensive" data-place='L10' data-price='10000'>L10</span>
+								<span class="sits__place sits-price--expensive" data-place='L11' data-price='10000'>L11</span>
+								<span class="sits__place sits-price--expensive" data-place='L12' data-price='10000'>L12</span>
+								<span class="sits__place sits-price--expensive" data-place='L13' data-price='10000'>L13</span>
 							</div>
 							<aside class="sits__checked">
 								<div class="checked-place"></div>
-								<div class="checked-result">$0</div>
+								<div class="checked-result">0원</div>
 							</aside>
 							<footer class="sits__number">
 								<span class="sits__indecator">1</span>
@@ -317,7 +304,7 @@
 						<a href="#" class="watchlist add-sits-line">Add new sit</a>
 						<aside class="sits__checked">
 							<div class="checked-place"><span class="choosen-place"></span></div>
-							<div class="checked-result">$0</div>
+							<div class="checked-result">0원</div>
 						</aside>
 						<%-- <img alt="" src="${context}/resources/rainbow/images/components/sits_mobile.png"> --%>
 					</div>

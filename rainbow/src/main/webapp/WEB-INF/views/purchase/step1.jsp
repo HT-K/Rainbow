@@ -18,7 +18,7 @@
 		<div class="swiper-container">
 			<div class="swiper-wrapper">
 				<c:forEach var="movie" items="${list}">
-					<div class="swiper-slide" data-film='The Fifth Estate'> 
+					<div class="swiper-slide" data-film='${movie.title}'> 
 						<div class="film-images"><img alt='' src="${context}/resources/rainbow/images/movie/${movie.image}"></div>
 						<p class="choose-film__title">${movie.title}</p>
 					</div>
@@ -30,13 +30,13 @@
 	<section class="container">
 		<div class="col-sm-12">
 			<div class="choose-indector choose-indector--film">
-				<strong>Choosen: </strong><span class="choosen-area"></span>
+				<strong>Choosen: </strong><span class="choosen-area" id="movie"></span>
 			</div>
 			<h2 class="page-heading">Date</h2>
 			<div class="choose-container choose-container--short">
 				<div class="datepicker">
 					<span class="datepicker__marker"><i class="fa fa-calendar"></i>Date</span>
-					<input type="text" id="datepicker" value='04/05/2016' class="datepicker__input">
+					<input type="text" id="datepicker" value='09/05/2016' class="datepicker__input">
 				</div>
 			</div>
 						
@@ -44,37 +44,48 @@
 			<div class="time-select time-select--wide">
 				<div class="time-select__group group--first">
 					<ul class="col-sm-6 items-wrap">
-						<li class="time-select__item" data-time='09:40'>09:40</li>
-						<li class="time-select__item" data-time='13:45'>13:45</li>
-						<li class="time-select__item" data-time='15:45'>15:45</li>
-						<li class="time-select__item" data-time='19:50'>19:50</li>
-						<li class="time-select__item" data-time='21:50'>21:50</li>
+						<li class="time-select__item" data-time='09:40' value='09:40'>09:40</li>
+						<li class="time-select__item" data-time='13:45' value='13:45'>13:45</li>
+						<li class="time-select__item" data-time='15:45' value='15:45'>15:45</li>
+						<li class="time-select__item" data-time='19:50' value='19:50'>19:50</li>
+						<li class="time-select__item" data-time='21:50' value='21:50'>21:50</li>
 					</ul>
 				</div>
 			</div>
 			<div class="choose-indector choose-indector--time">
-				<strong>Choosen: </strong><span class="choosen-area"></span>
+				<strong>Choosen: </strong><span class="choosen-area" id="time"></span>
 			</div>
 		</div>
 	</section>
         
 	<div class="clearfix"></div>
 
-	<form id='film-and-time' class="booking-form" method='get' action='#'>  <!-- 선택된 영화, 날짜, 시간 데이터 전송 -->
-		<input type='text' name='choosen-movie' class="choosen-movie">
-		<input type='text' name='choosen-date' class="choosen-date">
-		<input type='text' name='choosen-cinema' class="choosen-cinema">
-		<input type='text' name='choosen-time' class="choosen-time">
+	<form id='film-and-time' class="booking-form">  <!-- 선택된 영화, 날짜, 시간 데이터 전송 -->
+ 		<input type='text' name='choosen-movie' class="choosen-movie" id='choosen-movie' value="${movie}">
+		<input type='text' name='choosen-date' class="choosen-date" id='choosen-date' value="${datepicker}">
+		<input type='text' name='choosen-time' class="choosen-time" id='choosen-time' value="${time}"> 
 		<div class="booking-pagination">
-			<a href="${context}/purchase/step2" class="booking-pagination__next">
+			<button class="booking-pagination__next" id="nextBtn">
 				<span class="arrow__text arrow--next">next step</span>
 				<span class="arrow__info">choose a sit</span>
-			</a>
+			</button>
 		</div>
 	</form>
 </div>
 <script type="text/javascript">
+	
 	$(document).ready(function() {
+		
 	    init_BookingOne();
 	});
+	/* choose-movie.val() */
+	
+	 $('#nextBtn').click(function (e) {
+		 var movie = $('#choosen-movie').val();
+		 var date = $('#choosen-date').val();
+		 var time = $('#choosen-time').val();
+		 alert('영화제목 >> ' + movie + ', 날짜 >> ' + date + ', 시간 >> ' + time);
+		 
+		 $('form').attr('action', '${context}/purchase/step2').attr('method', 'post').submit();
+    })
 </script> 
