@@ -15,8 +15,8 @@
 		                <div id="theater_img_container" class="contact">
 		                <img src="${context}/resources/rainbow/css/img/cinema.jpg" alt="cinema" /></div>
 		            </div>
-		          <!--  
-		            <div class="box-contents">
+		          
+		          <!--   <div class="box-contents col-sm-10 col-sm-offset-3">
 		                <div class="theater-info">
 		                    <strong class="title">서울특별시 강남구 역삼동 814-6 스타플렉스<br>서울특별시 강남구 강남대로 438  (역삼동)<a href="./?page=location&theaterCode=0056#menu">위치/주차 안내  &gt;</a></strong>
 		                    <span class="txt-info">
@@ -25,7 +25,7 @@
 		                        <span></span>
 		                    </span>
 		                   
-		            </div> -->
+		            </div>  -->
 		      </div>
 		        </div>
 		    </div>
@@ -39,8 +39,8 @@
        <h2 class="page-heading heading--outcontainer">Contact</h2>
        <div class="contact">
            <p class="contact__title">You have any questions or need help, <br><span class="contact__describe">don’t be shy and contact us</span></p>
-           <span class="contact__mail">support@amovie.com</span>
-           <span class="contact__tel">support@amovie.com</span>
+           <span class="contact__mail">support@rainbowMovie.com</span>
+           <span class="contact__tel">support@rainbowMovie.com</span>
        </div>
    </section>
 
