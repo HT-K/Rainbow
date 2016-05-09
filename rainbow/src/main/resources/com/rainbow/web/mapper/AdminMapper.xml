@@ -4,10 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.rainbow.web.mapper.AdminMapper"> 
 	
-	<select id="login" parameterType="com.rainbow.web.admin.AdminDTO" resultType="com.rainbow.web.admin.AdminDTO">
-	SELECT * FROM Admin 
-  	where id = #{id} and password = #{password}
-	</select>
+	
 	
 	
 	

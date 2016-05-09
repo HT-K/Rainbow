@@ -23,3 +23,5 @@ SELECT * FROM Member;
 -- Member 테이블 삭제하기
 DROP TABLE Member CASCADE;
 ---------------------------
+
+INSERT INTO Member (id, password, name) VALUES('admin','1','관리자');

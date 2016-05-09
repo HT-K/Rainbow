@@ -2,8 +2,17 @@ package com.rainbow.web.admin;
 
 import java.util.List;
 
+import com.rainbow.web.movie.MovieDTO;
+
 
 public interface AdminService {
-	public AdminDTO login(AdminDTO admin);
-	//관리자 로그인
+	//영화 전체 리스트
+	public List<MovieDTO> getList();
+	//영화 타이블이름으로 선택 
+	public MovieDTO getByName(MovieDTO movie);
+	//영화 업데이트
+	public int update(MovieDTO movie);
+	//영화 삭제
+	public int remove(MovieDTO movie);	
+
 }

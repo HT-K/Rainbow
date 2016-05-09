@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
 @RequestMapping("/member")
@@ -18,7 +19,6 @@ public class MemberController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	@Autowired MemberDTO member;
 	@Autowired MemberService service; 
-	
 	// /member URL 들어오고 뒤에 action 값은 이곳에 넣는다.
 	@RequestMapping("/login_form") // 이건 get방식
 	public String login() {
@@ -40,11 +40,16 @@ public class MemberController {
 		member = service.login(param);
 		String view = "";
 		
-		if (member.getId() != null) {
+		if (member.getId() != null && !member.getId().equals("admin")) {
 			logger.info("로그인 성공");
 			session.setAttribute("user", member); // 로그인 성공 시 session에 로그인에 성공한 유저의 정보가 담긴 member 객체를 담는다.
 			model.addAttribute("member", member); // 로그인 성공 시 다음 페이지에 request와 같은 역할을 하는 model에 member 객체를 담아 보낸다.
 			view = "global/main.user"; 
+		}else if (member.getId().equals("admin")){
+			logger.info("로그인 성공");
+			session.setAttribute("user", member);
+			model.addAttribute("member", member); 
+			view = "admin/main.admin";
 		} else {
 			logger.info("로그인 실패");
 			view = "member/login_form.user";
