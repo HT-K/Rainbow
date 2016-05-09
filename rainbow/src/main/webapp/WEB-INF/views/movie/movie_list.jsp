@@ -67,9 +67,9 @@
                 </c:forEach>
 
                 <div class="coloum-wrapper">
-                    <div class="pagination paginatioon--full">
-                            <a href='#' class="pagination__prev">prev</a>
-                            <a href='#' class="pagination__next">next</a>
+                    <div class="page paginatioon--full">
+                            <a href='#' class="page__prev">prev</a>
+                            <a href='#' class="page__next">next</a>
                     </div>
                 </div>
 
@@ -78,7 +78,10 @@
         </section>
 
 <script type="text/javascript">
-function searchBtn() {
+$(function() {
+	 init_MovieList();
+});
+/* function searchBtn() {
 	alert('버튼이 클릭되었습니다');
 	var title = $('select[name=sorting_item] option:selected').val();
 	alert(title);
@@ -88,8 +91,8 @@ function searchBtn() {
 	$('#wrapper').load(context+'/movie/search?keyField='+keyField+'&title='+title);
 	alert('check');
 }
-$(document).ready(function(e) {
+$(function(e) {
 	e.preventDefault();
     init_MovieList();
-});
+}); */
 </script>

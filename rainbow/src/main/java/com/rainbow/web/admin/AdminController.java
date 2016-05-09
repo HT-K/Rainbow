@@ -21,8 +21,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.rainbow.web.member.MemberDTO;
 import com.rainbow.web.movie.MovieDTO;
@@ -50,7 +48,6 @@ public class AdminController {
       return "/admin/content";
 	}
    
-
    @RequestMapping("/edit/{movieSeq}")
 	public String getBySeq(@PathVariable("movieSeq")int movieSeq, 
 			Model model){
@@ -58,12 +55,8 @@ public class AdminController {
 			movie.setMovieSeq(movieSeq);
 			movie = service.getBySeq(movie);
 			model.addAttribute("movie",movie);
-		
-			
 		return "/admin/edit";
 	}
-   
-   
    
    @RequestMapping(value = "/update",  method=RequestMethod.POST)
 	public void update(
