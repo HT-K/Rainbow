@@ -5403,7 +5403,7 @@ ul#navigation li.mega-menu__nav-item:hover:before {
   content: '';
   width: 64px;
   height: 34px;
-  background-image: url(../resources/rainbow/images/components/bg-time.png);
+  background-image: url(../images/components/bg-time.png);
   background-repeat: no-repeat;
   -webkit-background-size: 64px 34px;
   background-size: 64px 34px;
@@ -5413,13 +5413,13 @@ ul#navigation li.mega-menu__nav-item:hover:before {
   z-index: -1;
 }
 .time-select .time-select__item:hover:after {
-  background-image: url(../resources/rainbow/images/components/bg-time-hover.png);
+  background-image: url(../images/components/bg-time-hover.png);
 }
 .time-select .time-select__item.active {
   background-color: #fe505a;
 }
 .time-select .time-select__item.active:after {
-  background-image: url(../resources/rainbow/images/components/bg-time-hover.png);
+  background-image: url(../images/components/bg-time-hover.png);
 }
 .time-select .items-wrap {
   padding-top: 15px;
@@ -6300,7 +6300,7 @@ ul#navigation li.mega-menu__nav-item:hover:before {
   margin-left: -50px;
 }
 .choose-film .swiper-slide:hover {
-  cursor: url(../resources/rainbow/images/components/cursor.png), auto;
+  cursor: url(../images/components/cursor.png), auto;
 }
 .choose-indector {
   position: relative;
@@ -6409,7 +6409,7 @@ ul#navigation li.mega-menu__nav-item:hover:before {
 }
 .sits .sits__checked {
   position: relative;
-  width: 50px;
+  width: 55px;
   height: 450px;
   background-color: #4c4145;
   position: absolute;
@@ -6427,7 +6427,6 @@ ul#navigation li.mega-menu__nav-item:hover:before {
   left: 18px;
 }
 .sits .sits__checked:after {
-  content: "=";
   font: 13px;
   color: #ffffff;
   position: absolute;

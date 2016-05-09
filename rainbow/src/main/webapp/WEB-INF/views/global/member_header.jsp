@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!-- Banner -->
 <div class="banner-top">
     <img alt='top banner' src="${context}/resources/rainbow/images/main/main_header.png">
