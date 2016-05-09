@@ -93,7 +93,7 @@ p.serif {
 <div class="container">
 <br/>
     <div class="row">
-        <div class="col-md-3 col-md-offset-4 setwidth" >
+        <div class="col-xs-3 col-xs-offset-4" style="width : 100%; margin: auto;">
             <div class="account-box">
             <p class="serif">로그인</p>
            <hr />

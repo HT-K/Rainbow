@@ -4,8 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.rainbow.web.mapper.MemberMapper"> 
 	<insert id="insert" parameterType="com.rainbow.web.member.MemberDTO"> 
-		INSERT INTO Member(id, password, name, gender, birth, addr, email, point, grade, reg_date) 
-		VALUES(#{id}, #{password}, #{name}, #{gender}, #{birth}, #{addr}, #{email}, 1000, '브론즈', SYSDATE())
+		INSERT INTO Member(id, password, name, birth, addr, email, point, grade, reg_date) 
+		VALUES(#{id}, #{password}, #{name}, #{birth}, #{addr}, #{email}, 1000, '브론즈', SYSDATE())
 	</insert>
 	
 	<select id="selectList" resultType="com.rainbow.web.member.MemberDTO">
@@ -13,7 +13,6 @@
     		id,
 			password,
 			name,
-			gender,
 			birth,
 			addr,
 			email,
@@ -28,7 +27,6 @@
     		id,
 			password,
 			name,
-			gender,
 			birth,
 			addr,
 			email,
@@ -44,7 +42,6 @@
     		id,
 			password,
 			name,
-			gender,
 			birth,
 			addr,
 			email,
@@ -60,7 +57,6 @@
     		id,
 			password,
 			name,
-			gender,
 			birth,
 			addr,
 			email,

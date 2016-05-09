@@ -86,7 +86,6 @@
 		id,
 		password,
 		name,
-		gender,
 		birth,
 		addr,
 		email,

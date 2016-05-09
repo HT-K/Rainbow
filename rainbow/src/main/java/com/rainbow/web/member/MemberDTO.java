@@ -7,14 +7,22 @@ public class MemberDTO {
 	private int memberSeq;
 	private String id;
 	private String password;
-	private String name;
-	private String gender;
+	private String name; 
 	private String birth;
 	private String addr;
 	private String email;
 	private int point;
 	private String grade;
 	private String regDate;
+	private String cash;
+	
+	
+	public String getCash() {
+		return cash;
+	}
+	public void setCash(String cash) {
+		this.cash = cash;
+	}
 	public int getMemberSeq() {
 		return memberSeq;
 	}
@@ -38,13 +46,7 @@ public class MemberDTO {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public String getGender() {
-		return gender;
-	}
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
+	} 
 	public String getBirth() {
 		return birth;
 	}

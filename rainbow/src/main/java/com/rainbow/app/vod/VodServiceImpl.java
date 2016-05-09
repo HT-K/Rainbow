@@ -18,7 +18,7 @@ import com.rainbow.web.member.MemberDTO;
 @Service
 public class VodServiceImpl implements VodService{
 
-	private static final Logger logger = LoggerFactory.getLogger(VodService.class);
+	private static final Logger logger = LoggerFactory.getLogger(VodServiceImpl.class);
 	@Autowired SqlSession sqlSession;
 	@Autowired VodDTO vod;
 	@Autowired MemberDTO member;

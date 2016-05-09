@@ -100,6 +100,17 @@ public class VodDTO {
 	public void setVodTime(int vodTime) {
 		this.vodTime = vodTime;
 	}
+	@Override
+	public String toString() {
+		return "VodDTO [vodName=" + vodName + ", vodContent=" + vodContent
+				+ ", vodContentTitle=" + vodContentTitle + ", vodPrice="
+				+ vodPrice + ", vodCategory=" + vodCategory + ", vodRating="
+				+ vodRating + ", vodUrl=" + vodUrl + ", vodImage=" + vodImage
+				+ ", vodDate=" + vodDate + ", vodFree=" + vodFree
+				+ ", vodGrade=" + vodGrade + ", vodActor=" + vodActor
+				+ ", vodDirector=" + vodDirector + ", vodCountry=" + vodCountry
+				+ ", vodTime=" + vodTime + "]";
+	}
 
 
 

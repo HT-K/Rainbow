@@ -144,8 +144,114 @@ select * from Vod where vod_name like '%스%';
 truncate table Vod;
 
 SELECT * FROM Vod;
+SELECT * FROM Vod
+WHERE vod_name ='개구리왕국 : Frog Kingdom, 2013';
+SELECT * FROM Member;
 
 
 
 
-	  
+갓 블레스 아메리카 : God Bless America, 2011
+개구리왕국 : Frog Kingdom, 2013 
+겨울왕국 : Frozen, 2013
+고스트보트 : Ghostboat, 2014
+구스범스 : Goosebumps, 2015
+내부자들 : Inside Men, 2015
+더 랍스터 : The Lobster, 2015
+동경가족 : Tokyo Family, 2013
+드래곤 파이터 2015 : Dracano, 2013
+런던시계탑 밑에서 사랑을 찾을 확률 : Man Up, 2015
+로미오와 줄리엣 : Romeo + Juliet, 1996
+버스 657 : Heist, Bus 657, 2015
+버크셔 전기톱 살인사건 : Berkshire County, 2014
+볼트 : Bolt, 2008
+스타워즈 : 깨어난 포스 , Star Wars : The Force Awakens, 2015
+스파이 브릿지 : Bridge of Spies, 2015
+스파이 서바이버 : Survivor, 2015
+연인들 : Die geliebten Schwestern, Beloved Sisters, 2014
+update Vod 
+set vod_url = '' 
+WHERE vod_name ='갓 블레스 아메리카 : God Bless America, 2011';
+update Vod 
+set vod_url = '' 
+WHERE vod_name ='개구리왕국 : Frog Kingdom, 2013';
+update Vod 
+set vod_url = '' 
+WHERE vod_name ='겨울왕국 : Frozen, 2013';
+update Vod 
+set vod_url = '' 
+WHERE vod_name ='고스트보트 : Ghostboat, 2014';
+update Vod 
+set vod_url = '' 
+WHERE vod_name ='구스범스 : Goosebumps, 2015';
+update Vod 
+set vod_url = '' 
+WHERE vod_name ='내부자들 : Inside Men, 2015';
+update Vod 
+set vod_url = '' 
+WHERE vod_name ='더 랍스터 : The Lobster, 2015';
+update Vod 
+set vod_url = '' 
+WHERE vod_name ='동경가족 : Tokyo Family, 2013';
+update Vod 
+set vod_url = '' 
+WHERE vod_name ='드래곤 파이터 2015 : Dracano, 2013';
+update Vod 
+set vod_url = '' 
+WHERE vod_name ='런던시계탑 밑에서 사랑을 찾을 확률 : Man Up, 2015';
+update Vod 
+set vod_url = '' 
+WHERE vod_name ='로미오와 줄리엣 : Romeo + Juliet, 1996';
+update Vod 
+set vod_url = '' 
+WHERE vod_name ='버스 657 : Heist, Bus 657, 2015';
+update Vod 
+set vod_url = '' 
+WHERE vod_name ='버크셔 전기톱 살인사건 : Berkshire County, 2014';
+update Vod 
+set vod_url = '' 
+WHERE vod_name ='볼트 : Bolt, 2008';
+update Vod 
+set vod_url = '' 
+WHERE vod_name ='스타워즈 : 깨어난 포스 , Star Wars : The Force Awakens, 2015';
+update Vod 
+set vod_url = '' 
+WHERE vod_name ='스파이 브릿지 : Bridge of Spies, 2015';
+update Vod 
+set vod_url = '' 
+WHERE vod_name ='스파이 서바이버 : Survivor, 2015';
+update Vod 
+set vod_url = '' 
+WHERE vod_name ='연인들 : Die geliebten Schwestern, Beloved Sisters, 2014';
+update Vod 
+set vod_url = 'http://videofarm.daum.net/controller/video/viewer/Video.html?vid=z9pWHM9rHqU$&play_loc=undefined' 
+WHERE vod_name ='친구 : Friend, 2001';
+
+
+	SELECT
+		vod_name AS vodName,
+		vod_content_title AS vodContentTitle,
+		vod_content AS vodContent,
+		vod_price AS vodPrice,
+		vod_category AS vodCategory,
+		vod_time AS vodTime,
+		vod_rating AS vodRating,
+		vod_url AS vodUrl,
+		vod_image AS vodImage,
+		vod_date AS vodDate,
+		vod_free AS vodFree,
+		vod_grade AS vodGrade,
+		vod_actor AS vodActor,
+		vod_director AS vodDirector,
+		vod_country AS vodCountry
+		FROM Vod
+		WHERE vod_name like CONCAT('%', 'at', '%')
+
+
+
+
+
+
+
+
+

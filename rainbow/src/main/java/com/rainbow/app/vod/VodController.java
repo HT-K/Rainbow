@@ -8,7 +8,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/vod")
@@ -20,11 +22,18 @@ public class VodController {
 	@Autowired
 	VodService service;
 
+	
+	
 	@RequestMapping("/search")
 	public String search() {
 		return "vod_search/vodSearch";
 	}
-
+	@RequestMapping("/earlySearch")
+	public Model earlySearch(@RequestParam("keyword")String keyword, Model model) {
+		logger.info(" === earlySearch () ===");
+		return model.addAttribute("serchList",service.Search(keyword));
+	}
+	
 	@RequestMapping("/vodLimit")
 	public Model getVodLimit(Model model) {
 		List<VodDTO> list1 = new ArrayList<VodDTO>();
@@ -57,5 +66,16 @@ public class VodController {
 		model.addAttribute("free", service.freeVodUn()); 
 		return model;
 	}
-
+	@RequestMapping("/vodMain")
+	public String goMain() {
+		logger.info(" === VodController <> goMain()===");  
+		 return "vod_main/vodIndex";
+	}
+	@RequestMapping("/vodDetail/{vodName}")
+	public Model vodDetail(@PathVariable("vodName")String vodName,Model model) {
+		logger.info(" === VodController <> vodDetail()===");  
+		logger.info(" === VodController <> vodName @{}===", vodName);  
+		vod.setVodName(vodName); 
+		 return model.addAttribute("vodInfo", service.getByName(vod));
+	}
 }
