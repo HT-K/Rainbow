@@ -18,7 +18,7 @@ CREATE TABLE Member(
 -- Member 테이블의 모든 내용 검색
 SELECT * FROM Member;
 -------------------------
-
+update Member set cash = 10000;
 ---------------------------
 -- Member 테이블 삭제하기
 DROP TABLE Member CASCADE;

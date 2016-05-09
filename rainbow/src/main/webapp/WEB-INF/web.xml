@@ -20,6 +20,10 @@
     <servlet-name>appServlet</servlet-name>
     <url-pattern>/</url-pattern> <!-- 웹 어플리케이션 실행 시 자동적으로 home 컨트롤러로 가게 된다. -->
   </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>appServlet</servlet-name>
+    <url-pattern>/mobile</url-pattern> <!-- 웹 어플리케이션 실행 시 자동적으로 home 컨트롤러로 가게 된다. -->
+  </servlet-mapping>
   <filter>
     <filter-name>encodingFilter</filter-name>
     <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>

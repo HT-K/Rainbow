@@ -315,5 +315,84 @@ values(
 	,'크리스틴 벨(안나 목소리), 이디나 멘젤(엘사 목소리)'
 	,'미국'
 	);	
-	
+	----------------------------
+insert into Vod(vod_name,vod_content_title,vod_content,vod_price,vod_category
+,vod_time,vod_rating,vod_url,vod_image,vod_date,vod_free,vod_grade,vod_actor,vod_director,vod_country) 
+values(
+	'더 랍스터 : The Lobster, 2015'
+	,''
+	,'전대미문의 커플 메이킹 호텔! 이곳에선 사랑에 빠지지 않은 자, 모두 유죄! 유예기간 45일 안에 짝을 찾지 못하면 동물이 되어야 한다! 가까운 미래, 모든 사람들은 서로에게 완벽한 짝을 찾아야만 한다. 홀로 남겨진 이들은 45일간 커플 메이킹 호텔에 머무르며, 완벽한 커플이 되기 위한 교육을 받는다. 그럼에도 불구하고 짝을 얻지 못한 사람은 동물로 변해 영원히 숲 속에 버려지게 된다. 근시란 이유로 아내에게 버림받고 호텔로 오게 된 데이비드(콜린 파렐)는 새로운 짝을 찾기 위해 노력하지만 결국 참지 못하고 숲으로 도망친다. 숲에는 커플을 거부하고 혼자만의 삶을 선택한 솔로들이 모여 살고 있다. 솔로 생활을 유지하기 위한 그들의 절대규칙은 바로 절대 사랑에 빠지지 말 것! 아이러니하게도 데이비드는 사랑이 허락되지 않는 그곳에서 자신과 같이 근시를 가진 완벽한 짝(레이첼 와이즈)을 만나고 마는데..!'
+	,'2000'
+	,'멜로/로맨스, 판타지'
+	,118
+	,'7.99'
+	,'http://movie.naver.com/movie/bi/mi/videoPlayer.nhn?code=120793&type=movie&videoId=8AAC14201D46AC6B190E9FBAC37C07F8CBB8&videoInKey=V1251f3f929d8f148e3dd7746e30a14d57e5b5216db00f720a91c8de424dda47475a47746e30a14d57e5b&coverImage=/multimedia/MOVIECLIP/FEATURE/28806_20151030114105.jpg&mid=28806&autoPlay=true&playerSize=665x480'
+	,'/vod_image/mellow/TheLobster.png'
+	,'2015-10-29'
+	,'n'
+	,'[국내] 청소년 관람불가'
+	,'요르고스 란티모스'
+	,'콜린 파렐(데이비드), 레이첼 와이즈(근시 여인)'
+	,'그리스, 영국, 아일랜드, 네덜란드, 프랑스'
+	);		
+	----------------------------
+insert into Vod(vod_name,vod_content_title,vod_content,vod_price,vod_category
+,vod_time,vod_rating,vod_url,vod_image,vod_date,vod_free,vod_grade,vod_actor,vod_director,vod_country) 
+values(
+	'개구리왕국 : Frog Kingdom, 2013'
+	,'위기에 빠진 연못을 지키기 위해 왕국 최고의 개구리들이 나섰다!'
+	,'부모님의 결정이 아닌, 스스로가 선택한 삶을 꿈꾸는 개구리 왕국의 위풍당당 공주 ‘재키’는 남자로 변장해 왕국의 올림픽 출전을 결심한다. 그리고 떠돌이 곤충 구이 장수 ‘프레디’는 시장에서 싸움에 휘말려 얼떨결에 올림픽에 출전하게 되면서 ‘재키’를 비롯한 최고의 선수들과 결승을 겨루게 된다. 한편, 영원한 개구리왕국의 불청객, 뱀 마왕은 오랜 시간 동안 왕국에 품어 온 원한을 갚기 위해 온 개울과 계곡, 늪지대 개구리들의 축제인 올림픽에서 감춰두었던 무시무시한 계획을 꺼내 놓기 시작하는데… 우승이 아닌 왕국을 지켜야 할 처지에 놓인 ‘재키’와 선수들, 과연 무사히 개구리왕국을 구할 수 있을까?'
+	,'2500'
+	,'애니메이션, 모험'
+	,78
+	,'7.55'
+	,'http://movie.naver.com/movie/bi/mi/videoPlayer.nhn?code=133631&type=movie&videoId=F359B1984D52C1031F06B9F35E9BB7398AFC&videoInKey=V1253dd902e222d872862bb16f34ac9175d9226f8de47e6e078006443ea975ded76b6bb16f34ac9175d92&coverImage=/multimedia/MOVIECLIP/TRAILER/28733_20151026103701.jpg&mid=28733&autoPlay=true&playerSize=665x480'
+	,'/vod_image/animation/FrogKingdom.png'
+	,'2015-11-12'
+	,'n'
+	,'[국내] 전체 관람가'
+	,'넬슨 신'
+	,'벨라 손, 카메론 달라스(프레디), 롭 슈나이더'
+	,'미국'
+	);		
+	----------------------------
+insert into Vod(vod_name,vod_content_title,vod_content,vod_price,vod_category
+,vod_time,vod_rating,vod_url,vod_image,vod_date,vod_free,vod_grade,vod_actor,vod_director,vod_country) 
+values(
+	'고스트보트 : Ghostboat, 2014'
+	,''
+	,'어느 날 친구들과 함께 아버지의 보트에 타면서부터 기이한 일이 일어난다. 모든 무전기와 전화기는 작동하지 않고, 친구들은 갑자기 사라졌다. 남은 사람은 단 두명! 사만다는 보트 안에 갇히고, 옛 연인 마크는 갑판에 남게 되었다. 그리고 보트 안 어디선가 들리는 목소리..! 사만다에게 시간내 미션을 수행하도록 명령하여 지키지 못하면 정신을 통제해 스스로 하나씩 자해하도록 한다. 연이어 들리는 목소리, 제한된 시간과 자신과의 싸움. 그리고 인내의 한계. 이 모든걸 바라볼 수 밖에 없는 옛 연인 마크. 사만다는 과연 비밀을 풀고 살아 남을 수 있을까?'
+	,'2000'
+	,'공포'
+	,90
+	,'6.73'
+	,'http://movie.naver.com/movie/bi/mi/videoPlayer.nhn?code=143301&type=movie&videoId=170FCF67DDEB52F07FE7E13B89380F47386C&videoInKey=V12854b8c77b21719306e28809c6f84ca8bd4f466ba580a7e3c93028c707ed76fe4a028809c6f84ca8bd4&coverImage=/multimedia/MOVIECLIP/TRAILER/28430_20150924055558.jpg&mid=28430&autoPlay=true&playerSize=665x480'
+	,'/vod_image/thriller/Ghostboat.png'
+	,'2015-10-08'
+	,'n'
+	,'[국내] 청소년 관람불가'
+	,'맥 로프그렌'
+	,'맥 로프그렌'
+	,'미국'
+	);		
+	----------------------------
+insert into Vod(vod_name,vod_content_title,vod_content,vod_price,vod_category
+,vod_time,vod_rating,vod_url,vod_image,vod_date,vod_free,vod_grade,vod_actor,vod_director,vod_country) 
+values(
+	'연인들 : Die geliebten Schwestern, Beloved Sisters, 2014'
+	,'천재시인 프리드리히 쉴러의 숨겨졌던 러브 스토리 세상이 허락하지 않은 사랑이 시작된다!'
+	,'몰락한 귀족집안의 두 딸 카롤린과 샬롯은 서로를 자신처럼 아끼는 둘도 없는 자매다. 쓰러져 가는 가문을 살리기 위해 17세의 어린 나이에 부유한 귀족의 아내가 된 장녀 카롤린은 원치 않았던 결혼이었음에도 불구하고 어머니와 샬롯을 위해 모든 걸 이겨낸다. 그런 언니의 모습을 안타깝게 지켜보던 동생 샬롯은 어느 날, 가난하지만 장래가 촉망되는 시인 프리드리히 쉴러를 운명처럼 만나 사랑에 빠진다. 그러던 중 결혼 승낙을 받기 위해 노력하던 두 사람 앞에 언니 카롤린이 나타나면서 세 사람의 운명은 예측할 수 없는 길을 향해 흘러가는데...'
+	,'3500'
+	,'드라마, 멜로/로맨스'
+	,139
+	,'7.11'
+	,'http://movie.naver.com/movie/bi/mi/videoPlayer.nhn?code=121367&type=movie&videoId=A6779EFD9CDBC0B8E56A0298BD90FA246E42&videoInKey=V128777d039c23c0f1984cfd91956b6c53e9e5954c74976f66879e025b29b016376bbcfd91956b6c53e9e&coverImage=/multimedia/MOVIECLIP/TRAILER/29256_20151204101240.jpg&mid=29256&autoPlay=true&playerSize=665x480'
+	,'/vod_image/drama/DiegeliebtenSchwestern.png'
+	,'2015-12-31'
+	,'n'
+	,'[국내] 청소년 관람불가'
+	,'도미닉 그래프'
+	,'한나 헤르츠스프룽(캐롤라인 본 렝필드), 플로리안 슈테터(프레드리히 쉴러 역)'
+	,'독일, 오스트리아, 스위스'
+	);		
 	

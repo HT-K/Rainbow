@@ -2,7 +2,8 @@ package com.rainbow.app.vod;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import com.rainbow.web.mapper.MemberMapper;
 import com.rainbow.web.mapper.VodMapper;
 import com.rainbow.web.member.MemberController;
 import com.rainbow.web.member.MemberDTO;
@@ -72,8 +72,41 @@ public class VodServieImplTest {
 		logger.info(" === VodServiceImplTest <> testGetByName(){} ===", vod.getVodName());
 	
 	}
+ 
+	public void testVodSearch() {
+		List<VodDTO> list = new ArrayList<VodDTO>();
+		VodMapper mapper = session.getMapper(VodMapper.class);
+		list = mapper.VodSearch("스");
+		logger.info(" === VodServiceImplTest <> testVodSearch(){} ===", list.size());
+	}
 
-
+	@Test
+	public void testVodAtLeast() {
+		List<VodDTO> list = new ArrayList<VodDTO>();
+		VodMapper mapper = session.getMapper(VodMapper.class);
+		list = mapper.getAtLeastVodLimit();
+		logger.info(" === VodServiceImplTest <> testVodAtLeast(){} ===", list.size());
+	
+		assertThat(list.size(), is(not(0))); // 이름으로 조회 시 리턴되는 값이 0이 아니면 성공(초록불) 아니면 빨간불
+	}
+ 
+	
+	public void testVodCommon() {
+		List<VodDTO> list = new ArrayList<VodDTO>();
+		VodMapper mapper = session.getMapper(VodMapper.class);
+		list = mapper.getCommonVodLimit();
+		logger.info(" === VodServiceImplTest <> testVodCommon(){} ===", list.size());
+		assertThat(list.size(), is(not(0))); // 이름으로 조회 시 리턴되는 값이 0이 아니면 성공(초록불) 아니면 빨간불
+		 
+	}
+	
+	public void testVodFree() {
+		List<VodDTO> list = new ArrayList<VodDTO>();
+		VodMapper mapper = session.getMapper(VodMapper.class);
+		list = mapper.getFreeVodLimit();
+		logger.info(" === VodServiceImplTest <> testVodFree(){} ===", list.size());
+		assertThat(list.size(), is(not(0))); // 이름으로 조회 시 리턴되는 값이 0이 아니면 성공(초록불) 아니면 빨간불
+	}
 	public void testLogin() {
 		MemberDTO check = new MemberDTO();
 		VodMapper mapper = session.getMapper(VodMapper.class);
@@ -105,7 +138,7 @@ public class VodServieImplTest {
 		
 	}
 
-	@Test
+	
 	public void testDelete() {
 		vod.setVodName("친구3");
 		VodMapper mapper = session.getMapper(VodMapper.class);

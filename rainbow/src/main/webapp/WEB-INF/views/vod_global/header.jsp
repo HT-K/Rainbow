@@ -31,9 +31,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!--  -->
-
-<link rel="stylesheet" href="${context}/resources/css/main.css">
-<script src="${context}/resources/js/main.js"></script>
+  
 </head>
 <body>
 	<div data-role="panel" id="outside" data-display="push" data-theme="b">
