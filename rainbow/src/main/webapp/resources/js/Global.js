@@ -2,7 +2,6 @@
  * Global
  */
 
-
 //생성자 개념
 function Global(arg){
 	this.context= arg;

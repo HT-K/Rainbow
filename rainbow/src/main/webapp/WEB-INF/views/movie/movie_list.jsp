@@ -31,13 +31,13 @@
                 <c:forEach var="list" items="${list}"> <!-- 컨트롤러에서 보내온 list를 member에 담는다 -->
                    <!-- Movie preview item -->
                    <div class="movie movie--preview movie--full release">
-                        <div class="col-sm-3 col-md-2 col-lg-2">
+                        <div class="col-sm-4 col-md-3 col-lg-3">
                             <div class="movie__images">
-                               <img alt='' src="../resources/img/movie/${list.image}">
+                               <img alt='' src="${context}/resources/rainbow/images/main/${list.image}" height="300">
                             </div>
                        </div>
    
-                       <div class="col-sm-9 col-md-10 col-lg-10 movie__about">
+                       <div class="col-sm-8 col-md-9 col-lg-9 movie__about">
                             <a href="${content}/movie/movie_detail" class="movie__title link--huge">${list.title}</a>
 
                             <p class="movie__time">${list.runningtime}</p>
@@ -55,8 +55,8 @@
                             
                             <div class="preview-footer">
                                   <div class="movie__rate">
-                                  <div class="score"></div>
-                                  <span class="movie__rating">5.0</span></div>                          
+                                  <div class="score" style="margin-left: -15px;"></div>
+                                  <span class="movie__rating">${list.rating}</span></div>                          
                                   
                               </div>
                        </div>
@@ -65,13 +65,23 @@
                    </div>
                    <!-- end movie preview item -->
                 </c:forEach>
-
-                <div class="coloum-wrapper">
-                    <div class="page paginatioon--full">
-                            <a href='#' class="page__prev">prev</a>
-                            <a href='#' class="page__next">next</a>
+				
+				<div class="booking-pagination booking-pagination--margin">
+					<a href="#" class="booking-pagination__prev">
+						<span class="arrow__text arrow--prev">prev</span>
+						<span class="arrow__info">before page</span>
+					</a>
+					<a href="#" class="booking-pagination__next">
+						<span class="arrow__text arrow--next">next</span>
+						<span class="arrow__info">next page</span>
+					</a>
+				</div>
+                <!-- <div class="coloum-wrapper">
+                    <div class="pagination paginatioon--full">
+                            <a href='#' class="pagination__prev">prev</a>
+                            <a href='#' class="pagination__next">next</a>
                     </div>
-                </div>
+                </div> -->
 
             </div>
 
@@ -79,7 +89,8 @@
 
 <script type="text/javascript">
 $(function() {
-	 init_MovieList();
+	var context = $.fn.global('${context}').getContext();
+	init_MovieList(context);
 });
 /* function searchBtn() {
 	alert('버튼이 클릭되었습니다');

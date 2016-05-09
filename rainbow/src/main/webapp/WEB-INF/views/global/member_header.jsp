@@ -34,9 +34,12 @@
 		<div class="control-panel">
 			<div class="auth auth--home">
 				<div class="auth__show">
-				<span class="auth__image"> <img alt="" src="http://placehold.it/31x31"></span>
+				<span class="auth__image"> <img alt="" src="${context}/resources/rainbow/images/main/cholong.jpg"></span>
 				</div>
 				<a href="#" class="btn btn--sign btn--singin">${sessionScope.user.name}</a>
+				<ul class="auth__function">
+                	<li><a href="#" class="auth__function-item">회원탈퇴</a></li>    
+                </ul>
 			</div>
 			<button class="btn btn-md btn--warning btn--book btn-control--home login-window" style="font-size: 11px;" id="bookBtn">Book a ticket</button>
 			<input type="hidden" id="sessionVar" value="${sessionScope.user.id}">

@@ -70,7 +70,7 @@
         $('.overlay').removeClass('open').addClass('close');
 
         setTimeout(function(){
-            $('.overlay').removeClass('close');}, 50);
+            $('.overlay').removeClass('close');}, 10);
     });
 
 function init_Elements () {
@@ -211,16 +211,16 @@ function init_Elements () {
 
 }
 
-function init_Home() {
+function init_Home(context) {
     "use strict";
 
 	//1. Init revolution slider and add arrows behaviour
 				var api = $('.banner').revolution({
-                    delay:9000,
+                    delay:2000, // 영화 포스터가 바뀌는 속도 조절
                     startwidth:1920,
                     startheight:616,
              
-                     onHoverStop:"on",
+                     onHoverStop:"off", // 마우스가 올려져 있을 경우 영화 포스터가 바뀔지 안바뀔지 결정하는 요소
              
                      hideArrowsOnMobile:"off",
 
@@ -359,7 +359,8 @@ function init_Home() {
     $('.score').raty({
         width:130, 
         score: 0,
-        path: '../resources/rainbow/images/rate/',
+        path: context + '/resources/rainbow/images/rate/',
+        /*path: './resources/rainbow/images/rate/',*/
         starOff : 'star-off.svg',
         starOn  : 'star-on.svg' 
     });
@@ -1027,7 +1028,7 @@ function init_Gallery () {
                 });
 }
 
-function init_MovieList () {
+function init_MovieList (context) {
     "use strict";
 
 	//1. Dropdown init 
@@ -1063,7 +1064,8 @@ function init_MovieList () {
     $('.score').raty({
         width:130, 
         score: 0,
-        path: '../resources/rainbow/images/rate/',
+        path: context + '/resources/rainbow/images/rate/',
+        /*path: '../resources/rainbow/images/rate/',*/
         starOff : 'star-off.svg',
         starOn  : 'star-on.svg' 
     });
@@ -1115,7 +1117,7 @@ function init_MoviePage () {
     $('.score').raty({
         width:130, 
         score: 5,
-        path: '../resources/rainbow/images/rate/',
+        path: './resources/rainbow/images/rate/',
         starOff : 'star-off.svg',
         starOn  : 'star-on.svg' 
     });
@@ -1756,7 +1758,7 @@ function init_Rates () {
                 $('.score').raty({
                     width:130, 
                     score: 0,
-                    path: '../resources/rainbow/images/rate/',
+                    path: './resources/rainbow/images/rate/',
                     starOff : 'star-off.svg',
                     starOn  : 'star-on.svg' 
                 });

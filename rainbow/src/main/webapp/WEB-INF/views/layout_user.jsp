@@ -81,9 +81,9 @@
             '<li><span class="sub-nav-toggle plus"></span>'
             +      '<a href="${context}/movie/movie_list">Movies</a>'
             +   '</li>'
-            +   '<li>'
+            +   '<li id="ticketing">'
             +      '<span class="sub-nav-toggle plus"></span>' 
-            +      '<a href="${context}/purchase/step1">Ticketing</a>'
+            +      '<a href="#">Ticketing</a>'
             +   '</li>'
             +   '<li>'
             +      '<span class="sub-nav-toggle plus"></span>'
@@ -108,9 +108,9 @@
             '<li><span class="sub-nav-toggle plus"></span>'
             +      '<a href="${context}/movie/movie_list">Movies</a>'
             +   '</li>'
-            +   '<li id="ticketing">'
+            +   '<li id="needLogin">'
             +      '<span class="sub-nav-toggle plus"></span>' 
-            +      '<a href="#">Ticketing</a>'
+            +      '<a href="${context}/member/login_form">Ticketing</a>'
             +   '</li>'
             +   '<li>'
             +      '<span class="sub-nav-toggle plus"></span>'
@@ -130,9 +130,9 @@
 </c:otherwise>
 </c:choose>
 
-<script src="${context}/resources/js/Purchase.js"></script>
 <script src="${context}/resources/js/Global.js"></script>
 <script src="${context}/resources/js/Rainbow.js"></script>
+<script src="${context}/resources/js/Purchase.js"></script>
 
 <script type="text/javascript">
 	$(function(){
@@ -142,6 +142,11 @@
 			e.preventDefault();
 		 	purchase.step1Form(context); 
 		});	
+		$('#needLogin').click(function(e) { // 로그인 안한 상태에서 헤더의 티켓팅을 눌렀을 시
+			e.preventDefault();
+			alert("로그인이 필요합니다.");
+			location.href = '${context}/member/login_form';
+		});
 	});
 </script>
 </html>

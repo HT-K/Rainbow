@@ -63,21 +63,20 @@ public class HomeController {
 	@RequestMapping("/home/main")
 	public String main(Model model) {
 		List<MovieDTO> list = new ArrayList<MovieDTO>();
-		
 		// 현재 레이팅 점수 중 가장 상위 영화 6개 메인에 뿌리기 (1920 x 616 이미지)
-		movie.setStart(1);
+		movie.setStart(0);
 		movie.setEnd(6);
 		list = movieService.getList(movie);
 		model.addAttribute("mainList", list);
-		
+				
 		// 현재 레이팅 점수 중 가장 상위 영화 5개 메인에 뿌리기 (380 x 600 이미지)
-		movie.setStart(1);
-		movie.setEnd(5);
+		movie.setStart(0);
+		movie.setEnd(6);
 		list = movieService.getList(movie);
 		model.addAttribute("bestList", list);
-		
+				
 		// 현재 상영작 8개 메인화면에 뿌리기 (424 x 424 이미지)
-		movie.setStart(1);
+		movie.setStart(0);
 		movie.setEnd(8);
 		list = movieService.getList(movie);
 		model.addAttribute("movieList", list);

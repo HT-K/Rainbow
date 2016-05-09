@@ -27,7 +27,7 @@ Purchase.prototype.step1Form = function(context) {
 		
 						$.each(data.list, function(index, movie) {
 							step1Form += '<div class="swiper-slide" data-film="'+movie.title+'">\
-								<div class="film-images"><img alt="" src="'+context+'/resources/rainbow/images/movie/'+movie.image+'"></div>\
+								<div class="film-images"><img alt="" src="'+context+'/resources/rainbow/images/main/'+movie.image+'" height="300"></div>\
 								<p class="choose-film__title">'+movie.title+'</p>\
 							</div>';
 						});
@@ -83,8 +83,6 @@ Purchase.prototype.step1Form = function(context) {
 		$('#content').html(step1Form);
 		$('#nextBtn').click(function(e) {
 			e.preventDefault();
-		
-			
 			 $.ajax({
 		            url : context + '/purchase/step2',
 		            data : {

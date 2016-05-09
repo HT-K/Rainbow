@@ -51,7 +51,7 @@
                                 <div class="movie__images">
                                     <a href="movie-page-left.html" class="movie-beta__link">
                                         <!-- <img alt='' src="http://placehold.it/424x424"> -->
-                                        <img alt='' src="${context}/resources/rainbow/images/main/${list.image}" width="424" height="200">
+                                        <img alt='' src="${context}/resources/rainbow/images/main/${list.image}" width="424" height="205">
                                     </a>
                                 </div>
 
@@ -60,7 +60,9 @@
 
                                     <p class="movie__time">${list.runningtime}</p>
 
-                                    <p class="movie__option"><a href="#">${list.genre}</a></p>
+                                    <p class="movie__option">장르 : ${list.genre}</p>
+                                    
+                                    <p class="movie__option">감독 : ${list.director}</p>
                                     
                                     <div class="movie__rate">
                                         <div class="score"></div>
@@ -77,6 +79,7 @@
 <!-- Main Content End -->
 <script type="text/javascript">
 	$(document).ready(function() {
-		init_Home();
+		var context = $.fn.global('${context}').getContext();
+		init_Home(context);
 	});
 </script>
