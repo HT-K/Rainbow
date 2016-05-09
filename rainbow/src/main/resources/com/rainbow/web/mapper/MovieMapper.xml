@@ -18,11 +18,13 @@
 	<select id="selectByName" parameterType="com.rainbow.web.movie.MovieDTO" resultType="com.rainbow.web.movie.MovieDTO"> 
 	select movie_seq AS movieSeq, rating, title, genre, open_date AS openDate, grade, runningtime,director,actor,content,image 
 	from Movie
-	WHERE title = #{title}
+	WHERE ${title} LIKE CONCAT('%',#{title},'%')
 	</select>
 		
 	<select id="selectById" parameterType="com.rainbow.web.movie.MovieDTO" resultType="com.rainbow.web.movie.MovieDTO"> 
-	
+	select * 
+	from Movie
+	WHERE title = ${title}
 	</select>
 	
 	<select id="count" resultType="int">
