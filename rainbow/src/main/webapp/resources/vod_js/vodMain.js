@@ -20,9 +20,9 @@ var vodMain = {
 					 <div>\
 				      <p style="text-align: center; font-size:26px;">상세정보</p>\
 				      <hr />\
-			        <p style="text-align: left;">영화 제목 : '+data.vodInfo.vodName+'</p>\
-		               <p style="text-align: left;">영화 장르 : '+data.vodInfo.vodCategory+'&nbsp;'+data.vodInfo.vodTime+' 분</p>\
-		               <p style="text-align: left;">이용가 : '+data.vodInfo.vodFree+'</p>\
+			        <p style="text-align: left;"> 제목 : '+data.vodInfo.vodName+'</p>\
+		               <p style="text-align: left;"> 장르 : '+data.vodInfo.vodCategory+'&nbsp;'+data.vodInfo.vodTime+' 분</p>\
+		               <p style="text-align: left;">이용가: '+data.vodInfo.vodGrade+'</p>\
 		               <p style="text-align: left;">감독/연출 : '+data.vodInfo.vodDirector+'</p>\
 		               <p style="text-align: left;">배우/출연 : '+data.vodInfo.vodActor+'</p>\
 					</div>\
@@ -31,7 +31,7 @@ var vodMain = {
 					<text >\
 					</text >\
 					</div>\
-					<p style="text-align: left;"> '+data.vodInfo.vodGrade+'</p></div>\
+		               <br/>\
 					<div id="demo">\
 					<button id = "buyBtn" style="margin: auto;width: 95%"  class=" btn btn-lg btn-block purple-bg">구매하기</button>\
 					</div>';
@@ -64,9 +64,9 @@ var vodMain = {
 											alert("구매 완료 되었습니다.");
 											var r = confirm("구매 내역을 확인 하시겠습니까?");
 											if (r == true) {
-											   alert("넹");
+												vodMain.vodPurchase(context);
 											} else {
-												alert("아니오");
+												location.href=context+"/vod/vodMain";
 											}
 										}else{
 											alert("금액이 부족 합니다.");
@@ -126,12 +126,8 @@ var vodMain = {
 					</div>';
 			});
 			mainForm += '</div>';
-			$('#content').html(mainForm);  
-				
+			$('#content').html(mainForm);  				
 		});
-			
-
-		
 	},
 	vodSearchForm : function(context) {
 		$('#content').empty();	 
@@ -314,7 +310,7 @@ var vodMain = {
 					if(data.member == null){
 						alert('아이디 또는 패스워드가 틀렸습니다.')
 					}else{
-						location.href = context+"/vod/vodMain"
+						location.href = context+"/vod/vodMain";
 					}
 					
 				},
@@ -388,7 +384,11 @@ var vodMain = {
 				dataType : 'json',
 				async : true,
 				success : function(data) {
-			        alert('회원가입이 완료 되었습니다 . ' + data.check.id);
+					if(data.check == 1){
+						alert('회원가입이 완료 되었습니다 .');
+					}else{
+						alert('회원가입에 실패하였습니다 .');
+					}
 			        location.href = context+"/mobile"
 				},
 				error : function(xhr, status, msg) {

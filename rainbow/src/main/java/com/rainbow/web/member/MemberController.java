@@ -1,10 +1,6 @@
 package com.rainbow.web.member;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
-import javax.tools.JavaFileManager.Location;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -161,11 +157,7 @@ public class MemberController {
 		
 	}
 	
-	
-	/*@RequestMapping("/vod_join")
-	public String join() {
-		return "vod_member/join";
-	}*/
+ 
 	
 	@RequestMapping(value="/vod_login", method=RequestMethod.POST)
 	public Model vodLogin(@RequestParam("id")String id, 
@@ -198,23 +190,22 @@ public class MemberController {
 			, @RequestParam("name") String name
 			, @RequestParam("email") String email
 			, @RequestParam("addr") String addr
-			, @RequestParam("year") String year
-			, @RequestParam("month") String month
-			, @RequestParam("day") String day){
+			, @RequestParam("year") String year,
+			Model model){
 		logger.info("=== id {} ===",id);
 		logger.info("=== name {} ===",name);
 		logger.info("=== email {} ===",email);
 		logger.info("=== addr {} ===",addr);
 		logger.info("=== year {} ===",year);
-		logger.info("=== month {} ===",month);
-		logger.info("=== day {} ===",day);
 		member.setId(id);
 		member.setPassword(password);
 		member.setName(name);
 		member.setAddr(email);
-		member.setBirth(year+"-"+month+"-"+day);
-		member.setEmail(email);
-		service.insert(member);
+		member.setBirth(year);
+		member.setEmail(email);  
+		if(service.getById(member) == null){
+			model = service.insert(member) == 1 ? model.addAttribute("check", 1) :model.addAttribute("check", 0);
+		}
 		return "layout_vod";
 	}
 

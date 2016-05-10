@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mysql.jdbc.authentication.MysqlClearPasswordPlugin;
 import com.rainbow.app.vod.VodDTO;
 import com.rainbow.app.vod.VodService;
 import com.rainbow.web.member.MemberDTO;
@@ -88,7 +89,7 @@ public class BuyController {
 		for (int i = 0; i < list.size(); i++) {
 			vod.setVodName(list.get(i).getVodName());
 			vodList.add(vodService.getByName(vod));
-		}
+		} 
 		return model.addAttribute("purchase", vodList);
 	}
 

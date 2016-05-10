@@ -83,11 +83,10 @@
 			<footer id = 'indexFooter'>
                 <div class="navbar navbar-default navbar-static-bottom">
                     <p class="navbar-text pull-left">
-                        Built by <a href="http://google.com" target="_blank"> Bingoori
+                        Built by <a href="https://github.com/bingoori" target="_blank"> Bingoori
                     </p>
                 </div>
             </footer>
-		 
 		</html>
 <script src="${js}/vod_js/vodMain.js"></script>
 <script>
