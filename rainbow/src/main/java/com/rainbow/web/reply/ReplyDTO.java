@@ -2,33 +2,21 @@ package com.rainbow.web.reply;
 
 import org.springframework.stereotype.Component;
 
-
-
 @Component
 public class ReplyDTO {
-	private int replySeq, movieSeq;
-	private String writerName, regTime, replyContent;
-	
+	private int replySeq;
+	private String writerName;
+	private String regTime;
+	private String replyContent;
+	private int movieSeq;
+
 	public ReplyDTO() {}
-	public ReplyDTO(int replySeq, String writerName, String regTime ,String replyContent, int movieSeq) {
-		this.replySeq = replySeq;
-		this.writerName = writerName;
-		this.regTime =regTime;
-		this.replyContent = replyContent;
-		this.movieSeq = movieSeq;
-	}
 	
 	public int getReplySeq() {
 		return replySeq;
 	}
 	public void setReplySeq(int replySeq) {
 		this.replySeq = replySeq;
-	}
-	public int getMovieSeq() {
-		return movieSeq;
-	}
-	public void setMovieSeq(int movieSeq) {
-		this.movieSeq = movieSeq;
 	}
 	public String getWriterName() {
 		return writerName;
@@ -48,6 +36,10 @@ public class ReplyDTO {
 	public void setReplyContent(String replyContent) {
 		this.replyContent = replyContent;
 	}
-	
-	
+	public int getMovieSeq() {
+		return movieSeq;
+	}
+	public void setMovieSeq(int movieSeq) {
+		this.movieSeq = movieSeq;
+	}
 }

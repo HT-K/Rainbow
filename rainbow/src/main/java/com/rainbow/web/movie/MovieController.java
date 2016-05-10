@@ -8,8 +8,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.rainbow.web.reply.ReplyDTO;
+import com.rainbow.web.reply.ReplyService;
 
 @Controller
 @RequestMapping("/movie")
@@ -17,6 +21,8 @@ public class MovieController {
 	private static final Logger logger = LoggerFactory.getLogger(MovieService.class);
 	@Autowired MovieDTO movie;
 	@Autowired MovieService service;
+	@Autowired ReplyDTO reply;
+	@Autowired ReplyService replyService;
 	
 	@RequestMapping("/input")
 	public String input() {
@@ -55,6 +61,8 @@ public class MovieController {
 		logger.info("=== 감독 ===",movie.getDirector());
 		logger.info("=== 배우 ===",movie.getActor());
 		logger.info("=== 이미지 ===",movie.getImage());
+		movie.setStart(0);
+		movie.setEnd(service.count());
 		list = service.getList(movie);
 		model.addAttribute("list", list);
 		return "movie/movie_list.user";
@@ -75,9 +83,23 @@ public class MovieController {
 		return "";
 	}
 	
-	@RequestMapping("/movie_detail")
-	public String detail() {
+	@RequestMapping("/movie_detail/{movieSeq}")
+	public String detail(
+			@PathVariable("movieSeq")int movieSeq,
+			Model model) {
 		logger.info("=== MovieController-detail{} ===");
-		return "movie/movie_detail";
+		movie.setMovieSeq(movieSeq);
+		movie = service.getBySeq(movie);
+		model.addAttribute("movie", movie);
+		
+		// 현재 디테일로 넘어간 영화의 시퀀스를 이용하여 댓글 구해오기
+		reply.setMovieSeq(movie.getMovieSeq());
+		List<ReplyDTO> list = replyService.getBySeq(reply);
+		model.addAttribute("reply_list", list);
+		
+		// 현재 영화에 달린 댓글이 몇개인지
+		model.addAttribute("reply_count", replyService.count(reply));
+		
+		return "movie/movie_detail.user";
 	}
 }

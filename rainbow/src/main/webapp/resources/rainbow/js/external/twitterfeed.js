@@ -23,7 +23,7 @@ $(document).ready(function () {
 	
 	$('#twitter-feed').html(headerHTML + loadingHTML);
 	 
-    $.getJSON('../rainbow/get-tweets1.1.php', 
+    $.getJSON('./././get-tweets1.1.php', 
         function(feeds) {   
 		  
             var feedHTML = '';

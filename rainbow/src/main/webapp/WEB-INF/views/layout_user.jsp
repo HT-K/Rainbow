@@ -33,6 +33,8 @@
 	<link href="${context}/resources/rainbow/css/external/jquery.selectbox.css" rel="stylesheet" />
 	<!-- Swiper slider -->
 	<link href="${context}/resources/rainbow/css/external/idangerous.swiper.css" rel="stylesheet" />
+	<!-- Magnific-popup -->
+    <link href="${context}/resources/rainbow/css/external/magnific-popup.css" rel="stylesheet" />
 	<!-- REVOLUTION BANNER CSS SETTINGS -->
 	<link rel="stylesheet" type="text/css" href="${context}/resources/rainbow/rs-plugin/css/settings.css" media="screen" />
 	<!-- Custom -->
@@ -53,7 +55,6 @@
 	<script src="https://maps.google.com/maps/api/js?sensor=true"></script> 
 	<%-- <!--*** Google map infobox  ***-->
 	<script src="${context}/resources/rainbow/js/external/infobox.js"></script> --%>
-     
 </head>
 
 <body>
