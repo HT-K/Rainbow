@@ -18,6 +18,15 @@ public class AdminServiceImpl implements AdminService{
 	private static final Logger logger = LoggerFactory.getLogger(AdminService.class);
 	@Autowired SqlSession sqlSession; 
 	
+	
+	
+	@Override
+	public int input(MovieDTO movie) {
+		logger.info("MovieService-input{}");
+		MovieMapper mapper = sqlSession.getMapper(MovieMapper.class);
+		return mapper.insert(movie);
+	}
+	
 	@Override
 	public List<MovieDTO> getList(MovieDTO movie) {
 		logger.info("MovieService-getList{}");
@@ -36,12 +45,8 @@ public class AdminServiceImpl implements AdminService{
 		MovieMapper mapper = sqlSession.getMapper(MovieMapper.class);
 		return mapper.update(movie);
 	}
-	@Override
-	public int remove(MovieDTO movie) {
-		logger.info("MovieService-remove{}");
-		MovieMapper mapper = sqlSession.getMapper(MovieMapper.class);
-		return mapper.delete(movie);
-	}
+	
+	
 
 
 }

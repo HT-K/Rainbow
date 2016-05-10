@@ -1,106 +1,99 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<div id="edit">
-		<div class="editTop">
-			<h2 class="text-center">${movie.title} 상세정보</h2>
-		</div>					
-		<div class="editCenter row">
-			<form >
-				<fieldset class="editField">
-					<div class="form-group">
-					 	<label for="input_id" class="col-sm-4 control-label">title</label>
-					 	<div class="col-sm-4">
-							<input type="text" class="form-control" id="title" name="title" value="${movie.title}" />
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="input_pw" class="col-sm-4 control-label">rating</label>
-					 	<div class="col-sm-4">
-						<input type="text" class="form-control" id="rating" name="rating" value="${movie.rating}"/>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="input_name" class="col-sm-4 control-label">genre</label>
-					 	<div class="col-sm-4">
-								<input type="text" class="form-control" id="genre" name="genre" value="${movie.genre}" />
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="input_name" class="col-sm-4 control-label">openDate</label>
-					 	<div class="col-sm-4">
-							<input type="text" class="form-control" id="openDate" name="openDate" value="${movie.openDate}" />
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="input_name" class="col-sm-4 control-label">grade</label>
-					 	<div class="col-sm-4">
-							<input type="text" class="form-control" id="grade" name="grade" value="${movie.grade}" />
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="input_name" class="col-sm-4 control-label">runningtime</label>
-					 	<div class="col-sm-4">
-							<input type="text" class="form-control" id="runningtime" name="runningtime" value="${movie.runningtime}" />
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="input_name" class="col-sm-4 control-label">director</label>
-					 	<div class="col-sm-4">
-							<input type="text" class="form-control" id="director" name="director" value="${movie.director}" />
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="input_name" class="col-sm-4 control-label">actor</label>
-					 	<div class="col-sm-4">
-							<input type="text" class="form-control" id="actor" name="actor" value="${movie.actor}" />
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="input_name" class="col-sm-4 control-label">content</label>
-					 	<div class="col-sm-4">
-							<input type="text" class="form-control" id="content" name="content" value="${movie.content}" />
-						</div>
-					</div>
-					<%-- <div class="form-group">
-						<label for="input_name" class="col-sm-4 control-label">image</label>
-					 	<div class="col-sm-4">
-							<input type="text" class="form-control" id="image" name="image" value="${movie.image}" />
-						</div>
-					</div> --%>
-					<div class="form-group">
-					 	<label for="input_id" class="col-sm-4 control-label">movie Image</label>
-					 	<div class="col-sm-2">
-							<img src="${img}/movie/${movie.image}" alt="" style="width:200px;height:230px"/>
-						</div>
-					 	<div class="col-sm-2">
-							<input type="file" id="image" name="image" />
-						</div>
-					</div>
-					
-					
-				</fieldset>
-			</form>
-      			   <div class="input_button text-center">
-						<button  id="updateButton">영화정보 수정</button>
-						<button  id="deleteButton">영화정보 삭제</button>
-					</div>
-		</div>
-	</div>
-		<script>
-	$(function() {
-		$form = $('form');
-		/*
-		=== AJAX 적용 전 방식 ===
-		$form.addClass('form-horizontal').attr('method','post')
-			.attr('action','${context}/member/update.do');
-		*/
-		$form.addClass('form-horizontal');
-		$('#updateButton').addClass('btn btn-primary').click(function() {
-			global.setContext('${context}');
-			movie.update();
-		});
-		$('#deleteButton').addClass('btn btn-primary').click(function() {
-		       location.href = '${context}/admin/delete?title=${moive.title}';
-	          	 });
-	         });
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> <!-- 부트스트랩 홈페이지에서 CDN으로 가져온다. -->
 
-	</script>
+<!-- edit content -->
+<article class="container" style="margin-top: 30px">
+		<div class="editTop">
+			<h2 class="text-center"> ${movie.title}상세정보</h2>
+		</div>
+		
+		<form class="form-horizontal" id="edit" style="margin-top: 30px">
+			<div class="form-group">
+	        	<label class="col-sm-3 control-label" for="title">title</label>
+		        <div class="col-sm-6">
+		        	<input type="text" value="${movie.title}"  class="form-control" readonly="readonly"/> 
+		        </div>
+	        </div>
+	        <div class="form-group">
+	        	<label class="col-sm-3 control-label" for="rating">rating</label>
+		        <div class="col-sm-6">
+		        	<input type="text" value="${movie.rating}"  class="form-control" readonly="readonly"/> 
+		        </div>
+	        </div>
+	        <div class="form-group">
+	        	<label class="col-sm-3 control-label" for="genre">genre</label>
+		        <div class="col-sm-6">
+		        	<input type="text" value="${movie.genre}"  class="form-control" readonly="readonly"/> 
+		        </div>
+	        </div>
+	        <div class="form-group">
+	        	<label class="col-sm-3 control-label" for="openDate">openDate</label>
+		        <div class="col-sm-6">
+		        	<input type="text" value="${movie.openDate}"  class="form-control" readonly="readonly"/> 
+		        </div>
+	        </div>
+	        <div class="form-group">
+	        	<label class="col-sm-3 control-label" for="grade">grade</label>
+		        <div class="col-sm-6">
+		        	<input type="text" value="${movie.grade}"  class="form-control" readonly="readonly"/> 
+		        </div>
+	        </div>
+	        <div class="form-group">
+	        	<label class="col-sm-3 control-label" for="runningtime">runningtime</label>
+		        <div class="col-sm-6">
+		        	<input type="text" value="${movie.runningtime}"  class="form-control" readonly="readonly"/> 
+		        </div>
+	        </div>
+	        <div class="form-group">
+	        	<label class="col-sm-3 control-label" for="director">director</label>
+		        <div class="col-sm-6">
+		        	<input type="text" value="${movie.director}"  class="form-control" readonly="readonly"/> 
+		        </div>
+	        </div>
+	        <div class="form-group">
+	        	<label class="col-sm-3 control-label" for="actor">actor</label>
+		        <div class="col-sm-6">
+		        	<input type="text" value="${movie.actor}"  class="form-control" readonly="readonly"/> 
+		        </div>
+	        </div>
+	        <div class="form-group">
+	        	<label class="col-sm-3 control-label" for="content">content</label>
+		        <div class="col-sm-6" >
+		        	<input type="text" value="${movie.content}"  class="form-control" readonly="readonly"/> 
+		        </div>
+	        </div>
+	        <div class="form-group">
+	        	<label class="col-sm-3 control-label" for="image">image</label>
+		        <div class="col-sm-6">
+		        	<img src=img src="${context}/resources/rainbow/images/main/${movie.image}" alt="" style="width:200px;height:230px"/>
+		        </div>
+	        </div>
+			
+			<div class="form-group">
+	        	<div class="col-sm-12 text-center">
+	            	<button class="btn btn-primary" id="updateBtn" name="updateBtn">영화정보 수정<i class="fa fa-check spaceLeft"></i></button>
+	            	<button class="btn btn-danger" id="cancelBtn" name="cancelBtn">취소<i class="fa fa-times spaceLeft"></i></button>
+	        	</div>
+	        </div>
+		</form>
+</article>
+<!-- edit content End -->
+ 
+
+<script type="text/javascript">
+	$(function() {
+			$('#updateBtn').click(function(e) { 
+			e.preventDefault();
+			location.href = "${context}/admin/update"
+		});
+			
+		$('#cancelBtn').click(function(e) {
+			e.preventDefault();
+			location.href = "${context}/admin/content";
+		});
+	});
+	 
+</script>
