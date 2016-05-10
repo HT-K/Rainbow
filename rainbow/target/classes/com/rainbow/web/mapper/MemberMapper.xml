@@ -39,6 +39,7 @@
 	
 	<select id="login" parameterType="com.rainbow.web.member.MemberDTO" resultType="com.rainbow.web.member.MemberDTO">
 		SELECT 
+			member_seq AS memberSeq,
     		id,
 			password,
 			name,
@@ -47,6 +48,7 @@
 			email,
    			point,
    			grade,
+   			cash,
    			DATE_FORMAT(reg_date,'%Y-%m-%d %T') AS regDate
     	FROM Member
     	WHERE id = #{id} and password = #{password}
@@ -84,4 +86,9 @@
 		FROM Member 
 		WHERE id = #{id}
 	</delete>
+		<update id="sellVod" parameterType="hashmap">
+		UPDATE Member 
+		SET cash = #{price}
+		WHERE member_seq = #{memSeq} 
+	</update>
 </mapper>

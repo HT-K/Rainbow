@@ -169,62 +169,63 @@ SELECT * FROM Member;
 스파이 브릿지 : Bridge of Spies, 2015
 스파이 서바이버 : Survivor, 2015
 연인들 : Die geliebten Schwestern, Beloved Sisters, 2014
+<!-- URL 변경되면 http://nuridol.net/ut_convert.html 에서 확인한다 -->
 update Vod 
-set vod_url = '' 
+set vod_url = 'https://www.youtube.com/embed/VJaLrINeZPc' 
 WHERE vod_name ='갓 블레스 아메리카 : God Bless America, 2011';
 update Vod 
-set vod_url = '' 
+set vod_url = 'https://www.youtube.com/embed/vXNfNRoJ0yU' 
 WHERE vod_name ='개구리왕국 : Frog Kingdom, 2013';
 update Vod 
-set vod_url = '' 
+set vod_url = 'https://www.youtube.com/embed/Qw9a1AKTsuc' 
 WHERE vod_name ='겨울왕국 : Frozen, 2013';
 update Vod 
-set vod_url = '' 
+set vod_url = 'https://www.youtube.com/embed/myMNKA_ANWg' 
 WHERE vod_name ='고스트보트 : Ghostboat, 2014';
 update Vod 
-set vod_url = '' 
+set vod_url = 'https://www.youtube.com/embed/thuFlPtt4zc' 
 WHERE vod_name ='구스범스 : Goosebumps, 2015';
 update Vod 
-set vod_url = '' 
+set vod_url = 'https://www.youtube.com/embed/UP38GHwWg8I' 
 WHERE vod_name ='내부자들 : Inside Men, 2015';
 update Vod 
-set vod_url = '' 
+set vod_url = 'https://www.youtube.com/embed/D7ZWl0HCk14' 
 WHERE vod_name ='더 랍스터 : The Lobster, 2015';
 update Vod 
-set vod_url = '' 
+set vod_url = 'https://www.youtube.com/embed/C7PVxJ944mk' 
 WHERE vod_name ='동경가족 : Tokyo Family, 2013';
 update Vod 
-set vod_url = '' 
+set vod_url = 'https://www.youtube.com/embed/hD7yzQ-DCXU' 
 WHERE vod_name ='드래곤 파이터 2015 : Dracano, 2013';
 update Vod 
-set vod_url = '' 
+set vod_url = 'https://www.youtube.com/embed/mMHejG4lPHs' 
 WHERE vod_name ='런던시계탑 밑에서 사랑을 찾을 확률 : Man Up, 2015';
 update Vod 
-set vod_url = '' 
+set vod_url = 'https://www.youtube.com/embed/4FHpmn-KYec' 
 WHERE vod_name ='로미오와 줄리엣 : Romeo + Juliet, 1996';
 update Vod 
-set vod_url = '' 
+set vod_url = 'https://www.youtube.com/embed/JS-0GMTDIhY' 
 WHERE vod_name ='버스 657 : Heist, Bus 657, 2015';
 update Vod 
-set vod_url = '' 
+set vod_url = 'https://www.youtube.com/embed/Zy53IJZ8z8Y' 
 WHERE vod_name ='버크셔 전기톱 살인사건 : Berkshire County, 2014';
 update Vod 
-set vod_url = '' 
+set vod_url = 'https://www.youtube.com/embed/GgO2HkVGQmw' 
 WHERE vod_name ='볼트 : Bolt, 2008';
 update Vod 
-set vod_url = '' 
+set vod_url = 'https://www.youtube.com/embed/sGbxmsDFVnE' 
 WHERE vod_name ='스타워즈 : 깨어난 포스 , Star Wars : The Force Awakens, 2015';
 update Vod 
-set vod_url = '' 
+set vod_url = 'https://www.youtube.com/embed/wRqjFy5nLeA' 
 WHERE vod_name ='스파이 브릿지 : Bridge of Spies, 2015';
 update Vod 
-set vod_url = '' 
+set vod_url = 'https://www.youtube.com/embed/2caXbRdQU-Y' 
 WHERE vod_name ='스파이 서바이버 : Survivor, 2015';
 update Vod 
-set vod_url = '' 
+set vod_url = 'https://www.youtube.com/embed/PDVJwzrUxos' 
 WHERE vod_name ='연인들 : Die geliebten Schwestern, Beloved Sisters, 2014';
 update Vod 
-set vod_url = 'http://videofarm.daum.net/controller/video/viewer/Video.html?vid=z9pWHM9rHqU$&play_loc=undefined' 
+set vod_url = 'https://www.youtube.com/embed/WVMILGfcM8E' 
 WHERE vod_name ='친구 : Friend, 2001';
 
 

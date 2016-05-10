@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!-- <!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Document</title>
-모바일 사용을 위한 선언
+<!-- 모바일 사용을 위한 선언 -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--  -->
 
-
-JQuery Mobile
+<!-- JQuery Mobile -->
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
@@ -23,17 +23,17 @@ JQuery Mobile
 		$("body > [data-role='header'] [data-role='navbar']").navbar();
 	});
 </script>
-ajax
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<!-- ajax -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> -->
 
-BootStrap
+<!-- BootStrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
+<!--  -->
   
-</head> -->
-<%-- <body>
+</head>
+<body>
 	<div data-role="panel" id="outside" data-display="push" data-theme="b">
 		<ul data-role="listview">
 			<li id='logintab' style="display: '';"><div><p style="margin-left: 31%;">로그인이필요합니다</p>
@@ -66,4 +66,4 @@ BootStrap
   			   <li id ="free"><a href="#" class="ui-link ui-btn">무료</a></li> 
      		</ul>
 		</div>
-	</div> --%>
+	</div>

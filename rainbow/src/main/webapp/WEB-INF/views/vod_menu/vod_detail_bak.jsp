@@ -49,6 +49,6 @@
       </div>
       <p style="text-align: left;">${vod.vodContent}</p>   
       </div><!-- /content --> 
- <jsp:include page="../vod_global/footer.jsp" />
+ <%-- <jsp:include page="../vod_global/footer.jsp" /> --%>
    </div><!-- /page -->
 </div>
