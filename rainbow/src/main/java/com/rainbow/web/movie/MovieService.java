@@ -5,7 +5,7 @@ import java.util.List;
 public interface MovieService {
 	public int input(MovieDTO movie);
 	public List<MovieDTO> getList(MovieDTO movie);
-	public MovieDTO getByName(MovieDTO movie);
+	public List<MovieDTO> getByName(MovieDTO movie);
 	public MovieDTO getById(MovieDTO movie);
 	public MovieDTO getBySeq(MovieDTO movie);
 	public int count();
