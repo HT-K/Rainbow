@@ -45,7 +45,7 @@
 	
 	<delete id="delete" parameterType="com.rainbow.web.movie.MovieDTO">
 	DELETE FROM Movie
-	WHERE movie_seq= #{movie_seq}
+	WHERE movie_seq = #{movieSeq}
 	</delete>
 	
 </mapper>

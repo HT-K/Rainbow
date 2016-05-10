@@ -7,75 +7,76 @@
 <!-- edit content -->
 <article class="container" style="margin-top: 30px">
 		<div class="editTop">
-			<h2 class="text-center"> ${movie.title}상세정보</h2>
+			<h2 class="text-center"> ${movie.title} INFORMATION</h2>
 		</div>
 		
 		<form class="form-horizontal" id="edit" style="margin-top: 30px">
 			<div class="form-group">
-	        	<label class="col-sm-3 control-label" for="title">title</label>
+	        	<label class="col-sm-3 control-label" for="title">TITLE</label>
 		        <div class="col-sm-6">
 		        	<input type="text" value="${movie.title}"  class="form-control" readonly="readonly"/> 
 		        </div>
 	        </div>
 	        <div class="form-group">
-	        	<label class="col-sm-3 control-label" for="rating">rating</label>
+	        	<label class="col-sm-3 control-label" for="rating">RATING</label>
 		        <div class="col-sm-6">
 		        	<input type="text" value="${movie.rating}"  class="form-control" readonly="readonly"/> 
 		        </div>
 	        </div>
 	        <div class="form-group">
-	        	<label class="col-sm-3 control-label" for="genre">genre</label>
+	        	<label class="col-sm-3 control-label" for="genre">GERNE</label>
 		        <div class="col-sm-6">
 		        	<input type="text" value="${movie.genre}"  class="form-control" readonly="readonly"/> 
 		        </div>
 	        </div>
 	        <div class="form-group">
-	        	<label class="col-sm-3 control-label" for="openDate">openDate</label>
+	        	<label class="col-sm-3 control-label" for="openDate">RELEASE DATE</label>
 		        <div class="col-sm-6">
 		        	<input type="text" value="${movie.openDate}"  class="form-control" readonly="readonly"/> 
 		        </div>
 	        </div>
 	        <div class="form-group">
-	        	<label class="col-sm-3 control-label" for="grade">grade</label>
+	        	<label class="col-sm-3 control-label" for="grade">AGE</label>
 		        <div class="col-sm-6">
 		        	<input type="text" value="${movie.grade}"  class="form-control" readonly="readonly"/> 
 		        </div>
 	        </div>
 	        <div class="form-group">
-	        	<label class="col-sm-3 control-label" for="runningtime">runningtime</label>
+	        	<label class="col-sm-3 control-label" for="runningtime">RUNNNIG TIME</label>
 		        <div class="col-sm-6">
 		        	<input type="text" value="${movie.runningtime}"  class="form-control" readonly="readonly"/> 
 		        </div>
 	        </div>
 	        <div class="form-group">
-	        	<label class="col-sm-3 control-label" for="director">director</label>
+	        	<label class="col-sm-3 control-label" for="director">DIRECTOR</label>
 		        <div class="col-sm-6">
 		        	<input type="text" value="${movie.director}"  class="form-control" readonly="readonly"/> 
 		        </div>
 	        </div>
 	        <div class="form-group">
-	        	<label class="col-sm-3 control-label" for="actor">actor</label>
+	        	<label class="col-sm-3 control-label" for="actor">MAIN ACTOR</label>
 		        <div class="col-sm-6">
 		        	<input type="text" value="${movie.actor}"  class="form-control" readonly="readonly"/> 
 		        </div>
 	        </div>
 	        <div class="form-group">
-	        	<label class="col-sm-3 control-label" for="content">content</label>
+	        	<label class="col-sm-3 control-label" for="content">SUMMARY</label>
 		        <div class="col-sm-6" >
 		        	<input type="text" value="${movie.content}"  class="form-control" readonly="readonly"/> 
 		        </div>
 	        </div>
 	        <div class="form-group">
-	        	<label class="col-sm-3 control-label" for="image">image</label>
+	        	<label class="col-sm-3 control-label" for="image">POSTER</label>
 		        <div class="col-sm-6">
-		        	<img src=img src="${context}/resources/rainbow/images/main/${movie.image}" alt="" style="width:200px;height:230px"/>
+		        	<img src="${context}/resources/rainbow/images/main/${movie.image}" alt="" style="width:200px;height:230px"/>
 		        </div>
 	        </div>
 			
 			<div class="form-group">
 	        	<div class="col-sm-12 text-center">
-	            	<button class="btn btn-primary" id="updateBtn" name="updateBtn">영화정보 수정<i class="fa fa-check spaceLeft"></i></button>
-	            	<button class="btn btn-danger" id="cancelBtn" name="cancelBtn">취소<i class="fa fa-times spaceLeft"></i></button>
+	            	<button class="btn btn-primary" id="updateBtn" name="updateBtn">UPDATE<i class="fa fa-check spaceLeft"></i></button>
+	            	<button class="btn btn-warning" id="cancelBtn" name="cancelBtn">CANCEL<i class="fa fa-times spaceLeft"></i></button>
+	            	<button class="btn btn-warning" id="deleteBtn" name="deleteBtn">DELETE<i class="fa fa-times spaceLeft"></i></button>
 	        	</div>
 	        </div>
 		</form>
@@ -93,6 +94,12 @@
 		$('#cancelBtn').click(function(e) {
 			e.preventDefault();
 			location.href = "${context}/admin/content";
+		});
+		
+		$('#deleteBtn').click(function(e) {
+			e.preventDefault();
+			location.href = '${context}/admin/delete?movieSeq=${movie.movieSeq}';
+			alert('영화삭제 버튼 클릭 !!')    
 		});
 	});
 	 

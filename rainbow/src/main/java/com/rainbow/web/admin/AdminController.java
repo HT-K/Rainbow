@@ -55,24 +55,24 @@ public class AdminController {
    @Autowired ReplyService repleyService;
    
    
-   @RequestMapping("/addMovie")
-	public String input (){
-		return "admin/addMovie";
+   @RequestMapping("/input_form")
+	public String input_form (){
+		return "admin/input_form";
 	}
    
    @RequestMapping(value="/input", method=RequestMethod.POST)
-	public String input(@RequestParam("title")String title,
-			@RequestParam("rating")int rating,
-			@RequestParam("genre")String genre,
-			@RequestParam("openDate")String openDate,
-			@RequestParam("grade")String grade,
-			@RequestParam("runningtime")String runningtime,
-			@RequestParam("director")String director,
-			@RequestParam("actor")String actor,
-			@RequestParam("content")String content,
-			@RequestParam("image")MultipartFile image,
-			Model model, HttpSession session){
-		logger.info("====== ArticleController-addMovie()======");
+	public String input (@RequestParam(value="title",required=false)String title,
+			@RequestParam(value="rating",required=false)int rating,
+			@RequestParam(value="genre",required=false)String genre,
+			@RequestParam(value="openDate",required=false)String openDate,
+			@RequestParam(value="grade",required=false)String grade,
+			@RequestParam(value="runningtime",required=false)String runningtime,
+			@RequestParam(value="director",required=false)String director,
+			@RequestParam(value="actor",required=false)String actor,
+			@RequestParam(value="content",required=false)String content,
+			@RequestParam(value="image",required=false)MultipartFile image,
+			Model model){
+		logger.info("====== ArticleController-input()======");
 		logger.info("=== title {} ===",title);
 		logger.info("=== rating {} ===",rating);
 		logger.info("=== genre {} ===",genre);
@@ -107,11 +107,11 @@ public class AdminController {
 		if (result == 1) {
 			logger.info("영화 등록 성공!! ");
 			model.addAttribute("movie", movie);
-			view = "redirect:/global/main.user";
+			view = "redirect:/admin/content";
 		} else {
 			logger.info("영화 등록 실패!! ");
 			model.addAttribute("movie", "");
-			view = "redirect:/admin/addMovie";
+			view = "redirect:/admin/input";
 		}
 		logger.info("MYSQL이 보낸 결과 : {}",result);
 		return view; 
@@ -210,5 +210,21 @@ public class AdminController {
 		return view;
 		
 	}
+   	@RequestMapping("/delete")
+	public String delete(@RequestParam("movieSeq")int movieSeq, Model model){
+		logger.info("=== movie-delete() ===");
+		logger.info("삭제 할 영화 번호 ={}",movie.getMovieSeq());
+		String view = "";
+		int result = service.remove(movie);
+		if (result == 1) {
+			model.addAttribute("movie",movie);
+			logger.info("영화삭제 성공");
+			view = "redirect:/admin/content";
+		} else {
+			logger.info("영화삭제 실패");
+			view = "redirect:/admin/content";
+		}
+		return view;
+	}	
 
 }

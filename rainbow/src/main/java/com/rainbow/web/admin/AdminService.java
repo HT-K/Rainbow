@@ -6,7 +6,7 @@ import com.rainbow.web.movie.MovieDTO;
 
 
 public interface AdminService {
-	
+	//영화 등록
 	public int input(MovieDTO movie);
 	//영화 전체 리스트
 	public List<MovieDTO> getList(MovieDTO movie);
@@ -15,5 +15,6 @@ public interface AdminService {
 	//영화 업데이트
 	public int update(MovieDTO movie);
 	//영화 삭제
+	public int remove(MovieDTO movie);	
 
 }

@@ -45,6 +45,13 @@ public class AdminServiceImpl implements AdminService{
 		MovieMapper mapper = sqlSession.getMapper(MovieMapper.class);
 		return mapper.update(movie);
 	}
+
+	@Override
+	public int remove(MovieDTO movie) {
+		logger.info("MovieService-remove{}");
+		MovieMapper mapper = sqlSession.getMapper(MovieMapper.class);
+		return mapper.delete(movie);
+	}
 	
 	
 
