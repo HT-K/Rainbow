@@ -25,4 +25,23 @@ SELECT COUNT(*) FROM ReserveSeat
 ---------------------------------
 
 UPDATE ReserveSeat
-		SET movie_title = '아이언맨3';
+		SET seat = ' '
+		WHERE movie_title ='헬보이';
+
+INSERT INTO ReserveSeat(movie_title,screen_number,reserve_date,begin_time,seat)
+		VALUES ('트랜스포머','2관','05/02/2016','09:40','B5');
+		
+
+delete from ReserveSeat;
+SELECT
+		reserve_seq As reserveSeq,
+		movie_title AS movieTitle,
+		screen_number AS screenNumber,
+		reserve_date AS reserveDate,
+		begin_time AS beginTime,
+		seat
+	FROM ReserveSeat
+	WHERE 
+		movie_title = '트랜스포머' AND
+		reserve_date = '05/02/2016' AND
+		begin_time = '09:40' AND id = 'kim';

@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rainbow.web.mapper.PurchaseMapper;
+import com.rainbow.web.mapper.ReserveSeatMapper;
+import com.rainbow.web.reserveSeat.ReserveSeatDTO;
 
 @Service
 public class PurchaseServiceImpl implements PurchaseService {
@@ -63,5 +65,12 @@ public class PurchaseServiceImpl implements PurchaseService {
 		logger.info("PurchaseService - delete() 진입 후 ");
 		PurchaseMapper mapper = sqlSession.getMapper(PurchaseMapper.class);
 		return mapper.delete(purchase);
+	}
+
+	@Override
+	public List<PurchaseDTO> getByReserve(PurchaseDTO purchase) {
+		logger.info("PurchaseService - getByReserve() 진입 후 ");
+		PurchaseMapper mapper = sqlSession.getMapper(PurchaseMapper.class);
+		return mapper.selectByReserve(purchase);
 	}
 }

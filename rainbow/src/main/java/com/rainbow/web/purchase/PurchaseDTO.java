@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class PurchaseDTO {
 	private int purchaseSeq, adultCount, studentCount, purchasePrice;
-	private String memberId, movieTitle, screenNumber, beginTime, reserveSeat, purchaseTime;
+	private String memberId, movieTitle, screenNumber, beginTime, reserveSeat, date;
 
 	public int getPurchaseSeq() {
 		return purchaseSeq;
@@ -79,11 +79,21 @@ public class PurchaseDTO {
 		this.purchasePrice = purchasePrice;
 	}
 
-	public String getPurchaseTime() {
-		return purchaseTime;
+	public String getDate() {
+		return date;
 	}
 
-	public void setPurchaseTime(String purchaseTime) {
-		this.purchaseTime = purchaseTime;
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	@Override
+	public String toString() {
+		return "PurchaseDTO [purchaseSeq=" + purchaseSeq + ", adultCount="
+				+ adultCount + ", studentCount=" + studentCount
+				+ ", purchasePrice=" + purchasePrice + ", memberId=" + memberId
+				+ ", movieTitle=" + movieTitle + ", screenNumber="
+				+ screenNumber + ", beginTime=" + beginTime + ", reserveSeat="
+				+ reserveSeat + ", date=" + date + "]";
 	}
 }
