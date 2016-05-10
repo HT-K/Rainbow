@@ -99,13 +99,15 @@
    <script src="${context}/resources/rainbow/js/external/jquery.selectbox-0.2.min.js"></script>
    <!-- Swiper slider -->
    <script src="${context}/resources/rainbow/js/external/idangerous.swiper.min.js"></script>
+   <!-- Magnific-popup -->
+   <script src="${context}/resources/rainbow/js/external/jquery.magnific-popup.min.js"></script>
    <!-- Stars rate -->
    <script src="${context}/resources/rainbow/js/external/jquery.raty.js"></script>
    <!-- Form element -->
    <script src="${context}/resources/rainbow/js/external/form-element.js"></script>
    <%-- <!-- Form validation -->
-   <script src="${context}/resources/rainbow/js/form.js"></script>
-   <!-- Twitter feed -->
+   <script src="${context}/resources/rainbow/js/form.js"></script> --%>
+   <%-- <!-- Twitter feed -->
    <script src="${context}/resources/rainbow/js/external/twitterfeed.js"></script> --%>
    <!-- Custom -->
    <script src="${context}/resources/rainbow/js/custom.js"></script>

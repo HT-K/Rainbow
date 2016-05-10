@@ -18,6 +18,8 @@ import java.util.List;
 
 
 
+
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -37,6 +39,8 @@ import com.rainbow.web.movie.Constants;
 import com.rainbow.web.movie.MovieDTO;
 import com.rainbow.web.movie.MovieService;
 import com.rainbow.web.movie.FileUpload;
+import com.rainbow.web.reply.ReplyDTO;
+import com.rainbow.web.reply.ReplyService;
 
 @Controller
 @SessionAttributes("movie")
@@ -47,6 +51,8 @@ public class AdminController {
    @Autowired MovieDTO movie;
    @Autowired AdminService service;
    @Autowired MovieService movieService;
+   @Autowired ReplyDTO reply;
+   @Autowired ReplyService repleyService;
    
    
    @RequestMapping("/addMovie")

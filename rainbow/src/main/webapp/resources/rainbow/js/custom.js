@@ -70,7 +70,7 @@
         $('.overlay').removeClass('open').addClass('close');
 
         setTimeout(function(){
-            $('.overlay').removeClass('close');}, 10);
+            $('.overlay').removeClass('close'); }, 10);
     });
 
 function init_Elements () {
@@ -361,7 +361,7 @@ function init_Home(context) {
         score: 0,
         path: context + '/resources/rainbow/images/rate/',
         /*path: './resources/rainbow/images/rate/',*/
-        starOff : 'star-off.svg',
+        starOff : 'star-on.svg',
         starOn  : 'star-on.svg' 
     });
 
@@ -1066,7 +1066,7 @@ function init_MovieList (context) {
         score: 0,
         path: context + '/resources/rainbow/images/rate/',
         /*path: '../resources/rainbow/images/rate/',*/
-        starOff : 'star-off.svg',
+        starOff : 'star-on.svg',
         starOn  : 'star-on.svg' 
     });
 
@@ -1109,7 +1109,7 @@ function init_MovieList (context) {
                 });
 }
 
-function init_MoviePage () {
+function init_MoviePage (context) {
     "use strict";
 
 	//1. Rating scrore init
@@ -1117,8 +1117,8 @@ function init_MoviePage () {
     $('.score').raty({
         width:130, 
         score: 5,
-        path: './resources/rainbow/images/rate/',
-        starOff : 'star-off.svg',
+        path: context + '/resources/rainbow/images/rate/',
+        starOff : 'star-on.svg',
         starOn  : 'star-on.svg' 
     });
 
@@ -1642,7 +1642,7 @@ function init_MoviePage () {
     });
 }
 
-function init_MoviePageFull () {
+function init_MoviePageFull (context) {
     "use strict";
 
             //init employee sliders

@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.rainbow.web.mapper.ReplyMapper;
 
 
@@ -29,21 +30,21 @@ public class ReplyServiceImpl implements ReplyService{
 	public List<ReplyDTO> getList() {
 		logger.info("=== RecordService : getList() === ");
 		ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
-		return mapper.getList();
+		return mapper.selectList();
 	}
 
 	@Override
-	public List<ReplyDTO> getByRelySeq(ReplyDTO reply) {
+	public List<ReplyDTO> getBySeq(ReplyDTO reply) {
 		logger.info("=== RecordService : getByRelySeq() === ");
 		ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
-		return mapper.getList();
+		return mapper.selectBySeq(reply);
 	}
 
 	@Override
-	public int count() {
+	public int count(ReplyDTO reply) {
 		logger.info("=== replyService : count() === ");
 		ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
-		return mapper.count();
+		return mapper.count(reply);
 	}
 
 	@Override

@@ -6,7 +6,7 @@ CREATE TABLE Reply(
 	reg_time DATETIME,
 	reply_content TEXT,
 	movie_seq INT
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ----------------------------------------
 
 SELECT * FROM Reply;
@@ -21,4 +21,7 @@ WHERE writer_name = 'hong';
 
 SELECT * FROM Reply WHERE reply_seq = '2';
 
-DROP TABLE Reply;
+DROP TABLE Reply CASCADE;
+
+INSERT INTO Reply(writer_name, reg_time, reply_content, movie_seq)
+VALUES ('김희태', SYSDATE(), '1232131', 10);
