@@ -31,7 +31,7 @@
 	                                <p>주인공 : ${list.actor}</p>
 	                             </li>
 	                             <li class="last-block">
-	                                 <a href="movie-page-left.html" class="slide__link">more</a>
+	                                 <a href="${context}/movie/movie_detail/${list.movieSeq}" class="slide__link">more</a>
 	                             </li>
 	                         </ul>
 	                     </div>

@@ -23,8 +23,8 @@
                     <div class="tags tags--unmarked">
                         <span class="tags__label">상영 영화 목록 리스트 : </span>
                             <ul>
-                                <li class="item-wrap"><a href="#" class="tags__item item-active" data-filter='all'>개봉일순</a></li>
-                                <li class="item-wrap"><a href="#" class="tags__item" data-filter='release'>평점순</a></li>
+                                <li class="item-wrap"><a href="#" class="tags__item item-active" data-filter='all'>평점순</a></li>
+                                <li class="item-wrap"><a href="#" class="tags__item" data-filter='release'>개봉일순</a></li>
                             </ul>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                    <div class="movie movie--preview movie--full release">
                         <div class="col-sm-4 col-md-3 col-lg-3">
                             <div class="movie__images">
-                               <img alt='' src="${context}/resources/rainbow/images/main/${list.image}" height="300">
+                               <img alt='' src="${context}/resources/rainbow/images/main/${list.image}" height="283">
                             </div>
                        </div>
    
