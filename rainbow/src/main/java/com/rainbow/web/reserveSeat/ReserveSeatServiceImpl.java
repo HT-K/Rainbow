@@ -74,4 +74,12 @@ public class ReserveSeatServiceImpl implements ReserveSeatService{
 		return mapper.delete(reserveSeat);
 	}
 
+	@Override
+	public int deleteBySeat(ReserveSeatDTO reserveSeat) {
+		// D 선택한 좌석 삭제
+		logger.info("ReserveSeatServie - deleteBySeat() 진입 후 ");
+		ReserveSeatMapper mapper = sqlSession.getMapper(ReserveSeatMapper.class);
+		return mapper.deleteBySeat(reserveSeat);
+	}
+
 }

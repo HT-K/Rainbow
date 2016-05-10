@@ -8,7 +8,7 @@ CREATE TABLE Purchase(
 	screen_number VARCHAR(10),
 	reserve_seat VARCHAR(50),
 	purchase_price INT,
-	purchase_time DATETIME,
+	purchase_time VARCHAR(30),
 	adult_count INT,
 	student_count INT
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -26,8 +26,12 @@ REFERENCES RainbowMovie(movie_seq) ON DELETE CASCADE;
 -----------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-INSERT INTO RainbowPurchase (purchase_seq, member_id, movie_title, screen_number, begin_time, reserve_seat, purchase_price, purchase_time, adult_count, student_count) 
-VALUES (1, 'hong', '캡틴 아메리카: 시빌 워', '1관', '2:00', 'A11', 9000, NOW(), 1, 0);
+INSERT INTO Purchase (member_id, movie_title, screen_number, begin_time, reserve_seat, purchase_price, purchase_time) 
+VALUES ('kim', '아이언맨3', '1관', '09:40', 'A2', 8000, '05/02/2016');
+INSERT INTO Purchase (member_id, movie_title, screen_number, begin_time, reserve_seat, purchase_price, purchase_time) 
+VALUES ('test', '아이언맨3', '1관', '09:40', 'A5', 8000, '05/02/2016');
+INSERT INTO Purchase (member_id, movie_title, screen_number, begin_time, reserve_seat, purchase_price, purchase_time) 
+VALUES ('test2', '아이언맨3', '1관', '09:40', 'A9', 8000, '05/02/2016');
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -------------------------
@@ -39,3 +43,5 @@ SELECT * FROM Purchase;
 -- Purchase 테이블 삭제하기
 DROP TABLE Purchase CASCADE;
 ---------------------------
+UPDATE Purchase
+		SET movie_title = '트랜스포머', screen_number='2관' where purchase_seq = 4;

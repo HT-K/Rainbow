@@ -26,6 +26,8 @@ public interface ReserveSeatService {
 	public int count();
 	// U 예약된 좌석 수정
 	public int update(ReserveSeatDTO reserveSeat);
+	// D 예약된 좌석 삭제(좌석선택 취소)
+	public int deleteBySeat(ReserveSeatDTO reserveSeat);
 	// D 예약된 좌석 삭제
 	public int delete(ReserveSeatDTO reserveSeat);
 }

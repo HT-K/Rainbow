@@ -4,8 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.rainbow.web.mapper.ReserveSeatMapper"> 
 	<insert id="insert" parameterType="com.rainbow.web.reserveSeat.ReserveSeatDTO"> 
-		INSERT INTO ReserveSeat(movie_title,screen_number,reserve_date,begin_time,seat)
-		VALUES (#{movieTitle},#{screenNumber},#{reserveDate},#{beginTime},#{seat})
+		INSERT INTO ReserveSeat(movie_title,reserve_date,begin_time,seat,id,price)
+		VALUES (#{movieTitle},#{reserveDate},#{beginTime},#{seat},#{id},#{price})
 	</insert>
 	
 	<select id="selectList" resultType="com.rainbow.web.reserveSeat.ReserveSeatDTO">
@@ -26,15 +26,15 @@
 			screen_number AS screenNumber,
 			reserve_date AS reserveDate,
 			begin_time AS beginTime,
-			seat
+			seat,
+			price
 		FROM ReserveSeat
 		WHERE 
 			movie_title = #{movieTitle} AND
 			reserve_date = #{reserveDate} AND
-			begin_time = #{beginTime}
-	
+			begin_time = #{beginTime} AND 
+			id = #{id}
 	</select>
-
 	
 	<select id="selectByReserveSeq" parameterType="com.rainbow.web.reserveSeat.ReserveSeatDTO" resultType="com.rainbow.web.reserveSeat.ReserveSeatDTO"> 
 		SELECT
@@ -46,11 +46,10 @@
 			seat
 		FROM ReserveSeat
 		WHERE reserve_seq = #{reserveSeq}
-	
 	</select>
 	
 	<select id="count" resultType="int">
-		SELECT COUNT(*) FROM ReserveSeat
+		SELECT COUNT(*) FROM ReserveSeat 
 	</select>
 	
 	<update id="update" parameterType="com.rainbow.web.reserveSeat.ReserveSeatDTO">
@@ -59,9 +58,25 @@
 		WHERE reserve_seq = #{reserveSeq}
 	</update>
 	
-	<delete id="delete" parameterType="com.rainbow.web.reserveSeat.ReserveSeatDTO">
+	<!-- 좌석취소시 정보삭제 -->
+	<delete id="deleteBySeat" parameterType="com.rainbow.web.reserveSeat.ReserveSeatDTO">
 		DELETE FROM ReserveSeat
-		WHERE reserve_seq = #{reserveSeq}
+			WHERE 
+			movie_title = #{movieTitle} AND
+			reserve_date = #{reserveDate} AND
+			begin_time = #{beginTime} AND 
+			id = #{id} AND
+			seat = #{seat}
 	</delete>
 	
+	<!-- 구매완료시 정보삭제 -->
+	<delete id="delete" parameterType="com.rainbow.web.reserveSeat.ReserveSeatDTO">
+		DELETE FROM ReserveSeat
+			WHERE 
+			movie_title = #{movieTitle} AND
+			reserve_date = #{reserveDate} AND
+			begin_time = #{beginTime} AND 
+			id = #{id}
+			
+	</delete>
 </mapper>

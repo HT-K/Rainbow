@@ -5,7 +5,6 @@
 function Purchase() {}
 
 Purchase.prototype.step1Form = function(context) {
-	alert(">>>> " + context);
 	$.getJSON(context+'/purchase/step1', function(data) {
 		var step1Form = 
 			'<div class="wrapper">\
@@ -95,9 +94,7 @@ Purchase.prototype.step1Form = function(context) {
 				
 		            success : function(data) {
 		               if (data != null) {
-		                  alert(data.reserveData.movieTitle + ' 선택');
-		                  
-		                  Purchase.prototype.step2Form(context, data.seat);
+		                  Purchase.prototype.step2Form(context, data.reserveData, data.seat);
 		               } else {
 		                  alert('step2 데이터 가져오기 실패');
 		                  return null;
@@ -115,9 +112,7 @@ Purchase.prototype.step1Form = function(context) {
 	});
 }
 
-Purchase.prototype.step2Form = function(context,seat){
-	alert('step2!!');
-	
+Purchase.prototype.step2Form = function(context, reserveData, seat){
 		var step2Form =
         '<div class="wrapper place-wrapper">\
         <div class="place-form-area">\
@@ -432,7 +427,7 @@ Purchase.prototype.step2Form = function(context,seat){
            </section>\
         </div>\
         <div class="clearfix"></div>\
-        <form id="film-and-time" class="booking-form" method="get" action="${context}/purchase/step3">\
+        <form id="film-and-time" class="booking-form" method="get" action="'+context+'/purchase/step3">\
            <input type="text" name="choosen-number" class="choosen-number">\
            <input type="text" name="choosen-number--cheap" class="choosen-number--cheap">\
            <input type="text" name="choosen-number--middle" class="choosen-number--middle">\
@@ -440,11 +435,11 @@ Purchase.prototype.step2Form = function(context,seat){
            <input type="text" name="choosen-cost" class="choosen-cost">\
            <input type="text" name="choosen-sits" class="choosen-sits">\
            <div class="booking-pagination booking-pagination--margin">\
-              <a href="${context}/purchase/step1" class="booking-pagination__prev">\
+              <a href="#" class="booking-pagination__prev" id="prevBtn">\
                  <span class="arrow__text arrow--prev">prev step</span>\
                  <span class="arrow__info">What &amp; When</span>\
               </a>\
-              <a href="${context}/purchase/step3" class="booking-pagination__next">\
+              <a href="#" class="booking-pagination__next" id="nextBtn">\
                  <span class="arrow__text arrow--next">next step</span>\
                  <span class="arrow__info">checkout</span>\
               </a>\
@@ -452,30 +447,59 @@ Purchase.prototype.step2Form = function(context,seat){
         </form>\
      </div>';
   $('#content').html(step2Form);
+ 
+  var reservedStr='';
   $.each(seat,function(index,seat){
-	
-	var id = seat.seat;
-	$("#"+id).addClass("sits-state--not");
-
+	  reservedStr += seat.reserveSeat+"/";
   });
-	  
+  var reservedArr = reservedStr.split("/");
+  $.each(reservedArr,function(index,reservedArr){
+	$("#"+reservedArr).addClass("sits-state--not");
+  });
   
-  /* html로 화면 먼저찍기 >> addClass로 좌석 체크*/
+	  var sum=0;
+	  $.each(reserveData,function(index,reserveData){
+		  var myselect = reserveData.seat;
+		  if(myselect !=null){
+		  $("#"+myselect).addClass("sits-state--your");
+		  $('.checked-place').after('<span class="choosen-place '+myselect+'">'+ myselect +'</span>');
+		  sum += reserveData.price;
+		  }
+	  });
+	  $('.checked-result').text(sum+'원');
+  
   $(document).ready(function() {
-     init_BookingTwo();
+     init_BookingTwo(context, reserveData, seat);
   });
-	   
+	$('#nextBtn').click(function(e) {
+		e.preventDefault();
+		 Purchase.prototype.step3Form(context, reserveData);
+	});
+	$('#prevBtn').click(function(e) {
+		e.preventDefault();
+		 Purchase.prototype.step1Form(context);
+	});
 }
 
 
 
-Purchase.prototype.step3Form = function(context){
+Purchase.prototype.step3Form = function(context,reserveData){
+	var seatArr ="";
+	var sum=0;
+	 $.each(reserveData,function(index,reserveData){
+		  seatArr += reserveData.seat+"/";
+		  sum += reserveData.price;
+	  });
+	  seatArr = seatArr.substring(0, seatArr.length-1);
+
+	 alert(seatArr);
+		
 	var step3Form = 
 		'<div class="wrapper">\
 			<section class="container">\
 	        	<div class="order-container">\
 	            	<div class="order">\
-	               		<img class="order__images" alt="" src="${context}/resources/rainbow/images/tickets.png">\
+	               		<img class="order__images" alt="" src="'+context+'/resources/rainbow/images/tickets.png">\
 	               		<p class="order__title">Book a ticket <br><span class="order__descript">and have fun movie time</span></p>\
 	            	</div>\
 	         	</div>\
@@ -488,50 +512,68 @@ Purchase.prototype.step3Form = function(context){
 	            	<div class="checkout-wrapper">\
 	               		<h2 class="page-heading">price</h2>\
 						<ul class="book-result">\
-							<li class="book-result__item">Tickets: <span class="book-result__count booking-ticket">3</span></li>\
-							<li class="book-result__item">One item price: <span class="book-result__count booking-price">$20</span></li>\
-							<li class="book-result__item">Total: <span class="book-result__count booking-cost">$60</span></li>\
+							<li class="book-result__item">총 인원: <span class="book-result__count booking-ticket">'+reserveData.length+'</span></li>\
+							<li class="book-result__item">선택좌석: <span class="book-result__count booking-price">'+seatArr+'</span></li>\
+							<li class="book-result__item">총 금액: <span class="book-result__count booking-cost">'+sum+'원</span></li>\
 						</ul>\
 	               		<h2 class="page-heading">Choose payment method</h2>\
 						<div class="payment">\
-							<a href="#" class="payment__item"><img alt="" src="${context}/resources/rainbow/images/payment/pay1.png"></a>\
-							<a href="#" class="payment__item"><img alt="" src="${context}/resources/rainbow/images/payment/pay2.png"></a>\
-							<a href="#" class="payment__item"><img alt="" src="${context}/resources/rainbow/images/payment/pay3.png"></a>\
-							<a href="#" class="payment__item"><img alt="" src="${context}/resources/rainbow/images/payment/pay4.png"></a>\
-							<a href="#" class="payment__item"><img alt="" src="${context}/resources/rainbow/images/payment/pay5.png"></a>\
-							<a href="#" class="payment__item"><img alt="" src="${context}/resources/rainbow/images/payment/pay6.png"></a>\
-							<a href="#" class="payment__item"><img alt="" src="${context}/resources/rainbow/images/payment/pay7.png"></a>\
+							<a href="#" class="payment__item"><img alt="" src="'+context+'/resources/rainbow/images/payment/pay7.png"></a>\
 	               		</div>\
-	               		<h2 class="page-heading">Contact information</h2>\
-	               		<form id="contact-info" method="post" novalidate="" class="form contact-info">\
-	                  		<div class="contact-info__field contact-info__field-mail">\
-	                     		<input type="email" name="user-mail" placeholder="Your email" class="form__mail">\
-	                  		</div>\
-	                  		<div class="contact-info__field contact-info__field-tel">\
-	                     		<input type="tel" name="user-tel" placeholder="Phone number" class="form__mail">\
-	                  		</div>\
-	               		</form>\
 	            	</div>\
-	            	<div class="order"><a href="${context}/purchase/step4" class="btn btn-md btn--warning btn--wide">purchase</a></div>\
+	            	<div class="order"><a href="#" class="btn btn-md btn--warning btn--wide" id="purchaseBtn">purchase</a></div>\
 	         	</div>\
 	      	</section>\
 	      	<div class="clearfix"></div>\
 	      	<div class="booking-pagination">\
-	         	<a href="${context}/purchase/step2" class="booking-pagination__prev">\
+	         	<a href="#" class="booking-pagination__prev">\
 	            	<p class="arrow__text arrow--prev">prev step</p>\
 	            	<span class="arrow__info">choose a sit</span>\
 	         	</a>\
 	      	</div>\
 		</div>';
+	
+	 $('#content').html(step3Form);
+	 $('#purchaseBtn').click(function(e) {
+		e.preventDefault();
+		alert("구매버튼 클릭");
+		$.ajax({
+        url : context + '/purchase/step4',
+        data : { 
+        	movie : reserveData[0].movieTitle,
+        	date : reserveData[0].reserveDate,
+        	time : reserveData[0].beginTime,
+        	seat : seatArr,
+        	price : sum
+        },
+        dataType : 'json',
+	    type : 'post',
+	
+        success : function(data) {
+           if (data != null) {
+              Purchase.prototype.step4Form(context, data.purchaseData);
+           
+           } else {
+              alert('step4 데이터 가져오기 실패');
+              return null;
+           }
+        },
+      
+        error : function(request,status,msg) {
+             alert("code:" + request.status+"\n"+"message:"+request.responseText+"\n"+"msg:"+msg);
+        }
+		});
+	})
 }
 
-Purchase.prototype.step4Form = function(context){
+Purchase.prototype.step4Form = function(context,purchaseData){
+	alert("티켓 좌석 확인 >>" +purchaseData.reserveSeat);
 	   var step4Form = 
 	      '<div class="wrapper place-wrapper">\
 	   <section class="container">\
 	      <div class="order-container">\
 	         <div class="order">\
-	            <img class="order__images" alt="" src="${context}/resources/rainbow/images/tickets.png">\
+	            <img class="order__images" alt="" src="'+context+'/resources/rainbow/images/tickets.png">\
 	            <p class="order__title">Thank you <br><span class="order__descript">you have successfully purchased tickets</span></p>\
 	         </div>\
 	         <div class="ticket">\
@@ -539,16 +581,16 @@ Purchase.prototype.step4Form = function(context){
 	               <div class="ticket__indecator indecator--pre"><div class="indecator-text pre--text">online ticket</div></div>\
 	               <div class="ticket__inner">\
 	                  <div class="ticket-secondary">\
-	                     <span class="ticket__item">Ticket number <strong class="ticket__number">a126bym4</strong></span>\
-	                     <span class="ticket__item ticket__date">25/10/2013</span>\
-	                     <span class="ticket__item ticket__time">17:45</span>\
-	                     <span class="ticket__item">Cinema: <span class="ticket__cinema">Cineworld</span></span>\
-	                     <span class="ticket__item">Hall: <span class="ticket__hall">Visconti</span></span>\
-	                     <span class="ticket__item ticket__price">price: <strong class="ticket__cost">$60</strong></span>\
+	                     <span class="ticket__item">Ticket number <strong class="ticket__number">'+purchaseData.purchaseSeq+'</strong></span>\
+	                     <span class="ticket__item ticket__date">'+purchaseData.date+'</span>\
+	                     <span class="ticket__item ticket__time">'+purchaseData.beginTime+'</span>\
+	                     <span class="ticket__item">Cinema: <span class="ticket__cinema">Rainbow</span></span>\
+	                     <span class="ticket__item">Screen: <span class="ticket__hall">'+purchaseData.screenNumber+'</span></span>\
+	                     <span class="ticket__item ticket__price">price: <strong class="ticket__cost">'+purchaseData.purchasePrice+'원</strong></span>\
 	                  </div>\
 	                  <div class="ticket-primery">\
-	                     <span class="ticket__item ticket__item--primery ticket__film">Film<br><strong class="ticket__movie">The Fifth Estate (2013)</strong></span>\
-	                     <span class="ticket__item ticket__item--primery">Sits: <span class="ticket__place">11F, 12F, 13F</span></span>\
+	                     <span class="ticket__item ticket__item--primery ticket__film">Film<br><strong class="ticket__movie">'+purchaseData.movieTitle+'</strong></span>\
+	                     <span class="ticket__item ticket__item--primery">Sits: <span class="ticket__place">'+purchaseData.reserveSeat+'</span></span>\
 	                  </div>\
 	               </div>\
 	               <div class="ticket__indecator indecator--post"><div class="indecator-text post--text">online ticket</div></div>\
@@ -561,4 +603,5 @@ Purchase.prototype.step4Form = function(context){
 	      </div>\
 	   </section>\
 	</div>';
+	   $('#content').html(step4Form);
 }

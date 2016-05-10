@@ -576,9 +576,8 @@ function init_BookingOne() {
                 })
 }
 
-function init_BookingTwo () {
+function init_BookingTwo (context, reserveData, seat) {
     "use strict";
-
 	//1. Buttons for choose order method
 	//order factor
     $('.order__control-btn').click(function (e) {
@@ -608,15 +607,15 @@ function init_BookingTwo () {
 
                 $('.sits__place').click(function (e) {
                     e.preventDefault();
+          
                     var place = $(this).attr('data-place');
                     var ticketPrice = $(this).attr('data-price');
 
                     if(! $(e.target).hasClass('sits-state--your')){
-
+               
                         if (! $(this).hasClass('sits-state--not') ) {
-                            $(this).addClass('sits-state--your');
-
-                            $('.checked-place').prepend('<span class="choosen-place '+place+'">'+ place +'</span>');
+                        	$(this).addClass('sits-state--your');
+                            alert('좌석 선택');
 
                             switch(ticketPrice)
                                 {
@@ -634,11 +633,39 @@ function init_BookingTwo () {
                                   break;
                             }
 
-                            $('.checked-result').text(sum+'원');
+                          /*  $('.checked-result').text(sum+'원');*/
+                            
+                        	$.ajax({
+            		            url : context + '/purchase/seatSelect',
+            		            data : {
+            		            	movie : reserveData[0].movieTitle,
+            		    			date : reserveData[0].reserveDate,
+            		    			time : reserveData[0].beginTime,
+            		    			seat : place,
+            		    			sum : sum
+            		            },
+            		            dataType : 'json',
+            				    type : 'post',
+            		            success : function(data) {
+            		               if (data != null) {
+            		                  Purchase.prototype.step2Form(context, data.reserveData, data.seat);
+            		               } else {
+            		                  alert('seat 데이터 가져오기 실패');
+            		                  return null;
+            		               }
+            		            },
+            		            error : function(request,status,msg) {
+            		                 alert("code:" + request.status+"\n"+"message:"+request.responseText+"\n"+"msg:"+msg);
+            		            }
+            		      });
+                        	
+                            
+                            
                         }
                     }
 
                     else{
+                    	alert('좌석 취소');
                         $(this).removeClass('sits-state--your');
                         
                         $('.'+place+'').remove();
@@ -659,7 +686,32 @@ function init_BookingTwo () {
                                   break;
                             }
 
-                        $('.checked-result').text(sum+'원');
+                    /*    $('.checked-result').text(sum+'원');*/
+                        
+                    	$.ajax({
+        		            url : context + '/purchase/seatDelete',
+        		            data : {
+        		            	movie : reserveData[0].movieTitle,
+        		    			date : reserveData[0].reserveDate,
+        		    			time : reserveData[0].beginTime,
+        		    			seat : place,
+        		    		
+        		            },
+        		            dataType : 'json',
+        				    type : 'post',
+        		            success : function(data) {
+        		               if (data != null) {
+        		                  Purchase.prototype.step2Form(context, data.reserveData, data.seat);
+        		               } else {
+        		                  alert('seat 데이터 가져오기 실패');
+        		                  return null;
+        		               }
+        		            },
+        		            error : function(request,status,msg) {
+        		                 alert("code:" + request.status+"\n"+"message:"+request.responseText+"\n"+"msg:"+msg);
+        		            }
+        		      });
+                    	
                     }
 
                     //data element init
@@ -674,7 +726,7 @@ function init_BookingTwo () {
 
 
                     //data element init
-                    var chooseSits = '';
+                  var chooseSits = '';
                     $('.choosen-place').each( function () {
                         chooseSits += ', '+ $(this).text();
                     });
@@ -746,7 +798,6 @@ function init_BookingTwo () {
 
         function ChoosePlace (e) {
                 e.preventDefault();
-
                 var row = $(this).parent().find('.sit-row option[selected="selected"]').text();
                 var number = $(this).parent().find('.sit-number option[selected="selected"]').text();
                 var ch_sits = row + number;
