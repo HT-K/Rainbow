@@ -90,9 +90,6 @@
 		 
 		</html>
 <script src="${js}/vod_js/vodMain.js"></script>
-<script src="${js}/vod_js/vodMenu.js"></script>
-<script src="${js}/vod_js/vodLogin.js"></script>
-<script src="${js}/vod_js/vodJoin.js"></script>
 <script>
    $(function() {
 	   var context  = '${context}';
@@ -107,39 +104,39 @@
 		document.getElementById('purchasetab').style.display = '';
  		}
    });
+   $('#purchasetab').click(function(e) {
+	   e.preventDefault(); 
+	   alert("history");
+	   vodMain.vodPurchase('${context}');  
+   });
    $('#new').click(function(e) {
 	   e.preventDefault(); 
-	   vodMenu.vodAtLeastForm('${context}'); 
+	   vodMain.vodAtLeastForm('${context}'); 
    });
    $('#normal').click(function(e) {
 	   e.preventDefault();
-	   vodMenu.vodCommonForm('${context}'); 
-     // window.location.assign("${context}/vod_menu/normal_form.do");    
+	   vodMain.vodCommonForm('${context}');     
    });
    $('#free').click(function(e) {
 	   e.preventDefault();
-	   vodMenu.vodFreeForm('${context}'); 
-     // window.location.assign("${context}/vod_menu/free_form.do");    
+	   vodMain.vodFreeForm('${context}');      
    });
   	 $('#logoutBtn').click(function(e) {
   	   e.preventDefault();
        location.href = "${context}/member/vod_logout";     
  	   }); 
    $('#loginForm').click(function(e) {
-	   e.preventDefault();
-	   //location.href = "${context}/member/vod_login";
-	   vodLogin.vodLoginForm('${context}');
+	   e.preventDefault(); 
+	   vodMain.vodLoginForm('${context}');
 	   
    });
    $('#joinForm').click(function(e) {
 	   e.preventDefault();
-	    vodJoin.vodJoinForm('${context}'); 
-	  //window.location.assign("${context}/member/vod_join");  
+	   vodMain.vodJoinForm('${context}');   
    });
    $('#home').click(function(e) {
 	   e.preventDefault();
-	   vodMain.vodMainForm('${context}');
-      //window.location.assign("${context}/vod_main/main.do");    
+	   vodMain.vodMainForm('${context}');   
    });
   
    $('#search').click(function(e) {
@@ -149,39 +146,21 @@
    });
    $('#info').click(function(e) {
   	   e.preventDefault();
-  	   alert("info");
-       //location.href = "${context}/member/vod_logout";     
+  	   alert("info");     
  	   }); 
    $('#qna').click(function(e) {
 	   e.preventDefault();
-	   alert("qna");
-     //location.href = "${context}/member/vod_login";    
+	   alert("qna");   
    });
    $('#setting').click(function(e) {
 	   e.preventDefault();
-	   alert("setting");
-	  // location.href = "${context}/member/vod_join";    
+	   alert("setting");   
    });
    $('#developer').click(function(e) {
 	   e.preventDefault();
-	   alert("developer");
-	 //  location.href = "${context}/member/vod_join";    
+	   alert("developer");    
    });
  	
- /*  function myFunction() {
-	
-      var txt;
-       var r = confirm("구매하시겠습니까?");
-       if (r == true) {
-           $(location).attr('href',"${vod.vodUrl}");
-           return false;
-       }else{
-          return false;
-       } 
-       document.getElementById("demo").innerHTML = txt;
-   };*/
-   
 </script>
-		</div>
-		<!-- /page -->
+		</div> 
 	 
