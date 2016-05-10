@@ -1,7 +1,10 @@
 package com.rainbow.web.mapper;
 
+import java.util.HashMap;
 import java.util.List;
+
 import org.springframework.stereotype.Repository;
+
 import com.rainbow.web.member.MemberDTO;
 
 @Repository
@@ -29,6 +32,8 @@ public interface MemberMapper {
 	public int count();
 	// U 회원 정보 수정
 	public int update(MemberDTO member);
+	// U 구매금액 차감
+	public int sellVod(HashMap<String, String> hash);
 	// D 회원 정보 삭제
 	public int delete(MemberDTO member);
 }
