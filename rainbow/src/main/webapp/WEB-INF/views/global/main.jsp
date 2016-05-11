@@ -31,7 +31,7 @@
 	                                <p>주인공 : ${list.actor}</p>
 	                             </li>
 	                             <li class="last-block">
-	                                 <a href="movie-page-left.html" class="slide__link">more</a>
+	                                 <a href="${context}/movie/movie_detail/${list.movieSeq}" class="slide__link">more</a>
 	                             </li>
 	                         </ul>
 	                     </div>
@@ -49,14 +49,14 @@
                         <!-- Movie variant with time -->
                             <div class="movie movie--test movie--test--dark movie--test--left">
                                 <div class="movie__images">
-                                    <a href="movie-page-left.html" class="movie-beta__link">
+                                    <a href="${context}/movie/movie_detail/${list.movieSeq}" class="movie-beta__link">
                                         <!-- <img alt='' src="http://placehold.it/424x424"> -->
                                         <img alt='' src="${context}/resources/rainbow/images/main/${list.image}" width="424" height="205">
                                     </a>
                                 </div>
 
                                 <div class="movie__info">
-                                    <a href='movie-page-left.html' class="movie__title">${list.title}</a>
+                                    <a href='${context}/movie/movie_detail/${list.movieSeq}' class="movie__title">${list.title}</a>
 
                                     <p class="movie__time">${list.runningtime}</p>
 

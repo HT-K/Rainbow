@@ -1,6 +1,8 @@
 package com.rainbow.web.member;
 
+import java.util.HashMap;
 import java.util.List;
+
 
 
 import org.apache.ibatis.session.SqlSession;
@@ -8,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.rainbow.web.mapper.MemberMapper;
 
 @Service
@@ -78,6 +81,12 @@ public class MemberServiceImpl implements MemberService {
 		logger.info("MemberServie - delete() 진입 후 ");
 		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
 		return mapper.delete(member);
+	}
+
+	@Override
+	public int calcVod(HashMap<String, String> hash) {
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		return mapper.sellVod(hash);
 	}
 
 }

@@ -460,10 +460,10 @@ Purchase.prototype.step2Form = function(context, reserveData, seat){
 	  var sum=0;
 	  $.each(reserveData,function(index,reserveData){
 		  var myselect = reserveData.seat;
-		  if(myselect !=null){
-		  $("#"+myselect).addClass("sits-state--your");
-		  $('.checked-place').after('<span class="choosen-place '+myselect+'">'+ myselect +'</span>');
-		  sum += reserveData.price;
+		  if(myselect != null){
+			  $("#"+myselect).addClass("sits-state--your");
+			  $('.checked-place').after('<span class="choosen-place '+myselect+'">'+ myselect +'</span>');
+			  sum += reserveData.price;
 		  }
 	  });
 	  $('.checked-result').text(sum+'원');

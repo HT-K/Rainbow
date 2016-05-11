@@ -3,6 +3,7 @@
 <!-- Banner -->
 <div class="banner-top">
     <img alt='top banner' src="${context}/resources/rainbow/images/main/main_header.png">
+	<input type="hidden" id="sessionVar" value="${sessionScope.user.id}">
 </div>
 
 <!-- Header section -->
@@ -41,8 +42,7 @@
                 	<li><a href="#" class="auth__function-item">회원탈퇴</a></li>    
                 </ul>
 			</div>
-			<button class="btn btn-md btn--warning btn--book btn-control--home login-window" style="font-size: 11px;" id="bookBtn">Book a ticket</button>
-			<input type="hidden" id="sessionVar" value="${sessionScope.user.id}">
+			<button id="bookBtn" class="btn btn-md btn--warning btn--book btn-control--home login-window" style="font-size: 11px;">Book a ticket</button>
 			<!-- <a href="#" class="btn btn-md btn--warning btn--book btn-control--home login-window" style="font-size: 11px;">Book a ticket</a> -->
 		</div>
 	</div>
@@ -53,8 +53,10 @@
 		var id = $('#sessionVar').val();
 		$('#bookBtn').click(function(e) {
 			e.preventDefault();
-			if (id.length != 0) {
-				location.href = "${context}/home/main";
+			if (id.length != 0) { // 회원일 경우 로그인 창 안띄워지게 하기!
+				$('.overlay').removeClass('open').addClass('close');
+			} else { // 비회원일 경우 로그인창 띄우기
+				$('.overlay').removeClass('close').addClass('open');
 			}
 		});
 	});

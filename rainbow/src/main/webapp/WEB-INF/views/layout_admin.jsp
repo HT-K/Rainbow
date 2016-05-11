@@ -65,12 +65,15 @@
 	<script type="text/javascript">
 		$(function() {
 			var logout_header =
-				'<li><span class="sub-nav-toggle plus"></span>'
-				+		'<a href="${context}/admin/content">Admin Page</a>'
+				/* '<li><span class="sub-nav-toggle plus"></span>'
+				+		'<a href="${context}/admin/input">Add Movie</a>'
+				+ 	'</li>'
+				+ */'<li><span class="sub-nav-toggle plus"></span>'
+				+		'<a href="${context}/admin/content">Update Movie</a>'
 				+ 	'</li>'
 				+	'<li>'
 				+		'<span class="sub-nav-toggle plus"></span>' 
-				+		'<a href="${context}/member/logout">로그아웃</a>'
+				+		'<a href="${context}/member/logout">LOGOUT</a>'
 				+	'</li>'
 				$('#navigation').html(logout_header);
 		});

@@ -8,11 +8,12 @@
                         <option value="title" selected='selected'>By title</option>
                         <option value="director">By director</option>
                     </select>
-                    <button type='submit' class="btn btn-md btn--danger search__button" onclick="searchBtn()">search a movie</button>
+                    <button class="btn btn-md btn--danger search__button" id="searchBtn">search a movie</button>
                 </form>
             </div>
         </div>
-        
+<!-- Search bar End -->    
+    
         <!-- Main content -->
         <section id="wrapper" class="container">
             <div class="col-sm-12">
@@ -22,8 +23,8 @@
                     <div class="tags tags--unmarked">
                         <span class="tags__label">상영 영화 목록 리스트 : </span>
                             <ul>
-                                <li class="item-wrap"><a href="#" class="tags__item item-active" data-filter='all'>개봉일순</a></li>
-                                <li class="item-wrap"><a href="#" class="tags__item" data-filter='release'>평점순</a></li>
+                                <li class="item-wrap"><a href="#" class="tags__item item-active" data-filter='all'>평점순</a></li>
+                                <li class="item-wrap"><a href="#" class="tags__item" data-filter='release'>개봉일순</a></li>
                             </ul>
                     </div>
                 </div>
@@ -33,12 +34,12 @@
                    <div class="movie movie--preview movie--full release">
                         <div class="col-sm-4 col-md-3 col-lg-3">
                             <div class="movie__images">
-                               <img alt='' src="${context}/resources/rainbow/images/main/${list.image}" height="300">
+                               <img alt='' src="${context}/resources/rainbow/images/main/${list.image}" height="283">
                             </div>
                        </div>
    
                        <div class="col-sm-8 col-md-9 col-lg-9 movie__about">
-                            <a href="${content}/movie/movie_detail" class="movie__title link--huge">${list.title}</a>
+                            <a href="#" class="movie__title link--huge">${list.title}</a>
 
                             <p class="movie__time">${list.runningtime}</p>
 
@@ -49,7 +50,8 @@
                             <p class="movie__option"><strong>등급: </strong>${list.grade}</p>
 
                             <div class="movie__btns">
-                                <a href="#" class="btn btn-md btn--warning">book a ticket <span class="hidden-sm">for this movie</span></a>
+                            	<button id="bookBtn2" class="btn btn-md btn--warning">book a ticket <span class="hidden-sm">for this movie</span></button>
+                                <!-- <a href="#" class="btn btn-md btn--warning" id="bookBtn">book a ticket <span class="hidden-sm">for this movie</span></a> -->
                                 <a href="#" class="watchlist">Add to watchlist</a>
                             </div>
                             
@@ -69,11 +71,11 @@
 				<div class="booking-pagination booking-pagination--margin">
 					<a href="#" class="booking-pagination__prev">
 						<span class="arrow__text arrow--prev">prev</span>
-						<span class="arrow__info">before page</span>
+						<span class="arrow__info">이전 페이지</span>
 					</a>
 					<a href="#" class="booking-pagination__next">
 						<span class="arrow__text arrow--next">next</span>
-						<span class="arrow__info">next page</span>
+						<span class="arrow__info">다음 페이지</span>
 					</a>
 				</div>
                 <!-- <div class="coloum-wrapper">
@@ -84,13 +86,22 @@
                 </div> -->
 
             </div>
-
         </section>
 
 <script type="text/javascript">
 $(function() {
 	var context = $.fn.global('${context}').getContext();
 	init_MovieList(context);
+	
+	var id = $('#sessionVar').val();
+	$('#bookBtn2').click(function(e) {
+		e.preventDefault();
+		if (id.length != 0) { // 회원일 경우 로그인 창 안띄워지게 하기!
+			$('.overlay').removeClass('open').addClass('close');
+		} else { // 비회원일 경우 로그인창 띄우기
+			$('.overlay').removeClass('close').addClass('open');
+		}
+	});
 });
 /* function searchBtn() {
 	alert('버튼이 클릭되었습니다');

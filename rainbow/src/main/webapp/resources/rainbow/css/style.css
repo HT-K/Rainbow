@@ -5260,7 +5260,7 @@ ul#navigation li.mega-menu__nav-item:hover:before {
 }
 .movie .comment-link:after {
   content: '';
-  background-image: url('../resources/rainbow/images/components/wave-danger.svg');
+  background-image: url('../images/components/wave-danger.svg');
   -webkit-background-size: 40px 4px;
   background-size: 40px 4px;
   background-repeat: repeat-x;
@@ -5274,7 +5274,7 @@ ul#navigation li.mega-menu__nav-item:hover:before {
   color: #4c4145;
 }
 .movie .comment-link:hover:after {
-  background-image: url('../resources/rainbow/images/components/wave-main.svg');
+  background-image: url('../images/components/wave-main.svg');
 }
 .movie .movie__btns {
   position: absolute;
@@ -5296,7 +5296,7 @@ ul#navigation li.mega-menu__nav-item:hover:before {
   position: relative;
   width: 100%;
   height: 162px;
-  background-image: url(../resources/rainbow/images/components/bg-movie.png);
+  background-image: url(../images/components/bg-movie.png);
   background-repeat: repeat-x;
 }
 .movie .movie__media .swiper-container {
@@ -5555,7 +5555,7 @@ ul#navigation li.mega-menu__nav-item:hover:before {
 }
 .cinema .cinema-rating:before {
   content: '';
-  background-image: url(../resources/rainbow/images/rate/star-off.svg);
+  background-image: url(../images/rate/star-off.svg);
   background-repeat: no-repeat;
   -webkit-background-size: 14px 14px;
   background-size: 14px 14px;
@@ -5568,7 +5568,7 @@ ul#navigation li.mega-menu__nav-item:hover:before {
 }
 .cinema .cinema-rating:after {
   content: '';
-  background-image: url(../resources/rainbow/images/rate/star-off.svg);
+  background-image: url(../images/rate/star-off.svg);
   background-repeat: no-repeat;
   -webkit-background-size: 14px 14px;
   background-size: 14px 14px;
@@ -5784,7 +5784,7 @@ ul#navigation li.mega-menu__nav-item:hover:before {
   margin-bottom: 41px;
 }
 .offer .offer__head:before {
-  background-image: url("../resources/rainbow/images/components/wave-light.svg");
+  background-image: url("..images/components/wave-light.svg");
   background-repeat: no-repeat;
   background-size: 84px 8px;
   bottom: 0px;
@@ -6657,7 +6657,7 @@ ul#navigation li.mega-menu__nav-item:hover:before {
 }
 .reservation-message:before {
   content: '';
-  background-image: url(../resources/rainbow/images/icons/speech.svg);
+  background-image: url(../images/icons/speech.svg);
   background-repeat: no-repeat;
   background-position: left center;
   -webkit-background-size: 42px 36px;
@@ -6682,7 +6682,7 @@ ul#navigation li.mega-menu__nav-item:hover:before {
   margin-top: 68px;
   padding: 37px 0;
   text-align: center;
-  background-image: url(../resources/rainbow/images/icons/stroke.svg);
+  background-image: url(../images/icons/stroke.svg);
   background-repeat: no-repeat;
 }
 .ticket .ticket__inner {
@@ -6708,7 +6708,7 @@ ul#navigation li.mega-menu__nav-item:hover:before {
 }
 .ticket .indecator-text:before {
   content: '';
-  background-image: url(../resources/rainbow/images/icons/stars-light.svg);
+  background-image: url(../images/icons/stars-light.svg);
   background-repeat: no-repeat;
   width: 80px;
   height: 16px;
@@ -6718,7 +6718,7 @@ ul#navigation li.mega-menu__nav-item:hover:before {
 }
 .ticket .indecator-text:after {
   content: '';
-  background-image: url(../resources/rainbow/images/icons/stars-light.svg);
+  background-image: url(../images/icons/stars-light.svg);
   background-repeat: no-repeat;
   width: 80px;
   height: 16px;
@@ -6877,7 +6877,7 @@ ul#navigation li.mega-menu__nav-item:hover:before {
 }
 .tp-leftarrow.default .slider__info:after {
   content: '';
-  background-image: url("../resources/rainbow/images/components/wave.svg");
+  background-image: url("../images/components/wave.svg");
   background-repeat: no-repeat;
   background-size: 48px 4px;
   width: 48px;
@@ -8362,7 +8362,7 @@ ul#navigation li.mega-menu__nav-item:hover:before {
   width: 100%;
 }
 .movie--preview .movie__show-btn:hover:after {
-  background-image: url("../images/components/wave-main.svg");
+  background-image: url("../images/components/wave-danger.svg");
 }
 .movie--preview .movie__option {
   line-height: 25px;

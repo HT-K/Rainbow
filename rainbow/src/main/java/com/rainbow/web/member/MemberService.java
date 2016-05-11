@@ -1,5 +1,6 @@
 package com.rainbow.web.member;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface MemberService {
@@ -26,6 +27,9 @@ public interface MemberService {
 	public int count();
 	// U 회원 정보 수정
 	public int update(MemberDTO member);
+	// U 회원 Vod 금액 차감
+	public int calcVod(HashMap<String, String> hash);
 	// D 회원 정보 삭제
 	public int delete(MemberDTO member);
+	
 }

@@ -37,7 +37,7 @@ public class ReplyServieImplTest {
 	public void testGetList() {
 		  ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
 	      List<ReplyDTO> list = new ArrayList<ReplyDTO>();
-	      list = mapper.getList();
+	      list = mapper.selectList();
 	      assertThat(list.size(), is(not(0))); // 전체 회원 조회 시 리턴되는 값이 0이 아니면 성공(초록불) 아니면 빨간불
 	}
 
@@ -45,7 +45,7 @@ public class ReplyServieImplTest {
 	public void testGetByReplySeq() {
 		ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
 	      List<ReplyDTO> list = new ArrayList<ReplyDTO>();
-	      list = mapper.getList();
+	      list = mapper.selectBySeq(reply);
 	      assertThat(list.size(), is(not(0)));
 	}
 
@@ -53,7 +53,7 @@ public class ReplyServieImplTest {
 	@Test
 	public void testCount() {
 		ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
-		assertNotNull(mapper.count());
+		assertNotNull(mapper.count(reply));
 	}
 
 	@Test

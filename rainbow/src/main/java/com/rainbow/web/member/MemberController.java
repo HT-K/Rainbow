@@ -1,10 +1,6 @@
 package com.rainbow.web.member;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
-import javax.tools.JavaFileManager.Location;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -161,37 +157,56 @@ public class MemberController {
 		
 	}
 	
+ 
 	
-	@RequestMapping("/vod_join")
-	public String join() {
-		return "vod_member/join";
+	@RequestMapping(value="/vod_login", method=RequestMethod.POST)
+	public Model vodLogin(@RequestParam("id")String id, 
+						@RequestParam("password")String password,
+						Model model,
+						HttpSession session) { 
+		logger.info("로그인 컨트롤러 파라미터 ID : {}", id);
+		logger.info("로그인 컨트롤러 파라미터 PW : {}", password);
+		
+		MemberDTO param = new MemberDTO();
+		param.setId(id);
+		param.setPassword(password);
+		member = service.login(param);
+		if (member.getId() != null && !member.getId().equals("admin")) {
+			logger.info("로그인 성공");
+			session.setAttribute("user", member); // 로그인 성공 시 session에 로그인에 성공한 유저의 정보가 담긴 member 객체를 담는다.
+			model.addAttribute("member", member); // 로그인 성공 시 다음 페이지에 request와 같은 역할을 하는 model에 member 객체를 담아 보낸다.
+			
+		}  
+		return model;
 	}
-	
-	
+	@RequestMapping("/vod_logout")
+	public String vodLogout(HttpSession session) {
+				session.invalidate(); // 세션 무효화
+		return "layout_vod";
+	}
 	@RequestMapping(value="/vod_join",method=RequestMethod.POST)
 	public  String join(@RequestParam("id") String id
 			, @RequestParam("password") String password
 			, @RequestParam("name") String name
 			, @RequestParam("email") String email
 			, @RequestParam("addr") String addr
-			, @RequestParam("year") String year
-			, @RequestParam("month") String month
-			, @RequestParam("day") String day){
+			, @RequestParam("year") String year,
+			Model model){
 		logger.info("=== id {} ===",id);
 		logger.info("=== name {} ===",name);
 		logger.info("=== email {} ===",email);
 		logger.info("=== addr {} ===",addr);
 		logger.info("=== year {} ===",year);
-		logger.info("=== month {} ===",month);
-		logger.info("=== day {} ===",day);
 		member.setId(id);
 		member.setPassword(password);
 		member.setName(name);
 		member.setAddr(email);
-		member.setBirth(year+"-"+month+"-"+day);
-		member.setEmail(email);
-		service.insert(member);
-		return "vod_main/vodIndex";
+		member.setBirth(year);
+		member.setEmail(email);  
+		if(service.getById(member) == null){
+			model = service.insert(member) == 1 ? model.addAttribute("check", 1) :model.addAttribute("check", 0);
+		}
+		return "layout_vod";
 	}
 
 	@RequestMapping("/cinema")
