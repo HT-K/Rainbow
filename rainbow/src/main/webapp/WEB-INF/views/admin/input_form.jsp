@@ -7,6 +7,7 @@
 <!-- edit content -->
 <article class="container" style="margin-top: 30px">
 		<div class="editTop">
+			<h2>　　</h2>
 			<h2 class="text-center"> THE MOIVE ADD PAGE</h2>
 		</div>
 		
@@ -71,7 +72,7 @@
 	        <div class="form-group">
 			 	<label for="input_id" class="col-sm-4 control-label" for="Image">POSTER</label>
 			 	<div class="col-sm-2">
-					<img src="${context}/resources/rainbow/images/main" alt="" style="width:200px;height:230px"/>
+					<img src="${context}/resources/rainbow/images/main" alt="" style="width:180px;height:230px"/>
 				</div>
 			 	<div class="col-sm-2">
 					<input type="file" id="image" name="image" />

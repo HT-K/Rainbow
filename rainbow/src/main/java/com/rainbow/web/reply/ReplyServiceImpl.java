@@ -27,24 +27,26 @@ public class ReplyServiceImpl implements ReplyService{
 	}
 
 	@Override
-	public List<ReplyDTO> getList() {
+	public List<ReplyDTO> getList(ReplyDTO reply) {
 		logger.info("=== RecordService : getList() === ");
 		ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
-		return mapper.selectList();
+		return mapper.getList();
 	}
 
 	@Override
-	public List<ReplyDTO> getBySeq(ReplyDTO reply) {
+	public List<ReplyDTO> getByReplySeq(ReplyDTO reply) {
 		logger.info("=== RecordService : getByRelySeq() === ");
 		ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
-		return mapper.selectBySeq(reply);
+		return mapper.selectByReplySeq(reply);
 	}
+	
+	
 
 	@Override
-	public int count(ReplyDTO reply) {
+	public int count() {
 		logger.info("=== replyService : count() === ");
 		ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
-		return mapper.count(reply);
+		return mapper.count();
 	}
 
 	@Override
@@ -64,5 +66,7 @@ public class ReplyServiceImpl implements ReplyService{
 		return result;
 	
 	}
+
+	
 
 }

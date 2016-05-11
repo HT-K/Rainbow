@@ -7,6 +7,7 @@
 <!-- edit content -->
 <article class="container" style="margin-top: 30px">
 		<div class="editTop">
+			<h1>　</h1>
 			<h2 class="text-center"> ${movie.title} INFORMATION</h2>
 		</div>
 		
