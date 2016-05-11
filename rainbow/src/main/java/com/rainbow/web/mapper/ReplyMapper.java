@@ -8,7 +8,7 @@ import com.rainbow.web.reply.ReplyDTO;
 public interface ReplyMapper {
 	public int insert(ReplyDTO reply); 
 	public List<ReplyDTO> getList();
-	public List<ReplyDTO> getByRelySeq(ReplyDTO reply);
+	public List<ReplyDTO> selectByReplySeq(ReplyDTO reply);
 	public int count();
 	public int update(ReplyDTO reply);
 	public int delete(ReplyDTO reply);

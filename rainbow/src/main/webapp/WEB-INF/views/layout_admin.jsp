@@ -65,11 +65,11 @@
 	<script type="text/javascript">
 		$(function() {
 			var logout_header =
-				/* '<li><span class="sub-nav-toggle plus"></span>'
-				+		'<a href="${context}/admin/input">Add Movie</a>'
+				'<li><span class="sub-nav-toggle plus"></span>'
+				+		'<a href="${context}/admin/input_form">ADD MOVIE</a>'
 				+ 	'</li>'
-				+ */'<li><span class="sub-nav-toggle plus"></span>'
-				+		'<a href="${context}/admin/content">Update Movie</a>'
+				+   '<li><span class="sub-nav-toggle plus"></span>'
+				+		'<a href="${context}/admin/content">UPDATE MOVIE</a>'
 				+ 	'</li>'
 				+	'<li>'
 				+		'<span class="sub-nav-toggle plus"></span>' 

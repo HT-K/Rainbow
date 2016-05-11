@@ -7,15 +7,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class ReplyDTO {
 	private int replySeq, movieSeq;
-	private String writerName, regTime, replyContent;
+	private String writerName, regTime, replyContent, title;
 	
 	public ReplyDTO() {}
-	public ReplyDTO(int replySeq, String writerName, String regTime ,String replyContent, int movieSeq) {
+	public ReplyDTO(int replySeq, String writerName, String regTime ,String replyContent, int movieSeq, String title) {
 		this.replySeq = replySeq;
 		this.writerName = writerName;
 		this.regTime =regTime;
 		this.replyContent = replyContent;
 		this.movieSeq = movieSeq;
+		this.title = title;
 	}
 	
 	public int getReplySeq() {
@@ -47,6 +48,12 @@ public class ReplyDTO {
 	}
 	public void setReplyContent(String replyContent) {
 		this.replyContent = replyContent;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 	

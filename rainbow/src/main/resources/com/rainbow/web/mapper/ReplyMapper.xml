@@ -9,12 +9,24 @@
 	</insert>
 	
 	<select id="getList" resultType="com.rainbow.web.reply.ReplyDTO">
-	    	SELECT * FROM Reply;
+	    	SELECT r.reply_seq AS replySeq, 
+       			   r.writer_name AS writerName, 
+       			   r.reg_time AS regTime,
+       			   r.reply_content AS replyContent,
+                   r.movie_seq AS movieSeq,
+                   m.title AS title
+				   FROM Reply r
+			JOIN Movie m ON m.movie_seq = r.movie_seq;
 	</select>
 	
-	<select id="getByReplySeq" parameterType="com.rainbow.web.reply.ReplyDTO" resultType="com.rainbow.web.reply.ReplyDTO"> 
-	SELECT * FROM Reply WHERE reply_seq = #{reply_seq};
-	
+	<select id="selectByReplySeq" parameterType="com.rainbow.web.reply.ReplyDTO" resultType="com.rainbow.web.reply.ReplyDTO"> 
+			SELECT reply_seq AS replySeq, 
+       			   writer_name AS writerName, 
+       			   reg_time AS regTime,
+       			   reply_content AS replyContent,
+                   movie_seq AS movieSeq
+				   FROM Reply 
+			WHERE movie_seq = #{movieSeq};
 	</select>
 	
 	
@@ -28,7 +40,7 @@
 	</update>
 	
 	<delete id="delete" parameterType="com.rainbow.web.reply.ReplyDTO">
-	    DELETE FROM Reply WHERE writer_name = #{writerName};
+	    DELETE FROM Reply WHERE reply_seq = #{replySeq};
 	</delete>
 	
 </mapper>
