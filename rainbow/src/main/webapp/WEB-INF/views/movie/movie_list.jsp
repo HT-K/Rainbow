@@ -2,13 +2,13 @@
 <!-- Search bar -->
         <div class="search-wrapper" style="margin-top: 55px; padding-top: 17px;">
             <div class="container container--add">
-                <form id='search-form' method='get' class="search">
-                    <input id="keyField" type="text" class="search__field" placeholder="Search">
-                    <select name="sorting_item" id="search-sort" class="search__sort" tabindex="0">
+                <form class="search" id='search_form' name="search_form">
+                    <input type="text" class="search__field" id="keyWord" name="keyWord" placeholder="Search">
+                    <select class="search__sort" id="keyField" name="keyField" tabindex="0">
                         <option value="title" selected='selected'>By title</option>
                         <option value="director">By director</option>
                     </select>
-                    <button class="btn btn-md btn--danger search__button" id="searchBtn">search a movie</button>
+                    <button class="btn btn-md btn--danger search__button" id="searchBtn" name="searchBtn">search a movie</button>
                 </form>
             </div>
         </div>
@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 
-                <c:forEach var="list" items="${list}"> <!-- 컨트롤러에서 보내온 list를 member에 담는다 -->
+                <c:forEach var="list" items="${movieList}"> <!-- 컨트롤러에서 보내온 list를 member에 담는다 -->
                    <!-- Movie preview item -->
                    <div class="movie movie--preview movie--full release">
                         <div class="col-sm-4 col-md-3 col-lg-3">
@@ -39,7 +39,7 @@
                        </div>
    
                        <div class="col-sm-8 col-md-9 col-lg-9 movie__about">
-                            <a href="#" class="movie__title link--huge">${list.title}</a>
+                            <a href="${context}/movie/movie_detail/${list.movieSeq}" class="movie__title link--huge">${list.title}</a>
 
                             <p class="movie__time">${list.runningtime}</p>
 
@@ -69,25 +69,24 @@
                 </c:forEach>
 				
 				<div class="booking-pagination booking-pagination--margin">
-					<a href="#" class="booking-pagination__prev">
-						<span class="arrow__text arrow--prev">prev</span>
-						<span class="arrow__info">이전 페이지</span>
-					</a>
-					<a href="#" class="booking-pagination__next">
-						<span class="arrow__text arrow--next">next</span>
-						<span class="arrow__info">다음 페이지</span>
-					</a>
+					<c:if test="${page.start - page.end >= 0}">
+						<a href="${context}/movie/movie_list?startRow=${page.start - page.end}&keyField=${page.keyField}&keyWord=${page.keyWord}" class="booking-pagination__prev" id="pagePrev">
+							<span class="arrow__text arrow--prev">prev</span>
+							<span class="arrow__info">이전 페이지</span>
+						</a>
+					</c:if>
+					<c:if test="${page.start + page.end < page.totalMovie}">
+						<a href="${context}/movie/movie_list?startRow=${page.start + page.end}&keyField=${page.keyField}&keyWord=${page.keyWord}" class="booking-pagination__next" id="pageNext">
+							<span class="arrow__text arrow--next">next</span>
+							<span class="arrow__info">다음 페이지</span>
+						</a>
+					</c:if>
+					<input type="hidden" id="total" name="total" value="${page.totalMovie}" />
 				</div>
-                <!-- <div class="coloum-wrapper">
-                    <div class="pagination paginatioon--full">
-                            <a href='#' class="pagination__prev">prev</a>
-                            <a href='#' class="pagination__next">next</a>
-                    </div>
-                </div> -->
-
             </div>
         </section>
-
+	<!-- Main Content End -->
+	
 <script type="text/javascript">
 $(function() {
 	var context = $.fn.global('${context}').getContext();
@@ -102,19 +101,12 @@ $(function() {
 			$('.overlay').removeClass('close').addClass('open');
 		}
 	});
+	
+	var keyField = $('select[id=keyField] option:selected').val();
+	var keyWord = $('#keyWord').val();
+	$('#searchBtn').click(function(e) {
+		e.preventDefault();
+		$('#search_form').attr('action',"${context}/movie/search").attr('method',"post").submit();
+	});
 });
-/* function searchBtn() {
-	alert('버튼이 클릭되었습니다');
-	var title = $('select[name=sorting_item] option:selected').val();
-	alert(title);
-	var keyField = $('#keyField').val();
-	alert(keyField);
-	$('#wrapper').empty();
-	$('#wrapper').load(context+'/movie/search?keyField='+keyField+'&title='+title);
-	alert('check');
-}
-$(function(e) {
-	e.preventDefault();
-    init_MovieList();
-}); */
 </script>

@@ -48,7 +48,7 @@
 
     //3. Search bar dropdown
     //search bar, BY Title과 By Director 선택하는거 나눠지게하는 펑션
-    $("#search-sort").selectbox(
+    $(".search__sort").selectbox(
 		{ 
 			onChange : function(val, inst) {
 				$(inst.input[0]).children().each(function(item) {
