@@ -576,8 +576,9 @@ function init_BookingOne() {
                 })
 }
 
-function init_BookingTwo (context, reserveData, seat) {
+function init_BookingTwo (context, reserveList, purchasedSeat) {
     "use strict";
+  
 	//1. Buttons for choose order method
 	//order factor
     $('.order__control-btn').click(function (e) {
@@ -615,7 +616,6 @@ function init_BookingTwo (context, reserveData, seat) {
                
                         if (! $(this).hasClass('sits-state--not') ) {
                         	$(this).addClass('sits-state--your');
-                            alert('좌석 선택');
 
                             switch(ticketPrice)
                                 {
@@ -638,9 +638,9 @@ function init_BookingTwo (context, reserveData, seat) {
                         	$.ajax({
             		            url : context + '/purchase/seatSelect',
             		            data : {
-            		            	movie : reserveData[0].movieTitle,
-            		    			date : reserveData[0].reserveDate,
-            		    			time : reserveData[0].beginTime,
+            		            	movie : reserveList[0].movieTitle,
+            		    			date : reserveList[0].date,
+            		    			time : reserveList[0].beginTime,
             		    			seat : place,
             		    			sum : sum
             		            },
@@ -648,9 +648,9 @@ function init_BookingTwo (context, reserveData, seat) {
             				    type : 'post',
             		            success : function(data) {
             		               if (data != null) {
-            		                  Purchase.prototype.step2Form(context, data.reserveData, data.seat);
+            		                  Purchase.prototype.step2Form(context, data.reserveList, data.purchasedSeat);
             		               } else {
-            		                  alert('seat 데이터 가져오기 실패');
+            		                  console.log('seat 데이터 가져오기 실패');
             		                  return null;
             		               }
             		            },
@@ -665,7 +665,6 @@ function init_BookingTwo (context, reserveData, seat) {
                     }
 
                     else{
-                    	alert('좌석 취소');
                         $(this).removeClass('sits-state--your');
                         
                         $('.'+place+'').remove();
@@ -691,9 +690,9 @@ function init_BookingTwo (context, reserveData, seat) {
                     	$.ajax({
         		            url : context + '/purchase/seatDelete',
         		            data : {
-        		            	movie : reserveData[0].movieTitle,
-        		    			date : reserveData[0].reserveDate,
-        		    			time : reserveData[0].beginTime,
+        		            	movie : reserveList[0].movieTitle,
+        		    			date : reserveList[0].date,
+        		    			time : reserveList[0].beginTime,
         		    			seat : place,
         		    		
         		            },
@@ -701,9 +700,9 @@ function init_BookingTwo (context, reserveData, seat) {
         				    type : 'post',
         		            success : function(data) {
         		               if (data != null) {
-        		                  Purchase.prototype.step2Form(context, data.reserveData, data.seat);
+        		            	   Purchase.prototype.step2Form(context, data.reserveList, data.purchasedSeat);
         		               } else {
-        		                  alert('seat 데이터 가져오기 실패');
+        		                  console.log('seat 데이터 가져오기 실패');
         		                  return null;
         		               }
         		            },
