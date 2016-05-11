@@ -15,8 +15,14 @@ public class MovieDTO {
 	String actor;
 	String content;
 	String image;
+	
 	int start; // 데이터베이스에서 보여줄 영화 데이터 시작 인덱스
 	int end; // 데이터베이스에서 보여줄 영화 데이터 끝 인덱스
+	int totalMovie; // 데이터베이스에 있는 영화의 총 개수
+	
+	// 검색 시 사용되는 두 개의 변수
+	String keyField; // 제목 검색 or 감독 검색
+	String keyWord; // 검색 할 내용
 
 	public int getMovieSeq() {
 		return movieSeq;
@@ -95,6 +101,24 @@ public class MovieDTO {
 	}
 	public void setEnd(int end) {
 		this.end = end;
+	}
+	public int getTotalMovie() {
+		return totalMovie;
+	}
+	public void setTotalMovie(int totalMovie) {
+		this.totalMovie = totalMovie;
+	}
+	public String getKeyField() {
+		return keyField;
+	}
+	public void setKeyField(String keyField) {
+		this.keyField = keyField;
+	}
+	public String getKeyWord() {
+		return keyWord;
+	}
+	public void setKeyWord(String keyWord) {
+		this.keyWord = keyWord;
 	}
 	
 	@Override

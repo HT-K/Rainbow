@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.rainbow.web.reply.ReplyDTO;
@@ -29,48 +30,41 @@ public class MovieController {
 		return "";
 	}
 	
-	@RequestMapping("/search")
-	public String findByTitle(@RequestParam(value="title",defaultValue ="none")String title,
-			@RequestParam(value="director",defaultValue ="none")String director,
+	@RequestMapping(value="/search", method=RequestMethod.POST)
+	public String search(@RequestParam("keyField")String keyField,
+			@RequestParam("keyWord")String keyWord,
 			Model model) {
-		List<MovieDTO> list = new ArrayList<MovieDTO>();
-		logger.info("=== 제목 ===",movie.getTitle());
-		logger.info("=== 감독 ===",movie.getDirector());
-		if (title.equals("none")) {
-			list = service.getByName(movie);
-			 model.addAttribute("list",list);
-			 logger.info("검색된 글 목록1 : {} ",list);
-		} else {
-			list = service.getByName(movie);
-			 model.addAttribute("list",list);
-			 logger.info("검색된 글 목록2 : {} ",list);
-		}
-		model.addAttribute("model", model);
-		return "movie/movie_list.user";
+		logger.info("=== MovieController-search 진입 체크 ===");
+		return "redirect:/movie/movie_list?keyField="+keyField+"&keyWord="+keyWord;
 	}
 	
 	@RequestMapping("/movie_list")
-	public String list(Model model) {
-		logger.info("=== MovieController-list{} ===");
+	public String list(
+			@RequestParam(value="startRow",defaultValue="0")String startRow,
+			@RequestParam(value="keyField",defaultValue ="none")String keyField,
+			@RequestParam(value="keyWord",defaultValue ="none")String keyWord,
+			Model model) {
+		logger.info("=== MovieController-list 진입 체크 ===");
 		List<MovieDTO> list = new ArrayList<MovieDTO>();
-		logger.info("=== 제목 ===",movie.getTitle());
-		logger.info("=== 장르 ===",movie.getGenre());
-		logger.info("=== 개봉일 ===",movie.getOpenDate());
-		logger.info("=== 등급 ===",movie.getGrade());
-		logger.info("=== 상영시간 ===",movie.getRunningtime());
-		logger.info("=== 감독 ===",movie.getDirector());
-		logger.info("=== 배우 ===",movie.getActor());
-		logger.info("=== 이미지 ===",movie.getImage());
-		movie.setStart(0);
-		movie.setEnd(service.count());
-		list = service.getList(movie);
-		model.addAttribute("list", list);
+		
+		// 그냥 목록을 보여주든 검색으로 보여주든 최대치는 5개로~
+		movie.setStart(Integer.parseInt(startRow));
+		movie.setEnd(5);
+		
+		if (keyField.equals("none")) { // 그냥 영화 목록 보여줄 때
+			movie.setTotalMovie(service.count());
+			model.addAttribute("page", movie);
+			list = service.getList(movie);
+			model.addAttribute("movieList", list);
+		} else { // 검색으로 영화목록 보여줄 때
+			movie.setKeyField(keyField);
+			movie.setKeyWord(keyWord);
+			movie.setTotalMovie(service.countBySearch(movie));
+			model.addAttribute("page", movie);
+			list = service.getBySearch(movie);
+			model.addAttribute("movieList", list);
+		}
 		return "movie/movie_list.user";
-	}
-	
-	@RequestMapping("/count")
-	public String count() {
-		return "";
 	}
 	
 	@RequestMapping("/update")

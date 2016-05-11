@@ -38,10 +38,10 @@ public class MovieServiceImpl implements MovieService{
 	}
 
 	@Override
-	public MovieDTO getById(MovieDTO movie) {
-		logger.info("MovieService-getById{}");
+	public List<MovieDTO> getBySearch(MovieDTO movie) {
+		logger.info("MovieService-getBySearch{}");
 		MovieMapper mapper = session.getMapper(MovieMapper.class);
-		return mapper.selectById(movie);
+		return mapper.selectBySearch(movie);
 	}
 	
 	@Override
@@ -56,6 +56,13 @@ public class MovieServiceImpl implements MovieService{
 		logger.info("MovieService-count{}");
 		MovieMapper mapper = session.getMapper(MovieMapper.class);
 		return mapper.count();
+	}
+	
+	@Override
+	public int countBySearch(MovieDTO movie) {
+		logger.info("MovieService-countBySearch{}");
+		MovieMapper mapper = session.getMapper(MovieMapper.class);
+		return mapper.countBySearch(movie);
 	}
 
 	@Override

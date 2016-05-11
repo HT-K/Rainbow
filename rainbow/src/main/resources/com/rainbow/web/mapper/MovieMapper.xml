@@ -9,33 +9,41 @@
 	</insert>
 	
 	<select id="selectList" parameterType="com.rainbow.web.movie.MovieDTO" resultType="com.rainbow.web.movie.MovieDTO">
-	select movie_seq AS movieSeq, rating, title, genre, open_date AS openDate, grade, runningtime,director,actor,content,image 
-	from Movie
-	ORDER BY rating DESC
-	LIMIT #{start}, #{end}
+		SELECT movie_seq AS movieSeq, rating, title, genre, open_date AS openDate, grade, runningtime,director,actor,content,image 
+		FROM Movie
+		ORDER BY rating DESC
+		LIMIT #{start}, #{end}
 	</select>
 	
 	<select id="selectByName" parameterType="com.rainbow.web.movie.MovieDTO" resultType="com.rainbow.web.movie.MovieDTO"> 
-	select movie_seq AS movieSeq, rating, title, genre, open_date AS openDate, grade, runningtime,director,actor,content,image 
-	from Movie
-	WHERE ${title} LIKE CONCAT('%',#{title},'%')
+		SELECT movie_seq AS movieSeq, rating, title, genre, open_date AS openDate, grade, runningtime,director,actor,content,image 
+		FROM Movie
+		WHERE ${title} LIKE CONCAT('%',#{title},'%')
 	</select>
 		
-	<select id="selectById" parameterType="com.rainbow.web.movie.MovieDTO" resultType="com.rainbow.web.movie.MovieDTO"> 
-	select * 
-	from Movie
-	WHERE title = {title}
+	<select id="selectBySearch" parameterType="com.rainbow.web.movie.MovieDTO" resultType="com.rainbow.web.movie.MovieDTO"> 
+		SELECT movie_seq AS movieSeq, rating, title, genre, open_date AS openDate, grade, runningtime,director,actor,content,image 
+		FROM Movie
+		WHERE ${keyField} LIKE CONCAT('%',#{keyWord},'%') 
+		ORDER BY rating DESC
+		LIMIT #{start}, #{end}
 	</select>
 	
 	<select id="selectBySeq" parameterType="com.rainbow.web.movie.MovieDTO" resultType="com.rainbow.web.movie.MovieDTO"> 
-	select movie_seq AS movieSeq, rating, title, genre, open_date AS openDate, grade, runningtime,director,actor,content,image 
-	from Movie
-	WHERE movie_seq = ${movieSeq} 
+		select movie_seq AS movieSeq, rating, title, genre, open_date AS openDate, grade, runningtime,director,actor,content,image 
+		from Movie
+		WHERE movie_seq = ${movieSeq} 
 	</select>
 	
 	<select id="count" resultType="int">
-	SELECT COUNT(*)
-	FROM Movie
+		SELECT COUNT(*)
+		FROM Movie
+	</select>
+	
+	<select id="countBySearch" parameterType="com.rainbow.web.movie.MovieDTO" resultType="int">
+	    SELECT COUNT(*)
+		FROM Movie
+		WHERE ${keyField} LIKE CONCAT('%',#{keyWord},'%')
 	</select>
 	
 	<update id="update" parameterType="com.rainbow.web.movie.MovieDTO">
