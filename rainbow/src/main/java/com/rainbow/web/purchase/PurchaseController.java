@@ -38,6 +38,28 @@ public class PurchaseController {
 		return "purchase/step1.user";
 	}
 	
+	@RequestMapping(value="/step1", method=RequestMethod.POST)
+	public String step1(@RequestParam("movie")String movieTitle,
+			@RequestParam("date")String date,
+			@RequestParam("time")String time, 
+			Model model, HttpSession session) {
+		logger.info("purchase - step1() - POST");
+		logger.info("movie : {}", movieTitle);
+		logger.info("date : {}", date);
+		logger.info("time : {}", time);
+		MemberDTO member = (MemberDTO) session.getAttribute("user");
+		ReserveSeatDTO temp = new ReserveSeatDTO();
+		temp.setMovieTitle(movieTitle);
+		temp.setReserveDate(date);
+		temp.setBeginTime(time);
+		temp.setId(member.getId());
+		reserveService.delete(temp);
+		
+		model.addAttribute("list", movieService.getList(movie));
+		logger.info("model : {}", model);
+		return "purchase/step1.user";
+	}
+	
 	@RequestMapping(value="/step2", method=RequestMethod.POST)
 	public String step2(@RequestParam("movie")String movie,
 			@RequestParam("date")String date,
@@ -48,20 +70,21 @@ public class PurchaseController {
 		logger.info("date : {}", date);
 		logger.info("time : {}", time);
 		MemberDTO member = (MemberDTO) session.getAttribute("user");
-		reserve.setMovieTitle(movie);
-		reserve.setReserveDate(date);
-		reserve.setBeginTime(time);
-		reserve.setId(member.getId());
+		ReserveSeatDTO temp = new ReserveSeatDTO();
+		temp.setMovieTitle(movie);
+		temp.setReserveDate(date);
+		temp.setBeginTime(time);
+		temp.setId(member.getId());
 		
-		if(reserveService.getByReserve(reserve).size()==0){
-			reserveService.insert(reserve);
+		if(reserveService.getByReserve(temp).size()==0){
+			reserveService.insert(temp);
 		}
 
 		purchase.setMovieTitle(movie);
 		purchase.setDate(date);
 		purchase.setBeginTime(time);
 		
-		model.addAttribute("reserveData", reserveService.getByReserve(reserve));
+		model.addAttribute("reserveData", reserveService.getByReserve(temp));
 		model.addAttribute("seat", service.getByReserve(purchase));
 		logger.info("model : {}", model);
 		return "purchase/step2.user";
@@ -159,7 +182,6 @@ public class PurchaseController {
 		purchase.setPurchasePrice(price);
 		purchase.setMemberId(member.getId());
 		reserveService.delete(reserve);
-	
 		service.insert(purchase);
 		model.addAttribute("purchaseData", purchase);
 		logger.info("model : {}", model);

@@ -2,7 +2,7 @@
  * Purchase
  */
 
-function Purchase() {}
+function Purchase() { var checkload = "";}
 
 Purchase.prototype.step1Form = function(context) {
 	$.getJSON(context+'/purchase/step1', function(data) {
@@ -106,8 +106,21 @@ Purchase.prototype.step1Form = function(context) {
 		            }
 		      });
 		});
+		
+		
+    	
+    	
 		$(document).ready(function() {
 		    init_BookingOne();
+		    
+		    checkload = true;
+		    
+		    jQuery(document).ready(function($) {
+		    	
+		    	$(window).on("beforeunload", function () {
+		            if (checkload == true) return "영화 예매를 취소하시겠습니까?";  // 페이지를 벗어나는 경우
+		        });
+		    });
 		});
 	});
 }
@@ -477,7 +490,30 @@ Purchase.prototype.step2Form = function(context, reserveData, seat){
 	});
 	$('#prevBtn').click(function(e) {
 		e.preventDefault();
-		 Purchase.prototype.step1Form(context);
+		 
+		 $.ajax({
+	            url : context + '/purchase/step1',
+	            data : {
+	            	movie : reserveData[0].movieTitle,
+	    			date : reserveData[0].reserveDate,
+	    			time : reserveData[0].beginTime
+	            },
+	            dataType : 'json',
+			    type : 'post',
+			
+	            success : function(data) {
+	               if (data != null) {
+	                  Purchase.prototype.step1Form(context);
+	               } else {
+	                  alert('step2에서 step1으로 돌아가기 실패');
+	                  return null;
+	               }
+	            },
+	          
+	            error : function(request,status,msg) {
+	                 alert("code:" + request.status+"\n"+"message:"+request.responseText+"\n"+"msg:"+msg);
+	            }
+	      });
 	});
 }
 
@@ -486,9 +522,13 @@ Purchase.prototype.step2Form = function(context, reserveData, seat){
 Purchase.prototype.step3Form = function(context,reserveData){
 	var seatArr ="";
 	var sum=0;
+	var count = 0;
 	 $.each(reserveData,function(index,reserveData){
-		  seatArr += reserveData.seat+"/";
-		  sum += reserveData.price;
+		 if(reserveData.seat != null) {
+			 seatArr += reserveData.seat+"/";
+			 sum += reserveData.price;
+			 count++;
+		 }
 	  });
 	  seatArr = seatArr.substring(0, seatArr.length-1);
 
@@ -512,7 +552,7 @@ Purchase.prototype.step3Form = function(context,reserveData){
 	            	<div class="checkout-wrapper">\
 	               		<h2 class="page-heading">price</h2>\
 						<ul class="book-result">\
-							<li class="book-result__item">총 인원: <span class="book-result__count booking-ticket">'+reserveData.length+'</span></li>\
+							<li class="book-result__item">총 인원: <span class="book-result__count booking-ticket">'+count+'</span></li>\
 							<li class="book-result__item">선택좌석: <span class="book-result__count booking-price">'+seatArr+'</span></li>\
 							<li class="book-result__item">총 금액: <span class="book-result__count booking-cost">'+sum+'원</span></li>\
 						</ul>\
@@ -526,7 +566,7 @@ Purchase.prototype.step3Form = function(context,reserveData){
 	      	</section>\
 	      	<div class="clearfix"></div>\
 	      	<div class="booking-pagination">\
-	         	<a href="#" class="booking-pagination__prev">\
+	         	<a href="#" class="booking-pagination__prev" id="prevBtn">\
 	            	<p class="arrow__text arrow--prev">prev step</p>\
 	            	<span class="arrow__info">choose a sit</span>\
 	         	</a>\
@@ -537,6 +577,7 @@ Purchase.prototype.step3Form = function(context,reserveData){
 	 $('#purchaseBtn').click(function(e) {
 		e.preventDefault();
 		alert("구매버튼 클릭");
+		
 		$.ajax({
         url : context + '/purchase/step4',
         data : { 
@@ -552,7 +593,7 @@ Purchase.prototype.step3Form = function(context,reserveData){
         success : function(data) {
            if (data != null) {
               Purchase.prototype.step4Form(context, data.purchaseData);
-           
+              checkload = false; // 페이지 벗어나기 가능
            } else {
               alert('step4 데이터 가져오기 실패');
               return null;
@@ -563,6 +604,32 @@ Purchase.prototype.step3Form = function(context,reserveData){
              alert("code:" + request.status+"\n"+"message:"+request.responseText+"\n"+"msg:"+msg);
         }
 		});
+	})
+	
+	$('#prevBtn').click(function(e) {
+		e.preventDefault();
+		$.ajax({
+            url : context + '/purchase/step2',
+            data : {
+            	movie : reserveData[0].movieTitle,
+            	date : reserveData[0].reserveDate,
+            	time : reserveData[0].beginTime,
+            },
+            dataType : 'json',
+		    type : 'post',
+            success : function(data) {
+               if (data != null) {
+                  Purchase.prototype.step2Form(context, data.reserveData, data.seat);
+               } else {
+                  alert('step3에서 stpe2로 돌아가기 실패');
+                  return null;
+               }
+            },
+          
+            error : function(request,status,msg) {
+                 alert("code:" + request.status+"\n"+"message:"+request.responseText+"\n"+"msg:"+msg);
+            }
+      });
 	})
 }
 
@@ -581,7 +648,7 @@ Purchase.prototype.step4Form = function(context,purchaseData){
 	               <div class="ticket__indecator indecator--pre"><div class="indecator-text pre--text">online ticket</div></div>\
 	               <div class="ticket__inner">\
 	                  <div class="ticket-secondary">\
-	                     <span class="ticket__item">Ticket number <strong class="ticket__number">'+purchaseData.purchaseSeq+'</strong></span>\
+	                     <span class="ticket__item">Ticket number <strong class="ticket__number">A126BYM4</strong></span>\
 	                     <span class="ticket__item ticket__date">'+purchaseData.date+'</span>\
 	                     <span class="ticket__item ticket__time">'+purchaseData.beginTime+'</span>\
 	                     <span class="ticket__item">Cinema: <span class="ticket__cinema">Rainbow</span></span>\
