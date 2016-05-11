@@ -38,7 +38,7 @@ VALUES ('test2', '아이언맨3', '1관', '09:40', 'A9', 8000, '05/02/2016');
 -- Purchase 테이블의 모든 내용 검색
 SELECT * FROM Purchase;
 -------------------------
-
+delete from Purchase;
 ---------------------------
 -- Purchase 테이블 삭제하기
 DROP TABLE Purchase CASCADE;
