@@ -15,8 +15,6 @@ import com.rainbow.web.mapper.VodMapper;
 import com.rainbow.web.member.MemberDTO;
 
 
-
-
 @Service
 public class VodServiceImpl implements VodService{
 
