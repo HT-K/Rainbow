@@ -9,7 +9,7 @@
 <header class="header-wrapper header-wrapper--home">
     <div class="container">
         <!-- Logo link-->
-     	<a href="${context}/main" class="logo">
+     	<a href="${context}/rainbow" class="logo">
         	<img alt='logo' src="${context}/resources/rainbow/images/main/logo.png">
      	</a>
 

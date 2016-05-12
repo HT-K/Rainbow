@@ -60,7 +60,7 @@ public class HomeController {
 		return "global/main.user";
 	}
 	
-	@RequestMapping("/main")
+	@RequestMapping("/rainbow")
 	public String main(Model model) {
 		List<MovieDTO> list = new ArrayList<MovieDTO>();
 		// 현재 레이팅 점수 중 가장 상위 영화 6개 메인에 뿌리기 (1920 x 616 이미지)

@@ -59,7 +59,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/join", method=RequestMethod.POST)
-	public String join(@RequestParam("id")String id, 
+	public void join(@RequestParam("id")String id, 
 			@RequestParam("password")String password,
 			@RequestParam("name")String name,
 			@RequestParam("birth")String birth,
@@ -82,18 +82,18 @@ public class MemberController {
 		member.setEmail(email);
 		
 		int res = service.insert(member);
-		String view = "";
 		
 		if (res == 1) {
 			logger.info("회원가입 성공");
 			member.setId(null);
 			member.setName("비회원");
 			session.setAttribute("user", member);
-			view = "redirect:/main";
+			//view = "redirect:/rainbow";
 		} else {
-			view = "member/join_form.user";
+			logger.info("회원가입 실패");
+			//view = "member/join_form.user";
 		}	
-		return view;
+		//return view;
 	}
 	
 	@RequestMapping("/profile")
@@ -135,7 +135,7 @@ public class MemberController {
 			logger.info("업데이트 성공");
 			member = service.getById(member);
 			session.setAttribute("user", member); // 세션에 업데이트된 회원정보로 다시 넣기
-			//view = "redirect:/main";
+			//view = "redirect:/rainbow";
 		} else {
 			logger.info("업데이트 실패");
 			//view = "member/update_form";
