@@ -17,6 +17,9 @@
 		
 		purchase : function() {
 			return new Purchase();
+		},
+		admin : function() {
+			return new admin();
 		}
 		
 		

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
@@ -11,6 +10,10 @@
 	#content th {border : 1px solid black; text-align : center}
 	#content tr td{border : 1px solid black; text-align : center}
 	#content tr {border : 1px solid black}
+	input[type="checkbox"] {
+    -webkit-appearance: checkbox;
+    border-radius: 0;
+}
 </style>
 <form id = "replyContentForm" class="form-horizontal" style="margin-top: 30px" enctype="multipart/form-data" class="table table-striped">
 	<div class="editTop" >
@@ -29,7 +32,7 @@
 	</tr>
 	<c:forEach items="${list}" var="reply" >
 		<tr>
-			<td><input type="checkbox" name="replySeq" value="${reply.replySeq}"></td>
+			<td><input type="checkbox" name="replySeq" onclick="validate()" value="${reply.replySeq}" ></td>
 			<td>${reply.replySeq}</td>
 			<td>${reply.writerName}</td>
 			<td>${reply.regTime}</td>

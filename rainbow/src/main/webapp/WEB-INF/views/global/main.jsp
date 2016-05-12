@@ -81,5 +81,5 @@
 	$(document).ready(function() {
 		var context = $.fn.global('${context}').getContext();
 		init_Home(context);
-	});
+	}); 	
 </script>
