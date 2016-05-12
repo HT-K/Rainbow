@@ -1,20 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!doctype html>
+
 <style>
 	#content{border : 1px solid black}
 	#content th {border : 1px solid black; text-align : center}
 	#content tr td{border : 1px solid black; text-align : center}
 	#content tr {border : 1px solid black}
-	input[type="checkbox"] {
-    -webkit-appearance: checkbox;
-    border-radius: 0;
-	}
 </style>
 <form id = "replyContentForm" class="form-horizontal" style="margin-top: 30px" enctype="multipart/form-data" class="table table-striped">
-	<div class="editTop" >
-			<h1>　</h1>
-			<h1 class="text-center" align="center">ADMIN REPLY Page</h1>
-	</div>
-
+<input type="checkbox" name="vehicle1" value="Bike">I have a bike
+<br>
+<input type="checkbox" name="vehicle2" value="Car">I have a car 
+<br><br>
+<input type="submit">
 <table id="content" style="width: 100%; margin-top: 30px">
 	<tr style="background-color: gray;">
 		<th style="width: 5%;">DELETE BUTTON</th>
@@ -26,7 +24,9 @@
 	</tr>
 	<c:forEach items="${list}" var="reply" >
 		<tr>
-			<td><input type="checkbox" name="replySeq" value="${reply.replySeq}"/></td>
+			<td>
+			
+			<%-- <input type="checkbox" name="replySeq" value="${reply.replySeq}"/> --%></td>
 			<td>${reply.replySeq}</td>
 			<td>${reply.writerName}</td>
 			<td>${reply.regTime}</td>

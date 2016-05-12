@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!-- Banner -->
 <div class="banner-top">
     <img alt='top banner' src="${context}/resources/rainbow/images/main/main_header.png">
+	<input type="hidden" id="sessionVar" value="${sessionScope.user.id}">
 </div>
 
 <!-- Header section -->
@@ -33,12 +35,14 @@
 		<div class="control-panel">
 			<div class="auth auth--home">
 				<div class="auth__show">
-				<span class="auth__image"> <img alt="" src="http://placehold.it/31x31"></span>
+				<span class="auth__image"> <img alt="" src="${context}/resources/rainbow/images/main/cholong.jpg"></span>
 				</div>
 				<a href="#" class="btn btn--sign btn--singin">${sessionScope.user.name}</a>
+				<ul class="auth__function">
+                	<li><a href="#" class="auth__function-item">회원탈퇴</a></li>    
+                </ul>
 			</div>
-			<button class="btn btn-md btn--warning btn--book btn-control--home login-window" style="font-size: 11px;" id="bookBtn">Book a ticket</button>
-			<input type="hidden" id="sessionVar" value="${sessionScope.user.id}">
+			<button id="bookBtn" class="btn btn-md btn--warning btn--book btn-control--home login-window" style="font-size: 11px;">Book a ticket</button>
 			<!-- <a href="#" class="btn btn-md btn--warning btn--book btn-control--home login-window" style="font-size: 11px;">Book a ticket</a> -->
 		</div>
 	</div>
@@ -49,8 +53,10 @@
 		var id = $('#sessionVar').val();
 		$('#bookBtn').click(function(e) {
 			e.preventDefault();
-			if (id.length != 0) {
-				location.href = "${context}/home/main";
+			if (id.length != 0) { // 회원일 경우 로그인 창 안띄워지게 하기!
+				$('.overlay').removeClass('open').addClass('close');
+			} else { // 비회원일 경우 로그인창 띄우기
+				$('.overlay').removeClass('close').addClass('open');
 			}
 		});
 	});
@@ -61,7 +67,7 @@
 	<section class="container">
 		<div class="col-sm-4 col-sm-offset-4">
 			<button type="button" class="overlay-close">Close</button>
-				<form class="login">
+				<form class="login" id="nav_login">
                         <p class="login__title">sign in <br>
                         	<span class="login-edition">welcome to Rainbow Cinema</span>
                         </p>
@@ -84,7 +90,7 @@
 					$(function() {
 						$('#nav_loginBtn').click(function(e) { // 로그인 버튼 클릭 시 $() 로 form 태그를 찾아서 객체로 리턴받아 action을 걸고 post방식으로 보낸다.
 							e.preventDefault();
-							$('form').attr('action',"${context}/member/login").attr('method',"post").submit();
+							$('#nav_login').attr('action',"${context}/member/login").attr('method',"post").submit();
 						});
 					});
 				</script>

@@ -39,8 +39,6 @@ public class AdminController {
 // ================================= MOVIE MANAGED BY ADMIN =========================================================
    
    
-   
-   
    //=====TRANSPORTS MOVIE ADD FROM ======
    @RequestMapping("/input_form")
 	public String input_form (){
@@ -225,7 +223,7 @@ public class AdminController {
    		List<ReplyDTO> list =  new ArrayList<ReplyDTO>();
    		logger.info("댓글 영화순번 리스트 {}",movieSeq);
    		reply.setMovieSeq(movieSeq);
-   		list = replyService.getByReplySeq(reply);
+   		list = replyService.getBySeq(reply);
    		model.addAttribute("list", list);
    		return "admin/reply_content.admin";
    	}

@@ -33,13 +33,13 @@ public class ReplyServieImplTest {
 		assertThat(mapper.insert(reply),is(1));
 	}
 
-	@Test
+	/*@Test
 	public void testGetList() {
 		  ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
 	      List<ReplyDTO> list = new ArrayList<ReplyDTO>();
 	      list = mapper.selectList();
 	      assertThat(list.size(), is(not(0))); // 전체 회원 조회 시 리턴되는 값이 0이 아니면 성공(초록불) 아니면 빨간불
-	}
+	}*/
 
 	@Test
 	public void testGetByReplySeq() {
@@ -50,11 +50,11 @@ public class ReplyServieImplTest {
 	}
 
 
-	@Test
+/*	@Test
 	public void testCount() {
 		ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
 		assertNotNull(mapper.count(reply));
-	}
+	}*/
 
 	@Test
 	public void testUpdate() {

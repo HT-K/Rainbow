@@ -11,6 +11,22 @@ CREATE TABLE Reply(
 
 SELECT * FROM Reply;
 
+SELECT r.reply_seq AS replySeq, 
+       r.writer_name AS writerName, 
+       r.reg_time AS regTime,
+       r.reply_content AS replyContent,
+       r.movie_seq AS movieSeq,
+       m.title AS title
+FROM Reply r
+JOIN Movie m ON m.movie_seq = r.movie_seq;
+
+SELECT r.reply_seq, r.writer_name, r.reg_time, r.reply_content ,r.movie_seq, m.title
+FROM Reply r 
+JOIN Movie m ON m.movie_seq = r.movie_seq
+WHERE r.reply_seq = '1';
+
+
+
 INSERT INTO Reply(writer_name,reg_time,reply_content)
 VALUES ('hong', SYSDATE(), NULL);
 

@@ -34,19 +34,17 @@ public class ReplyServiceImpl implements ReplyService{
 	}
 
 	@Override
-	public List<ReplyDTO> getByReplySeq(ReplyDTO reply) {
+	public List<ReplyDTO> getBySeq(ReplyDTO reply) {
 		logger.info("=== RecordService : getByRelySeq() === ");
 		ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
-		return mapper.selectByReplySeq(reply);
+		return mapper.selectBySeq(reply);
 	}
 	
-	
-
 	@Override
-	public int count() {
+	public int count(ReplyDTO reply) {
 		logger.info("=== replyService : count() === ");
 		ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
-		return mapper.count();
+		return mapper.count(reply);
 	}
 
 	@Override

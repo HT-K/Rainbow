@@ -4,13 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.rainbow.web.mapper.ReplyMapper"> 
 	<insert id="insert" parameterType="com.rainbow.web.reply.ReplyDTO"> 
-		INSERT INTO Reply(writer_name, reg_time, reply_content, movie_seq)
+		INSERT INTO Reply(writer_name,reg_time, reply_content, movie_seq)
 		VALUES (#{writerName}, SYSDATE(), #{replyContent}, #{movieSeq});
 	</insert>
-	
-	<select id="selectList" resultType="com.rainbow.web.reply.ReplyDTO">
-	    SELECT * FROM Reply;
-	</select>
 	
 	<select id="selectBySeq" parameterType="com.rainbow.web.reply.ReplyDTO" resultType="com.rainbow.web.reply.ReplyDTO"> 
 	    SELECT 
@@ -30,14 +26,12 @@
 	</select>
 	
 	<update id="update" parameterType="com.rainbow.web.reply.ReplyDTO">
-	    UPDATE Reply 
-	    SET writer_name =#{writerName} , reply_content = #{replyContent}
+	    UPDATE Reply SET writer_name =#{writerName} , reply_content = #{replyContent}
 		WHERE writer_name = #{writerName};
 	</update>
 	
 	<delete id="delete" parameterType="com.rainbow.web.reply.ReplyDTO">
-	    DELETE FROM Reply 
-	    WHERE writer_name = #{writerName};
+	    DELETE FROM Reply WHERE reply_seq = #{replySeq};
 	</delete>
 	
 </mapper>
