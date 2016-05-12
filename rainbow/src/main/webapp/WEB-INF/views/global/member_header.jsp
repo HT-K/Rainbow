@@ -78,8 +78,8 @@
                         </div>
                         <p class="login__tracker">or</p>
                         <div class="field-wrap">
-	                        <input type='text' placeholder='아이디를 입력하세요' id="id" name="id" class="login__input">
-	                        <input type='text' placeholder='비밀번호를 입력하세요' id="password" name='password' class="login__input">
+	                        <input type='text' placeholder='아이디를 입력하세요' id="nav_id" name="nav_id" class="login__input">
+	                        <input type='text' placeholder='비밀번호를 입력하세요' id="nav_password" name='nav_password' class="login__input">
                         </div>
                         <div class="login__control">
                             <button id="nav_loginBtn" name="nav_loginBtn" class="btn btn-md btn--warning btn--wider">sign in</button>

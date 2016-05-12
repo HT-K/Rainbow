@@ -2,37 +2,52 @@
  * Member
  */
 var member = {
-	login : function(context) {
-		var login = 
+	loginForm : function(context) {
+		var loginForm = 
 			'<form class="login" id="login_form" style="margin-top: 30px;">\
 				<p class="login__title">\
 					sign in <br>\
 					<span class="login-edition">welcome to Rainbow Cinema</span>\
 				</p>\
 				<div class="social social--colored">\
-					<a href="#" class="social__variant fa fa-facebook"></a> \
-					<a href="#" class="social__variant fa fa-twitter"></a> \
+					<a href="#" class="social__variant fa fa-facebook"></a>\
+					<a href="#" class="social__variant fa fa-twitter"></a>\
 					<a href="#" class="social__variant fa fa-tumblr"></a>\
 				</div>\
 				<p class="login__tracker">or</p>\
 				<div class="field-wrap">\
-					<input type="text" placeholder="아이디를 입력하세요" id="id" name="id" class="login__input"/> \
+					<input type="text" placeholder="아이디를 입력하세요" id="id" name="id" class="login__input"/>\
 					<input type="text" placeholder="비밀번호를 입력하세요" id="password" name="password" class="login__input"/>\
 				</div>\
 				<div class="login__control">\
-					<button id="loginBtn" name="loginBtn" class="btn btn-md btn--warning btn--wider">sign in</button>\
+					<input type="button" id="loginBtn" name="loginBtn" class="btn btn-md btn--warning btn--wider" value="sign in">\
 					<a href="#" class="login__tracker form__tracker">Forgot password?</a>\
 				</div>\
 			</form>';
-		
-		$('#content').html(login);
+		$('#content').html(loginForm);
 		$('#loginBtn').click(function(e) {
 			e.preventDefault();
-			$('#login_form').attr('action', context+"/member/login").attr('method',"post").submit();
+			$.ajax({
+				url : context+'/member/login',
+				data : {
+					id : $('#id').val(),	
+					password : $('#password').val()
+				},
+				dataType : 'json',
+				type : 'post',
+				success : function(data) {
+					alert(data.member.name+ '님 로그인 성공');
+					location.href = context+'/home/main';
+				},
+				error : function(xhr, status, msg) {
+					alert("로그인 시 에러발생 : " + msg);
+				}
+			});
+			/*$('#login_form').attr('action', context+"/member/login").attr('method',"post").submit();*/
 		});
 	},
-	join : function(context) {
-		var join = 
+	joinForm : function(context) {
+		var joinForm = 
 			'<article class="container" style="margin-top: 30px">\
 				<div class="col-md-12 login">\
 					<p class="login__title">\
@@ -44,7 +59,7 @@ var member = {
 						<a href="#" class="social__variant fa fa-twitter"></a> \
 						<a href="#" class="social__variant fa fa-tumblr"></a>\
 					</div>\
-					<form class="form-horizontal" id="joinForm">\
+					<form class="form-horizontal" id="join_form">\
 		        		<div class="form-group" style="margin-top: 30px">\
 		        			<label class="col-sm-3 control-label" for="inputId">아이디</label>\
 		        			<div class="col-sm-6">\
@@ -95,19 +110,37 @@ var member = {
 					</form>\
 				</div>\
 			</article>';
+		$('#content').html(joinForm);
 		
-		$('#content').html(join);
 		$('#joinBtn').click(function(e) { 
 			e.preventDefault();
-			$('#joinForm').attr('action', context+"/member/join").attr('method','post').submit();
+			var $frm = $('#join_form');
+			var postData = new FormData($('#join_form')[0]);
+			$.ajax({
+				url : context+'/member/join',
+				data : postData,
+				dataType : 'json',
+				type : 'post',
+				mimeType: 'multipart/form-data',
+			    contentType: false, 
+			    processData : false,
+				success : function() {
+					alert('회원가입에 성공하셨습니다. 로그인 화면으로 이동합니다.');
+					member.loginForm(context);
+				},
+				error : function(xhr, status, msg) {
+					alert("로그인 시 에러발생 : " + msg);
+				}
+			});
+				/*$('#joinForm').attr('action', context+"/member/join").attr('method','post').submit();*/
 		});
 		$('#cancelBtn').click(function(e) {
 			e.preventDefault();
 			$('#joinForm').reset();
 		});
 	},
-	profile : function(context) {
-		var profile = 
+	profileForm : function(context) {
+		var profileForm = 
 			'<article class="container" style="margin-top: 30px">\
 				<div class="col-md-12 login">\
 					<p class="login__title">\
@@ -178,7 +211,7 @@ var member = {
 				</div>\
 			</article>';
 		
-		$('#content').html(profile);
+		$('#content').html(profileForm);
 		$('#updateBtn').click(function(e) {
 			e.preventDefault();
 			location.href = context + "/member/update_form";

@@ -94,7 +94,7 @@
             +      '<span class="sub-nav-toggle plus"></span>' 
             +      '<a href="${context}/member/logout">로그아웃</a>'
             +   '</li>'
-            +   '<li>'
+            +   '<li id="headerMypageBtn">'
             +      '<span class="sub-nav-toggle plus"></span>' 
             +      '<a href="${context}/member/profile">마이페이지</a>'
             +   '</li>';
@@ -106,7 +106,7 @@
    <script type="text/javascript">
       $(function() {      
          var login_header =
-            '<li><span class="sub-nav-toggle plus"></span>'
+            '<li id="movieList"><span class="sub-nav-toggle plus"></span>'
             +      '<a href="${context}/movie/movie_list">Movies</a>'
             +   '</li>'
             +   '<li id="needLogin">'
@@ -117,11 +117,11 @@
             +      '<span class="sub-nav-toggle plus"></span>'
             +      '<a href="${context}/member/cinema">Cinema</a>'
             +   '</li>'
-            +   '<li>'
+            +   '<li id="headerLoginBtn">'
             +      '<span class="suzb-nav-toggle plus"></span>' 
-            +      '<a href="${context}/member/login_form">로그인</a>'
+            +      '<a href="#">로그인</a>'
             +   '</li>'
-            +   '<li>'
+            +   '<li id="headerJoinBtn">'
             +      '<span class="sub-nav-toggle plus"></span>' 
             +      '<a href="${context}/member/join_form">회원가입</a>'
             +   '</li>';
@@ -134,19 +134,38 @@
 <script src="${context}/resources/js/Global.js"></script>
 <script src="${context}/resources/js/Rainbow.js"></script>
 <script src="${context}/resources/js/Purchase.js"></script>
+<script src="${context}/resources/js/Member.js"></script>
+
 
 <script type="text/javascript">
 	$(function(){
 		var context = $.fn.global('${context}').getContext();
 		var purchase = $.fn.purchase(); 
+		
 		$('#ticketing').click(function(e){
 			e.preventDefault();
 		 	purchase.step1Form(context); 
 		});	
+		
 		$('#needLogin').click(function(e) { // 로그인 안한 상태에서 헤더의 티켓팅을 눌렀을 시
 			e.preventDefault();
 			alert("로그인이 필요합니다.");
 			location.href = '${context}/member/login_form';
+		});
+		
+		$('#headerLoginBtn').click(function(e) {
+			e.preventDefault();
+			member.loginForm(context);
+		});
+		
+		$('#headerJoinBtn').click(function(e) {
+			e.preventDefault();
+			member.joinForm(context);
+		});
+		
+		$('#headerMypageBtn').click(function(e) {
+			e.preventDefault();
+			member.profileForm(context);
 		});
 	});
 </script>

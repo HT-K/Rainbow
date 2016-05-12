@@ -6,22 +6,8 @@
 		global : function(arg){
 			return new Global(arg);
 		},
-
-		main : function(){
-			return new Main();
-		},
-		
-		member : function(){
-			return new Member();
-		},
-		
 		purchase : function() {
 			return new Purchase();
-		},
-		admin : function() {
-			return new admin();
 		}
-		
-		
 	});
 })();

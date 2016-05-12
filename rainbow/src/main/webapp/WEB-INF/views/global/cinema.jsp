@@ -1,14 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-
-
-
 <div class="wrapper">
       <!-- 실컨텐츠 시작 -->
       <div class="wrap-theater" style= "padding-top: 40px" align="center">
           <h3><img src="${context}/resources/rainbow/css/img/h3_theater.gif" alt="THEATER" /></h3>
           <div class="sect-theater " >
-             
               <div class="wrap-theaterinfo" align="center">
                   <div class="box-image">
                       <div id="theater_img_container" class="contact">
@@ -23,7 +19,6 @@
                               <em>6관 / 874석</em>
                               <span></span>
                           </span>
-                         
                   </div>  -->
             </div>
               </div>
@@ -33,7 +28,7 @@
       </div>
       <!-- 실컨텐츠 끝 --> 
 
-   <!--      Main content -->
+   <!-- Main content -->
    <section class="container">
        <h2 class="page-heading heading--outcontainer">Contact</h2>
        <div class="contact">
