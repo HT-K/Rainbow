@@ -79,8 +79,9 @@
    <script type="text/javascript">
       $(function() {
          var logout_header =
-            '<li><span class="sub-nav-toggle plus"></span>'
-            +      '<a href="${context}/movie/movie_list">Movies</a>'
+            '<li id="movieList">'
+            +		'<span class="sub-nav-toggle plus"></span>'
+            +      '<a href="#">Movies</a>'
             +   '</li>'
             +   '<li id="ticketing">'
             +      '<span class="sub-nav-toggle plus"></span>' 
@@ -106,8 +107,8 @@
    <script type="text/javascript">
       $(function() {      
          var login_header =
-            '<li><span class="sub-nav-toggle plus"></span>'
-            +      '<a href="${context}/movie/movie_list">Movies</a>'
+            '<li id="movieList"><span class="sub-nav-toggle plus"></span>'
+            +      '<a href="#">Movies</a>'
             +   '</li>'
             +   '<li id="needLogin">'
             +      '<span class="sub-nav-toggle plus"></span>' 
@@ -130,18 +131,26 @@
    </script>
 </c:otherwise>
 </c:choose>
-
+<!-- "${context}/movie/movie_list -->
 <script src="${context}/resources/js/Global.js"></script>
 <script src="${context}/resources/js/Rainbow.js"></script>
 <script src="${context}/resources/js/Purchase.js"></script>
+<script src="${context}/resources/js/Movie.js"></script>
 
 <script type="text/javascript">
 	$(function(){
 		var context = $.fn.global('${context}').getContext();
 		var purchase = $.fn.purchase(); 
+	 
+		
 		$('#ticketing').click(function(e){
 			e.preventDefault();
 		 	purchase.step1Form(context); 
+		});	
+		
+		$('#movieList').click(function(e){
+			e.preventDefault();
+			movie.movieList(context); 
 		});	
 		$('#needLogin').click(function(e) { // 로그인 안한 상태에서 헤더의 티켓팅을 눌렀을 시
 			e.preventDefault();

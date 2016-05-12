@@ -38,9 +38,9 @@ public class MovieController {
 		return "redirect:/movie/movie_list?keyField="+keyField+"&keyWord="+keyWord;
 	}
 	
-	@RequestMapping("/movie_list")
+	@RequestMapping("/movie_list/{startRow}")
 	public String list(
-			@RequestParam(value="startRow",defaultValue="0")String startRow,
+			@PathVariable(value="startRow")String startRow,
 			@RequestParam(value="keyField",defaultValue ="none")String keyField,
 			@RequestParam(value="keyWord",defaultValue ="none")String keyWord,
 			Model model) {
@@ -55,7 +55,7 @@ public class MovieController {
 			movie.setTotalMovie(service.count());
 			model.addAttribute("page", movie);
 			list = service.getList(movie);
-			model.addAttribute("movieList", list);
+			model.addAttribute("movieList", list); 
 		} else { // 검색으로 영화목록 보여줄 때
 			movie.setKeyField(keyField);
 			movie.setKeyWord(keyWord);
@@ -63,7 +63,9 @@ public class MovieController {
 			model.addAttribute("page", movie);
 			list = service.getBySearch(movie);
 			model.addAttribute("movieList", list);
+			
 		}
+		logger.info("model :{}",model);
 		return "movie/movie_list.user";
 	}
 	
