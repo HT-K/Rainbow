@@ -90,7 +90,6 @@
 	   var context  = '${context}';
 	   	vodMain.vodMainForm(context);
  	 var user = '${user.id}';
- 	 alert(user);
  	 if(user == null || user == ''){ 
  		 }else{
 		document.getElementById('logintab').style.display = 'none';

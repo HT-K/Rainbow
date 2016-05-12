@@ -10,13 +10,13 @@
 				<img alt='' src="${context}/resources/rainbow/images/main/HarryPotter5.jpg">
 			</li>
 			<li data-transition="fade" data-slotamount="7" class="slide fading-slide" data-slide='Thor2'>
-				<img alt='' src="${context}/resources/rainbow/images/main/thor2.jpg">
+				<img alt='' src="${context}/resources/rainbow/images/main/Thor2.jpg">
 			</li>
 			<li data-transition="fade" data-slotamount="7" class="slide fading-slide" data-slide='Matrix4'>
-				<img alt='' src="${context}/resources/rainbow/images/main/matrix4.jpg">
+				<img alt='' src="${context}/resources/rainbow/images/main/Matrix4.jpg">
 			</li>
 			<li data-transition="fade" data-slotamount="7" class="slide fading-slide" data-slide='Captain America2'>
-				<img alt='' src="${context}/resources/rainbow/images/main/captain2.jpg">
+				<img alt='' src="${context}/resources/rainbow/images/main/CaptainAmerica2.jpg">
 			</li>
 			<li data-transition="fade" data-slotamount="7" class="slide fading-slide" data-slide='Terminator3'>
 				<img alt='' src="${context}/resources/rainbow/images/main/Terminator3.jpg">
