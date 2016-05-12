@@ -32,7 +32,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String login(@RequestParam("id")String id, 
+	public Model login(@RequestParam("id")String id, 
 						@RequestParam("password")String password,
 						Model model,
 						HttpSession session) { 
@@ -49,17 +49,14 @@ public class MemberController {
 			logger.info("로그인 성공");
 			session.setAttribute("user", member); // 로그인 성공 시 session에 로그인에 성공한 유저의 정보가 담긴 member 객체를 담는다.
 			model.addAttribute("member", member); // 로그인 성공 시 다음 페이지에 request와 같은 역할을 하는 model에 member 객체를 담아 보낸다.
-			view = "redirect:/home/main"; // HomeController의 /home/main 호출, redirect는 Context 경로를 포함하고 있다. 다른 컨트롤러의 URL에 접근 가능
 		}else if (member.getId().equals("admin")){
 			logger.info("로그인 성공");
 			session.setAttribute("user", member);
 			model.addAttribute("member", member);
-			view = "admin/main.admin";
 		} else {
 			logger.info("로그인 실패");
-			view = "member/login_form.user";
 		}
-		return view;
+		return model;
 	}
 	
 	@RequestMapping("/logout")

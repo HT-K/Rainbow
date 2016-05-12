@@ -247,7 +247,7 @@ var vodMain = {
 	});
 	
 	},
-	 vodPurchase : function(context) {
+	 vodPurchase : function(context,session) {
 		 $('#content').empty(); 
 		 var purchaseForm = '';
 		 $.ajax(context+'/buy/vodPurchase',{
@@ -256,9 +256,9 @@ var vodMain = {
 				type : 'post',
 				async : true,
 				success : function(data) {
+					purchaseForm += '<div class="row"  style="text-align:center;">이용내역</div>';
 				 $.each(data.purchase,function(index,value){ 
-					 purchaseForm += '<div class="row"  style="text-align:center;">이용내역</div>\
-							<hr/>\
+					 purchaseForm += '<hr/>\
 							<div class="row">\
 						 <div class="col-xs-2">\
 						 <a href="'+value.vodUrl+'">\
@@ -329,10 +329,10 @@ var vodMain = {
 				dataType : 'json',
 				async : true,
 				success : function(data) {
-					alert(data.member.id);
 					if(data.member == null){
 						alert('아이디 또는 패스워드가 틀렸습니다.')
 					}else{
+						alert(data.member.id+"님 환영합니다.");
 						location.href = context+"/vod/vodMain";
 					}
 					

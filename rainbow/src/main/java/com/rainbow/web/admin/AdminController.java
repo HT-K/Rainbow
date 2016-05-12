@@ -76,7 +76,7 @@ public class AdminController {
 		String fileName = image.getOriginalFilename();
 		logger.info("수정폼에서 넘어온 파일 = {}",fileName);
 		String fullPath = fileUpload.uploadFile(image, 
-				Constants.IMAGE_DOMAIN, fileName);
+				Constants.IMAGE_DOMAIN_BingooriTest, fileName);
 		logger.info("이미지 저장 경로 : {}",fullPath);
 		
 		movie.setTitle(title);

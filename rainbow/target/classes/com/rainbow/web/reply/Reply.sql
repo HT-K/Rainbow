@@ -27,8 +27,8 @@ WHERE r.reply_seq = '1';
 
 
 
-INSERT INTO Reply(writer_name,reg_time,reply_content)
-VALUES ('hong', SYSDATE(), NULL);
+INSERT INTO Reply(writer_name,reg_time,reply_content,movie_seq)
+VALUES ('hong', SYSDATE(), NULL, 10);
 
 UPDATE Reply SET writer_name ='kim' , reply_content = NULL
 WHERE writer_name = 'hong';
