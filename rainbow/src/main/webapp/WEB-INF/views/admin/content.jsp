@@ -10,18 +10,17 @@
 	#content tr td{border : 1px solid black; text-align : center}
 	#content tr {border : 1px solid black}
 </style>
-	<!-- <div class="editTop" >
-			<h2></h2>
-			<h1 class="text-center" align="center"> Admin Movie Page</h1>
-	</div> -->
+	
 	<th class="col-sm-12 text-center">
- 	    <h3 align="right"><a href="#"onclick="location.href='${context}/member/logout'">LOGOUT</a></h3>
+		<h3 align="center">　</h3>
+ 	    <h3 align="center">영화 폼 -> title 클릭</h3>
+ 	    <h3 align="center">댓글 폼 -> 포스터 클릭</h3>
 	</th>
 
         
     
-<table id="content" style="width: 100%; margin-top: 30px" class="table table-striped">
-	<tr style="background-color: gray;">
+<table id="content" style="width: 100%; margin-top: 30px" >
+	<tr style="background-color: #E39919;">
 		<th style="width: 5%;">Movie Sequence</th>
 		<th style="width: 6%;">Movie Title</th>
 		<th style="width: 4%;">Movie Rating</th>
@@ -52,10 +51,4 @@
 		</tr>
 	</c:forEach>
 </table>
-		
-<script>
-$(function() {
-	  
-});
-   
-</script>
+

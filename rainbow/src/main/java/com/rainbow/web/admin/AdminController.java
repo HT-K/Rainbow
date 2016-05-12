@@ -6,6 +6,7 @@ import java.util.List;
 
 
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -40,13 +42,13 @@ public class AdminController {
    
    
    //=====TRANSPORTS MOVIE ADD FROM ======
-   @RequestMapping("/input_form")
+  /* @RequestMapping("/input_form")
 	public String input_form (){
 		return "admin/input_form.admin";
-	}
+	}*/
    
    //========= MOVIE ADD ================
-   @RequestMapping(value="/input", method=RequestMethod.POST)
+   @RequestMapping("/input")
 	public String input (@RequestParam(value="title",required=false)String title,
 			@RequestParam(value="rating",required=false)int rating,
 			@RequestParam(value="genre",required=false)String genre,
@@ -114,6 +116,17 @@ public class AdminController {
 		model.addAttribute("list",list);
       return "admin/content.admin";
 	}
+   
+  /* @RequestMapping("/content")
+   public @ResponseBody List<MovieDTO> content(){
+      logger.info("===movie-list(GET)===");
+		List<MovieDTO> list =  new ArrayList<MovieDTO>();
+		movie.setStart(0);
+		movie.setEnd(movieService.count());
+		list = movieService.getList(movie);
+      return list;
+	}*/
+   
    
    //========= ENTERS THE MOVIE TITLE BY SEQEUNSE============
    @RequestMapping("/edit/{movieSeq}")
@@ -238,7 +251,6 @@ public class AdminController {
 			replyService.delete(reply);
 		}
 		return "redirect:/admin/content";
-		/*return view;*/
 	}	
  
 }
