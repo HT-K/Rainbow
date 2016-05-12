@@ -25,3 +25,7 @@ DROP TABLE Member CASCADE;
 ---------------------------
 
 INSERT INTO Member (id, password, name) VALUES('admin','1','관리자');
+-------------------------------
+
+-------------------------------
+DELETE FROM Member WHERE id = 'check2';

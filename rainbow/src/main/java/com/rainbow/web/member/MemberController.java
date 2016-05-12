@@ -32,7 +32,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String login(@RequestParam("id")String id, 
+	public Model login(@RequestParam("id")String id, 
 						@RequestParam("password")String password,
 						Model model,
 						HttpSession session) { 
@@ -43,23 +43,23 @@ public class MemberController {
 		param.setId(id);
 		param.setPassword(password);
 		member = service.login(param);
-		String view = "";
+		//String view = "";
 		
 		if (member.getId() != null && !member.getId().equals("admin")) {
 			logger.info("로그인 성공");
 			session.setAttribute("user", member); // 로그인 성공 시 session에 로그인에 성공한 유저의 정보가 담긴 member 객체를 담는다.
 			model.addAttribute("member", member); // 로그인 성공 시 다음 페이지에 request와 같은 역할을 하는 model에 member 객체를 담아 보낸다.
-			view = "redirect:/home/main"; // HomeController의 /home/main 호출, redirect는 Context 경로를 포함하고 있다. 다른 컨트롤러의 URL에 접근 가능
+			//view = "redirect:/home/main"; // HomeController의 /home/main 호출, redirect는 Context 경로를 포함하고 있다. 다른 컨트롤러의 URL에 접근 가능
 		}else if (member.getId().equals("admin")){
 			logger.info("로그인 성공");
 			session.setAttribute("user", member);
 			model.addAttribute("member", member);
-			view = "admin/main.admin";
+			//view = "admin/main.admin";
 		} else {
 			logger.info("로그인 실패");
-			view = "member/login_form.user";
+			//view = "member/login_form.user";
 		}
-		return view;
+		return model;
 	}
 	
 	@RequestMapping("/logout")
@@ -104,9 +104,9 @@ public class MemberController {
 		
 		if (res == 1) {
 			logger.info("회원가입 성공");
-			/*member.setId(null);
+			member.setId(null);
 			member.setName("비회원");
-			session.setAttribute("user", member);*/
+			session.setAttribute("user", member);
 			view = "redirect:/home/main";
 		} else {
 			view = "member/join_form.user";
@@ -115,8 +115,13 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/profile")
-	public String profile() {
-		return "member/profile.user";
+	public Model profile(
+			HttpSession session,
+			Model model) {
+		MemberDTO member = (MemberDTO)session.getAttribute("user"); // 세션에 저장된 회원 정보를 담는다.
+		model.addAttribute("member", member); // 세션에 저장되어있던 회원의 정보를 model에 담아 getJson에 보낸다.
+		return model;
+		//return "member/profile.user";
 	}
 	
 	@RequestMapping("/update_form")
@@ -125,7 +130,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/update", method=RequestMethod.POST)
-	public String update(
+	public void update(
 			@RequestParam("id")String id,
 			@RequestParam("password")String password,
 			@RequestParam("addr")String addr,
@@ -142,22 +147,19 @@ public class MemberController {
 		member.setEmail(email);
 		
 		int res = service.update(member);
-		String view = "";
+		//String view = "";
 		
 		if (res == 1) {
 			logger.info("업데이트 성공");
 			member = service.getById(member);
 			session.setAttribute("user", member); // 세션에 업데이트된 회원정보로 다시 넣기
-			view = "redirect:/home/main";
+			//view = "redirect:/home/main";
 		} else {
 			logger.info("업데이트 실패");
-			view = "member/update_form";
+			//view = "member/update_form";
 		}
-		return view;
-		
+		//return view;
 	}
-	
- 
 	
 	@RequestMapping(value="/vod_login", method=RequestMethod.POST)
 	public Model vodLogin(@RequestParam("id")String id, 
@@ -212,5 +214,24 @@ public class MemberController {
 	@RequestMapping("/cinema")
 	public String cineame() {
 		return "global/cinema.user";
+	}
+	
+	@RequestMapping("/memberLeave")
+	public void memberLeave(
+			@RequestParam("id") String id,
+			HttpSession session) {
+		
+		member.setId(id);
+		int res = service.delete(member);
+		
+		if (res == 1) {
+			logger.info("회원 탈퇴 성공");
+			member.setId(null);
+			member.setName("비회원");
+			session.setAttribute("user", member);
+			session.invalidate();
+		} else {
+			logger.info("회원 탈퇴 실패");
+		}
 	}
 }

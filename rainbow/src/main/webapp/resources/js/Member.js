@@ -45,7 +45,8 @@ var member = {
 			});
 			/*$('#login_form').attr('action', context+"/member/login").attr('method',"post").submit();*/
 		});
-	},
+	}, // loginForm() End
+	
 	joinForm : function(context) {
 		var joinForm = 
 			'<article class="container" style="margin-top: 30px">\
@@ -138,96 +139,99 @@ var member = {
 			e.preventDefault();
 			$('#joinForm').reset();
 		});
-	},
+	}, // joinForm() End
+	
 	profileForm : function(context) {
-		var profileForm = 
-			'<article class="container" style="margin-top: 30px">\
-				<div class="col-md-12 login">\
-					<p class="login__title">\
-						'+ sessionScope.user.name +'님 환영합니다. <br>\
-						<span class="login-edition">회원님의 개인정보입니다.</span>\
-					</p>\
-					<div class="social social--colored">\
-						<a href="#" class="social__variant fa fa-facebook"></a> \
-						<a href="#" class="social__variant fa fa-twitter"></a> \
-						<a href="#" class="social__variant fa fa-tumblr"></a>\
+		$.getJSON(context+'/member/profile', function(data) {
+			var profileForm = 
+				'<article class="container" style="margin-top: 30px">\
+					<div class="col-md-12 login">\
+						<p class="login__title">\
+							'+ data.member.name +'님 환영합니다. <br>\
+							<span class="login-edition">회원님의 개인정보입니다.</span>\
+						</p>\
+						<div class="social social--colored">\
+							<a href="#" class="social__variant fa fa-facebook"></a> \
+							<a href="#" class="social__variant fa fa-twitter"></a> \
+							<a href="#" class="social__variant fa fa-tumblr"></a>\
+						</div>\
+						<form class="form-horizontal" id="detailform" style="margin-top: 30px">\
+							<div class="form-group">\
+		        				<label class="col-sm-3 control-label" for="id">아이디</label>\
+			        			<div class="col-sm-6">\
+			        				<input type="text" value="'+ data.member.id +'"  class="form-control" readonly="readonly"/> \
+			        			</div>\
+		        			</div>\
+		        			<div class="form-group">\
+		        				<label class="col-sm-3 control-label" for="password">비밀번호</label>\
+			        			<div class="col-sm-6">\
+			        				<input type="text" value="'+ data.member.password +'"  class="form-control" readonly="readonly"/> \
+			        			</div>\
+		        			</div>\
+		        			<div class="form-group">\
+		        				<label class="col-sm-3 control-label" for="name">이름</label>\
+			        			<div class="col-sm-6">\
+			        				<input type="text" value="'+ data.member.name +'"  class="form-control" readonly="readonly"/> \
+			        			</div>\
+		        			</div>\
+		        			<div class="form-group">\
+		        				<label class="col-sm-3 control-label" for="birth">생년월일</label>\
+			        			<div class="col-sm-6">\
+			        				<input type="text" value="'+ data.member.birth +'"  class="form-control" readonly="readonly"/> \
+			        			</div>\
+		        			</div>\
+		        			<div class="form-group">\
+		        				<label class="col-sm-3 control-label" for="addr">주소</label>\
+			        			<div class="col-sm-6">\
+			        				<input type="text" value="'+ data.member.addr +'"  class="form-control" readonly="readonly"/> \
+			        			</div>\
+		        			</div>\
+		        			<div class="form-group">\
+		        				<label class="col-sm-3 control-label" for="email">이메일</label>\
+			        			<div class="col-sm-6">\
+			        				<input type="text" value="'+ data.member.email +'"  class="form-control" readonly="readonly"/> \
+			        			</div>\
+		        			</div>\
+							<div class="form-group">\
+		        				<label class="col-sm-3 control-label" for="point">회원 포인트</label>\
+			        			<div class="col-sm-6">\
+			        				<input type="text" value="'+ data.member.point +'"  class="form-control" readonly="readonly"/> \
+			        			</div>\
+		        			</div>\
+		        			<div class="form-group">\
+		        				<label class="col-sm-3 control-label" for="grade">회원등급</label>\
+			        			<div class="col-sm-6">\
+			        				<input type="text" value="'+ data.member.grade +'"  class="form-control" readonly="readonly"/> \
+			        			</div>\
+		        			</div>\
+							<div class="form-group">\
+		        				<div class="col-sm-12 text-center">\
+									<button class="btn btn-primary" id="updateBtn" name="updateBtn">회원정보 수정<i class="fa fa-check spaceLeft"></i></button>\
+		            				<button class="btn btn-danger" id="cancelBtn" name="cancelBtn">취소<i class="fa fa-times spaceLeft"></i></button>\
+		        				</div>\
+		        			</div>\
+						</form>\
 					</div>\
-					<form class="form-horizontal" id="detailform" style="margin-top: 30px">\
-						<div class="form-group">\
-	        				<label class="col-sm-3 control-label" for="id">아이디</label>\
-		        			<div class="col-sm-6">\
-		        				<input type="text" value="'+ sessionScope.user.id +'"  class="form-control" readonly="readonly"/> \
-		        			</div>\
-	        			</div>\
-	        			<div class="form-group">\
-	        				<label class="col-sm-3 control-label" for="password">비밀번호</label>\
-		        			<div class="col-sm-6">\
-		        				<input type="text" value="'+ sessionScope.user.password +'"  class="form-control" readonly="readonly"/> \
-		        			</div>\
-	        			</div>\
-	        			<div class="form-group">\
-	        				<label class="col-sm-3 control-label" for="name">이름</label>\
-		        			<div class="col-sm-6">\
-		        				<input type="text" value="'+ sessionScope.user.name +'"  class="form-control" readonly="readonly"/> \
-		        			</div>\
-	        			</div>\
-	        			<div class="form-group">\
-	        				<label class="col-sm-3 control-label" for="birth">생년월일</label>\
-		        			<div class="col-sm-6">\
-		        				<input type="text" value="'+ sessionScope.user.birth +'"  class="form-control" readonly="readonly"/> \
-		        			</div>\
-	        			</div>\
-	        			<div class="form-group">\
-	        				<label class="col-sm-3 control-label" for="addr">주소</label>\
-		        			<div class="col-sm-6">\
-		        				<input type="text" value="'+ sessionScope.user.addr +'"  class="form-control" readonly="readonly"/> \
-		        			</div>\
-	        			</div>\
-	        			<div class="form-group">\
-	        				<label class="col-sm-3 control-label" for="email">이메일</label>\
-		        			<div class="col-sm-6">\
-		        				<input type="text" value="'+ sessionScope.user.email +'"  class="form-control" readonly="readonly"/> \
-		        			</div>\
-	        			</div>\
-						<div class="form-group">\
-	        				<label class="col-sm-3 control-label" for="point">회원 포인트</label>\
-		        			<div class="col-sm-6">\
-		        				<input type="text" value="'+ sessionScope.user.point +'"  class="form-control" readonly="readonly"/> \
-		        			</div>\
-	        			</div>\
-	        			<div class="form-group">\
-	        				<label class="col-sm-3 control-label" for="grade">회원등급</label>\
-		        			<div class="col-sm-6">\
-		        				<input type="text" value="'+ sessionScope.user.grade +'"  class="form-control" readonly="readonly"/> \
-		        			</div>\
-	        			</div>\
-						<div class="form-group">\
-	        				<div class="col-sm-12 text-center">\
-								<button class="btn btn-primary" id="updateBtn" name="updateBtn">회원정보 수정<i class="fa fa-check spaceLeft"></i></button>\
-	            				<button class="btn btn-danger" id="cancelBtn" name="cancelBtn">취소<i class="fa fa-times spaceLeft"></i></button>\
-	        				</div>\
-	        			</div>\
-					</form>\
-				</div>\
-			</article>';
-		
-		$('#content').html(profileForm);
-		$('#updateBtn').click(function(e) {
-			e.preventDefault();
-			location.href = context + "/member/update_form";
-			//$('#detailform').attr('action', context + "/member/update_form").attr('method','post').submit();
-		});
-		$('#cancelBtn').click(function(e) {
-			e.preventDefault();
-			location.href = context + "/home/main";
-		});
-	},
-	updateForm : function(context) {
+				</article>';
+			$('#content').html(profileForm);
+			$('#updateBtn').click(function(e) {
+				e.preventDefault();
+				member.updateForm(context,data);
+				//location.href = context + "/member/update_form";
+			});
+			$('#cancelBtn').click(function(e) {
+				e.preventDefault();
+				location.href = context + "/home/main";
+			});
+		}); // getJson() End
+	}, // profileForm() End
+	
+	updateForm : function(context,data) {
 		var updateForm = 
 			'<article class="container" style="margin-top: 30px">\
 				<div class="col-md-12 login">\
 					<p class="login__title">\
-						'+ sessionScope.user.name +'님 환영합니다. <br>\
+						'+ data.member.name +'님 환영합니다. <br>\
 						<span class="login-edition">회원님의 정보 수정 페이지입니다.</span>\
 					</p>\
 					<div class="social social--colored">\
@@ -235,53 +239,53 @@ var member = {
 						<a href="#" class="social__variant fa fa-twitter"></a> \
 						<a href="#" class="social__variant fa fa-tumblr"></a>\
 					</div>\
-					<form class="form-horizontal" id="updateForm" name="updateForm" style="margin-top: 30px">\
+					<form class="form-horizontal" id="update_form" name="update_form" style="margin-top: 30px">\
 						<div class="form-group">\
 	        				<label class="col-sm-3 control-label" for="id">아이디</label>\
 		        			<div class="col-sm-6">\
-		        				<input type="text" class="form-control" id="id" name="id" value="'+ sessionScope.user.id +'" readonly="readonly"/> \
+		        				<input type="text" class="form-control" id="id" name="id" value="'+ data.member.id +'" readonly="readonly"/> \
 		        			</div>\
 	        			</div>\
 	        			<div class="form-group">\
 	        				<label class="col-sm-3 control-label" for="password">비밀번호</label>\
 		        			<div class="col-sm-6">\
-		        				<input type="text" class="form-control" id="password" name="password" value="'+ sessionScope.user.password +'" /> \
+		        				<input type="text" class="form-control" id="password" name="password" value="'+ data.member.password +'" /> \
 		        			</div>\
 	        			</div>\
 	        			<div class="form-group">\
 	        				<label class="col-sm-3 control-label" for="name">이름</label>\
 							<div class="col-sm-6">\
-		        				<input type="text" class="form-control" id="name" name="name" value="'+ sessionScope.user.name +'" readonly="readonly"/> \
+		        				<input type="text" class="form-control" id="name" name="name" value="'+ data.member.name +'" readonly="readonly"/> \
 		        			</div>\
 	        			</div>\
 	        			<div class="form-group">\
 	        				<label class="col-sm-3 control-label" for="birth">생년월일</label>\
 		        			<div class="col-sm-6">\
-		        				<input type="text" class="form-control" id="birth" name="birth" value="'+ sessionScope.user.birth +'" readonly="readonly"/> \
+		        				<input type="text" class="form-control" id="birth" name="birth" value="'+ data.member.birth +'" readonly="readonly"/> \
 		        			</div>\
 	        			</div>\
 	        			<div class="form-group">\
 	        				<label class="col-sm-3 control-label" for="addr">주소</label>\
 		        			<div class="col-sm-6">\
-		        				<input type="text" class="form-control" id="addr" name="addr" value="'+ sessionScope.user.addr +'" /> \
+		        				<input type="text" class="form-control" id="addr" name="addr" value="'+ data.member.addr +'" /> \
 		        			</div>\
 	        			</div>\
 	        			<div class="form-group">\
 	        				<label class="col-sm-3 control-label" for="email">이메일</label>\
 		        			<div class="col-sm-6">\
-		        				<input type="text" class="form-control" id="email" name="email" value="'+ sessionScope.user.email +'" /> \
+		        				<input type="text" class="form-control" id="email" name="email" value="'+ data.member.email +'" /> \
 		        			</div>\
 	        			</div>\
 	        			<div class="form-group">\
 	        				<label class="col-sm-3 control-label" for="point">회원 포인트</label>\
 		        			<div class="col-sm-6">\
-		        				<input type="text" value="'+ sessionScope.user.point +'" id="point" name="point" class="form-control" readonly="readonly"/> \
+		        				<input type="text" value="'+ data.member.point +'" id="point" name="point" class="form-control" readonly="readonly"/> \
 		        			</div>\
 	        			</div>\
 	        			<div class="form-group">\
 	        				<label class="col-sm-3 control-label" for="grade">회원등급</label>\
 		        			<div class="col-sm-6">\
-								<input type="text" value="'+ sessionScope.user.grade +'" id="grade" name="grade" class="form-control" readonly="readonly"/> \
+								<input type="text" value="'+ data.member.grade +'" id="grade" name="grade" class="form-control" readonly="readonly"/> \
 		        			</div>\
 	        			</div>\
 						<div class="form-group">\
@@ -293,15 +297,50 @@ var member = {
 					</form>\
 				</div>\
 			</article>';
-		
 		$('#content').html(updateForm);
 		$('#updateOkBtn').click(function(e) {
 			e.preventDefault();
-			$('#updateForm').attr('action', context + "/member/update").attr('method','post').submit();
+			var $frm = $('#update_form');
+			var postData = new FormData($('#update_form')[0]);
+			$.ajax({
+				url : context+'/member/update',
+				data : postData,
+				dataType : 'json',
+				type : 'post',
+				mimeType: 'multipart/form-data',
+			    contentType: false, 
+			    processData : false,
+				success : function() {
+					alert('정보수정에 성공하셨습니다. 메인 화면으로 이동합니다.');
+					location.href = context + '/home/main';
+				},
+				error : function(xhr, status, msg) {
+					alert("업데이트 시 에러발생 : " + msg);
+				}
+			});
+			/*$('#updateForm').attr('action', context + "/member/update").attr('method','post').submit();*/
 		});
 		$('#cancelBtn').click(function(e) {
 			e.preventDefault();
 			$('#updateForm').reset();
+		});
+	},
+	
+	memberLeave : function(context, id) {
+		$.ajax({
+			url : context+'/member/memberLeave',
+			data : {
+				id : id
+			},
+			dataType : 'json',
+			type : 'post',
+			success : function() {
+				alert('회원가입에 탈퇴에 성공하셨습니다. 메인 화면으로 이동합니다.');
+				location.href = context + "/home/main";
+			},
+			error : function(xhr, status, msg) {
+				alert("회원탈퇴 시 에러발생 : " + msg);
+			}
 		});
 	}
 }

@@ -38,8 +38,9 @@
 				<span class="auth__image"> <img alt="" src="${context}/resources/rainbow/images/main/cholong.jpg"></span>
 				</div>
 				<a href="#" class="btn btn--sign btn--singin">${sessionScope.user.name}</a>
-				<ul class="auth__function">
-                	<li><a href="#" class="auth__function-item">회원탈퇴</a></li>    
+				<ul class="auth__function" id="dropBoxBtn">
+                	<li id="purchaseListBtn"><a href="#" class="auth__function-item">예매내역</a></li>    
+                	<li id="memberLeaveBtn"><a href="#" class="auth__function-item">회원탈퇴</a></li>    
                 </ul>
 			</div>
 			<button id="bookBtn" class="btn btn-md btn--warning btn--book btn-control--home login-window" style="font-size: 11px;">Book a ticket</button>
@@ -51,6 +52,14 @@
 <script type="text/javascript">
 	$(function() {
 		var id = $('#sessionVar').val();
+		if (id.length != 0) {
+			$('#dropBoxBtn').addClass('auth__function');
+			document.getElementById('dropBoxBtn').style.display = '';
+		} else {
+			$('#dropBoxBtn').removeClass('auth__function');
+			document.getElementById('dropBoxBtn').style.display = 'none';
+		}
+		
 		$('#bookBtn').click(function(e) {
 			e.preventDefault();
 			if (id.length != 0) { // 회원일 경우 로그인 창 안띄워지게 하기!

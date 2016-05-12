@@ -167,6 +167,12 @@
 			e.preventDefault();
 			member.profileForm(context);
 		});
+		
+		$('#memberLeaveBtn').click(function(e) {
+			e.preventDefault();
+			var id = '${user.id}';
+			member.memberLeave(context, id);
+		});
 	});
 </script>
 </html>
