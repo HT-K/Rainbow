@@ -1,11 +1,16 @@
 /**
- * Vod Main
+ * Vod JS
  */
 
 var vodMain = {	
 		vodDetailForm : function(context,vodName,cash) { 
 			document.getElementById('indexFooter').style.display = '';
-			$.getJSON(context+'/vod/vodDetail/'+vodName,function(data){
+			$.ajax(context+'/vod/vodDetail/'+vodName,{
+				data : {}, 
+				dataType : 'json',
+				async : true,
+				success : function(data){ 
+				history.pushState(data,"detail",context+'/vod/vodDetail/'+vodName);
 				$('#content').empty(); 
 				var detailForm = '<div class="row"><br/>\
 					   <img class="col-xs-12" style="padding-left: 30%; padding-right: 30%; " src="'+context+'/resources/vod_image/advertising/ad.png">\
@@ -84,8 +89,12 @@ var vodMain = {
 						
 					});
 				})
-				
-			});
+				},
+				error : function(xhr,status,msg) {
+								alert('에러발생상태 :'+status+',내용 : '+msg);
+							}
+							
+						});
 		},
 	vodMainForm : function(context) {
 		$('#content').empty(); 
@@ -98,7 +107,14 @@ var vodMain = {
 		         <a href="'+context+'/vod_menu/new_form.do" class="ui-btn-right ui-link ui-btn ui-icon-carat-r ui-btn-icon-notext ui-shadow ui-corner-all"></a>\
 		      </div>\
 		      <div class="row" >';
-		$.getJSON(context+'/vod/vodLimit/',function(data){  
+	
+		$.ajax(context+'/vod/vodLimit/',{
+			data : {}, 
+			dataType : 'json',
+			async : true,
+			success : function(data){ 
+			
+			
 			$.each(data.atLeast,function(index,value){ 
 				mainForm += '<div class="col-xs-4 well" style="background: white;">\
 					<a class ="latestMovie" onclick="vodMain.vodDetailForm('+'\''+context+'\''+','+'\''+value.vodName+'\''+','+'\''+value.vodPrice+'\''+');"  href="#"><img class="col-xs-12" src="'+context+'/resources'+value.vodImage+'"></a>\
@@ -126,8 +142,15 @@ var vodMain = {
 					</div>';
 			});
 			mainForm += '</div>';
-			$('#content').html(mainForm);  				
-		});
+			$('#content').html(mainForm);  	
+			},
+			error : function(xhr,status,msg) {
+							alert('에러발생상태 :'+status+',내용 : '+msg);
+						}
+						
+					});
+		
+		
 	},
 	vodSearchForm : function(context) {
 		$('#content').empty();	 
@@ -369,6 +392,7 @@ var vodMain = {
 	    </div>\
 	    </div>';
 		$('body').html(joinForm); 
+		history.pushState(joinForm,"join",'');
 		$('#joinBtn').click(function(e) {
 			e.preventDefault();
 			$.ajax(context + '/member/vod_join', {
@@ -408,12 +432,20 @@ var vodMain = {
 	         <h2>최신 영화</h2>\
 	         <a href="'+context+'/vod_menu/new_form.do" class="ui-btn-right ui-link ui-btn ui-icon-carat-r ui-btn-icon-notext ui-shadow ui-corner-all"></a>\
 	      </div>';
-	$.getJSON(context+'/vod/vodAtLeastUn/',function(data){ 
+		
+	
+		
+		
+		$.ajax(context+'/vod/vodAtLeastUn/',{
+			data : {}, 
+			dataType : 'json',
+			async : true,
+			success : function(data){ 
 		atLeastForm += '<div class="row" >';
 		$.each(data.atLeast,function(index,value){ 
 			if(index < 3){
 				atLeastForm += '<div class="col-xs-4 well" style="background: white;">\
-					<a href="'+context+'/vod_detail/vod_detailForm.do?vodName=친구(Friend)"><img class="col-xs-12" src="'+context+'/resources'+value.vodImage+'"></a>\
+					<a class ="latestMovie" onclick="vodMain.vodDetailForm('+'\''+context+'\''+','+'\''+value.vodName+'\''+','+'\''+value.vodPrice+'\''+');"  href="#"><img class="col-xs-12" src="'+context+'/resources'+value.vodImage+'"></a>\
 					</div>';
 				
 			}
@@ -423,7 +455,7 @@ var vodMain = {
 		$.each(data.atLeast,function(index,value){ 
 			if(index >= 3 && index < 6){
 				atLeastForm += '<div class="col-xs-4 well" style="background: white;">\
-					<a href="'+context+'/vod_detail/vod_detailForm.do?vodName=친구(Friend)"><img class="col-xs-12" src="'+context+'/resources'+value.vodImage+'"></a>\
+					<a class ="latestMovie" onclick="vodMain.vodDetailForm('+'\''+context+'\''+','+'\''+value.vodName+'\''+','+'\''+value.vodPrice+'\''+');"  href="#"><img class="col-xs-12" src="'+context+'/resources'+value.vodImage+'"></a>\
 					</div>';
 				
 			}
@@ -433,14 +465,25 @@ var vodMain = {
 		$.each(data.atLeast,function(index,value){ 
 			if(index > 5 && index < 10){
 				atLeastForm += '<div class="col-xs-4 well" style="background: white;">\
-					<a href="'+context+'/vod_detail/vod_detailForm.do?vodName=친구(Friend)"><img class="col-xs-12" src="'+context+'/resources'+value.vodImage+'"></a>\
+					<a class ="latestMovie" onclick="vodMain.vodDetailForm('+'\''+context+'\''+','+'\''+value.vodName+'\''+','+'\''+value.vodPrice+'\''+');"  href="#"><img class="col-xs-12" src="'+context+'/resources'+value.vodImage+'"></a>\
 					</div>';
 				
 			}
 				});
 		atLeastForm +=	 '</div>';
 		$('#content').html(atLeastForm); 
-	});
+		
+		
+			},
+			error : function(xhr,status,msg) {
+							alert('에러발생상태 :'+status+',내용 : '+msg);
+						}
+						
+					});
+	
+	
+	
+	
 	},
 	vodCommonForm : function(context) {
 		$('#content').empty(); 
@@ -452,12 +495,20 @@ var vodMain = {
 	         <h2>일반 영화</h2>\
 	         <a href="'+context+'/vod_menu/new_form.do" class="ui-btn-right ui-link ui-btn ui-icon-carat-r ui-btn-icon-notext ui-shadow ui-corner-all"></a>\
 	      </div>';
-	$.getJSON(context+'/vod/vodCommonUn/',function(data){ 
+		
+
+		
+		
+		$.ajax(context+'/vod/vodCommonUn/',{
+			data : {}, 
+			dataType : 'json',
+			async : true,
+			success : function(data){ 
 		commonForm += '<div class="row" >';
 		$.each(data.common,function(index,value){ 
 			if(index < 3){
 				commonForm += '<div class="col-xs-4 well" style="background: white;">\
-					<a href="'+context+'/vod_detail/vod_detailForm.do?vodName=친구(Friend)"><img class="col-xs-12" src="'+context+'/resources'+value.vodImage+'"></a>\
+					<a class ="latestMovie" onclick="vodMain.vodDetailForm('+'\''+context+'\''+','+'\''+value.vodName+'\''+','+'\''+value.vodPrice+'\''+');"  href="#"><img class="col-xs-12" src="'+context+'/resources'+value.vodImage+'"></a>\
 					</div>';
 				
 			}
@@ -467,7 +518,7 @@ var vodMain = {
 		$.each(data.common,function(index,value){ 
 			if(index >= 3 && index < 6){
 				commonForm += '<div class="col-xs-4 well" style="background: white;">\
-					<a href="'+context+'/vod_detail/vod_detailForm.do?vodName=친구(Friend)"><img class="col-xs-12" src="'+context+'/resources'+value.vodImage+'"></a>\
+					<a class ="latestMovie" onclick="vodMain.vodDetailForm('+'\''+context+'\''+','+'\''+value.vodName+'\''+','+'\''+value.vodPrice+'\''+');"  href="#"><img class="col-xs-12" src="'+context+'/resources'+value.vodImage+'"></a>\
 					</div>';
 				
 			}
@@ -477,14 +528,24 @@ var vodMain = {
 		$.each(data.common,function(index,value){ 
 			if(index > 5 && index < 10){
 				commonForm += '<div class="col-xs-4 well" style="background: white;">\
-					<a href="'+context+'/vod_detail/vod_detailForm.do?vodName=친구(Friend)"><img class="col-xs-12" src="'+context+'/resources'+value.vodImage+'"></a>\
+					<a class ="latestMovie" onclick="vodMain.vodDetailForm('+'\''+context+'\''+','+'\''+value.vodName+'\''+','+'\''+value.vodPrice+'\''+');"  href="#"><img class="col-xs-12" src="'+context+'/resources'+value.vodImage+'"></a>\
 					</div>';
 				
 			}
 				});
 		commonForm +=	 '</div>';
 		$('#content').html(commonForm); 
-	});
+		
+			},
+			error : function(xhr,status,msg) {
+							alert('에러발생상태 :'+status+',내용 : '+msg);
+						}
+						
+					});
+	
+	
+	
+	
 	},
 	vodFreeForm : function(context) {
 		$('#content').empty(); 
@@ -496,12 +557,18 @@ var vodMain = {
 	         <h2>무료 영화</h2>\
 	         <a href="'+context+'/vod_menu/new_form.do" class="ui-btn-right ui-link ui-btn ui-icon-carat-r ui-btn-icon-notext ui-shadow ui-corner-all"></a>\
 	      </div>';
-	$.getJSON(context+'/vod/vodFreeUn/',function(data){ 
+		
+		 
+		$.ajax(context+'/vod/vodFreeUn/',{
+			data : {}, 
+			dataType : 'json',
+			async : true,
+			success : function(data){ 
 		freeForm += '<div class="row" >';
 		$.each(data.free,function(index,value){ 
 			if(index < 3){
 				freeForm += '<div class="col-xs-4 well" style="background: white;">\
-					<a href="'+context+'/vod_detail/vod_detailForm.do?vodName=친구(Friend)"><img class="col-xs-12" src="'+context+'/resources'+value.vodImage+'"></a>\
+					<a class ="latestMovie" onclick="vodMain.vodDetailForm('+'\''+context+'\''+','+'\''+value.vodName+'\''+','+'\''+value.vodPrice+'\''+');"  href="#"><img class="col-xs-12" src="'+context+'/resources'+value.vodImage+'"></a>\
 					</div>';
 				
 			}
@@ -511,7 +578,7 @@ var vodMain = {
 		$.each(data.free,function(index,value){ 
 			if(index >= 3 && index < 6){
 				freeForm += '<div class="col-xs-4 well" style="background: white;">\
-					<a href="'+context+'/vod_detail/vod_detailForm.do?vodName=친구(Friend)"><img class="col-xs-12" src="'+context+'/resources'+value.vodImage+'"></a>\
+					<a class ="latestMovie" onclick="vodMain.vodDetailForm('+'\''+context+'\''+','+'\''+value.vodName+'\''+','+'\''+value.vodPrice+'\''+');"  href="#"><img class="col-xs-12" src="'+context+'/resources'+value.vodImage+'"></a>\
 					</div>';
 				
 			}
@@ -521,13 +588,21 @@ var vodMain = {
 		$.each(data.free,function(index,value){ 
 			if(index > 5 && index < 10){
 				freeForm += '<div class="col-xs-4 well" style="background: white;">\
-					<a href="'+context+'/vod_detail/vod_detailForm.do?vodName=친구(Friend)"><img class="col-xs-12" src="'+context+'/resources'+value.vodImage+'"></a>\
+					<a class ="latestMovie" onclick="vodMain.vodDetailForm('+'\''+context+'\''+','+'\''+value.vodName+'\''+','+'\''+value.vodPrice+'\''+');"  href="#"><img class="col-xs-12" src="'+context+'/resources'+value.vodImage+'"></a>\
 					</div>';
 				
 			}
 				});
 		freeForm +=	 '</div>';
 		$('#content').html(freeForm); 
-	});
+		
+			},
+			error : function(xhr,status,msg) {
+							alert('에러발생상태 :'+status+',내용 : '+msg);
+						}
+						
+					});
+	
+	
 	}
 }

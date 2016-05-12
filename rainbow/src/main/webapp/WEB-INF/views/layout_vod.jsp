@@ -7,7 +7,7 @@
 <!-- 모바일 사용을 위한 선언 -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- JQuery Mobile -->
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
@@ -21,9 +21,6 @@
 		$("body > [data-role='header'] [data-role='navbar']").navbar();
 	});
 </script>
-<!-- ajax -->
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> -->
-
 <!-- BootStrap -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -31,7 +28,6 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<!--  -->
 
 </head>
 <!-- /header -->
@@ -93,10 +89,9 @@
    $(function() {
 	   var context  = '${context}';
 	   	vodMain.vodMainForm(context);
-	   
  	 var user = '${user.id}';
- 	 if(user == null || user == ''){
- 		 alert("null");
+ 	 alert(user);
+ 	 if(user == null || user == ''){ 
  		 }else{
 		document.getElementById('logintab').style.display = 'none';
 		document.getElementById('logouttab').style.display = '';
@@ -105,7 +100,6 @@
    });
    $('#purchasetab').click(function(e) {
 	   e.preventDefault(); 
-	   alert("history");
 	   vodMain.vodPurchase('${context}');  
    });
    $('#new').click(function(e) {
@@ -137,7 +131,6 @@
 	   e.preventDefault();
 	   vodMain.vodMainForm('${context}');   
    });
-  
    $('#search').click(function(e) {
 	   e.preventDefault(); 
 	   document.getElementById('indexFooter').style.display = 'none';
@@ -160,6 +153,20 @@
 	   alert("developer");    
    });
  	
+   $(window).on("popstate", function(event) {
+	    var data = event.originalEvent.state;  // 이부분으로 뒤로가기 할때마다 아까 저장한 히스토리 스택에 쌓인 URL을 불러 온다
+	    alert(data.data);
+	    alert(data.url);
+	    if(data){ 
+	    	location.href = data.url;
+	    	// 데이터가 있으면 해당 데이터를 ajax로 다시 요청해 화면에 뿌려준다!!!!
+			// 아래 코드는 필자가 켄도UI의 스플리터기능으로 화면을 뿌려주기에  작성한 것이다
+			// 다른 사람들은 각자 화면을 요청하는 AJAX펑션을 넣으면 되겠다.
+	    } else{
+	    	// 히스토리에 정보가 없을경우 메인화면으로 보내준다. 
+	    	location.href = "http://localhost:8080/web/mobile/";
+	    }
+   });
 </script>
 		</div> 
 	 
