@@ -4,8 +4,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class PurchaseDTO {
-	private int purchaseSeq, adultCount, studentCount, purchasePrice;
-	private String memberId, movieTitle, screenNumber, beginTime, reserveSeat, date;
+	private int purchaseSeq, adultCount, studentCount, purchasePrice, start, end, countById;
+	private String memberId, movieTitle, screenNumber, beginTime, reserveSeat, date, image;
 
 	public int getPurchaseSeq() {
 		return purchaseSeq;
@@ -85,6 +85,38 @@ public class PurchaseDTO {
 
 	public void setDate(String date) {
 		this.date = date;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public int getStart() {
+		return start;
+	}
+
+	public void setStart(int start) {
+		this.start = start;
+	}
+
+	public int getEnd() {
+		return end;
+	}
+
+	public void setEnd(int end) {
+		this.end = end;
+	}
+
+	public int getCountById() {
+		return countById;
+	}
+
+	public void setCountById(int countById) {
+		this.countById = countById;
 	}
 
 	@Override

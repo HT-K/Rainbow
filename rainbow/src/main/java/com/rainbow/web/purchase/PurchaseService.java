@@ -9,6 +9,7 @@ public interface PurchaseService {
 	public PurchaseDTO getByPurchaseSeq(PurchaseDTO purchase);
 	public List<PurchaseDTO> getByReserve(PurchaseDTO purchase);
 	public int count();
+	public int countById(PurchaseDTO purchase);
 	public int update(PurchaseDTO purchase);
 	public int delete(PurchaseDTO purchase);
 	

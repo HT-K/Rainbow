@@ -13,6 +13,7 @@ public interface PurchaseMapper {
 	public PurchaseDTO selectByPurchaseSeq(PurchaseDTO purchase);
 	public List<PurchaseDTO> selectByReserve(PurchaseDTO purchase);
 	public int count();
+	public int countById(PurchaseDTO purchase);
 	public int update(PurchaseDTO purchase);
 	public int delete(PurchaseDTO purchase);
 }
