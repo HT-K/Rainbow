@@ -54,7 +54,7 @@ public class ReplyController {
 				view = "redirect:/movie/movie_detail/"+seq;
 			} else {
 				logger.info("=== 댓글 insert 실패  ===");
-				view = "redirect:/home/main"; // 댓글 등록 실패 시 메인 페이지로 돌아간다.
+				view = "redirect:/main"; // 댓글 등록 실패 시 메인 페이지로 돌아간다.
 			}
 			
 		return view;

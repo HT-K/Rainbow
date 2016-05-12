@@ -47,39 +47,6 @@
     </section>
 </footer>
 
-<!-- open/close -->
-<%-- <div class="overlay overlay-hugeinc">
-    <section class="container">
-        <div class="col-sm-4 col-sm-offset-4">
-            <button type="button" class="overlay-close">Close</button>
-            <form id="login-form" class="login" action="${context}/member/login" method='post'>
-                <p class="login__title">sign in <br><span class="login-edition">welcome to A.Movie</span></p>
-
-                <div class="social social--colored">
-                   <a href='#' class="social__variant fa fa-facebook"></a>
-                   <a href='#' class="social__variant fa fa-twitter"></a>
-                   <a href='#' class="social__variant fa fa-tumblr"></a>
-                </div>
-
-                <p class="login__tracker">or</p>
-                
-                <div class="field-wrap">
-                <input type='text' placeholder='아이디를 입력하세요' name='id' class="login__input">
-                <input type='text' placeholder='비밀번호를 입력하세요' name='password' class="login__input">
-
-                <input type='checkbox' id='#informed' class='login__check styled'>
-                <label for='#informed' class='login__check-info'>remember me</label>
-                 </div>
-                
-                <div class="login__control">
-                    <button type='submit' class="btn btn-md btn--warning btn--wider">sign in</button>
-                    <a href="#" class="login__tracker form__tracker">Forgot password?</a>
-                </div>
-            </form>
-        </div>
-    </section>
-</div> --%>
-
 <!-- JavaScript-->
    <!-- jQuery 1.9.1--> 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
@@ -115,8 +82,7 @@
    
    <%-- <!-- rainbow / js / external -->
    <script src="${context}/resources/rainbow/js/external/count.down.js"></script>
-   
-   
+
    <script src="${context}/resources/rainbow/js/external/infobox.js"></script>
    <script src="${context}/resources/rainbow/js/external/jquery-1.10.1.min.js"></script>
 

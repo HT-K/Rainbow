@@ -87,10 +87,9 @@ Purchase.prototype.step1Form = function(context) {
 			var date = $('#choosen-date').val();
 			var time = $('#choosen-time').val();
 
-			if(movie =="${movie}" || time=="${time}"){
+			if(movie =="${movie}" || time=="${time}") {
 				alert("선택되지 않은 값이 있습니다.");
-			}else{
-				
+			} else{
 				 $.ajax({
 			            url : context + '/purchase/step2',
 			            data : {
@@ -113,8 +112,7 @@ Purchase.prototype.step1Form = function(context) {
 			            }
 			      });
 			}
-			
-		});
+		}); // nextBtn click End
     	
 		$(document).ready(function() {
 		    init_BookingOne();
@@ -128,7 +126,7 @@ Purchase.prototype.step1Form = function(context) {
 		    });
 		});
 	});
-}
+} // step1Form End
 
 Purchase.prototype.step2Form = function(context, reserveList, purchasedSeat){
 	var step2Form =
@@ -470,27 +468,28 @@ Purchase.prototype.step2Form = function(context, reserveList, purchasedSeat){
   $.each(purchasedSeat,function(index,purchasedSeat){
 	  reservedStr += purchasedSeat.reserveSeat+"/";
   });
+  
   var reservedArr = reservedStr.split("/");
   $.each(reservedArr,function(index,reservedArr){
 	$("#"+reservedArr).addClass("sits-state--not");
   });
   
- 
-	  var sum=0;
-	  $.each(reserveList,function(index,reserveList){
-		  var myselect = reserveList.reserveSeat;
-		  if (reserveList.reserveSeat!= null) {
-			  $("#"+myselect).addClass("sits-state--your");
-			  $('.checked-place').after('<span class="choosen-place '+myselect+'">'+ myselect +'</span>');
-			  sum += reserveList.purchasePrice;
-		  }
-	  });
-	  $('.checked-result').text(sum+'원');
-  
+  var sum=0;
+  $.each(reserveList,function(index,reserveList){
+	  var myselect = reserveList.reserveSeat;
+	  if (reserveList.reserveSeat!= null) {
+		  $("#"+myselect).addClass("sits-state--your");
+		  $('.checked-place').after('<span class="choosen-place '+myselect+'">'+ myselect +'</span>');
+		  sum += reserveList.purchasePrice;
+	  }
+  }); // each End
+	  
+  $('.checked-result').text(sum+'원');
   
   $(document).ready(function() {
      init_BookingTwo(context, reserveList, purchasedSeat);
   });
+  
 	$('#nextBtn').click(function(e) {
 		e.preventDefault();
 		if(sum != 0){
@@ -499,10 +498,10 @@ Purchase.prototype.step2Form = function(context, reserveList, purchasedSeat){
 			alert("좌석을 선택해주세요.");
 		}
 		
-	});
+	}); // nextBtn End
+	
 	$('#prevBtn').click(function(e) {
 		e.preventDefault();
-		 
 		 $.ajax({
 	            url : context + '/purchase/step1',
 	            data : {
@@ -526,10 +525,8 @@ Purchase.prototype.step2Form = function(context, reserveList, purchasedSeat){
 	                 alert("code:" + request.status+"\n"+"message:"+request.responseText+"\n"+"msg:"+msg);
 	            }
 	      });
-	});
-}
-
-
+	}); // prevBtn End
+} // step2Form End
 
 Purchase.prototype.step3Form = function(context, reserveList){
 	var seatArr ="";
@@ -544,7 +541,6 @@ Purchase.prototype.step3Form = function(context, reserveList){
 	  });
 	  seatArr = seatArr.substring(0, seatArr.length-1);
 
-		
 	var step3Form = 
 		'<div class="wrapper">\
 			<section class="container">\
@@ -585,6 +581,7 @@ Purchase.prototype.step3Form = function(context, reserveList){
 		</div>';
 	
 	 $('#content').html(step3Form);
+	 
 	 $('#purchaseBtn').click(function(e) {
 		e.preventDefault();
 		
@@ -618,7 +615,7 @@ Purchase.prototype.step3Form = function(context, reserveList){
              alert("code:" + request.status+"\n"+"message:"+request.responseText+"\n"+"msg:"+msg);
         }
 		});
-	})
+	}) // purchaseBtn End
 	
 	$('#prevBtn').click(function(e) {
 		e.preventDefault();
@@ -644,8 +641,8 @@ Purchase.prototype.step3Form = function(context, reserveList){
                  alert("code:" + request.status+"\n"+"message:"+request.responseText+"\n"+"msg:"+msg);
             }
       });
-	})
-}
+	}) // prevBtn End
+} // step3Form End
 
 Purchase.prototype.step4Form = function(context,purchaseData){
 	   var step4Form = 
@@ -683,5 +680,6 @@ Purchase.prototype.step4Form = function(context,purchaseData){
 	      </div>\
 	   </section>\
 	</div>';
-	   $('#content').html(step4Form);
-}
+	   
+	$('#content').html(step4Form);
+} // step4Form End

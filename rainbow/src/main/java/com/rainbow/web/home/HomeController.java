@@ -56,11 +56,11 @@ public class HomeController {
 		movie.setEnd(8);
 		list = movieService.getList(movie);
 		model.addAttribute("movieList", list);
-				
+			
 		return "global/main.user";
 	}
 	
-	@RequestMapping("/home/main")
+	@RequestMapping("/main")
 	public String main(Model model) {
 		List<MovieDTO> list = new ArrayList<MovieDTO>();
 		// 현재 레이팅 점수 중 가장 상위 영화 6개 메인에 뿌리기 (1920 x 616 이미지)

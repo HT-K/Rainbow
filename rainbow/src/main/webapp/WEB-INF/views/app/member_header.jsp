@@ -8,7 +8,7 @@
 <header class="header-wrapper header-wrapper--home">
     <div class="container">
         <!-- Logo link-->
-     	<a href="${context}/home/main" class="logo">
+     	<a href="${context}/main" class="logo">
         	<img alt='logo' src="${context}/resources/rainbow/images/main/logo.png">
      	</a>
 
@@ -50,7 +50,7 @@
 		$('#bookBtn').click(function(e) {
 			e.preventDefault();
 			if (id.length != 0) {
-				location.href = "${context}/home/main";
+				location.href = "${context}/main";
 			}
 		});
 	});

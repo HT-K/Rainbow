@@ -72,8 +72,6 @@
 
 
 <script type="text/javascript">
-    
-    
     $(document).ready(function() {
        // init_Contact ();
         initialize();    
@@ -116,7 +114,7 @@
     <link rel="alternate" href="http://m.cgv.co.kr" />
     <link rel="shortcut icon" href="http://img.cgv.co.kr/theater_img/favicon.ico" type="image/x-icon" />
     <title id="ctl00_headerTitle">[CGV강남]&lt;CGV극장 &lt; 극장 | 영화 그 이상의 감동. CGV</title>
-    <link rel="shortcut icon" type="image/x-icon" href="http://img.cgv.co.kr/R2014/images/favicon.ico" />
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="http://img.cgv.co.kr/R2014/images/favicon.ico" /> -->
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/reset.css" />
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/layout.css" />
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/module.css" />

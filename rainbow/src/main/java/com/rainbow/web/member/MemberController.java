@@ -24,13 +24,6 @@ public class MemberController {
 	@Autowired MovieDTO movie;
 	@Autowired MovieService movieService;
 	
-	// /member URL 들어오고 뒤에 action 값은 이곳에 넣는다.
-	@RequestMapping("/login_form") // 이건 get방식
-	public String login() {
-		logger.info("로그인 버튼 클릭 체크");
-		return "member/login_form.user";
-	}
-	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public Model login(@RequestParam("id")String id, 
 						@RequestParam("password")String password,
@@ -43,32 +36,21 @@ public class MemberController {
 		param.setId(id);
 		param.setPassword(password);
 		member = service.login(param);
-		//String view = "";
-		
-		if (member.getId() != null && !member.getId().equals("admin")) {
+		if (member.getId().equals(param.getId())) {
 			logger.info("로그인 성공");
 			session.setAttribute("user", member); // 로그인 성공 시 session에 로그인에 성공한 유저의 정보가 담긴 member 객체를 담는다.
 			model.addAttribute("member", member); // 로그인 성공 시 다음 페이지에 request와 같은 역할을 하는 model에 member 객체를 담아 보낸다.
-			//view = "redirect:/home/main"; // HomeController의 /home/main 호출, redirect는 Context 경로를 포함하고 있다. 다른 컨트롤러의 URL에 접근 가능
-		}else if (member.getId().equals("admin")){
-			logger.info("로그인 성공");
-			session.setAttribute("user", member);
-			model.addAttribute("member", member);
-			//view = "admin/main.admin";
 		} else {
 			logger.info("로그인 실패");
-			//view = "member/login_form.user";
+			model.addAttribute("member", member);
 		}
 		return model;
 	}
 	
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
-		member.setId(null);
-		member.setName("비회원");
-		session.setAttribute("user", member);
-		//session.invalidate(); // 세션 무효화
-		return "redirect:/home/main";
+		session.invalidate(); // 세션 무효화
+		return "redirect:/";
 	}
 	
 	@RequestMapping("/join_form")
@@ -107,7 +89,7 @@ public class MemberController {
 			member.setId(null);
 			member.setName("비회원");
 			session.setAttribute("user", member);
-			view = "redirect:/home/main";
+			view = "redirect:/main";
 		} else {
 			view = "member/join_form.user";
 		}	
@@ -153,7 +135,7 @@ public class MemberController {
 			logger.info("업데이트 성공");
 			member = service.getById(member);
 			session.setAttribute("user", member); // 세션에 업데이트된 회원정보로 다시 넣기
-			//view = "redirect:/home/main";
+			//view = "redirect:/main";
 		} else {
 			logger.info("업데이트 실패");
 			//view = "member/update_form";

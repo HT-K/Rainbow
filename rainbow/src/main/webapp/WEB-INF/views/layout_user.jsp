@@ -63,6 +63,7 @@
       <tiles:insertAttribute name="header" />
    </div>
    
+   <!-- ajax로 모든 페이지 구현 시 이 content 부분에서 화면이 계속 바뀌게 된다. (URL은 변하지 않는다!) -->
    <div id="content">
       <!-- 이 부분에는 tilse.xml에서 설정한 URL형태로 호출되는 페이지가 띄워지게 된다! tiles.xml과 연결됨! -->
       <tiles:insertAttribute name="content" /> 
@@ -74,61 +75,81 @@
    </div>
 </body>
 
-<c:choose> 
-<c:when test="${sessionScope.user.id != null}"> 
-   <script type="text/javascript">
-      $(function() {
-         var logout_header =
-            '<li><span class="sub-nav-toggle plus"></span>'
-            +      '<a href="${context}/movie/movie_list">Movies</a>'
-            +   '</li>'
-            +   '<li id="ticketing">'
-            +      '<span class="sub-nav-toggle plus"></span>' 
-            +      '<a href="#">Ticketing</a>'
-            +   '</li>'
-            +   '<li>'
-            +      '<span class="sub-nav-toggle plus"></span>'
-            +      '<a href="${context}/member/cinema">Cinema</a>'
-            +   '</li>'
-            +   '<li>'
-            +      '<span class="sub-nav-toggle plus"></span>' 
-            +      '<a href="${context}/member/logout">로그아웃</a>'
-            +   '</li>'
-            +   '<li id="headerMypageBtn">'
-            +      '<span class="sub-nav-toggle plus"></span>' 
-            +      '<a href="${context}/member/profile">마이페이지</a>'
-            +   '</li>';
-            $('#navigation').html(logout_header);
-      });
-   </script>
-</c:when>
-<c:otherwise>
-   <script type="text/javascript">
-      $(function() {      
-         var login_header =
-            '<li id="movieList"><span class="sub-nav-toggle plus"></span>'
-            +      '<a href="${context}/movie/movie_list">Movies</a>'
-            +   '</li>'
-            +   '<li id="needLogin">'
-            +      '<span class="sub-nav-toggle plus"></span>' 
-            +      '<a href="${context}/member/login_form">Ticketing</a>'
-            +   '</li>'
-            +   '<li>'
-            +      '<span class="sub-nav-toggle plus"></span>'
-            +      '<a href="${context}/member/cinema">Cinema</a>'
-            +   '</li>'
-            +   '<li id="headerLoginBtn">'
-            +      '<span class="suzb-nav-toggle plus"></span>' 
-            +      '<a href="#">로그인</a>'
-            +   '</li>'
-            +   '<li id="headerJoinBtn">'
-            +      '<span class="sub-nav-toggle plus"></span>' 
-            +      '<a href="${context}/member/join_form">회원가입</a>'
-            +   '</li>';
-            $('#navigation').html(login_header);
-      });
-   </script>
-</c:otherwise>
+<c:choose>
+	<c:when test="${sessionScope.user.id == 'admin'}"> <!-- 관리자 로그인 성공 시 헤더 -->
+		<script type="text/javascript">
+			$(function() {
+				var logout_header = '<li><span class="sub-nav-toggle plus"></span>\
+					<a href="${context}/admin/input_form" id="addVod">ADD VOD</a>\
+					</li>\
+					<li><span class="sub-nav-toggle plus"></span>\
+					<a href="#" id="addMovie">ADD MOVIE</a>\
+					</li>\
+					<li><span class="sub-nav-toggle plus"></span>\
+					<a href="${context}/admin/content" id="movie">MOVIE</a>\
+					</li>\
+					<li>\
+					<span class="sub-nav-toggle plus"></span>\
+					<a href="${context}/member/logout" id="logout">LOGOUT</a>\
+					</li>';
+				$('#navigation').html(logout_header);
+			});
+		</script>
+	</c:when>
+	<c:when test="${sessionScope.user.id != null}"> <!-- 회원 로그인 성공 시 헤더 -->
+	   <script type="text/javascript">
+	      $(function() {
+	         var logout_header =
+	            '<li><span class="sub-nav-toggle plus"></span>'
+	            +      '<a href="${context}/movie/movie_list">Movies</a>'
+	            +   '</li>'
+	            +   '<li id="ticketing">'
+	            +      '<span class="sub-nav-toggle plus"></span>' 
+	            +      '<a href="#">Ticketing</a>'
+	            +   '</li>'
+	            +   '<li>'
+	            +      '<span class="sub-nav-toggle plus"></span>'
+	            +      '<a href="${context}/member/cinema">Cinema</a>'
+	            +   '</li>'
+	            +   '<li>'
+	            +      '<span class="sub-nav-toggle plus"></span>' 
+	            +      '<a href="${context}/member/logout">로그아웃</a>'
+	            +   '</li>'
+	            +   '<li id="headerMypageBtn">'
+	            +      '<span class="sub-nav-toggle plus"></span>' 
+	            +      '<a href="${context}/member/profile">마이페이지</a>'
+	            +   '</li>';
+	            $('#navigation').html(logout_header);
+	      });
+	   </script>
+	</c:when>
+	<c:otherwise> <!-- 비회원 상태일 시 헤더 -->
+	   <script type="text/javascript">
+	      $(function() {      
+	         var login_header =
+	            '<li id="movieList"><span class="sub-nav-toggle plus"></span>'
+	            +      '<a href="${context}/movie/movie_list">Movies</a>'
+	            +   '</li>'
+	            +   '<li id="needLogin">'
+	            +      '<span class="sub-nav-toggle plus"></span>' 
+	            +      '<a href="${context}/member/login_form">Ticketing</a>'
+	            +   '</li>'
+	            +   '<li>'
+	            +      '<span class="sub-nav-toggle plus"></span>'
+	            +      '<a href="${context}/member/cinema">Cinema</a>'
+	            +   '</li>'
+	            +   '<li id="headerLoginBtn">'
+	            +      '<span class="suzb-nav-toggle plus"></span>' 
+	            +      '<a href="#">로그인</a>'
+	            +   '</li>'
+	            +   '<li id="headerJoinBtn">'
+	            +      '<span class="sub-nav-toggle plus"></span>' 
+	            +      '<a href="${context}/member/join_form">회원가입</a>'
+	            +   '</li>';
+	            $('#navigation').html(login_header);
+	      });
+	   </script>
+	</c:otherwise>
 </c:choose>
 
 <script src="${context}/resources/js/Global.js"></script>
@@ -139,10 +160,39 @@
 
 <script type="text/javascript">
 	$(function(){
-		var context = $.fn.global('${context}').getContext();
-		var purchase = $.fn.purchase(); 
+		// member_header.jsp 부분과 관련된 내용 시작
+		var id = $('#sessionVar').val();
+		if (id.length != 0) {
+			$('#dropBoxBtn').addClass('auth__function');
+			document.getElementById('dropBoxBtn').style.display = '';
+		} else {
+			$('#dropBoxBtn').removeClass('auth__function');
+			document.getElementById('dropBoxBtn').style.display = 'none';
+		}
 		
-		$('#ticketing').click(function(e){
+		// 헤더의 book a ticket 버튼 클릭 시
+		$('#bookBtn').click(function(e) {
+			e.preventDefault();
+			if (id.length != 0) { // 회원일 경우 nav_로그인 창 안띄워지게 하고 ticketing 페이지로 넘어가게 하기
+				$('.overlay').removeClass('open').addClass('close');
+				purchase.step1Form(context);
+			} else { // 비회원일 경우 nav_로그인창 띄우기
+				$('.overlay').removeClass('close').addClass('open');
+			}
+		});
+		
+		$('#nav_loginBtn').click(function(e) { // 로그인 버튼 클릭 시 $() 로 form 태그를 찾아서 객체로 리턴받아 action을 걸고 post방식으로 보낸다.
+			e.preventDefault();
+			var id = $('#nav_id').val();
+			var password = $('#nav_password').val();
+			member.headerLogin(context, id, password);
+		});
+		// member_header.jsp 부분과 관련된 내용 끝
+		
+		var context = $.fn.global('${context}').getContext(); // controller 호출을 위한 /web 경로를 js 파일에 보내기 위함!
+		var purchase = $.fn.purchase(); // 예매 페이지인 purchase 부분은 함수 표현식으로 구현했다.
+		
+		$('#ticketing').click(function(e){ // 로그인 한 상태에서 헤더의 티켓팅을 눌렀을 시
 			e.preventDefault();
 		 	purchase.step1Form(context); 
 		});	
@@ -150,25 +200,25 @@
 		$('#needLogin').click(function(e) { // 로그인 안한 상태에서 헤더의 티켓팅을 눌렀을 시
 			e.preventDefault();
 			alert("로그인이 필요합니다.");
-			location.href = '${context}/member/login_form';
+			member.loginForm(context);
 		});
 		
-		$('#headerLoginBtn').click(function(e) {
+		$('#headerLoginBtn').click(function(e) { // 헤더의 로그인 버튼을 눌렀을 시
 			e.preventDefault();
 			member.loginForm(context);
 		});
 		
-		$('#headerJoinBtn').click(function(e) {
+		$('#headerJoinBtn').click(function(e) { // 헤더의 회원가입 버튼을 눌렀을 시
 			e.preventDefault();
 			member.joinForm(context);
 		});
 		
-		$('#headerMypageBtn').click(function(e) {
+		$('#headerMypageBtn').click(function(e) { // 헤더의 마이페이지 버튼을 눌렀을 시
 			e.preventDefault();
 			member.profileForm(context);
 		});
 		
-		$('#memberLeaveBtn').click(function(e) {
+		$('#memberLeaveBtn').click(function(e) { // 이름 클릭 시 나오는 li의 회원탈퇴를 눌렀을 시
 			e.preventDefault();
 			var id = '${user.id}';
 			member.memberLeave(context, id);

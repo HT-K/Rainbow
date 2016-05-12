@@ -89,7 +89,7 @@
 		});
 		$('#cancelBtn').click(function(e) {
 			e.preventDefault();
-			location.href = "${context}/home/main";
+			location.href = "${context}/main";
 		});
 	});
 </script>

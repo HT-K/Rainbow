@@ -45,7 +45,7 @@ Member.prototype.loginForm = function(context) {
 	            success : function(data) {
 	               if (data != null) {
 	                  alert(data.member.name + ' 님로그인');
-	                 location.href = context+"/home/main";
+	                 location.href = context+"/main";
 	              /*    $('#content').html(main);*/
 	                  
 	               } else {

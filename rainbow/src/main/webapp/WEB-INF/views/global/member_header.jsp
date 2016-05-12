@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <!-- Banner -->
 <div class="banner-top">
     <img alt='top banner' src="${context}/resources/rainbow/images/main/main_header.png">
@@ -10,7 +9,7 @@
 <header class="header-wrapper header-wrapper--home">
     <div class="container">
         <!-- Logo link-->
-     	<a href="${context}/home/main" class="logo">
+     	<a href="${context}/main" class="logo">
         	<img alt='logo' src="${context}/resources/rainbow/images/main/logo.png">
      	</a>
 
@@ -44,39 +43,17 @@
                 </ul>
 			</div>
 			<button id="bookBtn" class="btn btn-md btn--warning btn--book btn-control--home login-window" style="font-size: 11px;">Book a ticket</button>
-			<!-- <a href="#" class="btn btn-md btn--warning btn--book btn-control--home login-window" style="font-size: 11px;">Book a ticket</a> -->
 		</div>
 	</div>
 </header>
 
-<script type="text/javascript">
-	$(function() {
-		var id = $('#sessionVar').val();
-		if (id.length != 0) {
-			$('#dropBoxBtn').addClass('auth__function');
-			document.getElementById('dropBoxBtn').style.display = '';
-		} else {
-			$('#dropBoxBtn').removeClass('auth__function');
-			document.getElementById('dropBoxBtn').style.display = 'none';
-		}
-		
-		$('#bookBtn').click(function(e) {
-			e.preventDefault();
-			if (id.length != 0) { // 회원일 경우 로그인 창 안띄워지게 하기!
-				$('.overlay').removeClass('open').addClass('close');
-			} else { // 비회원일 경우 로그인창 띄우기
-				$('.overlay').removeClass('close').addClass('open');
-			}
-		});
-	});
-</script>
-
 <!-- open/close -->
+<!-- 비회원 상태에서 book a ticket(노란버튼)을 누를 때 나타나는 회원 가입창이다. -->
 <div class="overlay overlay-hugeinc">
 	<section class="container">
 		<div class="col-sm-4 col-sm-offset-4">
 			<button type="button" class="overlay-close">Close</button>
-				<form class="login" id="nav_login">
+				<form class="login" id="nav_login" name="nav_login">
                         <p class="login__title">sign in <br>
                         	<span class="login-edition">welcome to Rainbow Cinema</span>
                         </p>
@@ -95,14 +72,6 @@
                             <a href="#" class="login__tracker form__tracker">Forgot password?</a>
                         </div>
 				</form>
-				<script type="text/javascript">
-					$(function() {
-						$('#nav_loginBtn').click(function(e) { // 로그인 버튼 클릭 시 $() 로 form 태그를 찾아서 객체로 리턴받아 action을 걸고 post방식으로 보낸다.
-							e.preventDefault();
-							$('#nav_login').attr('action',"${context}/member/login").attr('method',"post").submit();
-						});
-					});
-				</script>
 			</div>
 	</section>
 </div>

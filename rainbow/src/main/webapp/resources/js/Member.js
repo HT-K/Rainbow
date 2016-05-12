@@ -2,6 +2,25 @@
  * Member
  */
 var member = {
+	headerLogin : function(context, id, password) { // 헤더의 book a ticket로 로그인 시
+		$.ajax({
+			url : context+'/member/login',
+			data : {
+				id : id,
+				password : password
+			},
+			dataType : 'json',
+			type : 'post',
+		    success : function(data) {
+				alert(data.member.name+ '님 로그인 성공');
+				location.href = context+'/main';
+			},
+			error : function(xhr, status, msg) {
+				alert("정보를 잘못입력하셨습니다. 다시 로그인 해주세요");
+			}
+		});
+	},
+		
 	loginForm : function(context) {
 		var loginForm = 
 			'<form class="login" id="login_form" style="margin-top: 30px;">\
@@ -24,7 +43,9 @@ var member = {
 					<a href="#" class="login__tracker form__tracker">Forgot password?</a>\
 				</div>\
 			</form>';
+		
 		$('#content').html(loginForm);
+		
 		$('#loginBtn').click(function(e) {
 			e.preventDefault();
 			$.ajax({
@@ -37,14 +58,14 @@ var member = {
 				type : 'post',
 				success : function(data) {
 					alert(data.member.name+ '님 로그인 성공');
-					location.href = context+'/home/main';
+					location.href = context+'/main';
 				},
 				error : function(xhr, status, msg) {
-					alert("로그인 시 에러발생 : " + msg);
+					alert("정보를 잘못입력하셨습니다. 다시 로그인 해주세요");
+					member.loginForm(context);
 				}
 			});
-			/*$('#login_form').attr('action', context+"/member/login").attr('method',"post").submit();*/
-		});
+		}); // loginBtn End
 	}, // loginForm() End
 	
 	joinForm : function(context) {
@@ -111,6 +132,7 @@ var member = {
 					</form>\
 				</div>\
 			</article>';
+		
 		$('#content').html(joinForm);
 		
 		$('#joinBtn').click(function(e) { 
@@ -130,11 +152,11 @@ var member = {
 					member.loginForm(context);
 				},
 				error : function(xhr, status, msg) {
-					alert("로그인 시 에러발생 : " + msg);
+					alert("회원가입 시 에러발생 : " + msg);
 				}
 			});
-				/*$('#joinForm').attr('action', context+"/member/join").attr('method','post').submit();*/
-		});
+		}); // joinBtn() End
+		
 		$('#cancelBtn').click(function(e) {
 			e.preventDefault();
 			$('#joinForm').reset();
@@ -213,15 +235,16 @@ var member = {
 						</form>\
 					</div>\
 				</article>';
+			
 			$('#content').html(profileForm);
+			
 			$('#updateBtn').click(function(e) {
 				e.preventDefault();
 				member.updateForm(context,data);
-				//location.href = context + "/member/update_form";
 			});
 			$('#cancelBtn').click(function(e) {
 				e.preventDefault();
-				location.href = context + "/home/main";
+				location.href = context + "/main";
 			});
 		}); // getJson() End
 	}, // profileForm() End
@@ -297,7 +320,9 @@ var member = {
 					</form>\
 				</div>\
 			</article>';
+		
 		$('#content').html(updateForm);
+		
 		$('#updateOkBtn').click(function(e) {
 			e.preventDefault();
 			var $frm = $('#update_form');
@@ -312,19 +337,19 @@ var member = {
 			    processData : false,
 				success : function() {
 					alert('정보수정에 성공하셨습니다. 메인 화면으로 이동합니다.');
-					location.href = context + '/home/main';
+					location.href = context + '/main';
 				},
 				error : function(xhr, status, msg) {
 					alert("업데이트 시 에러발생 : " + msg);
 				}
 			});
-			/*$('#updateForm').attr('action', context + "/member/update").attr('method','post').submit();*/
-		});
+		}); // updateOkBtn End
+		
 		$('#cancelBtn').click(function(e) {
 			e.preventDefault();
 			$('#updateForm').reset();
 		});
-	},
+	}, // updateForm() End
 	
 	memberLeave : function(context, id) {
 		$.ajax({
@@ -336,11 +361,11 @@ var member = {
 			type : 'post',
 			success : function() {
 				alert('회원가입에 탈퇴에 성공하셨습니다. 메인 화면으로 이동합니다.');
-				location.href = context + "/home/main";
+				location.href = context + "/main";
 			},
 			error : function(xhr, status, msg) {
 				alert("회원탈퇴 시 에러발생 : " + msg);
 			}
 		});
-	}
+	} // memberLeave() End
 }
