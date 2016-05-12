@@ -28,6 +28,12 @@ REFERENCES RainbowMovie(movie_seq) ON DELETE CASCADE;
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 INSERT INTO Purchase (member_id, movie_title, screen_number, begin_time, reserve_seat, purchase_price, purchase_time) 
 VALUES ('kim', '아이언맨3', '1관', '09:40', 'A2', 8000, '05/02/2016');
+INSERT INTO Purchase (member_id, movie_title, screen_number, begin_time, reserve_seat, purchase_price, date) 
+VALUES ('test', '아이언맨3', '1관', '15:45', 'C10', 8000, '05/02/2016');
+INSERT INTO Purchase (member_id, movie_title, screen_number, begin_time, reserve_seat, purchase_price, date) 
+VALUES ('test', '헬보이', '1관', '09:40', 'E7', 9000, '05/02/2016');
+INSERT INTO Purchase (member_id, movie_title, screen_number, begin_time, reserve_seat, purchase_price, date) 
+VALUES ('test', '해리포터5', '1관', '09:40', 'A10', 8000, '05/02/2016');
 INSERT INTO Purchase (member_id, movie_title, screen_number, begin_time, reserve_seat, purchase_price, purchase_time) 
 VALUES ('test', '아이언맨3', '1관', '09:40', 'A5', 8000, '05/02/2016');
 INSERT INTO Purchase (member_id, movie_title, screen_number, begin_time, reserve_seat, purchase_price, purchase_time) 

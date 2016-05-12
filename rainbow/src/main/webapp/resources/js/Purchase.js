@@ -602,8 +602,12 @@ Purchase.prototype.step3Form = function(context, reserveList){
 	
         success : function(data) {
            if (data != null) {
-              Purchase.prototype.step4Form(context, data.purchaseData);
-              checkload = false; // 페이지 벗어나기 가능
+        	   if (data.overlapCheck) {
+        		   Purchase.prototype.step4Form(context, data.purchaseData);
+        		   checkload = false; // 페이지 벗어나기 가능
+			} else {
+				Purchase.prototype.step2Form(context, data.reserveList, data.purchasedSeat);
+			}
            } else {
               console.log('step4 데이터 가져오기 실패');
               return null;

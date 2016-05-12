@@ -142,9 +142,43 @@ public class PurchaseController {
 		purchase.setReserveSeat(seat);
 		purchase.setPurchasePrice(price);
 		purchase.setMemberId(member.getId());
-		service.insert(purchase);
 		
-		model.addAttribute("purchaseData", purchase);
+		//예매할 좌석 쪼갠것
+		String[] selectSeat = seat.split("/");
+		boolean overlapCheck = true;
+		List<PurchaseDTO> purchasedList = service.getByReserve(purchase);
+		String usedSeat = "";
+		for (int i = 0; i < purchasedList.size(); i++) {
+			usedSeat+=purchasedList.get(i).getReserveSeat()+"/";
+		}
+		
+		List<String> overlap = new ArrayList<String>();
+		String[] usedSeatList = usedSeat.split("/");
+		
+		for (int i = 0; i < usedSeatList.length; i++) {
+			for (int j = 0; j < selectSeat.length; j++) {
+				if(usedSeatList[i].equals(selectSeat[j])){
+					overlapCheck = false;
+					overlap.add(selectSeat[j]);
+				}
+			}
+		}
+		for (int i = 1; i < reserveList.size(); i++) {
+			for (int j = 0; j < overlap.size(); j++) {
+				if(reserveList.get(i).getReserveSeat().equals(overlap.get(j))) {
+					reserveList.remove(i);
+				}
+			}
+		}
+		if (overlapCheck) {
+			service.insert(purchase);
+			model.addAttribute("purchaseData", purchase);
+		} else {
+			model.addAttribute("reserveList", reserveList);
+			model.addAttribute("purchasedSeat", service.getByReserve(purchase));
+		}
+		model.addAttribute("overlapCheck", overlapCheck);
+		
 		logger.info("model : {}", model);
 	}
 }
