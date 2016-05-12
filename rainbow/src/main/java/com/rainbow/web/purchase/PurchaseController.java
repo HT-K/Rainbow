@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -180,5 +181,23 @@ public class PurchaseController {
 		model.addAttribute("overlapCheck", overlapCheck);
 		
 		logger.info("model : {}", model);
+	}
+	
+	@RequestMapping("/purchase_list/{startRow}")
+	public String purchase_list(@PathVariable(value="startRow")int start, Model model, HttpSession session) {
+		logger.info("purchase - purchase_list()");
+		
+		MemberDTO member = (MemberDTO) session.getAttribute("user");
+		purchase.setMemberId(member.getId());
+		purchase.setStart(start);
+		purchase.setEnd(5);
+		model.addAttribute("purchaseList", service.getByMemberId(purchase));
+		
+		purchase.setCountById(service.countById(purchase));
+		model.addAttribute("page", purchase);
+		
+		logger.info("model : {}", model);
+		
+		return "member/purchase_list.user";
 	}
 }

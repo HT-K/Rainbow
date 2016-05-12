@@ -16,8 +16,8 @@
 	
 	<select id="selectByMemberId" parameterType="com.rainbow.web.purchase.PurchaseDTO" resultType="com.rainbow.web.purchase.PurchaseDTO">
 	    SELECT purchase_seq AS purchaseSeq, member_id AS memberId, movie_title AS movieTitle, screen_number AS screenNumber, begin_time AS beginTime,
-	   		reserve_seat AS reserveSeat, purchase_price AS purchasePrice, date, adult_count AS adultCount, student_count AS studentCount
-	    FROM Purchase WHERE member_id = #{memberId}
+	   		reserve_seat AS reserveSeat, purchase_price AS purchasePrice, date, adult_count AS adultCount, student_count AS studentCount, image
+	    FROM Purchase, Movie WHERE Purchase.movie_title = Movie.title and member_id = #{memberId} ORDER BY date DESC LIMIT #{start}, #{end}
 	</select>
 	
 	<select id="selectByPurchaseSeq" parameterType="com.rainbow.web.purchase.PurchaseDTO" resultType="com.rainbow.web.purchase.PurchaseDTO">
@@ -43,6 +43,10 @@
 	
 	<select id="count" resultType="int">
 	    SELECT count(*) FROM Purchase
+	</select>
+	
+	<select id="countById" parameterType="com.rainbow.web.purchase.PurchaseDTO" resultType="int">
+	    SELECT count(*) FROM Purchase WHERE member_id = #{memberId}
 	</select>
 	
 	<update id="update" parameterType="com.rainbow.web.purchase.PurchaseDTO">

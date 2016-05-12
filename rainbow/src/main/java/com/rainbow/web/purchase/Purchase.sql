@@ -31,7 +31,7 @@ VALUES ('kim', '아이언맨3', '1관', '09:40', 'A2', 8000, '05/02/2016');
 INSERT INTO Purchase (member_id, movie_title, screen_number, begin_time, reserve_seat, purchase_price, date) 
 VALUES ('test', '아이언맨3', '1관', '15:45', 'C10', 8000, '05/02/2016');
 INSERT INTO Purchase (member_id, movie_title, screen_number, begin_time, reserve_seat, purchase_price, date) 
-VALUES ('test', '헬보이', '1관', '09:40', 'E7', 9000, '05/02/2016');
+VALUES ('test', '헬보이', '1관', '09:40', 'E7', 9000, '05/03/2016');
 INSERT INTO Purchase (member_id, movie_title, screen_number, begin_time, reserve_seat, purchase_price, date) 
 VALUES ('test', '해리포터5', '1관', '09:40', 'A10', 8000, '05/02/2016');
 INSERT INTO Purchase (member_id, movie_title, screen_number, begin_time, reserve_seat, purchase_price, purchase_time) 
@@ -51,3 +51,7 @@ DROP TABLE Purchase CASCADE;
 ---------------------------
 UPDATE Purchase
 		SET movie_title = '트랜스포머', screen_number='2관' where purchase_seq = 4;
+		
+SELECT member_id AS memberId, movie_title AS movieTitle, screen_number AS screenNumber, begin_time AS beginTime,
+	   		reserve_seat AS reserveSeat, purchase_price AS purchasePrice, date, adult_count AS adultCount, student_count AS studentCount, image
+	    FROM Purchase, Movie WHERE Purchase.movie_title = Movie.title and member_id = 'test' order by date desc;

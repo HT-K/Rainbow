@@ -65,6 +65,7 @@
 			
 			<div class="form-group">
 	        	<div class="col-sm-12 text-center">
+					<button class="btn btn-primary" id="purchaseListBtn" name="purchaseListBtn">영화구매내역</button>
 	            	<button class="btn btn-primary" id="updateBtn" name="updateBtn">회원정보 수정<i class="fa fa-check spaceLeft"></i></button>
 	            	<button class="btn btn-danger" id="cancelBtn" name="cancelBtn">취소<i class="fa fa-times spaceLeft"></i></button>
 	        	</div>
@@ -76,6 +77,11 @@
 
 <script type="text/javascript">
 	$(function() {
+		$('#purchaseListBtn').click(function(e) { // 로그인 버튼 클릭 시 $() 로 form 태그를 찾아서 객체로 리턴받아 action을 걸고 post방식으로 보낸다.
+			e.preventDefault();
+			location.href = "${context}/purchase/purchase_list/0"
+			//$('#detailform').attr('action',"${context}/member/update_form").attr('method','post').submit();
+		});
 		$('#updateBtn').click(function(e) { // 로그인 버튼 클릭 시 $() 로 form 태그를 찾아서 객체로 리턴받아 action을 걸고 post방식으로 보낸다.
 			e.preventDefault();
 			location.href = "${context}/member/update_form"

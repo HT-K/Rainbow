@@ -34,7 +34,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 
 	@Override
 	public List<PurchaseDTO> getByMemberId(PurchaseDTO purchase) {
-		logger.info("PurchaseService - getByMemberSeq() 진입 후 ");
+		logger.info("PurchaseService - getByMemberId() 진입 후 ");
 		PurchaseMapper mapper = sqlSession.getMapper(PurchaseMapper.class);
 		return mapper.selectByMemberId(purchase);
 	}
@@ -72,5 +72,12 @@ public class PurchaseServiceImpl implements PurchaseService {
 		logger.info("PurchaseService - getByReserve() 진입 후 ");
 		PurchaseMapper mapper = sqlSession.getMapper(PurchaseMapper.class);
 		return mapper.selectByReserve(purchase);
+	}
+
+	@Override
+	public int countById(PurchaseDTO purchase) {
+		logger.info("PurchaseService - countById() 진입 후 ");
+		PurchaseMapper mapper = sqlSession.getMapper(PurchaseMapper.class);
+		return mapper.countById(purchase);
 	}
 }
