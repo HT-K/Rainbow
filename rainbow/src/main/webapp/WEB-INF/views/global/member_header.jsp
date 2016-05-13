@@ -38,7 +38,7 @@
 				</div>
 				<a href="#" class="btn btn--sign btn--singin">${sessionScope.user.name}</a>
 				<ul class="auth__function" id="dropBoxBtn">
-                	<li id="purchaseListBtn"><a href="#" class="auth__function-item">예매내역</a></li>    
+                	<li id="purchaseListBtn"><a href="${context}/purchase/purchase_list/0" class="auth__function-item">예매내역</a></li>    
                 	<li id="memberLeaveBtn"><a href="#" class="auth__function-item">회원탈퇴</a></li>    
                 </ul>
 			</div>
