@@ -32,6 +32,8 @@ public interface MemberMapper {
 	public int count();
 	// U 회원 정보 수정
 	public int update(MemberDTO member);
+	// U 회원 정보 수정 (포인트)
+	public int updatePoint(MemberDTO member);
 	// U 구매금액 차감
 	public int sellVod(HashMap<String, String> hash);
 	// D 회원 정보 삭제

@@ -89,4 +89,12 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.sellVod(hash);
 	}
 
+	@Override
+	public int updatePoint(MemberDTO member) {
+		// U 회원 정보 수정 (포인트)
+		logger.info("MemberServie - updatePoint() 진입 후 ");
+		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+		return mapper.updatePoint(member);
+	}
+
 }

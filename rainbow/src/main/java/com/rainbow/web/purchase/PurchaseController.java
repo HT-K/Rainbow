@@ -16,10 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.rainbow.web.member.MemberDTO;
+import com.rainbow.web.member.MemberService;
 import com.rainbow.web.movie.MovieDTO;
 import com.rainbow.web.movie.MovieService;
-import com.rainbow.web.reserveSeat.ReserveSeatDTO;
-import com.rainbow.web.reserveSeat.ReserveSeatService;
 
 @Controller
 @RequestMapping("/purchase")
@@ -28,6 +27,7 @@ public class PurchaseController {
 	@Autowired PurchaseDTO purchase;
 	@Autowired PurchaseService service;
 	@Autowired MovieService movieService;
+	@Autowired MemberService memberService;
 	@Autowired MovieDTO movie;
 	List<PurchaseDTO> reserveList;
 	
@@ -143,6 +143,7 @@ public class PurchaseController {
 		purchase.setReserveSeat(seat);
 		purchase.setPurchasePrice(price);
 		purchase.setMemberId(member.getId());
+		purchase.setScreenNumber(service.getScreenNumber(purchase).getScreenNumber());
 		
 		//예매할 좌석 쪼갠것
 		String[] selectSeat = seat.split("/");
@@ -173,6 +174,11 @@ public class PurchaseController {
 		}
 		if (overlapCheck) {
 			service.insert(purchase);
+			
+			member.setPoint((int) (purchase.getPurchasePrice() * 0.01));
+			memberService.updatePoint(member);
+			session.setAttribute("user", memberService.getById(member));
+			
 			model.addAttribute("purchaseData", purchase);
 		} else {
 			model.addAttribute("reserveList", reserveList);
@@ -184,10 +190,7 @@ public class PurchaseController {
 	}
 	
 	@RequestMapping("/purchase_list/{startRow}")
-	public String purchase_list(
-			@PathVariable(value="startRow")int start, 
-			Model model, 
-			HttpSession session) {
+	public void purchase_list(@PathVariable(value="startRow")int start, Model model, HttpSession session) {
 		logger.info("purchase - purchase_list()");
 		
 		MemberDTO member = (MemberDTO) session.getAttribute("user");
@@ -200,7 +203,5 @@ public class PurchaseController {
 		model.addAttribute("page", purchase);
 		
 		logger.info("model : {}", model);
-		
-		return "member/purchase_list.user";
 	}
 }

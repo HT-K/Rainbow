@@ -81,6 +81,12 @@
 		WHERE id = #{id} 
 	</update>
 	
+	<update id="updatePoint" parameterType="com.rainbow.web.member.MemberDTO">
+		UPDATE Member 
+		SET point = point + #{point}
+		WHERE id = #{id} 
+	</update>
+	
 	<delete id="delete" parameterType="com.rainbow.web.member.MemberDTO">
 		DELETE 
 		FROM Member 

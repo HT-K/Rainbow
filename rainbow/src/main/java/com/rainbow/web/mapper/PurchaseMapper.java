@@ -11,6 +11,7 @@ public interface PurchaseMapper {
 	public List<PurchaseDTO> selectList();
 	public List<PurchaseDTO> selectByMemberId(PurchaseDTO purchase);
 	public PurchaseDTO selectByPurchaseSeq(PurchaseDTO purchase);
+	public PurchaseDTO selectScreenNumber(PurchaseDTO purchase);
 	public List<PurchaseDTO> selectByReserve(PurchaseDTO purchase);
 	public int count();
 	public int countById(PurchaseDTO purchase);
