@@ -57,7 +57,7 @@ var movie = {
 				                          	<p class="movie__option"><strong>배우: </strong>'+list.actor+'</p>\
 				                            <p class="movie__option"><strong>등급: </strong>'+list.grade+'</p>\
 				                            <div class="movie__btns">\
-				                            	<button id="bookBtn2" class="btn btn-md btn--warning">book a ticket <span class="hidden-sm">for this movie</span></button>\
+				                            	<button id="bookBtn2" class="btn btn-md btn--warning bookBtn2">book a ticket <span class="hidden-sm">for this movie</span></button>\
 				                                <a href="#" class="watchlist">Add to watchlist</a>\
 				                            </div>\
 				                            <div class="preview-footer">\
@@ -108,7 +108,7 @@ var movie = {
 					});
 				});
 				
-				$('.btn').click(function(e) { // each문으로 버튼 여러개 생성 시 아이디로 구분하면 하나만 먹힘, 클래스로 접근해야함
+				$('.bookBtn2').click(function(e) { // each문으로 버튼 여러개 생성 시 아이디로 구분하면 하나만 먹힘, 클래스로 접근해야함
 					e.preventDefault();
 					alert("예약버튼");
 					if (id.length != 0) { // 회원일 경우 로그인 창 안띄워지게 하기!
