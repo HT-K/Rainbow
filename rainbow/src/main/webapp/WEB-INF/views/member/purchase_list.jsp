@@ -39,16 +39,6 @@
 			               <div class="ticket__indecator indecator--post"><div class="indecator-text post--text">online ticket</div></div>
 			            </div>
 			         </div>
-					<%-- <div class="movie movie--preview movie--full release">
-		     			<div class="col-sm-4 col-md-3 col-lg-3">
-		         			<div class="movie__images">
-		            			<img alt='' src="${context}/resources/rainbow/images/main/${list.image}" height="283">
-		     				</div>
-						</div>
-						<div class="col-sm-8 col-md-9 col-lg-9 movie__about">
-							
-				         </div>
-		    		</div> --%>
 				</c:forEach>
 				
 				<div class="booking-pagination booking-pagination--margin">

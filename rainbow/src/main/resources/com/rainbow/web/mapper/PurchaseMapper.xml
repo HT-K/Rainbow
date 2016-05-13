@@ -26,6 +26,11 @@
 	    FROM Purchase WHERE purchase_seq = #{purchaseSeq}
 	</select>
 	
+	<select id="selectScreenNumber" parameterType="com.rainbow.web.purchase.PurchaseDTO" resultType="com.rainbow.web.purchase.PurchaseDTO">
+	    SELECT screen AS screenNumber
+	    FROM Movie WHERE title = #{movieTitle}
+	</select>
+	
 	<select id="selectByReserve" parameterType="com.rainbow.web.purchase.PurchaseDTO" resultType="com.rainbow.web.purchase.PurchaseDTO"> 
 		SELECT
 			purchase_seq As purchaseSeq,

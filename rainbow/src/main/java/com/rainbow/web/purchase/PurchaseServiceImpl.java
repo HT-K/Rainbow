@@ -80,4 +80,11 @@ public class PurchaseServiceImpl implements PurchaseService {
 		PurchaseMapper mapper = sqlSession.getMapper(PurchaseMapper.class);
 		return mapper.countById(purchase);
 	}
+
+	@Override
+	public PurchaseDTO getScreenNumber(PurchaseDTO purchase) {
+		logger.info("PurchaseService - getScreenNumber() 진입 후 ");
+		PurchaseMapper mapper = sqlSession.getMapper(PurchaseMapper.class);
+		return mapper.selectScreenNumber(purchase);
+	}
 }

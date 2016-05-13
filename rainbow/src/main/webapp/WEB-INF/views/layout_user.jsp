@@ -223,6 +223,11 @@
 			var id = '${user.id}';
 			member.memberLeave(context, id);
 		});
+		
+	 	$('#purchaseListBtn').click(function(e) { // 이름 클릭 시 나오는 li의 예매내역을 눌렀을 시
+			e.preventDefault();
+			member.purchaseList(context, '/purchase/purchase_list/0');
+		}); 
 	});
 </script>
 </html>
