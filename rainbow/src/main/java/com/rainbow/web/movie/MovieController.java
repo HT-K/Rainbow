@@ -30,29 +30,35 @@ public class MovieController {
 		return "";
 	}
 	
-	@RequestMapping(value="/search", method=RequestMethod.POST)
+	//@RequestMapping(value="/search", method=RequestMethod.POST)
+	@RequestMapping("/search")
 	public String search(@RequestParam("keyField")String keyField,
-			@RequestParam("keyWord")String keyWord,
-			Model model) {
+			@RequestParam("keyWord")String keyWord) {
 		logger.info("=== MovieController-search 진입 체크 ===");
-		return "redirect:/movie/movie_list?keyField="+keyField+"&keyWord="+keyWord;
+		logger.info("keyWord :{}", keyWord);
+		logger.info("keyField :{}", keyField);
+		return "redirect:/movie/movie_list/0?keyField="+keyField+"&keyWord="+keyWord;
 	}
 	
-	@RequestMapping("/movie_list/{startRow}")
-	public String list(
-			@PathVariable(value="startRow")String startRow,
-			@RequestParam(value="keyField",defaultValue ="none")String keyField,
-			@RequestParam(value="keyWord",defaultValue ="none")String keyWord,
+	@RequestMapping("/movie_list")
+	public void list(
+			@RequestParam(value="startRow",defaultValue = "0")String startRow,
+			@RequestParam(value="keyField",defaultValue = "none")String keyField,
+			@RequestParam(value="keyWord",defaultValue = "none")String keyWord,
 			Model model) {
 		logger.info("=== MovieController-list 진입 체크 ===");
+		logger.info("keyWord :{}", keyWord);
+		logger.info("keyField :{}", keyField);
 		List<MovieDTO> list = new ArrayList<MovieDTO>();
 		
 		// 그냥 목록을 보여주든 검색으로 보여주든 최대치는 5개로~
 		movie.setStart(Integer.parseInt(startRow));
 		movie.setEnd(5);
 		
-		if (keyField.equals("none")) { // 그냥 영화 목록 보여줄 때
+		if (keyWord.equals("none")) { // 그냥 영화 목록 보여줄 때
 			movie.setTotalMovie(service.count());
+			movie.setKeyField("none");
+			movie.setKeyWord("none");
 			model.addAttribute("page", movie);
 			list = service.getList(movie);
 			model.addAttribute("movieList", list); 
@@ -63,11 +69,11 @@ public class MovieController {
 			model.addAttribute("page", movie);
 			list = service.getBySearch(movie);
 			model.addAttribute("movieList", list);
-			
+			logger.info("model :{}",model);
 		}
-		logger.info("model :{}",model);
-		return "movie/movie_list.user";
+		
 	}
+	
 	
 	@RequestMapping("/update")
 	public String update() {
@@ -80,7 +86,7 @@ public class MovieController {
 	}
 	
 	@RequestMapping("/movie_detail/{movieSeq}")
-	public String detail(
+	public void detail(
 			@PathVariable("movieSeq")int movieSeq,
 			Model model) {
 		logger.info("=== MovieController-detail{} ===");
@@ -95,7 +101,7 @@ public class MovieController {
 		
 		// 현재 영화에 달린 댓글이 몇개인지
 		model.addAttribute("reply_count", replyService.count(reply));
-		
-		return "movie/movie_detail.user";
+		logger.info("moder :{}",model);
+		//return "movie/movie_detail.user";
 	}
 }

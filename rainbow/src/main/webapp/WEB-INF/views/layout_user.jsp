@@ -100,7 +100,7 @@
 	   <script type="text/javascript">
 	      $(function() {
 	         var logout_header =
-	            '<li><span class="sub-nav-toggle plus"></span>'
+	            '<li id="movieList"><span class="sub-nav-toggle plus"></span>'
 	            +      '<a href="${context}/movie/movie_list">Movies</a>'
 	            +   '</li>'
 	            +   '<li id="ticketing">'
@@ -128,7 +128,7 @@
 	      $(function() {      
 	         var login_header =
 	            '<li id="movieList"><span class="sub-nav-toggle plus"></span>'
-	            +      '<a href="${context}/movie/movie_list">Movies</a>'
+	            +      '<a href="${context}/movie/movie_list/">Movies</a>'
 	            +   '</li>'
 	            +   '<li id="needLogin">'
 	            +      '<span class="sub-nav-toggle plus"></span>' 
@@ -155,7 +155,9 @@
 <script src="${context}/resources/js/Global.js"></script>
 <script src="${context}/resources/js/Rainbow.js"></script>
 <script src="${context}/resources/js/Purchase.js"></script>
+<script src="${context}/resources/js/Movie.js"></script>
 <script src="${context}/resources/js/Member.js"></script>
+
 
 
 <script type="text/javascript">
@@ -195,6 +197,11 @@
 		$('#ticketing').click(function(e){ // 로그인 한 상태에서 헤더의 티켓팅을 눌렀을 시
 			e.preventDefault();
 		 	purchase.step1Form(context); 
+		});	
+		
+		$('#movieList').click(function(e){ // 영화목록
+			e.preventDefault();
+		 	movie.movieList(context,'/movie/movie_list'); 
 		});	
 		
 		$('#needLogin').click(function(e) { // 로그인 안한 상태에서 헤더의 티켓팅을 눌렀을 시
