@@ -53,11 +53,6 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping("/join_form")
-	public String join_form() {
-		return "member/join_form.user";
-	}
-	
 	@RequestMapping(value="/join", method=RequestMethod.POST)
 	public void join(@RequestParam("id")String id, 
 			@RequestParam("password")String password,

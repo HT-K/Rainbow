@@ -14,7 +14,7 @@ PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
 	<definition name="*/*.user" extends="layout_user">
 		<!-- 위 definition인 layout_user를 상속받았다. footer는 그대로이고 header과 content 부분의 페이지가 아래와 같이 변경된다. -->
 		<!-- URL이 */*.user로 호출된 경우 헤더 페이지와 컨텐츠 페이지는 아래와 같다.  -->
-		<put-attribute name="header" value="/WEB-INF/views/global/member_header.jsp"/>
+		<put-attribute name="header" value="/WEB-INF/views/global/header.jsp"/>
 		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp"/>
 	</definition>
 

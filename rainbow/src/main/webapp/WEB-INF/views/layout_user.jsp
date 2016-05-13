@@ -8,9 +8,9 @@
    <!-- Basic Page Needs -->
    <meta charset="UTF-8" />
    <title>RainbowMovie</title>
-   <meta name="description" content="A Template by Gozha.net">
+   <!-- <meta name="description" content="A Template by Gozha.net">
    <meta name="keywords" content="HTML, CSS, JavaScript">
-   <meta name="author" content="Gozha.net">
+   <meta name="author" content="Gozha.net"> -->
       
     <!-- Mobile Specific Metas-->
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -159,36 +159,7 @@
 
 
 <script type="text/javascript">
-	$(function(){
-		// member_header.jsp 부분과 관련된 내용 시작
-		var id = $('#sessionVar').val();
-		if (id.length != 0) {
-			$('#dropBoxBtn').addClass('auth__function');
-			document.getElementById('dropBoxBtn').style.display = '';
-		} else {
-			$('#dropBoxBtn').removeClass('auth__function');
-			document.getElementById('dropBoxBtn').style.display = 'none';
-		}
-		
-		// 헤더의 book a ticket 버튼 클릭 시
-		$('#bookBtn').click(function(e) {
-			e.preventDefault();
-			if (id.length != 0) { // 회원일 경우 nav_로그인 창 안띄워지게 하고 ticketing 페이지로 넘어가게 하기
-				$('.overlay').removeClass('open').addClass('close');
-				purchase.step1Form(context);
-			} else { // 비회원일 경우 nav_로그인창 띄우기
-				$('.overlay').removeClass('close').addClass('open');
-			}
-		});
-		
-		$('#nav_loginBtn').click(function(e) { // 로그인 버튼 클릭 시 $() 로 form 태그를 찾아서 객체로 리턴받아 action을 걸고 post방식으로 보낸다.
-			e.preventDefault();
-			var id = $('#nav_id').val();
-			var password = $('#nav_password').val();
-			member.headerLogin(context, id, password);
-		});
-		// member_header.jsp 부분과 관련된 내용 끝
-		
+	$(function(){	
 		var context = $.fn.global('${context}').getContext(); // controller 호출을 위한 /web 경로를 js 파일에 보내기 위함!
 		var purchase = $.fn.purchase(); // 예매 페이지인 purchase 부분은 함수 표현식으로 구현했다.
 		
@@ -223,6 +194,20 @@
 			var id = '${user.id}';
 			member.memberLeave(context, id);
 		});
+		
+		$(window).on("popstate", function(event) {
+		    var data = event.originalEvent.state;  // 이부분으로 뒤로가기 할때마다 아까 저장한 히스토리 스택에 쌓인 URL을 불러 온다
+		    alert(1);	
+		    if(data){ 
+		    	location.href = event.originalEvent.url;
+		    	// 데이터가 있으면 해당 데이터를 ajax로 다시 요청해 화면에 뿌려준다!!!!
+				// 아래 코드는 필자가 켄도UI의 스플리터기능으로 화면을 뿌려주기에  작성한 것이다
+				// 다른 사람들은 각자 화면을 요청하는 AJAX펑션을 넣으면 되겠다.
+		    } else{
+		    	// 히스토리에 정보가 없을경우 메인화면으로 보내준다. 
+		    	location.href = "${context}/rainbow";
+		    }
+	   });
 	});
 </script>
 </html>

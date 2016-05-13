@@ -184,7 +184,10 @@ public class PurchaseController {
 	}
 	
 	@RequestMapping("/purchase_list/{startRow}")
-	public String purchase_list(@PathVariable(value="startRow")int start, Model model, HttpSession session) {
+	public String purchase_list(
+			@PathVariable(value="startRow")int start, 
+			Model model, 
+			HttpSession session) {
 		logger.info("purchase - purchase_list()");
 		
 		MemberDTO member = (MemberDTO) session.getAttribute("user");

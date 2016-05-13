@@ -30,7 +30,13 @@ Purchase.prototype.step1Form = function(context) {
 								<p class="choose-film__title">'+movie.title+'</p>\
 							</div>';
 						});
-		
+						
+						// datePicker 시작 날짜 지정하기 (오늘로!)
+						var d = new Date();
+						if (d.getMonth() < 10) {
+							var month = "0" + (d.getMonth()+1);
+						}
+						var date = month + "/" + d.getDate() + "/" + d.getFullYear(); 
 							
 								
 	step1Form += '</div>\
@@ -45,7 +51,7 @@ Purchase.prototype.step1Form = function(context) {
 						<div class="choose-container choose-container--short">\
 							<div class="datepicker">\
 								<span class="datepicker__marker"><i class="fa fa-calendar"></i>Date</span>\
-								<input type="text" id="datepicker" value="05/02/2016" class="datepicker__input">\
+								<input type="text" id="datepicker" value="'+date+'" class="datepicker__input">\
 							</div>\
 						</div>\
 						<h2 class="page-heading">Pick time</h2>\

@@ -484,9 +484,10 @@ function init_BookingOne() {
     
     //5. Datepicker init
                 $('.datepicker__input').datepicker({
-                  showOtherMonths: true,
-                  selectOtherMonths: true,
-                  showAnim:"fade"
+                	showOtherMonths: true,
+                	selectOtherMonths: true,
+                	showAnim:"fade",
+                	minDate:0 // datePicker 오늘 날짜 이전 날짜는 invisible로 하기
                 });
 
                 $(document).click(function(e) { 

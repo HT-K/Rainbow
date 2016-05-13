@@ -58,6 +58,7 @@ var member = {
 				type : 'post',
 				success : function(data) {
 					alert(data.member.name+ '님 로그인 성공');
+					history.pushState(data,"main",context+'/rainbow');
 					location.href = context+'/rainbow';
 				},
 				error : function(xhr, status, msg) {
