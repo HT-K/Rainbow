@@ -100,7 +100,7 @@ Purchase.prototype.step1Form = function(context) {
 			            dataType : 'json',
 					    type : 'post',
 			            success : function(data) {
-			               if (data != null) {
+		                if (data != null) {
 			                  Purchase.prototype.step2Form(context, data.reserveList, data.purchasedSeat);
 			               } else {
 			                  console.log('step2 데이터 가져오기 실패');
