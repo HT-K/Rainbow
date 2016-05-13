@@ -3,7 +3,7 @@
  */
 
 var movie = {
-		movieList : function(context, url){
+		movieList : function(context, url, id){
 			
 			$.getJSON(context + url, function(data) {
 				var start = data.page.start;
@@ -96,7 +96,7 @@ var movie = {
 			        </section>';
 				$('#content').html(movieList);
 				
-				$(document).ready(function() {
+				$(document).ready(function() { // 이거 안쓰면 셀렉트박스 안먹힘
 					$(".search__sort").selectbox(
 					{ 
 							onChange : function(val, inst) {
@@ -107,13 +107,16 @@ var movie = {
 						}
 					});
 				});
-				var id = $('#sessionVar').val();
-				$('#bookBtn2').click(function(e) {
+				
+				$('.btn').click(function(e) { // each문으로 버튼 여러개 생성 시 아이디로 구분하면 하나만 먹힘, 클래스로 접근해야함
 					e.preventDefault();
 					alert("예약버튼");
 					if (id.length != 0) { // 회원일 경우 로그인 창 안띄워지게 하기!
+						alert(1);
+						$.fn.purchase().step1Form(context);
 						$('.overlay').removeClass('open').addClass('close');
 					} else { // 비회원일 경우 로그인창 띄우기
+						alert(2);
 						$('.overlay').removeClass('close').addClass('open');
 					}
 				});

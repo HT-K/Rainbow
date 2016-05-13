@@ -162,7 +162,7 @@
 
 <script type="text/javascript">
 	$(function(){
-		// member_header.jsp 부분과 관련된 내용 시작
+		// header.jsp 부분과 관련된 내용 시작
 		var id = $('#sessionVar').val();
 		if (id.length != 0) {
 			$('#dropBoxBtn').addClass('auth__function');
@@ -189,7 +189,7 @@
 			var password = $('#nav_password').val();
 			member.headerLogin(context, id, password);
 		});
-		// member_header.jsp 부분과 관련된 내용 끝
+		// header.jsp 부분과 관련된 내용 끝
 		
 		var context = $.fn.global('${context}').getContext(); // controller 호출을 위한 /web 경로를 js 파일에 보내기 위함!
 		var purchase = $.fn.purchase(); // 예매 페이지인 purchase 부분은 함수 표현식으로 구현했다.
@@ -201,7 +201,7 @@
 		
 		$('#movieList').click(function(e){ // 영화목록
 			e.preventDefault();
-		 	movie.movieList(context,'/movie/movie_list'); 
+		 	movie.movieList(context,'/movie/movie_list' , id); 
 		});	
 		
 		$('#needLogin').click(function(e) { // 로그인 안한 상태에서 헤더의 티켓팅을 눌렀을 시

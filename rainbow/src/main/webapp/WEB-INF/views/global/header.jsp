@@ -75,36 +75,3 @@
 			</div>
 	</section>
 </div>
-
-<script type="text/javascript">
-	$(function() {
-		// header.jsp 부분과 관련된 내용 시작
-		var id = $('#sessionVar').val();
-		if (id.length != 0) {
-			$('#dropBoxBtn').addClass('auth__function');
-			document.getElementById('dropBoxBtn').style.display = '';
-		} else {
-			$('#dropBoxBtn').removeClass('auth__function');
-			document.getElementById('dropBoxBtn').style.display = 'none';
-		}
-		
-		// 헤더의 book a ticket 버튼 클릭 시
-		$('#bookBtn').click(function(e) {
-			e.preventDefault();
-			if (id.length != 0) { // 회원일 경우 nav_로그인 창 안띄워지게 하고 ticketing 페이지로 넘어가게 하기
-				$('.overlay').removeClass('open').addClass('close');
-				purchase.step1Form(context);
-			} else { // 비회원일 경우 nav_로그인창 띄우기
-				$('.overlay').removeClass('close').addClass('open');
-			}
-		});
-		
-		$('#nav_loginBtn').click(function(e) { // 로그인 버튼 클릭 시 $() 로 form 태그를 찾아서 객체로 리턴받아 action을 걸고 post방식으로 보낸다.
-			e.preventDefault();
-			var id = $('#nav_id').val();
-			var password = $('#nav_password').val();
-			member.headerLogin(context, id, password);
-		});
-		// header.jsp 부분과 관련된 내용 끝
-	});
-</script>
