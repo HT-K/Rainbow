@@ -31,7 +31,8 @@
 	                                <p>주인공 : ${list.actor}</p>
 	                             </li>
 	                             <li class="last-block">
-	                                 <a href="${context}/movie/movie_detail/${list.movieSeq}" class="slide__link">more</a>
+	                                 <%-- <a href="${context}/movie/movie_detail/${list.movieSeq}" class="slide__link moreBtn_detail">more</a> --%>
+	                                 <a href="/movie/movie_detail/${list.movieSeq}" class="slide__link moreBtn_detail">more</a>
 	                             </li>
 	                         </ul>
 	                     </div>
@@ -49,14 +50,16 @@
                         <!-- Movie variant with time -->
                             <div class="movie movie--test movie--test--dark movie--test--left">
                                 <div class="movie__images">
-                                    <a href="${context}/movie/movie_detail/${list.movieSeq}" class="movie-beta__link">
+                                    <%-- <a href="${context}/movie/movie_detail/${list.movieSeq}" class="movie-beta__link beta_imgDetail"> --%>
+                                    <a href="/movie/movie_detail/${list.movieSeq}" class="movie-beta__link beta_imgDetail">
                                         <!-- <img alt='' src="http://placehold.it/424x424"> -->
                                         <img alt='' src="${context}/resources/rainbow/images/main/${list.image}" width="424" height="205">
                                     </a>
                                 </div>
 
                                 <div class="movie__info">
-                                    <a href='${context}/movie/movie_detail/${list.movieSeq}' class="movie__title">${list.title}</a>
+                                    <%-- <a href='${context}/movie/movie_detail/${list.movieSeq}' class="movie__title title_textDetail">${list.title}</a> --%>
+                                    <a href="/movie/movie_detail/${list.movieSeq}'" class="movie__title title_textDetail">${list.title}</a>
 
                                     <p class="movie__time">${list.runningtime}</p>
 

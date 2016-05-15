@@ -56,6 +56,7 @@
 	
 	<select id="selectById" parameterType="com.rainbow.web.member.MemberDTO" resultType="com.rainbow.web.member.MemberDTO"> 
 		SELECT 
+			member_seq AS memberSeq,
     		id,
 			password,
 			name,
@@ -64,6 +65,7 @@
 			email,
    			point,
    			grade,
+   			cash,
    			DATE_FORMAT(reg_date,'%Y-%m-%d %T') AS regDate
     	FROM Member
     	WHERE id = #{id}

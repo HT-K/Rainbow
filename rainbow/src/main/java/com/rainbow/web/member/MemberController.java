@@ -47,6 +47,29 @@ public class MemberController {
 		return model;
 	}
 	
+	/*@RequestMapping(value="/login", method=RequestMethod.POST)
+	public String login(@RequestParam("id")String id, 
+						@RequestParam("password")String password,
+						Model model,
+						HttpSession session) { 
+		logger.info("로그인 컨트롤러 파라미터 ID : {}", id);
+		logger.info("로그인 컨트롤러 파라미터 PW : {}", password);
+		
+		MemberDTO param = new MemberDTO();
+		param.setId(id);
+		param.setPassword(password);
+		member = service.login(param);
+		if (member.getId().equals(param.getId())) {
+			logger.info("로그인 성공");
+			session.setAttribute("user", member); // 로그인 성공 시 session에 로그인에 성공한 유저의 정보가 담긴 member 객체를 담는다.
+			model.addAttribute("member", member); // 로그인 성공 시 다음 페이지에 request와 같은 역할을 하는 model에 member 객체를 담아 보낸다.
+		} else {
+			logger.info("로그인 실패");
+			model.addAttribute("member", member);
+		}
+		return "redirect:/home/main";
+	}*/
+	
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
 		session.invalidate(); // 세션 무효화
@@ -154,7 +177,6 @@ public class MemberController {
 			logger.info("로그인 성공");
 			session.setAttribute("user", member); // 로그인 성공 시 session에 로그인에 성공한 유저의 정보가 담긴 member 객체를 담는다.
 			model.addAttribute("member", member); // 로그인 성공 시 다음 페이지에 request와 같은 역할을 하는 model에 member 객체를 담아 보낸다.
-			
 		}  
 		return model;
 	}

@@ -43,7 +43,6 @@ var member = {
 					<a href="#" class="login__tracker form__tracker">Forgot password?</a>\
 				</div>\
 			</form>';
-		
 		$('#content').html(loginForm);
 		
 		$('#loginBtn').click(function(e) {
@@ -58,7 +57,7 @@ var member = {
 				type : 'post',
 				success : function(data) {
 					alert(data.member.name+ '님 로그인 성공');
-					history.pushState(data,"main",context+'/rainbow');
+					//history.pushState(data,"main",context+'/rainbow');
 					location.href = context+'/rainbow';
 				},
 				error : function(xhr, status, msg) {

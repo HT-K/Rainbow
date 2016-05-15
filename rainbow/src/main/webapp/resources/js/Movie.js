@@ -122,15 +122,14 @@ var movie = {
 				});
 			
 				
-				$('#searchBtn').click(function(e) {
+				$('.search__button').click(function(e) {
 					e.preventDefault();
 					var keyField =  $('select[id=SearchKeyField] option:selected').val();
 	    			var keyWord = $('#SearchKeyWord').val();
 	    			alert(keyWord);
 					var url = "/movie/movie_list?keyField="+keyField+"&keyWord="+keyWord;
 					alert(url);
-					movie.movieList(context, url); 
-					
+					movie.movieList(context, url, id); 
 				});
 				
 				$('.movie__title').click(function(e) {
@@ -143,7 +142,7 @@ var movie = {
 				$('.otherPage').click(function(e) {
 					e.preventDefault();
 					var url = $(this).attr('href');
-			        movie.movieList(context,url);
+			        movie.movieList(context,url,id);
 					
 				});
 		

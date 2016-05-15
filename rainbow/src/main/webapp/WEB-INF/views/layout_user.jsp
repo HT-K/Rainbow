@@ -75,6 +75,12 @@
    </div>
 </body>
 
+<script src="${context}/resources/js/Global.js"></script>
+<script src="${context}/resources/js/Rainbow.js"></script>
+<script src="${context}/resources/js/Purchase.js"></script>
+<script src="${context}/resources/js/Movie.js"></script>
+<script src="${context}/resources/js/Member.js"></script>
+
 <c:choose>
 	<c:when test="${sessionScope.user.id == 'admin'}"> <!-- 관리자 로그인 성공 시 헤더 -->
 		<script type="text/javascript">
@@ -152,14 +158,6 @@
 	</c:otherwise>
 </c:choose>
 
-<script src="${context}/resources/js/Global.js"></script>
-<script src="${context}/resources/js/Rainbow.js"></script>
-<script src="${context}/resources/js/Purchase.js"></script>
-<script src="${context}/resources/js/Movie.js"></script>
-<script src="${context}/resources/js/Member.js"></script>
-
-
-
 <script type="text/javascript">
 	$(function(){
 		// header.jsp 부분과 관련된 내용 시작
@@ -171,6 +169,9 @@
 			$('#dropBoxBtn').removeClass('auth__function');
 			document.getElementById('dropBoxBtn').style.display = 'none';
 		}
+		
+		var context = $.fn.global('${context}').getContext(); // controller 호출을 위한 /web 경로를 js 파일에 보내기 위함!
+		var purchase = $.fn.purchase(); // 예매 페이지인 purchase 부분은 함수 표현식으로 구현했다.
 		
 		// 헤더의 book a ticket 버튼 클릭 시
 		$('#bookBtn').click(function(e) {
@@ -191,8 +192,26 @@
 		});
 		// header.jsp 부분과 관련된 내용 끝
 		
-		var context = $.fn.global('${context}').getContext(); // controller 호출을 위한 /web 경로를 js 파일에 보내기 위함!
-		var purchase = $.fn.purchase(); // 예매 페이지인 purchase 부분은 함수 표현식으로 구현했다.
+		// main.jsp와 관련된 내용 시작
+		$('.slide__link').click(function(e) {
+			e.preventDefault();
+			var url = $(this).attr('href');
+	        movie.movieDetail(context,url);
+		});
+		
+		$('.beta_imgDetail').click(function(e) {
+			e.preventDefault();
+			var url = $(this).attr('href');
+	        movie.movieDetail(context,url);
+		});  
+		
+		$('.title_textDetail').click(function(e) {
+			e.preventDefault();
+			var url = $(this).attr('href');
+	        movie.movieDetail(context,url);
+		});  
+		// main.jsp와 관련된 내용 끝
+		
 		
 		$('#ticketing').click(function(e){ // 로그인 한 상태에서 헤더의 티켓팅을 눌렀을 시
 			e.preventDefault();

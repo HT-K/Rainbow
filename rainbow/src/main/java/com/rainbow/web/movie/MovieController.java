@@ -19,7 +19,7 @@ import com.rainbow.web.reply.ReplyService;
 @Controller
 @RequestMapping("/movie")
 public class MovieController {
-	private static final Logger logger = LoggerFactory.getLogger(MovieService.class);
+	private static final Logger logger = LoggerFactory.getLogger(MovieController.class);
 	@Autowired MovieDTO movie;
 	@Autowired MovieService service;
 	@Autowired ReplyDTO reply;
@@ -41,7 +41,7 @@ public class MovieController {
 	}
 	
 	@RequestMapping("/movie_list")
-	public void list(
+	public Model list(
 			@RequestParam(value="startRow",defaultValue = "0")String startRow,
 			@RequestParam(value="keyField",defaultValue = "none")String keyField,
 			@RequestParam(value="keyWord",defaultValue = "none")String keyWord,
@@ -71,7 +71,7 @@ public class MovieController {
 			model.addAttribute("movieList", list);
 			logger.info("model :{}",model);
 		}
-		
+		return model;
 	}
 	
 	
