@@ -210,7 +210,12 @@ public class MemberController {
 	}
 
 	@RequestMapping("/cinema")
-	public String cineame() {
+	public String cineame(HttpSession session) {
+		logger.info("memberController-cineame{}");
+		session.getAttribute("id");
+		session.getAttribute("email");
+		logger.info("memberController-cineame{} END");
+		
 		return "global/cinema.user";
 	}
 }

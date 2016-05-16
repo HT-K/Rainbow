@@ -42,22 +42,22 @@
            <span class="contact__tel">support@rainbowMovie.com</span>
        </div>
    </section>
-
+   
    <div class="contact-form-wrapper">
        <div class="container">
            <div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-               <form id='contact-form' class="form row" method='post' novalidate="" action="send.php">
+               <form id='contactsform' class="form row" method='post' novalidate="" action="send.php">
                    <p class="form__title">Drop us a line</p>
                    <div class="col-sm-6">
-                       <input type='text' placeholder='Your name' name='user-name' class="form__name">
+                       <input type='text' placeholder='Your name' name="name" style="height: 35px;" value="${sessionScope.user.name}" class="form__name">
                    </div>
                    <div class="col-sm-6">
-                       <input type='email' placeholder='Your email' name='user-email' class="form__mail">
+                       <input type='text' placeholder='Your email' name="email" style="height: 35px;" value="${sessionScope.user.email}" class="form__mail">
                    </div>
                    <div class="col-sm-12">
-                       <textarea placeholder="Your message" name="user-message" class="form__message"></textarea>
+                       <textarea placeholder="Your message" name="contactsText" class="form__message"></textarea>
                    </div>
-                   <button type="submit" class='btn btn-md btn--danger'>send message</button>
+                   <button type="submit" id="sendBtn" class='btn btn-md btn--danger'>send message</button>
                </form>
            </div>
        </div>
@@ -83,7 +83,10 @@
        // init_Contact ();
         initialize();    
     });
-
+	$('#sendBtn').click(function() {
+		alert('보내기');
+		$('#contactsform').attr('action',"${context}/mail/send").attr('method','post').submit();
+	});
    function initialize() {
          /*
          http://openapi.map.naver.com/api/geocode.php?key=f32441ebcd3cc9de474f8081df1e54e3&encoding=euc-kr&coord=LatLng&query=서울특별시 강남구 강남대로 456
