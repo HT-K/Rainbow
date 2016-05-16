@@ -175,11 +175,14 @@ values(
 			+ '</div>'
 			+ '<div class="form-group">'
 			+ '<label class="col-sm-3 control-label" for="cate">VOD CATEGORY</label>'
-			+ '<div class="col-sm-6">'
-			+ '<select name="hobby">'
-		    + '<option value="축구">축구</option>'
-		    + '<option value="농구">농구</option>'
-		    + '<option value="게임">게임</option>'
+			+ '<div class="col-sm-6" >'
+			+ '<select id ="vodCategory" name="vodCategory" class="form-control">'
+		    + '<option value="action">Action</option>'
+		    + '<option value="animation">Animation</option>'
+		    + '<option value="comedy">Comedy</option>'
+		    + '<option value="drama">Drama</option>'
+		    + '<option value="mellow">Mellow</option>'
+		    + '<option value="thriller">Thriller</option>'
 		    + '</select></div>'
 			+ '</div>'
 			+ '<div class="form-group">'
@@ -203,11 +206,23 @@ values(
 			+ '</div>'
 			+ '<div class="form-group">'
 			+ '<label class="col-sm-3 control-label" for="free">VOD FREE</label>'
-			+ '<div class="col-sm-6"><input type="text" id="vodFree" name="vodFree"  class="form-control" /></div>'
+			+ '<div class="col-sm-6">'
+			+ '<select id ="vodFree" name="vodFree" class="form-control">'
+		    + '<option value="y">non Free</option>'
+		    + '<option value="n">Free</option>'
+		    + '</select></div>'
 			+ '</div>' 
 			+ '<div class="form-group">'
 			+ '<label class="col-sm-3 control-label" for="grade">VOD GRADE</label>'
-			+ '<div class="col-sm-6"><input type="text" id="vodGrade" name="vodGrade"  class="form-control" /></div>'
+			+ '<div class="col-sm-6">'
+			+ '<select id ="vodGrade" name="vodGrade" class="form-control">'
+		    + '<option value="[국내] 전체 관람가">[국내] 전체 관람가</option>'
+		    + '<option value="[국내] 12세 관람가">[국내] 12세 관람가</option>'
+		    + '<option value="[국내] 15세 관람가">[국내] 15세 관람가</option>'
+		    + '<option value="[국내] 18세 관람가">[국내] 18세 관람가</option>'
+		    + '<option value="[국내] 19세 관람가">[국내] 19세 관람가</option>'
+		    + '<option value="[해외] R">[해외] R</option>'
+		    + '</select></div>'
 			+ '</div>'
 			+ '<div class="form-group">'
 			+ '<label class="col-sm-3 control-label" for="actor">VOD ACTOR</label>'
@@ -215,11 +230,26 @@ values(
 			+ '</div>'
 			+ '<div class="form-group">'
 			+ '<label class="col-sm-3 control-label" for="actor">VOD DIRECTORY</label>'
-			+ '<div class="col-sm-6"><input type="text" id="vodDirectory" name="vodDirectory"  class="form-control" /></div>'
+			+ '<div class="col-sm-6"><input type="text" id="vodDirector" name="vodDirector"  class="form-control" /></div>'
 			+ '</div>'
 			+ '<div class="form-group">'
 			+ '<label class="col-sm-3 control-label" for="actor">VOD COUNTRY</label>'
-			+ '<div class="col-sm-6"><input type="text" id="vodCountry" name="vodCounty"  class="form-control" /></div>'
+			+ '<div class="col-sm-6">'
+			+ '<select id ="vodCounty" name="vodCounty" class="form-control">'
+		    + '<option value="한국">한국</option>'
+		    + '<option value="일본">일본</option>'
+		    + '<option value="미국">미국</option>'
+		    + '<option value="중국">중국</option>'
+		    + '<option value="프랑스">프랑스</option>'
+		    + '<option value="태국">태국</option>'
+		    + '<option value="러시아">러시아</option>'
+		    + '<option value="우즈베키스탄">우즈베키스탄</option>'
+		    + '<option value="필리핀">필리핀</option>'
+		    + '<option value="베트남">베트남</option>'
+		    + '<option value="캐나다">캐나다</option>'
+		    + '<option value="호주">호주</option>'
+		    + '<option value="노르웨이">노르웨이</option>'
+		    + '</select></div>'
 			+ '</div>'
 			+ '<div class="form-group">'
 			+ '<label for="input_id" class="col-sm-4 control-label" for="Image">VOD POSTER</label>'
@@ -240,10 +270,11 @@ values(
 	$('#content').html(addVodForm);
 	$('#inputBtn').click(function(e) {
 		e.preventDefault();
-	      var $form = $('#form')[0];
+ 
+		var $form = $('#form')[0];
           var formData = new FormData(form);
         $.ajax({
-               url: context+'/admin/input',
+               url: context+'/admin/vodInput',
                mimeType: 'multipart/form-data',
                contentType: false, 
                processData : false,
@@ -251,7 +282,7 @@ values(
                type: 'POST',
                success : function(result) {
                     alert('영화 등록 완료 되었습니다 .');
-                     location.href = context+'/admin/content'; 
+                     //location.href = context+'/admin/content'; 
                },
                error : function(xhr, status, msg) {
                   alert('에러발생상태 :' + status + ',내용 : ' + msg);

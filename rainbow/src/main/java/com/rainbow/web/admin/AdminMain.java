@@ -12,7 +12,8 @@ public class AdminMain {
 		try {
 			FileInputStream file = new FileInputStream("../rainbow/src/main/resources/config/fileUpload.properties");
 			p.load(file);
-			System.out.println(p.getProperty("fileUpload.path"));
+			System.out.println(p.getProperty("fileUpload.vodPath"));
+			System.out.println(p.getProperty("fileUpload.moviePath"));
 			file.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block

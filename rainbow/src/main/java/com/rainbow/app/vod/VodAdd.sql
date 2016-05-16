@@ -396,3 +396,4 @@ values(
 	,'독일, 오스트리아, 스위스'
 	);		
 	
+	SELECT * FROM Vod;

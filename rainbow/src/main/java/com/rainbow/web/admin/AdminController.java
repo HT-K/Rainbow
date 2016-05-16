@@ -5,12 +5,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-
-
-
-
 import java.util.Properties;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,14 +20,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.rainbow.app.vod.VodDTO;
+import com.rainbow.app.vod.VodService;
 import com.rainbow.web.movie.Constants;
+import com.rainbow.web.movie.FileUpload;
 import com.rainbow.web.movie.MovieDTO;
 import com.rainbow.web.movie.MovieService;
-import com.rainbow.web.movie.FileUpload;
 import com.rainbow.web.reply.ReplyDTO;
 import com.rainbow.web.reply.ReplyService;
 
@@ -41,7 +41,9 @@ public class AdminController {
    @Autowired MovieService movieService;
    @Autowired ReplyDTO reply;
    @Autowired ReplyService replyService;
-   
+   @Autowired VodDTO vod;
+   @Autowired VodService vodService;
+  
    
 // ================================= MOVIE MANAGED BY ADMIN =========================================================
    
@@ -82,14 +84,12 @@ public class AdminController {
 			FileInputStream file = new FileInputStream("../rainbow/src/main/resources/config/fileUpload.properties");
 			try {
 				p.load(file);
-				filePath = p.getProperty("fileUpload.vodPath");
+				filePath = p.getProperty("fileUpload.moviePath");
 				file.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
+			} catch (IOException e) { 
 				logger.info("파일 업로드 경로가 잘 못 되었습니다.");
 			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+		} catch (FileNotFoundException e) { 
 			logger.info("파일 업로드 경로가 잘 못 되었습니다.");
 		}
 		FileUpload fileUpload = new FileUpload();
@@ -125,74 +125,85 @@ public class AdminController {
 	}
  //========= VOD ADD ================
    @RequestMapping("/vodInput")
-	public String vodInput (@RequestParam(value="title",required=false)String title,
-			@RequestParam(value="rating",required=false)int rating,
-			@RequestParam(value="genre",required=false)String genre,
-			@RequestParam(value="openDate",required=false)String openDate,
-			@RequestParam(value="grade",required=false)String grade,
-			@RequestParam(value="runningtime",required=false)String runningtime,
-			@RequestParam(value="director",required=false)String director,
-			@RequestParam(value="actor",required=false)String actor,
-			@RequestParam(value="content",required=false)String content,
+	public Model vodInput (@RequestParam(value="vodName",required=false)String vodName,
+			@RequestParam(value="vodSubTitle",required=false)String vodSubTitle,
+			@RequestParam(value="vodContent",required=false)String vodContent,
+			@RequestParam(value="vodPrice",required=false)String vodPrice,
+			@RequestParam(value="vodCategory",required=false)String vodCategory,
+			@RequestParam(value="vodTime",required=false)int vodTime,
+			@RequestParam(value="vodRating",required=false)String vodRating,
+			@RequestParam(value="vodUrl",required=false)String vodUrl,
+			@RequestParam(value="vodDate",required=false)String vodDate,
+			@RequestParam(value="vodFree",required=false)String vodFree,
+			@RequestParam(value="vodGrade",required=false)String vodGrade,
+			@RequestParam(value="vodActor",required=false)String vodActor,
+			@RequestParam(value="vodDirector",required=false)String vodDirector,
+			@RequestParam(value="vodCounty",required=false)String vodCountry,
 			@RequestParam(value="image",required=false)MultipartFile image,
-			Model model){
+			Model model,HttpSession session){
 		logger.info("====== ArticleController-input()======");
-		logger.info("=== title {} ===",title);
-		logger.info("=== rating {} ===",rating);
-		logger.info("=== genre {} ===",genre);
-		logger.info("=== openDate {} ===",openDate);
-		logger.info("=== grade {} ===",grade);
-		logger.info("=== runningtime {} ===",runningtime);
-		logger.info("=== director {} ===",director);
-		logger.info("=== actor {} ===",actor);
-		logger.info("=== content {} ===",content);
-		logger.info("=== image {} ===",image);
+		logger.info("=== vodName {} ===",vodName);
+		logger.info("=== vodSubTitle {} ===",vodSubTitle);
+		logger.info("=== vodContent {} ===",vodContent);
+		logger.info("=== vodPrice {} ===",vodPrice);
+		logger.info("=== vodCategory {} ===",vodCategory);
+		logger.info("=== vodTime {} ===",vodTime);
+		logger.info("=== vodRating {} ===",vodRating);
+		logger.info("=== vodUrl {} ===",vodUrl);
+		logger.info("=== vodDate {} ===",vodDate);
+		logger.info("=== vodFree {} ===",vodFree);
+		logger.info("=== vodGrade {} ===",vodGrade);
+		logger.info("=== vodActor {} ===",vodActor);
+		logger.info("=== vodDirectory {} ===",vodDirector);
+		logger.info("=== vodCounty {} ===",vodCountry);
+		
 		Properties p = new Properties();
-		String filePath="";
-		try {
-			FileInputStream file = new FileInputStream("../rainbow/src/main/resources/config/fileUpload.properties");
+		FileUpload fileUpload = new FileUpload();
+		String filePath="";  
+		String fileName= "";
+		System.out.println(vodDate);
 			try {
-				p.load(file);
-				filePath = p.getProperty("fileUpload.moviePath");
-				file.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
+				FileInputStream propertyFile = new FileInputStream(session.getServletContext().getRealPath("\\WEB-INF\\classes\\config\\fileUpload.properties"));
+				try {
+					p.load(propertyFile); 
+					filePath = p.getProperty("fileUpload.vodPath");
+					 fileName = image.getOriginalFilename();
+					logger.info("수정폼에서 넘어온 파일 = {}",fileName);
+					String fullPath = fileUpload.uploadFile(image,filePath+"\\"+vodCategory, fileName); 
+					logger.info("이미지 저장 경로 : {}",fullPath);
+					propertyFile.close();
+				} catch (IOException e) {
+					logger.info("파일 업로드 경로가 잘 못 되었습니다.");
+				} 
+			} catch (FileNotFoundException e) {
 				logger.info("파일 업로드 경로가 잘 못 되었습니다.");
 			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			logger.info("파일 업로드 경로가 잘 못 되었습니다.");
-		}
-		FileUpload fileUpload = new FileUpload();
-		String fileName = image.getOriginalFilename();
-		logger.info("수정폼에서 넘어온 파일 = {}",fileName);
-		String fullPath = fileUpload.uploadFile(image,filePath, fileName);
-		logger.info("이미지 저장 경로 : {}",fullPath);
-		
-		movie.setTitle(title);
-		movie.setRating(rating);
-		movie.setGenre(genre);
-		movie.setOpenDate(openDate);
-		movie.setGrade(grade);
-		movie.setRunningtime(runningtime);
-		movie.setDirector(director);
-		movie.setActor(actor);
-		movie.setContent(content);
-		movie.setImage(fileName);
-		int result = movieService.input(movie);
-		String view = "";
-		
+			vod.setVodName(vodName);
+			vod.setVodContentTitle(vodSubTitle);
+			vod.setVodContent(vodContent);
+			vod.setVodPrice(vodPrice);
+			vod.setVodCategory(vodCategory);
+			vod.setVodTime(vodTime);
+			vod.setVodRating(vodRating);
+			vod.setVodUrl(vodUrl);
+			vod.setVodDate(vodDate);
+			vod.setVodFree(vodFree);
+			vod.setVodGrade(vodGrade);
+			vod.setVodActor(vodActor);
+			vod.setVodDirector(vodDirector);
+			vod.setVodCountry(vodCountry);
+			vod.setVodImage("/vod_image/"+vodCategory+"/"+fileName);
+ 
+		int result = vodService.insert(vod); 
 		if (result == 1) {
 			logger.info("영화 등록 성공!! ");
-			model.addAttribute("movie", movie);
-			view = "redirect:/admin/content";
+			model.addAttribute("vod", movie); 
 		} else {
 			logger.info("영화 등록 실패!! ");
-			model.addAttribute("movie", "");
-			view = "redirect:/admin/input";
+			model.addAttribute("vod", null); 
 		}
 		logger.info("MYSQL이 보낸 결과 : {}",result);
-		return view; 
+		return model; 
 	}
    //===========TRANSPORTS MOVIE LIST =============
    @RequestMapping("/content")

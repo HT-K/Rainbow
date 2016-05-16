@@ -5,11 +5,35 @@
 <mapper namespace="com.rainbow.web.mapper.VodMapper">
 	<insert id="addMovie" parameterType="com.rainbow.app.vod.VodDTO">
 		INSERT INTO
-		Vod(vod_name,vod_content,vod_price,vod_category,vod_time,vod_rating,vod_url,vod_image,vod_date,vod_free,vod_grade,vod_actor,vod_director,vod_country)
+		Vod(vod_name,
+		vod_content,
+		vod_price,
+		vod_category,
+		vod_time,
+		vod_rating,
+		vod_url,
+		vod_image,
+		vod_date,
+		vod_free,
+		vod_grade,
+		vod_actor,
+		vod_director,
+		vod_country)
 		values(
-		#{vodName},#{vodContent},#{vodPrice},#{vodCategory},#{vodTime},
-		#{vodRating},#{vodUrl},#{vodImage},NOW(),#{vodFree},
-		#{vodGrade},#{vodActor},#{vodDirector},#{vodCountry})
+		#{vodName},
+		#{vodContent},
+		#{vodPrice},
+		#{vodCategory},
+		#{vodTime},
+		#{vodRating},
+		#{vodUrl},
+		#{vodImage},
+		#{vodDate},
+		#{vodFree},
+		#{vodGrade},
+		#{vodActor},
+		#{vodDirector},
+		#{vodCountry})
 	</insert>
 	
 
