@@ -80,6 +80,9 @@
 <script src="${context}/resources/js/Purchase.js"></script>
 <script src="${context}/resources/js/Movie.js"></script>
 <script src="${context}/resources/js/Member.js"></script>
+<script src="${context}/resources/js/Admin.js"></script>
+
+
 
 <c:choose>
 	<c:when test="${sessionScope.user.id == 'admin'}"> <!-- 관리자 로그인 성공 시 헤더 -->
@@ -160,6 +163,27 @@
 
 <script type="text/javascript">
 	$(function(){
+		// Admin , Vod , Movie 처리 부분  .. 하
+		//파일 업로드 처리 함수 
+		readURL = function(input){
+			if(input.files&& input.files[0]){
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					$('#uploadedImg').attr('src',e.target.result);
+				}
+				reader.readAsDataURL(input.files[0]);
+			}
+		};
+		$('#addVod').click(function(e) {
+				e.preventDefault(); 
+				admin.addVodForm('${context}');
+		});
+		$('#addMovie').click(function(e) {
+			e.preventDefault(); 
+			admin.addMovieForm('${context}');
+	});
+		// Admin , Vod , Movie 처리 부분  .. 상
+		
 		// header.jsp 부분과 관련된 내용 시작
 		var id = $('#sessionVar').val();
 		if (id.length != 0) {

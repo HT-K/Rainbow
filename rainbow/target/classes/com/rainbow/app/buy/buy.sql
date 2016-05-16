@@ -39,6 +39,7 @@ FROM Buy
 LEFT JOIN Vod
 ON Vod.vod_name = Buy.vod_name;
 
+SELECT * FROM Vod;
 select vod_url from Vod  ;
 
 truncate table Buy;

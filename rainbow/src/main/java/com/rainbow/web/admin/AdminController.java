@@ -1,11 +1,16 @@
 package com.rainbow.web.admin;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 
 
 
+
+import java.util.Properties;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -71,12 +76,26 @@ public class AdminController {
 		logger.info("=== actor {} ===",actor);
 		logger.info("=== content {} ===",content);
 		logger.info("=== image {} ===",image);
-		
+		Properties p = new Properties();
+		String filePath="";
+		try {
+			FileInputStream file = new FileInputStream("../rainbow/src/main/resources/config/fileUpload.properties");
+			try {
+				p.load(file);
+				filePath = p.getProperty("fileUpload.vodPath");
+				file.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				logger.info("파일 업로드 경로가 잘 못 되었습니다.");
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			logger.info("파일 업로드 경로가 잘 못 되었습니다.");
+		}
 		FileUpload fileUpload = new FileUpload();
 		String fileName = image.getOriginalFilename();
 		logger.info("수정폼에서 넘어온 파일 = {}",fileName);
-		String fullPath = fileUpload.uploadFile(image, 
-				Constants.IMAGE_DOMAIN_BingooriTest, fileName);
+		String fullPath = fileUpload.uploadFile(image,filePath, fileName);
 		logger.info("이미지 저장 경로 : {}",fullPath);
 		
 		movie.setTitle(title);
@@ -104,7 +123,77 @@ public class AdminController {
 		logger.info("MYSQL이 보낸 결과 : {}",result);
 		return view; 
 	}
-   
+ //========= VOD ADD ================
+   @RequestMapping("/vodInput")
+	public String vodInput (@RequestParam(value="title",required=false)String title,
+			@RequestParam(value="rating",required=false)int rating,
+			@RequestParam(value="genre",required=false)String genre,
+			@RequestParam(value="openDate",required=false)String openDate,
+			@RequestParam(value="grade",required=false)String grade,
+			@RequestParam(value="runningtime",required=false)String runningtime,
+			@RequestParam(value="director",required=false)String director,
+			@RequestParam(value="actor",required=false)String actor,
+			@RequestParam(value="content",required=false)String content,
+			@RequestParam(value="image",required=false)MultipartFile image,
+			Model model){
+		logger.info("====== ArticleController-input()======");
+		logger.info("=== title {} ===",title);
+		logger.info("=== rating {} ===",rating);
+		logger.info("=== genre {} ===",genre);
+		logger.info("=== openDate {} ===",openDate);
+		logger.info("=== grade {} ===",grade);
+		logger.info("=== runningtime {} ===",runningtime);
+		logger.info("=== director {} ===",director);
+		logger.info("=== actor {} ===",actor);
+		logger.info("=== content {} ===",content);
+		logger.info("=== image {} ===",image);
+		Properties p = new Properties();
+		String filePath="";
+		try {
+			FileInputStream file = new FileInputStream("../rainbow/src/main/resources/config/fileUpload.properties");
+			try {
+				p.load(file);
+				filePath = p.getProperty("fileUpload.moviePath");
+				file.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				logger.info("파일 업로드 경로가 잘 못 되었습니다.");
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			logger.info("파일 업로드 경로가 잘 못 되었습니다.");
+		}
+		FileUpload fileUpload = new FileUpload();
+		String fileName = image.getOriginalFilename();
+		logger.info("수정폼에서 넘어온 파일 = {}",fileName);
+		String fullPath = fileUpload.uploadFile(image,filePath, fileName);
+		logger.info("이미지 저장 경로 : {}",fullPath);
+		
+		movie.setTitle(title);
+		movie.setRating(rating);
+		movie.setGenre(genre);
+		movie.setOpenDate(openDate);
+		movie.setGrade(grade);
+		movie.setRunningtime(runningtime);
+		movie.setDirector(director);
+		movie.setActor(actor);
+		movie.setContent(content);
+		movie.setImage(fileName);
+		int result = movieService.input(movie);
+		String view = "";
+		
+		if (result == 1) {
+			logger.info("영화 등록 성공!! ");
+			model.addAttribute("movie", movie);
+			view = "redirect:/admin/content";
+		} else {
+			logger.info("영화 등록 실패!! ");
+			model.addAttribute("movie", "");
+			view = "redirect:/admin/input";
+		}
+		logger.info("MYSQL이 보낸 결과 : {}",result);
+		return view; 
+	}
    //===========TRANSPORTS MOVIE LIST =============
    @RequestMapping("/content")
    public String getAdminPage(Model model){

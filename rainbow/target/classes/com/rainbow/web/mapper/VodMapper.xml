@@ -11,7 +11,7 @@
 		#{vodRating},#{vodUrl},#{vodImage},NOW(),#{vodFree},
 		#{vodGrade},#{vodActor},#{vodDirector},#{vodCountry})
 	</insert>
-
+	
 
 	<select id="VodSearch" resultType="com.rainbow.app.vod.VodDTO"
 		parameterType="string">

@@ -39,7 +39,9 @@ public class HomeController {
 		logger.info("메인 페이지 진입 체크");
 		member.setId(null);
 		member.setName("비회원");
-		session.setAttribute("user", member);
+		if(session.getAttribute("user") == null){
+			session.setAttribute("user", member);
+		}
 		
 		List<MovieDTO> list = new ArrayList<MovieDTO>();
 		// 현재 레이팅 점수 중 가장 상위 영화 6개 메인에 뿌리기 (1920 x 616 이미지)
@@ -62,7 +64,7 @@ public class HomeController {
 			
 		return "global/main.user";
 	}
-	
+	 
 	@RequestMapping("/rainbow")
 	public String main(
 			Model model,
