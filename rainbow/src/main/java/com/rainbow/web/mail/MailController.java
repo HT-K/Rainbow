@@ -30,10 +30,10 @@ public class MailController {
 		String fromAddr = email;
  
 		// email subject
-		String subject = "Hey.. This email sent by Crunchify's Spring MVC Tutorial";
+		String subject = "문의 메일을 왔습니다.";
  
 		// email body
-		String body = "contactsText";
+		String body = "보내는 사람"+email+"\n<내 용>\n"+"=================================================\n"+ contactsText;
 		service.sendMail(toAddr, fromAddr, subject, body);
 		logger.info("mail 발송이후.");
 		return "global/cinema.user";

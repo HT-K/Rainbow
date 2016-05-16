@@ -38,15 +38,15 @@
        <h2 class="page-heading heading--outcontainer">Contact</h2>
        <div class="contact">
            <p class="contact__title">You have any questions or need help, <br><span class="contact__describe">don’t be shy and contact us</span></p>
-           <span class="contact__mail">support@rainbowMovie.com</span>
-           <span class="contact__tel">support@rainbowMovie.com</span>
+           <span class="contact__mail">propose0915@gmail.com</span>
+           <span class="contact__tel">02)789-0000</span>
        </div>
    </section>
    
    <div class="contact-form-wrapper">
        <div class="container">
            <div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-               <form id='contactsform' class="form row" method='post' novalidate="" action="send.php">
+               <form id='contactsform' class="form row">
                    <p class="form__title">Drop us a line</p>
                    <div class="col-sm-6">
                        <input type='text' placeholder='Your name' name="name" style="height: 35px;" value="${sessionScope.user.name}" class="form__name">
@@ -72,7 +72,7 @@
        <div id="location-map" class="map"></div>
 
  
-</div>
+<!-- </div> -->
 
 
 
