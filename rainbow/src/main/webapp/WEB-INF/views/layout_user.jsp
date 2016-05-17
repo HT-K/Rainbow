@@ -81,6 +81,7 @@
 <script src="${context}/resources/js/Movie.js"></script>
 <script src="${context}/resources/js/Member.js"></script>
 <script src="${context}/resources/js/Admin.js"></script>
+<script src="${context}/resources/js/Cinema.js"></script>
 
 
 
@@ -119,7 +120,7 @@
 	            +      '<span class="sub-nav-toggle plus"></span>' 
 	            +      '<a href="#">Ticketing</a>'
 	            +   '</li>'
-	            +   '<li>'
+	            +   '<li id="cinema">'
 	            +      '<span class="sub-nav-toggle plus"></span>'
 	            +      '<a href="${context}/member/cinema">Cinema</a>'
 	            +   '</li>'
@@ -146,7 +147,7 @@
 	            +      '<span class="sub-nav-toggle plus"></span>' 
 	            +      '<a href="${context}/member/login_form">Ticketing</a>'
 	            +   '</li>'
-	            +   '<li>'
+	            +   '<li id="cinema">'
 	            +      '<span class="sub-nav-toggle plus"></span>'
 	            +      '<a href="${context}/member/cinema">Cinema</a>'
 	            +   '</li>'
@@ -188,11 +189,11 @@
 		$('#addMovie').click(function(e) {
 			e.preventDefault(); 
 			admin.addMovieForm('${context}');
-	});
+		});
 		$('#movie').click(function(e) {
 			e.preventDefault(); 
 			admin.movieList('${context}');
-	});
+		});
 		// Admin , Vod , Movie 처리 부분  .. 상
 		
 		// header.jsp 부분과 관련된 내용 시작
@@ -293,6 +294,10 @@
 			e.preventDefault();
 			alert("로그인이 필요합니다.");
 			member.loginForm(context);
+		});
+	 	$('#cinema').click(function(e) { // 로그인 안한 상태에서 헤더의 티켓팅을 눌렀을 시
+			e.preventDefault();
+			cinema.init(context);
 		});
 	});
 </script>

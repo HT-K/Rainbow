@@ -218,9 +218,17 @@ public class MemberController {
 	}
 
 	@RequestMapping("/cinema")
-	public String cineame() {
-		return "global/cinema.user";
-	}
+	   public Model cinema(HttpSession session, Model model) {
+	      logger.info("memberController-cinema{}");
+	      MemberDTO member = new MemberDTO();
+	      member = (MemberDTO) session.getAttribute("user");
+	      logger.info("memberController-cinema{} END",member.getName());
+	      logger.info("memberController-cinema{} END",member.getEmail());
+	      model.addAttribute("member",member);
+	      
+	      
+	      return model;
+	   }
 	
 	@RequestMapping("/memberLeave")
 	public void memberLeave(
