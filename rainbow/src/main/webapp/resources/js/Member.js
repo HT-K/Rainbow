@@ -13,7 +13,7 @@ var member = {
 			type : 'post',
 		    success : function(data) {
 				alert(data.member.name+ '님 로그인 성공');
-				location.href = context+'/rainbow';
+				location.href = context+'/';
 			},
 			error : function(xhr, status, msg) {
 				alert("정보를 잘못입력하셨습니다. 다시 로그인 해주세요");
@@ -58,7 +58,7 @@ var member = {
 				success : function(data) {
 					alert(data.member.name+ '님 로그인 성공');
 					//history.pushState(data,"main",context+'/rainbow');
-					location.href = context+'/rainbow';
+					location.href = context+'/';
 				},
 				error : function(xhr, status, msg) {
 					alert("정보를 잘못입력하셨습니다. 다시 로그인 해주세요");
@@ -243,7 +243,7 @@ var member = {
 			});
 			$('#cancelBtn').click(function(e) {
 				e.preventDefault();
-				location.href = context + "/rainbow";
+				location.href = context + "/";
 			});
 		}); // getJson() End
 	}, // profileForm() End
@@ -336,7 +336,7 @@ var member = {
 			    processData : false,
 				success : function() {
 					alert('정보수정에 성공하셨습니다. 메인 화면으로 이동합니다.');
-					location.href = context + '/rainbow';
+					location.href = context + '/';
 				},
 				error : function(xhr, status, msg) {
 					alert("업데이트 시 에러발생 : " + msg);
@@ -360,7 +360,7 @@ var member = {
 			type : 'post',
 			success : function() {
 				alert('회원가입에 탈퇴에 성공하셨습니다. 메인 화면으로 이동합니다.');
-				location.href = context + "/rainbow";
+				location.href = context + "/";
 			},
 			error : function(xhr, status, msg) {
 				alert("회원탈퇴 시 에러발생 : " + msg);

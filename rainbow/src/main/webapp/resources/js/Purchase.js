@@ -127,6 +127,7 @@ Purchase.prototype.step1Form = function(context) {
 		    jQuery(document).ready(function($) {
 		    	
 		    	$(window).on("beforeunload", function () {
+		    		location.href = context+'/';
 		            if (checkload == true) return "영화 예매를 취소하시겠습니까?";  // 페이지를 벗어나는 경우
 		        });
 		    });

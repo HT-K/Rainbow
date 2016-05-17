@@ -152,7 +152,7 @@
 	   alert("developer");    
    });
  	
-   $(window).on("popstate", function(event) {
+   $(windows).on("popstate", function(event) {
 	    var data = event.originalEvent.state;  // 이부분으로 뒤로가기 할때마다 아까 저장한 히스토리 스택에 쌓인 URL을 불러 온다
 	    alert(data.data);
 	    alert(data.url);
