@@ -101,7 +101,7 @@
 		};
 		var user = '${sessionScope.user.id}';
 		var logout_header = '<li><span class="sub-nav-toggle plus"></span>\
-			<a href="${context}/admin/input_form" id="addVod">ADD VOD</a>\
+			<a href="${context}/admin/input_form" id="addVod" >ADD VOD</a>\
 			</li>\
 			<li><span class="sub-nav-toggle plus"></span>\
 			<a href="#" id="addMovie">ADD MOVIE</a>\

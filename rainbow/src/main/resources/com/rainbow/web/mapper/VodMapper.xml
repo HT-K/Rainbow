@@ -5,7 +5,9 @@
 <mapper namespace="com.rainbow.web.mapper.VodMapper">
 	<insert id="addMovie" parameterType="com.rainbow.app.vod.VodDTO">
 		INSERT INTO
-		Vod(vod_name,
+		Vod(
+		vod_name,
+		vod_content_title,
 		vod_content,
 		vod_price,
 		vod_category,
@@ -21,6 +23,7 @@
 		vod_country)
 		values(
 		#{vodName},
+		#{vodContentTitle},
 		#{vodContent},
 		#{vodPrice},
 		#{vodCategory},
@@ -77,11 +80,13 @@
 		vod_director AS vodDirector,
 		vod_country AS vodCountry
 		FROM Vod
+		ORDER BY vodName
 	</select>
 
 	<select id="getByVodName" parameterType="string"
 		resultType="com.rainbow.app.vod.VodDTO">
 		SELECT
+		vod_seq AS vodSeq,
 		vod_name AS vodName,
 		vod_content_title AS vodContentTitle,
 		vod_content AS
@@ -279,10 +284,12 @@
 
 	<update id="VodUpdate" parameterType="com.rainbow.app.vod.VodDTO">
 		UPDATE Vod
-		set
+		set 
+		vod_name = #{vodName},
 		vod_content_title = #{vodContentTitle},
 		vod_content = #{vodContent},
 		vod_price = #{vodPrice},
+		vod_date = #{vodDate},
 		vod_category = #{vodCategory},
 		vod_time = #{vodTime},
 		vod_rating = #{vodRating},
@@ -293,7 +300,7 @@
 		vod_actor = #{vodActor},
 		vod_director = #{vodDirector},
 		vod_country = #{vodCountry}
-		WHERE vod_name = #{vodName}
+		WHERE vod_seq = #{vodSeq}
 	</update>
 
 	<delete id="VodDelete" parameterType="com.rainbow.app.vod.VodDTO">

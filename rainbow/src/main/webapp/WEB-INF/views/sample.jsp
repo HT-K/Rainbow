@@ -28,7 +28,7 @@
 		               <p style="text-align: left;">영화 장르 : '+data.vodInfo.vodCategory+'&nbsp;'+data.vodInfo.vodTime+' 분</p>\
 		               <p style="text-align: left;">이용가 : '+data.vodInfo.vodFree+'</p>\
 		               <p style="text-align: left;">감독/연출 : '+data.vodInfo.vodDirector+'</p>\
-		               <p style="text-align: left;">배우/출연 : '+data.vodInfo.vodActor+'</p>\
+		               <p style="text-align: left; ">배우/출연 : '+data.vodInfo.vodActor+'</p>\
 					</div>\
 					<div>\
 					<h4>줄거리</h4>\

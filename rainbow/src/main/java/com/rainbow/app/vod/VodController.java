@@ -28,7 +28,17 @@ public class VodController {
  
 
 	
-	
+	@RequestMapping("/vodListAll")
+	public Model vodListAll(Model model) {
+		return model.addAttribute("vod", service.getList());
+	}
+	@RequestMapping("/vodByName")
+	public Model vodByName(@RequestParam("vodTitle")String vodTitle, Model model) {
+		vod.setVodName(vodTitle);
+		vod = service.getByName(vod);
+		vod.setVodDate(vod.getVodDate().substring(0, 10));
+		return model.addAttribute("vod", vod);
+	}
 	@RequestMapping("/search")
 	public String search() {
 		return "vod_search/vodSearch";

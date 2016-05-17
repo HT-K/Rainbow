@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -47,12 +45,7 @@ public class AdminController {
    
 // ================================= MOVIE MANAGED BY ADMIN =========================================================
    
-   
-   //=====TRANSPORTS MOVIE ADD FROM ======
-  /* @RequestMapping("/input_form")
-	public String input_form (){
-		return "admin/input_form.admin";
-	}*/
+  
    
    //========= MOVIE ADD ================
    @RequestMapping("/input")
@@ -161,7 +154,6 @@ public class AdminController {
 		FileUpload fileUpload = new FileUpload();
 		String filePath="";  
 		String fileName= "";
-		System.out.println(vodDate);
 			try {
 				FileInputStream propertyFile = new FileInputStream(session.getServletContext().getRealPath("\\WEB-INF\\classes\\config\\fileUpload.properties"));
 				try {
@@ -177,7 +169,7 @@ public class AdminController {
 				} 
 			} catch (FileNotFoundException e) {
 				logger.info("파일 업로드 경로가 잘 못 되었습니다.");
-			}
+			} 
 			vod.setVodName(vodName);
 			vod.setVodContentTitle(vodSubTitle);
 			vod.setVodContent(vodContent);
@@ -196,15 +188,97 @@ public class AdminController {
  
 		int result = vodService.insert(vod); 
 		if (result == 1) {
-			logger.info("영화 등록 성공!! ");
-			model.addAttribute("vod", movie); 
+			logger.info("VOD 등록 성공!! ");
+			model.addAttribute("vod", vod); 
 		} else {
-			logger.info("영화 등록 실패!! ");
+			logger.info("VOD 등록 실패!! ");
 			model.addAttribute("vod", null); 
 		}
 		logger.info("MYSQL이 보낸 결과 : {}",result);
 		return model; 
 	}
+   //=========== VOD UPDATE ============
+   @RequestMapping(value="/vodUpdate/{vodSeq}", method=RequestMethod.POST)
+  	public Model vodUpdate (@PathVariable("vodSeq")int vodSeq,@RequestParam(value="vodName",required=false)String vodName,
+  			@RequestParam(value="vodSubTitle",required=false)String vodSubTitle,
+  			@RequestParam(value="vodContent",required=false)String vodContent,
+  			@RequestParam(value="vodPrice",required=false)String vodPrice,
+  			@RequestParam(value="vodCategory",required=false)String vodCategory,
+  			@RequestParam(value="vodTime",required=false)int vodTime,
+  			@RequestParam(value="vodRating",required=false)String vodRating,
+  			@RequestParam(value="vodUrl",required=false)String vodUrl,
+  			@RequestParam(value="vodDate",required=false)String vodDate,
+  			@RequestParam(value="vodFree",required=false)String vodFree,
+  			@RequestParam(value="vodGrade",required=false)String vodGrade,
+  			@RequestParam(value="vodActor",required=false)String vodActor,
+  			@RequestParam(value="vodDirector",required=false)String vodDirector,
+  			@RequestParam(value="vodCounty",required=false)String vodCountry,
+  			@RequestParam(value="image",required=false)MultipartFile image,
+  			Model model,HttpSession session){
+  		logger.info("====== ArticleController-input()======");
+  		logger.info("=== vodSeq {} ===",vodSeq);
+  		logger.info("=== vodName {} ===",vodName);
+  		logger.info("=== vodSubTitle {} ===",vodSubTitle);
+  		logger.info("=== vodContent {} ===",vodContent);
+  		logger.info("=== vodPrice {} ===",vodPrice);
+  		logger.info("=== vodCategory {} ===",vodCategory);
+  		logger.info("=== vodTime {} ===",vodTime);
+  		logger.info("=== vodRating {} ===",vodRating);
+  		logger.info("=== vodUrl {} ===",vodUrl);
+  		logger.info("=== vodDate {} ===",vodDate);
+  		logger.info("=== vodFree {} ===",vodFree);
+  		logger.info("=== vodGrade {} ===",vodGrade);
+  		logger.info("=== vodActor {} ===",vodActor);
+  		logger.info("=== vodDirectory {} ===",vodDirector);
+  		logger.info("=== vodCounty {} ===",vodCountry);
+  		Properties p = new Properties();
+  		FileUpload fileUpload = new FileUpload();
+  		String filePath="";  
+  		String fileName= "";
+  			try {
+  				FileInputStream propertyFile = new FileInputStream(session.getServletContext().getRealPath("\\WEB-INF\\classes\\config\\fileUpload.properties"));
+  				try {
+  					p.load(propertyFile); 
+  					filePath = p.getProperty("fileUpload.vodPath");
+  					 fileName = image.getOriginalFilename();
+  					logger.info("수정폼에서 넘어온 파일 = {}",fileName);
+  					String fullPath = fileUpload.uploadFile(image,filePath+"\\"+vodCategory, fileName); 
+  					logger.info("이미지 저장 경로 : {}",fullPath);
+  					propertyFile.close();
+  				} catch (IOException e) {
+  					logger.info("파일 업로드 경로가 잘 못 되었습니다.");
+  				} 
+  			} catch (FileNotFoundException e) {
+  				logger.info("파일 업로드 경로가 잘 못 되었습니다.");
+  			} 
+  			vod.setVodSeq(vodSeq);
+  			vod.setVodName(vodName);
+  			vod.setVodContentTitle(vodSubTitle);
+  			vod.setVodContent(vodContent);
+  			vod.setVodPrice(vodPrice);
+  			vod.setVodCategory(vodCategory);
+  			vod.setVodTime(vodTime);
+  			vod.setVodRating(vodRating);
+  			vod.setVodUrl(vodUrl);
+  			vod.setVodDate(vodDate);
+  			vod.setVodFree(vodFree);
+  			vod.setVodGrade(vodGrade);
+  			vod.setVodActor(vodActor);
+  			vod.setVodDirector(vodDirector);
+  			vod.setVodCountry(vodCountry);
+  			vod.setVodImage("/vod_image/"+vodCategory+"/"+fileName);
+   
+  		int result = vodService.update(vod); 
+  		if (result == 1) {
+  			logger.info("영화 수정 성공!! ");
+  			model.addAttribute("vod", vod); 
+  		} else {
+  			logger.info("영화 수정 실패!! ");
+  			model.addAttribute("vod", null); 
+  		}
+  		logger.info("MYSQL이 보낸 결과 : {}",result);
+  		return model; 
+  	}
    //===========TRANSPORTS MOVIE LIST =============
    @RequestMapping("/content")
    public String getAdminPage(Model model){
@@ -216,17 +290,15 @@ public class AdminController {
 		model.addAttribute("list",list);
       return "admin/content.admin";
 	}
-   
-  /* @RequestMapping("/content")
-   public @ResponseBody List<MovieDTO> content(){
-      logger.info("===movie-list(GET)===");
-		List<MovieDTO> list =  new ArrayList<MovieDTO>();
-		movie.setStart(0);
-		movie.setEnd(movieService.count());
-		list = movieService.getList(movie);
-      return list;
-	}*/
-   
+   // ======== VOD DELETE ===============
+   @RequestMapping("/vodDelete")
+  	public Model vodDelete(@RequestParam("vodName")String vodName,
+  			Model model){
+  		logger.info("=== vodDelete() === {}", vodName);
+  		vod.setVodName(vodName);  		
+  		
+  		return model.addAttribute("result",vodService.delete(vod));
+  	}
    
    //========= ENTERS THE MOVIE TITLE BY SEQEUNSE============
    @RequestMapping("/edit/{movieSeq}")

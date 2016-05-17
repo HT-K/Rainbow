@@ -97,6 +97,9 @@
 					<li><span class="sub-nav-toggle plus"></span>\
 					<a href="${context}/admin/content" id="movie">MOVIE</a>\
 					</li>\
+					<li><span class="sub-nav-toggle plus"></span>\
+					<a href="#" id="vod">VOD</a>\
+					</li>\
 					<li>\
 					<span class="sub-nav-toggle plus"></span>\
 					<a href="${context}/member/logout" id="logout">LOGOUT</a>\
@@ -177,6 +180,10 @@
 		$('#addVod').click(function(e) {
 				e.preventDefault(); 
 				admin.addVodForm('${context}');
+		});
+		$('#vod').click(function(e) {
+			e.preventDefault(); 
+			admin.vodListForm('${context}');
 		});
 		$('#addMovie').click(function(e) {
 			e.preventDefault(); 
