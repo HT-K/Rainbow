@@ -85,12 +85,7 @@ var member = {
 		        		<div class="form-group" style="margin-top: 30px">\
 		        			<label class="col-sm-3 control-label" for="inputId">아이디</label>\
 		        			<div class="col-sm-6">\
-		        				<div class="input-group">\
 		                			<input type="text" class="form-control" id="id" name="id" placeholder="아이디를 입력해주세요" />\
-		                			<span class="input-group-btn">\
-		                    			<button class="btn btn-success">아이디 중복체크<i class="fa fa-mail-forward spaceLeft"></i></button>\
-		                			</span>\
-		                		</div>\
 		            		</div>\
 		        		</div>\
 		        		<div class="form-group">\
@@ -147,9 +142,13 @@ var member = {
 				mimeType: 'multipart/form-data',
 			    contentType: false, 
 			    processData : false,
-				success : function() {
-					alert('회원가입에 성공하셨습니다. 로그인 화면으로 이동합니다.');
-					member.loginForm(context);
+				success : function(data) {
+					if(data.result == 0){
+						alert('중복된 아이디 입니다.');
+					}else{
+						alert('회원가입에 성공하셨습니다. 로그인 화면으로 이동합니다.');
+						member.loginForm(context);
+					}
 				},
 				error : function(xhr, status, msg) {
 					alert("회원가입 시 에러발생 : " + msg);

@@ -5,7 +5,7 @@
 <mapper namespace="com.rainbow.web.mapper.MemberMapper"> 
 	<insert id="insert" parameterType="com.rainbow.web.member.MemberDTO"> 
 		INSERT INTO Member(id, password, name, birth, addr, email, point, grade, reg_date) 
-		VALUES(#{id}, #{password}, #{name}, #{birth}, #{addr}, #{email}, 1000, '브론즈', SYSDATE())
+		VALUES(#{id}, #{password}, #{name}, #{birth}, #{addr}, #{email},5000, '브론즈', SYSDATE())
 	</insert>
 	
 	<select id="selectList" resultType="com.rainbow.web.member.MemberDTO">

@@ -35,6 +35,7 @@ public class MemberController {
 		MemberDTO param = new MemberDTO();
 		param.setId(id);
 		param.setPassword(password);
+		
 		member = service.login(param);
 		if (member.getId().equals(param.getId())) {
 			logger.info("로그인 성공");
@@ -77,13 +78,13 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/join", method=RequestMethod.POST)
-	public void join(@RequestParam("id")String id, 
+	public Model join(@RequestParam("id")String id, 
 			@RequestParam("password")String password,
 			@RequestParam("name")String name,
 			@RequestParam("birth")String birth,
 			@RequestParam("addr")String addr,
 			@RequestParam("email")String email,
-			HttpSession session){
+			HttpSession session,Model model){
 		
 		logger.info("=== id {} ===",id);
 		logger.info("=== password {} ===",password);
@@ -99,19 +100,25 @@ public class MemberController {
 		member.setAddr(addr);
 		member.setEmail(email);
 		
-		int res = service.insert(member);
-		
-		if (res == 1) {
-			logger.info("회원가입 성공");
-			member.setId(null);
-			member.setName("비회원");
-			session.setAttribute("user", member);
-			//view = "redirect:/rainbow";
-		} else {
-			logger.info("회원가입 실패");
-			//view = "member/join_form.user";
-		}	
-		//return view;
+		if(service.getById(member) != null){
+			logger.info("아이디 회원 가입 불가 ");
+			model.addAttribute("result", 0);
+		}else{
+			int res = service.insert(member);
+			
+			if (res == 1) {
+				logger.info("회원가입 성공");
+				member.setId(null);
+				member.setName("비회원");
+				session.setAttribute("user", member);
+				//view = "redirect:/rainbow";
+			} else {
+				logger.info("회원가입 실패");
+				//view = "member/join_form.user";
+			}	
+		}
+	
+		return model;
 	}
 	
 	@RequestMapping("/profile")

@@ -10,6 +10,7 @@ CREATE TABLE Member(
 	email VARCHAR(50),
 	point INT,
 	grade VARCHAR(10),
+	cash int,
 	reg_date DATETIME
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ----------------------------------------
