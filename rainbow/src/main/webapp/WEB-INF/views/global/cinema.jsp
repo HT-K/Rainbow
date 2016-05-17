@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+
+
+
 <div class="wrapper">
       <!-- 실컨텐츠 시작 -->
       <div class="wrap-theater" style= "padding-top: 40px" align="center">
           <h3><img src="${context}/resources/rainbow/css/img/h3_theater.gif" alt="THEATER" /></h3>
           <div class="sect-theater " >
+             
               <div class="wrap-theaterinfo" align="center">
                   <div class="box-image">
                       <div id="theater_img_container" class="contact">
@@ -19,6 +23,7 @@
                               <em>6관 / 874석</em>
                               <span></span>
                           </span>
+                         
                   </div>  -->
             </div>
               </div>
@@ -28,31 +33,31 @@
       </div>
       <!-- 실컨텐츠 끝 --> 
 
-   <!-- Main content -->
+   <!--      Main content -->
    <section class="container">
        <h2 class="page-heading heading--outcontainer">Contact</h2>
        <div class="contact">
            <p class="contact__title">You have any questions or need help, <br><span class="contact__describe">don’t be shy and contact us</span></p>
-           <span class="contact__mail">support@rainbowMovie.com</span>
-           <span class="contact__tel">support@rainbowMovie.com</span>
+           <span class="contact__mail">propose0915@gmail.com</span>
+           <span class="contact__tel">02)789-0000</span>
        </div>
    </section>
-
+   
    <div class="contact-form-wrapper">
        <div class="container">
            <div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-               <form id='contact-form' class="form row" method='post' novalidate="" action="send.php">
+               <form id='contactsform' class="form row">
                    <p class="form__title">Drop us a line</p>
                    <div class="col-sm-6">
-                       <input type='text' placeholder='Your name' name='user-name' class="form__name">
+                       <input type='text' placeholder='Your name' name="name" style="height: 35px;" value="${sessionScope.user.name}" class="form__name">
                    </div>
                    <div class="col-sm-6">
-                       <input type='email' placeholder='Your email' name='user-email' class="form__mail">
+                       <input type='text' placeholder='Your email' name="email" style="height: 35px;" value="${sessionScope.user.email}" class="form__mail">
                    </div>
                    <div class="col-sm-12">
-                       <textarea placeholder="Your message" name="user-message" class="form__message"></textarea>
+                       <textarea placeholder="Your message" name="contactsText" class="form__message"></textarea>
                    </div>
-                   <button type="submit" class='btn btn-md btn--danger'>send message</button>
+                   <button type="submit" id="sendBtn" class='btn btn-md btn--danger'>send message</button>
                </form>
            </div>
        </div>
@@ -64,19 +69,24 @@
        </div>
    </section>
 
-       <div id="location-map" class="map"></div>
+       <div id="googlemap" class="map"></div>
 
  
-</div>
+<!-- </div> -->
 
 
 
 <script type="text/javascript">
+    
+    
     $(document).ready(function() {
        // init_Contact ();
         initialize();    
     });
-
+	$('#sendBtn').click(function() {
+		alert('보내기');
+		$('#contactsform').attr('action',"${context}/mail/send").attr('method','post').submit();
+	});
    function initialize() {
          /*
          http://openapi.map.naver.com/api/geocode.php?key=f32441ebcd3cc9de474f8081df1e54e3&encoding=euc-kr&coord=LatLng&query=서울특별시 강남구 강남대로 456
@@ -114,7 +124,7 @@
     <link rel="alternate" href="http://m.cgv.co.kr" />
     <link rel="shortcut icon" href="http://img.cgv.co.kr/theater_img/favicon.ico" type="image/x-icon" />
     <title id="ctl00_headerTitle">[CGV강남]&lt;CGV극장 &lt; 극장 | 영화 그 이상의 감동. CGV</title>
-    <!-- <link rel="shortcut icon" type="image/x-icon" href="http://img.cgv.co.kr/R2014/images/favicon.ico" /> -->
+    <link rel="shortcut icon" type="image/x-icon" href="http://img.cgv.co.kr/R2014/images/favicon.ico" />
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/reset.css" />
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/layout.css" />
     <link rel="stylesheet" media="all" type="text/css" href="http://img.cgv.co.kr/R2014/css/module.css" />

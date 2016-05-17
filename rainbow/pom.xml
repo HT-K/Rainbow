@@ -144,6 +144,13 @@
 			<artifactId>commons-el</artifactId>
 			<version>1.0</version>
 		</dependency>
+		
+		<!-- Mail -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
+		</dependency>
 
 		<!-- Database -->
 		<dependency>
@@ -221,8 +228,6 @@
 			<version>2.4</version>
 		</dependency>
 
-
-
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -240,6 +245,13 @@
 			<artifactId>spring-test</artifactId>
 			<version>${org.springframework-version}</version>
 			<scope>test</scope>
+		</dependency>
+		
+		<!-- mail-context 의 JavaMailSenderImpl를 인식하기 위한 디펜던시 -->
+		<dependency>
+    		<groupId>org.springframework</groupId>
+    		<artifactId>spring-context-support</artifactId>
+    		<version>${org.springframework-version}</version>
 		</dependency>
 	</dependencies>
 
