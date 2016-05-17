@@ -20,7 +20,7 @@ var member = {
 			}
 		});
 	},
-		
+	
 	loginForm : function(context) {
 		var loginForm = 
 			'<form class="login" id="login_form" style="margin-top: 30px;">\

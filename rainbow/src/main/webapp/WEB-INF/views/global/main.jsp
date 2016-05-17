@@ -59,7 +59,7 @@
 
                                 <div class="movie__info">
                                     <%-- <a href='${context}/movie/movie_detail/${list.movieSeq}' class="movie__title title_textDetail">${list.title}</a> --%>
-                                    <a href="/movie/movie_detail/${list.movieSeq}'" class="movie__title title_textDetail">${list.title}</a>
+                                    <a href="/movie/movie_detail/${list.movieSeq}" class="movie__title title_textDetail">${list.title}</a>
 
                                     <p class="movie__time">${list.runningtime}</p>
 

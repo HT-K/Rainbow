@@ -1,17 +1,16 @@
 
 //관리자
 var admin = {
-		
-		readURL : function(input){ 
-				if(input.files&& input.files[0]){
-					var reader = new FileReader();
-					reader.onload = function(e) {
-						$('#uploadedImg').attr('src',e.target.result);
-					}
-					reader.readAsDataURL(input.files[0]);
+	readURL : function(input){ 
+			if(input.files&& input.files[0]){
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					$('#uploadedImg').attr('src',e.target.result);
 				}
-			 
-		},
+				reader.readAsDataURL(input.files[0]);
+			}
+		 
+	},
 	adminForm : function(context) {
 		$('body').empty();
 			  var addMovieForm = '<article class="container" style="margin-top: 30px">'
