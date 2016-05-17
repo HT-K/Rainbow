@@ -321,19 +321,20 @@ public class AdminController {
 		return model;
 	}*/
    	//==========MOVIE UPADATE===========
-   	@RequestMapping(value="/update", method=RequestMethod.POST)
-	public Model  update (@RequestParam(value="title",required=false)String title,
-			@RequestParam(value="rating",required=false)int rating,
+   	@RequestMapping(value="/update/{movieSeq}", method=RequestMethod.POST)
+	public Model  update (@PathVariable("movieSeq")int movieSeq,@RequestParam(value="title",required=false)String title,
+			@RequestParam(value="rating",required=false)String rating,
 			@RequestParam(value="genre",required=false)String genre,
 			@RequestParam(value="openDate",required=false)String openDate,
 			@RequestParam(value="grade",required=false)String grade,
 			@RequestParam(value="runningtime",required=false)String runningtime,
 			@RequestParam(value="director",required=false)String director,
 			@RequestParam(value="actor",required=false)String actor,
-			@RequestParam(value="content",required=false)String content,
+			@RequestParam(value="updateContent",required=false)String content,
 			@RequestParam(value="image",required=false)MultipartFile image,
-			Model model){
+			Model model,HttpSession session){
    		
+		logger.info("=== movieSeq {} ===",movieSeq);
 		logger.info("=== title {} ===",title);
 		logger.info("=== rating {} ===",rating);
 		logger.info("=== genre {} ===",genre);
@@ -346,19 +347,30 @@ public class AdminController {
 		logger.info("=== image {} ===",image);
 		
 		
-	
-		
-		FileUpload fileUpload = new FileUpload();
-		String fileName = image.getOriginalFilename();
-		logger.info("수정폼에서 넘어온 파일 = {}",fileName);
-		String fullPath = fileUpload.uploadFile(image, 
-				Constants.IMAGE_DOMAIN, fileName);
-		logger.info("이미지 저장 경로 : {}",fullPath);
-		logger.info("Movie Session Check = {}",movie.getActor());
-		
-		
+	 
+		Properties p = new Properties();
+  		FileUpload fileUpload = new FileUpload();
+  		String filePath="";  
+  		String fileName= "";
+  			try {
+  				FileInputStream propertyFile = new FileInputStream(session.getServletContext().getRealPath("\\WEB-INF\\classes\\config\\fileUpload.properties"));
+  				try {
+  					p.load(propertyFile); 
+  					filePath = p.getProperty("fileUpload.moviePath");
+  					 fileName = image.getOriginalFilename();
+  					logger.info("수정폼에서 넘어온 파일 = {}",fileName);
+  					String fullPath = fileUpload.uploadFile(image,filePath, fileName); 
+  					logger.info("이미지 저장 경로 : {}",fullPath);
+  					propertyFile.close();
+  				} catch (IOException e) {
+  					logger.info("파일 업로드 경로가 잘 못 되었습니다.");
+  				} 
+  			} catch (FileNotFoundException e) {
+  				logger.info("파일 업로드 경로가 잘 못 되었습니다.");
+  			} 
+  			      
 		movie.setTitle(title);
-		movie.setRating(rating);
+		movie.setRating(Integer.parseInt(rating));
 		movie.setGenre(genre);
 		movie.setOpenDate(openDate);
 		movie.setGrade(grade);
@@ -415,25 +427,11 @@ public class AdminController {
    	}
 	
    	@RequestMapping("/reply_delete")
-	public Model replyDelete(@RequestParam("replySeq")int[] replySeqs, Model model){
+	public Model replyDelete(@RequestParam("replySeq")int replySeq, Model model){
 		logger.info("=== replys-delete() ===");
-		logger.info("삭제 할 댓글 수 ={}"+replySeqs.length);
+		reply.setReplySeq(replySeq);
 		logger.info("삭제 할 댓글 번호 ={}"+reply.getReplySeq());
-		for( int replySeq : replySeqs){
-			reply.setReplySeq(replySeq);
-			replyService.delete(reply);
-			int result = replyService.delete(reply);
-			if (result == 1) {
-				model.addAttribute("reply",reply);
-				logger.info("삭제성공");
-			} else {
-				model.addAttribute("reply","");
-				logger.info("삭제실패");	
-			}
-			
-		}
-		/*return "redirect:/admin/content";*/
-		return model;
+		return model.addAttribute("reply", replyService.delete(reply));
 	}	
  
 }

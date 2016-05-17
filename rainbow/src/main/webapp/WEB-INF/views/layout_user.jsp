@@ -95,7 +95,7 @@
 					<a href="#" id="addMovie">ADD MOVIE</a>\
 					</li>\
 					<li><span class="sub-nav-toggle plus"></span>\
-					<a href="${context}/admin/content" id="movie">MOVIE</a>\
+					<a href="#" id="movie">MOVIE</a>\
 					</li>\
 					<li><span class="sub-nav-toggle plus"></span>\
 					<a href="#" id="vod">VOD</a>\
@@ -191,7 +191,7 @@
 	});
 		$('#movie').click(function(e) {
 			e.preventDefault(); 
-			admin.movieListForm('${context}');
+			admin.movieList('${context}');
 	});
 		// Admin , Vod , Movie 처리 부분  .. 상
 		

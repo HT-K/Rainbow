@@ -43,3 +43,5 @@ SELECT * FROM Vod;
 select vod_url from Vod  ;
 
 truncate table Buy;
+
+SELECT * FROM Movie;
