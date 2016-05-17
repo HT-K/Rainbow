@@ -191,7 +191,7 @@
 	});
 		$('#movie').click(function(e) {
 			e.preventDefault(); 
-			admin.movieListForm('${context}');
+			admin.movieList('${context}');
 	});
 		// Admin , Vod , Movie 처리 부분  .. 상
 		

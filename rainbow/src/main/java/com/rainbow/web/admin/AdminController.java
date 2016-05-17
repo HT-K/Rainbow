@@ -321,9 +321,9 @@ public class AdminController {
 		return model;
 	}*/
    	//==========MOVIE UPADATE===========
-   	@RequestMapping(value="/update", method=RequestMethod.POST)
-	public Model  update (@RequestParam(value="title",required=false)String title,
-			@RequestParam(value="rating",required=false)int rating,
+   	@RequestMapping(value="/update/{movieSeq}", method=RequestMethod.POST)
+	public Model  update (@PathVariable("movieSeq")int movieSeq, @RequestParam(value="title",required=false)String title,
+			@RequestParam(value="rating",required=false)String rating,
 			@RequestParam(value="genre",required=false)String genre,
 			@RequestParam(value="openDate",required=false)String openDate,
 			@RequestParam(value="grade",required=false)String grade,
@@ -358,7 +358,7 @@ public class AdminController {
 		
 		
 		movie.setTitle(title);
-		movie.setRating(rating);
+		movie.setRating(Integer.parseInt(rating));
 		movie.setGenre(genre);
 		movie.setOpenDate(openDate);
 		movie.setGrade(grade);

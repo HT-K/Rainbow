@@ -611,7 +611,8 @@ var admin = {
 		
 	},
 	
-	movieListForm : function(context){
+	
+	movieList : function(context){
 			var movieListForm = '<style>'
 			+'#content{border : 1px solid black}'
 			+'#content th {border : 1px solid black; text-align : center}'
@@ -621,7 +622,7 @@ var admin = {
 			+ '<h2>　</h2>'
 			+'<th class="col-sm-12 text-center">'
 			+'</th>'
-			+'<table id="content" style="width: 100%; margin-top: 30px" >'
+			+'<table id="content" style="width:94%;margin-left:3%;margin-right:3%;" >'
 			+'<tr style="background-color: #E39919;">'
 			+'<th style="width: 5%;">Movie Sequence</th>'
 			+'<th style="width: 6%;">Movie Title</th>'
@@ -661,7 +662,149 @@ var admin = {
 	                 }
 	          });
 	   },
+	   movieUpdate : function(context,movieSeq) {
+		   $.ajax({
+		         url: context+'/admin/update/'+movieSeq,
+		         data : {
+		            movieTitle : movieSeq
+		         },
+		         success : function(data) { 
+		 	var movieUpdateForm = 
+		  	   '<article class="container" style="margin-top: 30px">'
+		  		+'<div class="editTop">'
+		  		+'<h1>　</h1>'
+		  		+'<h2 class="text-center"> '+data.movie.title+' INFORMATION</h2></div>'
+		  		+'<form class="form-horizontal" id="form" style="margin-top: 30px">'
+		  		+'<div class="form-group">'
+		  		+'<label class="col-sm-3 control-label" for="title">TITLE</label>'
+		  		+'<div class="col-sm-6">'
+		  		+'<input type="text" value="'+data.movie.title+'" id="title" name="title" class="form-control" />'
+		  		+'</div>'
+		  		+'</div>'
+		  		+'<div class="form-group">'
+		  		+'<label class="col-sm-3 control-label" for="rating">RATING</label>'
+		  		+'<div class="col-sm-6">'
+		  		+'<input type="text" value="'+data.movie.rating+'"  id="rating" name="rating"  class="form-control" />' 
+		  		+'</div>'
+		  		+'</div>'
+		  		+'<div class="form-group">'
+		  		+'<label class="col-sm-3 control-label" for="genre">GERNE</label>'
+		  		+'<div class="col-sm-6">'
+		  		+'<input type="text" value="'+data.movie.genre+'"  id="genre" name="genre"  class="form-control" />' 
+		  		+'</div>'
+		  		+'</div>'
+		  		+'<div class="form-group">'
+		  		+'<label class="col-sm-3 control-label" for="openDate">RELEASE DATE</label>'
+		  		+'<div class="col-sm-6">'
+		  		+'<input type="text" value="'+data.movie.openDate+'" id="openDate" name="openDate" class="form-control" /></div>'
+		  		+'</div>'
+		  		+'<div class="form-group">'
+		  		+'<label class="col-sm-3 control-label" for="grade">AGE</label>'
+		  		+'<div class="col-sm-6">'
+		  		+'<input type="text" value="'+data.movie.grade+'" id="grade" name="grade" class="form-control" />'
+		  		+'</div>'
+		  		+'</div>'
+		  		+'<div class="form-group">'
+		  		+'<label class="col-sm-3 control-label" for="runningtime">RUNNNIG TIME</label>'
+		  		+'<div class="col-sm-6">'
+		  		+'<input type="text" value="'+data.movie.runningtime+'" id="runningtime" name="runningtime" class="form-control" />' 
+		  		+'</div>'
+		  		+'</div>'
+		  		+'<div class="form-group">'
+		  		+'<label class="col-sm-3 control-label" for="director">DIRECTOR</label>'
+		  		+'<div class="col-sm-6">'
+		  		+'<input type="text" value="'+data.movie.director+'" id="director" name="director"  class="form-control" />' 
+		  		+'</div>'
+		  		+'</div>'
+		  		+'<div class="form-group">'
+		  		+'<label class="col-sm-3 control-label" for="actor">MAIN ACTOR</label>'
+		  		+'<div class="col-sm-6">'
+		  		+'<input type="text" value="'+data.movie.actor+'"  id="actor" name="actor" class="form-control" />'
+		  		+'</div>'
+		  		+'</div>'
+		  		+'<div class="form-group">'
+		  		+'<label class="col-sm-3 control-label" for="content">SUMMARY</label>'
+		  		+'<div class="col-sm-6" >'
+		  		+'<input type="text" value="'+data.movie.content+'" id="content" name="content" class="form-control" />' 
+		  		+'</div>'
+		  		+'</div>'
+		  		/*+'<div class="form-group">'
+		  		+'<label class="col-sm-3 control-label" for="image">POSTER</label>'
+		  		+'<div class="col-sm-6">'
+		  		+'<img src="'+context+'/resources/rainbow/images/main/'+data.movie.image+'" alt="" style="width:200px;height:230px"/>'
+		  		+'<div class="col-sm-2">'
+		  		+'<input type="file" id="image" name="image" />'
+		  		+'</div>' 
+		  		+'</div>'*/
+		  		+'<div class="form-group">'
+			 	+'<label  class="col-sm-4 control-label" for="Image">POSTER</label>'
+			 	+'<div class="col-sm-2">'
+			 	+'<img src="'+context+'/resources/rainbow/images/main/'+data.movie.image+'" alt="" style="width:180px;height:230px"/>'
+				+'</div>'
+			 	+'<div class="col-sm-2">'
+					+'<input type="file" id="image" name="image" />'
+				+'</div>'
+				+'</div>'
+		  		+'<div class="form-group">'
+		  		+'<div class="col-sm-12 text-center">'
+		  		+'<button class="btn btn-primary" id="updateBtn" name="updateBtn">UPDATE<i class="fa fa-check spaceLeft"></i></button>'
+		  		+'<button class="btn btn-warning" id="cancelBtn" name="cancelBtn">CANCEL<i class="fa fa-times spaceLeft"></i></button>'
+		  		+'<button class="btn btn-warning" id="deleteBtn" name="deleteBtn">DELETE<i class="fa fa-times spaceLeft"></i></button>'
+		  		+'</div>'
+		  		+'</div>'
+		  		+'</form>'
+		  		+'</article>';
+		      $('#content').empty();
+		      $('#content').html(movieUpdateForm);
+		      $('#updateBtn').click(function(e) {
+		 			e.preventDefault();
+		 			alert('영화수정 버튼클릭');
+		 		      var $form = $('#form')[0];
+		 	          var formData = new FormData(form);
+		 	        $.ajax({
+		 	               url: context+'/admin/update/'+movieSeq,
+		 	               mimeType: 'multipart/form-data',
+		 	               contentType: false, 
+		 	               processData : false,
+		 	               data: formData,
+		 	               type: 'POST',
+		 	               success : function(result) {
+		 	                    alert('영화 수정 완료 되었습니다 .');
+		 	                   admin.movieList(context);
+		 	               },
+		 	               error : function(xhr, status, msg) {
+		 	                  alert('에러발생상태 :' + status + ',내용 : ' + msg);
+		 	               }
 
+		 	            });
+		 		});
+		 	 $('#cancelBtn').click(function(e) {
+		 		e.preventDefault();
+		 		alert("취소버튼 클릭");
+		 		location.href = context+'/rainbow';
+		 	
+		         });
+		 	 $('#deleteBtn').click(function(e) {
+		  		e.preventDefault();
+		  		alert("삭제버튼 클릭");
+		  		$.ajax({
+		 			url : context+'/admin/delete',
+		 			data : {
+		 				movieSeq : movieSeq
+		 			},
+		 			dataType : 'json',
+		 			type : 'post',
+		 			success : function() {
+		 				alert('성공하셨습니다. 메인 화면으로 이동합니다.');
+		 				admin.movieList(context);
+		 			},
+		 			error : function(xhr, status, msg) {
+		 				alert("삭제 시 에러발생 : " + msg);
+		 			}
+		      });
+		 	 });
+		 },
+		         
 	   replypost : function(context, movieSeq){
 	   	  $.ajax({
 	   	        url: context+'/admin/reply_content/'+movieSeq,
@@ -679,7 +822,7 @@ var admin = {
 	   	+'<form id = "replyContentForm" class="form-horizontal" style="margin-top: 30px" enctype="multipart/form-data" class="table table-striped">'
 	   	+'<div class="editTop" >'
 	   	+'<h1>　</h1>'
-	   	+'<h1 class="text-center" align="center">ADMIN REPLY Page</h1>'
+	   	+'<h1 class="text-center" align="center">REPLY PAGE</h1>'
 	   	+'</div>'
 	   	+'<table id="content" style="width: 100%; margin-top: 30px">'
 	   	+'<tr style="background-color: gray;">'
@@ -724,153 +867,20 @@ var admin = {
 	   			type : 'post',
 	   			success : function() {
 	   				alert('성공하셨습니다. 리스트 화면으로 이동합니다.');
-	   				admin.movieListForm(context);
+	   				admin.movieList(context);
 	   			},
 	   			error : function(xhr, status, msg) {
 	   				alert("삭제 시 에러발생 : " + msg);
 	   }
 	    		});
 	      	});
-	              },
-movieUpdate : function(context,movieSeq) {
-  $.ajax({
-        url: context+'/admin/update/'+movieSeq,
-        data : {
-           movieTitle : movieSeq
-        },
-        success : function(data) { 
-	var movieUpdateForm = 
- 	   '<article class="container" style="margin-top: 30px">'
- 		+'<div class="editTop">'
- 		+'<h1>　</h1>'
- 		+'<h2 class="text-center"> '+data.movie.title+' INFORMATION</h2></div>'
- 		+'<form class="form-horizontal" id="form" style="margin-top: 30px">'
- 		+'<div class="form-group">'
- 		+'<label class="col-sm-3 control-label" for="title">TITLE</label>'
- 		+'<div class="col-sm-6">'
- 		+'<input type="text" value="'+data.movie.title+'"  class="form-control" />'
- 		+'</div>'
- 		+'</div>'
- 		+'<div class="form-group">'
- 		+'<label class="col-sm-3 control-label" for="rating">RATING</label>'
- 		+'<div class="col-sm-6">'
- 		+'<input type="text" value="'+data.movie.rating+'"  class="form-control" />' 
- 		+'</div>'
- 		+'</div>'
- 		+'<div class="form-group">'
- 		+'<label class="col-sm-3 control-label" for="genre">GERNE</label>'
- 		+'<div class="col-sm-6">'
- 		+'<input type="text" value="'+data.movie.genre+'"  class="form-control" />' 
- 		+'</div>'
- 		+'</div>'
- 		+'<div class="form-group">'
- 		+'<label class="col-sm-3 control-label" for="openDate">RELEASE DATE</label>'
- 		+'<div class="col-sm-6">'
- 		+'<input type="text" value="'+data.movie.openDate+'"  class="form-control" /></div>'
- 		+'</div>'
- 		+'<div class="form-group">'
- 		+'<label class="col-sm-3 control-label" for="grade">AGE</label>'
- 		+'<div class="col-sm-6">'
- 		+'<input type="text" value="'+data.movie.grade+'"  class="form-control" />'
- 		+'</div>'
- 		+'</div>'
- 		+'<div class="form-group">'
- 		+'<label class="col-sm-3 control-label" for="runningtime">RUNNNIG TIME</label>'
- 		+'<div class="col-sm-6">'
- 		+'<input type="text" value="'+data.movie.runningtime+'"  class="form-control" />' 
- 		+'</div>'
- 		+'</div>'
- 		+'<div class="form-group">'
- 		+'<label class="col-sm-3 control-label" for="director">DIRECTOR</label>'
- 		+'<div class="col-sm-6">'
- 		+'<input type="text" value="'+data.movie.director+'"  class="form-control" />' 
- 		+'</div>'
- 		+'</div>'
- 		+'<div class="form-group">'
- 		+'<label class="col-sm-3 control-label" for="actor">MAIN ACTOR</label>'
- 		+'<div class="col-sm-6">'
- 		+'<input type="text" value="'+data.movie.actor+'"  class="form-control" />'
- 		+'</div>'
- 		+'</div>'
- 		+'<div class="form-group">'
- 		+'<label class="col-sm-3 control-label" for="content">SUMMARY</label>'
- 		+'<div class="col-sm-6" >'
- 		+'<input type="text" value="'+data.movie.content+'"  class="form-control" />' 
- 		+'</div>'
- 		+'</div>'
- 		+'<div class="form-group">'
- 		+'<label class="col-sm-3 control-label" for="image">POSTER</label>'
- 		+'<div class="col-sm-6">'
- 		+'<img src="'+context+'/resources/rainbow/images/main/'+data.movie.image+'" alt="" style="width:200px;height:230px"/>'
- 		+'<div class="col-sm-2">'
- 		+'<input type="file" id="image" name="image" />'
- 		+'</div>' 
- 		+'</div>'
- 		+'<div class="form-group">'
- 		+'<div class="col-sm-12 text-center">'
- 		+'<button class="btn btn-primary" id="updateBtn" name="updateBtn">UPDATE<i class="fa fa-check spaceLeft"></i></button>'
- 		+'<button class="btn btn-warning" id="cancelBtn" name="cancelBtn">CANCEL<i class="fa fa-times spaceLeft"></i></button>'
- 		+'<button class="btn btn-warning" id="deleteBtn" name="deleteBtn">DELETE<i class="fa fa-times spaceLeft"></i></button>'
- 		+'</div>'
- 		+'</div>'
- 		+'</form>'
- 		+'</article>';
-     $('#content').empty();
-     $('#content').html(movieUpdateForm);
-     $('#updateBtn').click(function(e) {
-			e.preventDefault();
-			alert('영화수정 버튼클릭');
-		      var $form = $('#form')[0];
-	          var formData = new FormData(form);
-	        $.ajax({
-	               url: context+'/admin/update/'+movieSeq,
-	               mimeType: 'multipart/form-data',
-	               contentType: false, 
-	               processData : false,
-	               data: formData,
-	               type: 'POST',
-	               success : function(result) {
-	                    alert('영화 수정 완료 되었습니다 .');
-	                    location.href = context+'/rainbow';
-	               },
-	               error : function(xhr, status, msg) {
-	                  alert('에러발생상태 :' + status + ',내용 : ' + msg);
-	               }
+	              }
 
-	            });
-		});
-	 $('#cancelBtn').click(function(e) {
-		e.preventDefault();
-		alert("취소버튼 클릭");
-		location.href = context+'/rainbow';
-	
-        });
-	 $('#deleteBtn').click(function(e) {
- 		e.preventDefault();
- 		alert("삭제버튼 클릭");
- 		$.ajax({
-			url : context+'/admin/delete',
-			data : {
-				movieSeq : movieSeq
-			},
-			dataType : 'json',
-			type : 'post',
-			success : function() {
-				alert('성공하셨습니다. 메인 화면으로 이동합니다.');
-				location.href = context + "/rainbow";
-			},
-			error : function(xhr, status, msg) {
-				alert("삭제 시 에러발생 : " + msg);
-			}
-		});
-     });
-}
 	  });
-}
-	   	});
 	   	        }
 	   	  });
+	   }
+		         });
+		   }
 }
-}
-
-	
+		         
