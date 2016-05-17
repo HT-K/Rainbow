@@ -1,15 +1,4 @@
-CREATE TABLE Member( 
-	member_seq INT PRIMARY KEY AUTO_INCREMENT,
-	id VARCHAR(30) NOT NULL,
-	password VARCHAR(30) NOT NULL,
-	name VARCHAR(30) NOT NULL,
-	gender VARCHAR(10),
-	birth VARCHAR(30),
-	addr VARCHAR(70),
-	point INT,
-	grade VARCHAR(10),
-	reg_date DATETIME
-);
+ 
 
 create table Vod(
 	vod_seq int PRIMARY KEY AUTO_INCREMENT,
