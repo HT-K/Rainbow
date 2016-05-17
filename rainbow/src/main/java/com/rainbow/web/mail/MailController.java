@@ -27,7 +27,7 @@ public class MailController {
 							@RequestParam("name")String name,
 							@RequestParam("contactsText")String contactsText){
 		logger.info("mail 보내기.");
-		String toAddr = "goh815@gmail.com";
+		String toAddr = "propose0915@gmail.com";
 		String fromAddr = email;
  
 		// email subject
