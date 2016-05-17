@@ -59,7 +59,7 @@ public class AdminController {
 			@RequestParam(value="actor",required=false)String actor,
 			@RequestParam(value="content",required=false)String content,
 			@RequestParam(value="image",required=false)MultipartFile image,
-			Model model){
+			Model model, HttpSession session){
 		logger.info("====== ArticleController-input()======");
 		logger.info("=== title {} ===",title);
 		logger.info("=== rating {} ===",rating);
@@ -74,7 +74,7 @@ public class AdminController {
 		Properties p = new Properties();
 		String filePath="";
 		try {
-			FileInputStream file = new FileInputStream("../rainbow/src/main/resources/config/fileUpload.properties");
+			FileInputStream file = new FileInputStream(session.getServletContext().getRealPath("/WEB-INF/classes/config/fileUpload.properties"));
 			try {
 				p.load(file);
 				filePath = p.getProperty("fileUpload.moviePath");
@@ -134,7 +134,7 @@ public class AdminController {
 			@RequestParam(value="vodCounty",required=false)String vodCountry,
 			@RequestParam(value="image",required=false)MultipartFile image,
 			Model model,HttpSession session){
-		logger.info("====== ArticleController-input()======");
+		logger.info("====== ArticleController-vodInput()======");
 		logger.info("=== vodName {} ===",vodName);
 		logger.info("=== vodSubTitle {} ===",vodSubTitle);
 		logger.info("=== vodContent {} ===",vodContent);
@@ -149,19 +149,19 @@ public class AdminController {
 		logger.info("=== vodActor {} ===",vodActor);
 		logger.info("=== vodDirectory {} ===",vodDirector);
 		logger.info("=== vodCounty {} ===",vodCountry);
-		
+		logger.info("=== fileUpload Config Path {} ===",session.getServletContext().getRealPath("/WEB-INF/classes/config/fileUpload.properties"));
 		Properties p = new Properties();
 		FileUpload fileUpload = new FileUpload();
 		String filePath="";  
 		String fileName= "";
 			try {
-				FileInputStream propertyFile = new FileInputStream(session.getServletContext().getRealPath("\\WEB-INF\\classes\\config\\fileUpload.properties"));
+				FileInputStream propertyFile = new FileInputStream(session.getServletContext().getRealPath("/WEB-INF/classes/config/fileUpload.properties"));
 				try {
 					p.load(propertyFile); 
 					filePath = p.getProperty("fileUpload.vodPath");
 					 fileName = image.getOriginalFilename();
 					logger.info("수정폼에서 넘어온 파일 = {}",fileName);
-					String fullPath = fileUpload.uploadFile(image,filePath+"\\"+vodCategory, fileName); 
+					String fullPath = fileUpload.uploadFile(image,filePath+"/"+vodCategory, fileName); 
 					logger.info("이미지 저장 경로 : {}",fullPath);
 					propertyFile.close();
 				} catch (IOException e) {
@@ -215,7 +215,7 @@ public class AdminController {
   			@RequestParam(value="vodCounty",required=false)String vodCountry,
   			@RequestParam(value="image",required=false)MultipartFile image,
   			Model model,HttpSession session){
-  		logger.info("====== ArticleController-input()======");
+  		logger.info("====== ArticleController-vodUpdate()======");
   		logger.info("=== vodSeq {} ===",vodSeq);
   		logger.info("=== vodName {} ===",vodName);
   		logger.info("=== vodSubTitle {} ===",vodSubTitle);
@@ -231,24 +231,28 @@ public class AdminController {
   		logger.info("=== vodActor {} ===",vodActor);
   		logger.info("=== vodDirectory {} ===",vodDirector);
   		logger.info("=== vodCounty {} ===",vodCountry);
+  		logger.info("=== fileUpload Config Path {} ===",session.getServletContext().getRealPath("/WEB-INF/classes/config/fileUpload.properties"));
   		Properties p = new Properties();
   		FileUpload fileUpload = new FileUpload();
   		String filePath="";  
   		String fileName= "";
+  		String fullPath ="";
   			try {
-  				FileInputStream propertyFile = new FileInputStream(session.getServletContext().getRealPath("\\WEB-INF\\classes\\config\\fileUpload.properties"));
+  				FileInputStream propertyFile = new FileInputStream(session.getServletContext().getRealPath("/WEB-INF/classes/config/fileUpload.properties"));
   				try {
   					p.load(propertyFile); 
   					filePath = p.getProperty("fileUpload.vodPath");
   					 fileName = image.getOriginalFilename();
   					logger.info("수정폼에서 넘어온 파일 = {}",fileName);
-  					String fullPath = fileUpload.uploadFile(image,filePath+"\\"+vodCategory, fileName); 
+  					 fullPath = fileUpload.uploadFile(image,filePath+"/"+vodCategory, fileName); 
   					logger.info("이미지 저장 경로 : {}",fullPath);
   					propertyFile.close();
   				} catch (IOException e) {
+  					logger.info("이미지 저장 경로 : {}",fullPath);
   					logger.info("파일 업로드 경로가 잘 못 되었습니다.");
   				} 
   			} catch (FileNotFoundException e) {
+  				logger.info("이미지 저장 경로 : {}",fullPath);
   				logger.info("파일 업로드 경로가 잘 못 되었습니다.");
   			} 
   			vod.setVodSeq(vodSeq);
@@ -311,15 +315,7 @@ public class AdminController {
 			
 		return model;
 	}
-   	/*//========TRANSPORTS UPDATE FORM===============
-   	@RequestMapping("/update")
-	public Model update ( 
-	Model model){
-	movie = movieService.getBySeq(movie);
-	model.addAttribute("movie",movie);
-
-		return model;
-	}*/
+  
    	//==========MOVIE UPADATE===========
    	@RequestMapping(value="/update/{movieSeq}", method=RequestMethod.POST)
 	public Model  update (@PathVariable("movieSeq")int movieSeq,@RequestParam(value="title",required=false)String title,
@@ -352,20 +348,23 @@ public class AdminController {
   		FileUpload fileUpload = new FileUpload();
   		String filePath="";  
   		String fileName= "";
+  		String fullPath="";
   			try {
-  				FileInputStream propertyFile = new FileInputStream(session.getServletContext().getRealPath("\\WEB-INF\\classes\\config\\fileUpload.properties"));
+  				FileInputStream propertyFile = new FileInputStream(session.getServletContext().getRealPath("/WEB-INF/classes/config/fileUpload.properties"));
   				try {
   					p.load(propertyFile); 
   					filePath = p.getProperty("fileUpload.moviePath");
   					 fileName = image.getOriginalFilename();
   					logger.info("수정폼에서 넘어온 파일 = {}",fileName);
-  					String fullPath = fileUpload.uploadFile(image,filePath, fileName); 
+  					 fullPath = fileUpload.uploadFile(image,filePath, fileName); 
   					logger.info("이미지 저장 경로 : {}",fullPath);
   					propertyFile.close();
   				} catch (IOException e) {
+  					logger.info("이미지 저장 경로 : {}",fullPath);
   					logger.info("파일 업로드 경로가 잘 못 되었습니다.");
   				} 
   			} catch (FileNotFoundException e) {
+  				logger.info("이미지 저장 경로 : {}",fullPath);
   				logger.info("파일 업로드 경로가 잘 못 되었습니다.");
   			} 
   			      
