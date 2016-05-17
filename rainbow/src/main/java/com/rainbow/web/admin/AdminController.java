@@ -161,7 +161,7 @@ public class AdminController {
 					filePath = p.getProperty("fileUpload.vodPath");
 					 fileName = image.getOriginalFilename();
 					logger.info("수정폼에서 넘어온 파일 = {}",fileName);
-					String fullPath = fileUpload.uploadFile(image,filePath+"/"+vodCategory, fileName); 
+					String fullPath = fileUpload.uploadFile(image,filePath+"/"+vodCategory+"/", fileName); 
 					logger.info("이미지 저장 경로 : {}",fullPath);
 					propertyFile.close();
 				} catch (IOException e) {
@@ -244,7 +244,7 @@ public class AdminController {
   					filePath = p.getProperty("fileUpload.vodPath");
   					 fileName = image.getOriginalFilename();
   					logger.info("수정폼에서 넘어온 파일 = {}",fileName);
-  					 fullPath = fileUpload.uploadFile(image,filePath+"/"+vodCategory, fileName); 
+  					 fullPath = fileUpload.uploadFile(image,filePath+"/"+vodCategory+"/", fileName); 
   					logger.info("이미지 저장 경로 : {}",fullPath);
   					propertyFile.close();
   				} catch (IOException e) {
