@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.rainbow.web.movie.MovieDTO;
 import com.rainbow.web.movie.MovieService;
@@ -210,11 +211,14 @@ public class MemberController {
 	}
 
 	@RequestMapping("/cinema")
-	public String cineame(HttpSession session) {
-		logger.info("memberController-cineame{}");
-		session.getAttribute("id");
-		session.getAttribute("email");
-		logger.info("memberController-cineame{} END");
+	public String cinema(HttpSession session, Model model) {
+		logger.info("memberController-cinema{}");
+		MemberDTO member = new MemberDTO();
+		member = (MemberDTO) session.getAttribute("user");
+		logger.info("memberController-cinema{} END",member.getName());
+		logger.info("memberController-cinema{} END",member.getEmail());
+		model.addAttribute("member",member);
+		
 		
 		return "global/cinema.user";
 	}

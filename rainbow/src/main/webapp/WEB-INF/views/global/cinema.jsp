@@ -69,7 +69,7 @@
        </div>
    </section>
 
-       <div id="location-map" class="map"></div>
+       <div id="googlemap" class="map"></div>
 
  
 <!-- </div> -->

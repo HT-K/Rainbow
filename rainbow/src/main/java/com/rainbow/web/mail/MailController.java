@@ -24,9 +24,10 @@ public class MailController {
 	
 	@RequestMapping(value="/send", method=RequestMethod.POST)
 	public String sendEmail(@RequestParam("email")String email,
+							@RequestParam("name")String name,
 							@RequestParam("contactsText")String contactsText){
 		logger.info("mail 보내기.");
-		String toAddr = "propose0915@gmail.com";
+		String toAddr = "goh815@gmail.com";
 		String fromAddr = email;
  
 		// email subject

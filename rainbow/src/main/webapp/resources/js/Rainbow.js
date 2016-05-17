@@ -17,8 +17,10 @@
 		
 		purchase : function() {
 			return new Purchase();
+		},
+		cinema : function() {
+			return new Cinema();
 		}
-		
 		
 	});
 })();

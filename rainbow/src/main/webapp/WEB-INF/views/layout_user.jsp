@@ -86,7 +86,7 @@
             +      '<span class="sub-nav-toggle plus"></span>' 
             +      '<a href="#">Ticketing</a>'
             +   '</li>'
-            +   '<li>'
+            +   '<li id="cinema">'
             +      '<span class="sub-nav-toggle plus"></span>'
             +      '<a href="${context}/member/cinema">Cinema</a>'
             +   '</li>'
@@ -113,7 +113,7 @@
             +      '<span class="sub-nav-toggle plus"></span>' 
             +      '<a href="${context}/member/login_form">Ticketing</a>'
             +   '</li>'
-            +   '<li>'
+            +   '<li id="cinema">'
             +      '<span class="sub-nav-toggle plus"></span>'
             +      '<a href="${context}/member/cinema">Cinema</a>'
             +   '</li>'
@@ -134,6 +134,7 @@
 <script src="${context}/resources/js/Global.js"></script>
 <script src="${context}/resources/js/Rainbow.js"></script>
 <script src="${context}/resources/js/Purchase.js"></script>
+<script src="${context}/resources/js/Cinema.js"></script>
 
 <script type="text/javascript">
 	$(function(){
@@ -142,7 +143,12 @@
 		$('#ticketing').click(function(e){
 			e.preventDefault();
 		 	purchase.step1Form(context); 
-		});	
+		});
+		//var cinema = $.fn.cinema(); 
+		$('#cinema').click(function(e){
+			e.preventDefault();
+			cinema.init(context); 
+		});
 		$('#needLogin').click(function(e) { // 로그인 안한 상태에서 헤더의 티켓팅을 눌렀을 시
 			e.preventDefault();
 			alert("로그인이 필요합니다.");
