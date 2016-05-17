@@ -189,6 +189,10 @@
 			e.preventDefault(); 
 			admin.addMovieForm('${context}');
 	});
+		$('#movie').click(function(e) {
+			e.preventDefault(); 
+			admin.movieListForm('${context}');
+	});
 		// Admin , Vod , Movie 처리 부분  .. 상
 		
 		// header.jsp 부분과 관련된 내용 시작
@@ -284,7 +288,12 @@
 	 	$('#purchaseListBtn').click(function(e) { // 이름 클릭 시 나오는 li의 예매내역을 눌렀을 시
 			e.preventDefault();
 			member.purchaseList(context, '/purchase/purchase_list/0');
-		}); 
+		});
+	 	$('#needLogin').click(function(e) { // 로그인 안한 상태에서 헤더의 티켓팅을 눌렀을 시
+			e.preventDefault();
+			alert("로그인이 필요합니다.");
+			member.loginForm(context);
+		});
 	});
 </script>
 </html>

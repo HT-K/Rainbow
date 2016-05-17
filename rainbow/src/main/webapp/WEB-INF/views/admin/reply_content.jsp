@@ -49,10 +49,5 @@
 			$('#replyContentForm').attr('action','${context}/admin/Delete').attr('method' , 'post').submit();
 			
 		}); 
-	    /* $('#replyDeleteBtn').click(function(e) {
-			e.preventDefault();
-			location.href = '${context}/admin/replyDelete?replySeq=${reply.replySeq}';
-			alert('영화삭제 버튼 클릭 !!')    
-		});   */
 	});
 </script>

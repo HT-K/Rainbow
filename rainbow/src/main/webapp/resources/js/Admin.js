@@ -118,6 +118,7 @@ var admin = {
 	},
 	addVodForm :  function(context) {
 		var addVodForm = '<article class="container" style="margin-top: 30px">'
+			+ '<h2>　</h2>'
 			+ '<div class="editTop"><h2 class="text-center"> THE MOIVE ADD PAGE</h2>'
 			+ '</div>'
 	        +'<form class="form-horizontal"  id="form" style="margin-top: 30px" enctype="multipart/form-data" action="/admin/input" method="post">'
@@ -269,6 +270,7 @@ var admin = {
 	},
 	addMovieForm :  function(context) {
 			var addMovieForm = '<article class="container" style="margin-top: 30px">'
+					+ '<h2>　</h2>'
 					+ '<div class="editTop"><h2 class="text-center"> THE MOIVE ADD PAGE</h2>'
 					+ '</div>'
 			        +'<form class="form-horizontal"  id="form" style="margin-top: 30px" enctype="multipart/form-data" action="/admin/input" method="post">'
@@ -345,7 +347,7 @@ var admin = {
 		               type: 'POST',
 		               success : function(result) {
 		                    alert('영화 등록 완료 되었습니다 .');
-		                     location.href = context+'/admin/content'; 
+		                    location.href = context+'/rainbow';
 		               },
 		               error : function(xhr, status, msg) {
 		                  alert('에러발생상태 :' + status + ',내용 : ' + msg);
@@ -356,7 +358,7 @@ var admin = {
 			$('#cancelBtn').click(function(e) {
 				e.preventDefault();
 				alert("취소버튼 클릭");
-				location.href = context+'/admin/content'; 
+				location.href = context+'/rainbow';
 			});
 			
 	},
@@ -607,7 +609,268 @@ var admin = {
             }
      });
 		
-	}
+	},
 	
+	movieListForm : function(context){
+			var movieListForm = '<style>'
+			+'#content{border : 1px solid black}'
+			+'#content th {border : 1px solid black; text-align : center}'
+			+'#content tr td{border : 1px solid black; text-align : center}'
+			+'#content tr {border : 1px solid black}'
+			+'</style>'
+			+ '<h2>　</h2>'
+			+'<th class="col-sm-12 text-center">'
+			+'</th>'
+			+'<table id="content" style="width: 100%; margin-top: 30px" >'
+			+'<tr style="background-color: #E39919;">'
+			+'<th style="width: 5%;">Movie Sequence</th>'
+			+'<th style="width: 6%;">Movie Title</th>'
+			+'<th style="width: 4%;">Movie Rating</th>'
+			+'<th style="width: 7%;">Genre</th>'
+			+'<th style="width: 6%;">Release Date</th>'
+			+'<th style="width: 5%;">Age</th>'
+			+'<th style="width: 5%;">Running Time</th>'
+			+'<th style="width: 5%;">Director</th>'
+			+'<th style="width: 10%;">Main actor</th>'
+			+'<th style="width: 35%;">Summary</th>'
+			+'<th>Poster</th>'
+			+'<th style="width: 5%;">Reply</th>'
+			+'</tr>';
+	        $.ajax({
+	               url: context+'/admin/content',
+	               success : function(data) {
+	       			$.each(data.list, function(index, movie) {
+	   				movieListForm+=
+	   				'<tr>'
+	   				+'<td>'+movie.movieSeq+'</td>'
+	   				+'<td><a href="#" id="movieUpdate" onclick="admin.movieUpdate('+'\''+context+'\''+','+'\''+movie.movieSeq+'\''+');">'+movie.title+'</a></td>'
+	   				+'<td>'+movie.rating+'</td>'
+	   				+'<td>'+movie.genre+'</td>'
+	   				+'<td>'+movie.openDate+'</td>'
+	   				+'<td>'+movie.grade+'</td>'
+	   				+'<td>'+movie.runningtime+'</td>'
+	   				+'<td>'+movie.director+'</td>'
+	   				+'<td>'+movie.actor+'</td>'
+	   				+'<td>'+movie.content+'</td>'
+	   				+'<td><img src="'+context+'/resources/rainbow/images/main/'+movie.image+'" alt="" style="width:200px;height:230px"/></a></td>'
+	   				+'<td><a  href="#" id="replypost" onclick="admin.replypost('+'\''+context+'\''+','+'\''+movie.movieSeq+'\''+');">댓글관리</a></td>'
+	   				+'</tr>';
+	   			});
+	       			movieListForm+='</table>'
+	       		 $('#content').html(movieListForm);
+	                 }
+	          });
+	   },
+
+	   replypost : function(context, movieSeq){
+	   	  $.ajax({
+	   	        url: context+'/admin/reply_content/'+movieSeq,
+	   	        data : { 
+	   	           reply : movieSeq
+	   	        },
+	   	        success : function(data) { 
+	   	var replyForm = '<style>'
+	   	+'#content{border : 1px solid black}'
+	   	+'#content th {border : 1px solid black; text-align : center}'
+	   	+'#content tr td{border : 1px solid black; text-align : center}'
+	   	+'#content tr {border : 1px solid black}'
+	   	+'input[type="checkbox"] {-webkit-appearance: checkbox; border-radius: 0;}'
+	   	+'</style>'
+	   	+'<form id = "replyContentForm" class="form-horizontal" style="margin-top: 30px" enctype="multipart/form-data" class="table table-striped">'
+	   	+'<div class="editTop" >'
+	   	+'<h1>　</h1>'
+	   	+'<h1 class="text-center" align="center">ADMIN REPLY Page</h1>'
+	   	+'</div>'
+	   	+'<table id="content" style="width: 100%; margin-top: 30px">'
+	   	+'<tr style="background-color: gray;">'
+	   	+'<th style="width: 5%;">DELETE BUTTON</th>'
+	   	+'<th style="width: 5%;">replySeq</th>'
+	   	+'<th style="width: 6%;">writerName</th>'
+	   	+'<th style="width: 4%;">regTime</th>'
+	   	+'<th style="width: 5%;">movieSeq</th>'
+	   	+'<th style="width: 35%;">replyContent</th>'
+	   	+'</tr>';
+	   	$.ajax({
+	              url: context+'/admin/reply_content/'+movieSeq,
+	              success : function(data) {
+	      			$.each(data.list, function(index, reply) {
+	      				replyForm+='<tr>'
+	   			+'<td><input type="checkbox" name="replySeq" value="'+reply.replySeq+'"/></td>'
+	   			+'<td>'+reply.replySeq+'</td>'
+	   			+'<td>'+reply.writerName+'</td>'
+	   			+'<td>'+reply.regTime+'</td>'
+	   			+'<td>'+reply.movieSeq+'</td>'
+	   			+'<td>'+reply.replyContent+'</td>'
+	   			+'</tr>';
+	      			});
+	      			
+	      			replyForm+='</table>'
+	   	+'<div class="col-sm-12 text-center">'
+	   	+'<div class="col-sm-12 text-center">'
+	   	+'<button  type="submit" class="btn btn-primary" id="replyDeleteBtn">DELETE</button>'
+	   	+'</div>'
+	   	+'</div>'
+	   	+'</form>';
+	      	$('#content').html(replyForm);
+	      	$('#replyDeleteBtn').click(function(e) {
+	    		e.preventDefault();
+	    		alert("삭제버튼 클릭");
+	    		$.ajax({
+	   			url : context+'/admin/reply_delete',
+	   			data : {
+	   				replySeqs : movieSeq
+	   			},
+	   			dataType : 'json',
+	   			type : 'post',
+	   			success : function() {
+	   				alert('성공하셨습니다. 리스트 화면으로 이동합니다.');
+	   				admin.movieListForm(context);
+	   			},
+	   			error : function(xhr, status, msg) {
+	   				alert("삭제 시 에러발생 : " + msg);
+	   }
+	    		});
+	      	});
+	              },
+movieUpdate : function(context,movieSeq) {
+  $.ajax({
+        url: context+'/admin/update/'+movieSeq,
+        data : {
+           movieTitle : movieSeq
+        },
+        success : function(data) { 
+	var movieUpdateForm = 
+ 	   '<article class="container" style="margin-top: 30px">'
+ 		+'<div class="editTop">'
+ 		+'<h1>　</h1>'
+ 		+'<h2 class="text-center"> '+data.movie.title+' INFORMATION</h2></div>'
+ 		+'<form class="form-horizontal" id="form" style="margin-top: 30px">'
+ 		+'<div class="form-group">'
+ 		+'<label class="col-sm-3 control-label" for="title">TITLE</label>'
+ 		+'<div class="col-sm-6">'
+ 		+'<input type="text" value="'+data.movie.title+'"  class="form-control" />'
+ 		+'</div>'
+ 		+'</div>'
+ 		+'<div class="form-group">'
+ 		+'<label class="col-sm-3 control-label" for="rating">RATING</label>'
+ 		+'<div class="col-sm-6">'
+ 		+'<input type="text" value="'+data.movie.rating+'"  class="form-control" />' 
+ 		+'</div>'
+ 		+'</div>'
+ 		+'<div class="form-group">'
+ 		+'<label class="col-sm-3 control-label" for="genre">GERNE</label>'
+ 		+'<div class="col-sm-6">'
+ 		+'<input type="text" value="'+data.movie.genre+'"  class="form-control" />' 
+ 		+'</div>'
+ 		+'</div>'
+ 		+'<div class="form-group">'
+ 		+'<label class="col-sm-3 control-label" for="openDate">RELEASE DATE</label>'
+ 		+'<div class="col-sm-6">'
+ 		+'<input type="text" value="'+data.movie.openDate+'"  class="form-control" /></div>'
+ 		+'</div>'
+ 		+'<div class="form-group">'
+ 		+'<label class="col-sm-3 control-label" for="grade">AGE</label>'
+ 		+'<div class="col-sm-6">'
+ 		+'<input type="text" value="'+data.movie.grade+'"  class="form-control" />'
+ 		+'</div>'
+ 		+'</div>'
+ 		+'<div class="form-group">'
+ 		+'<label class="col-sm-3 control-label" for="runningtime">RUNNNIG TIME</label>'
+ 		+'<div class="col-sm-6">'
+ 		+'<input type="text" value="'+data.movie.runningtime+'"  class="form-control" />' 
+ 		+'</div>'
+ 		+'</div>'
+ 		+'<div class="form-group">'
+ 		+'<label class="col-sm-3 control-label" for="director">DIRECTOR</label>'
+ 		+'<div class="col-sm-6">'
+ 		+'<input type="text" value="'+data.movie.director+'"  class="form-control" />' 
+ 		+'</div>'
+ 		+'</div>'
+ 		+'<div class="form-group">'
+ 		+'<label class="col-sm-3 control-label" for="actor">MAIN ACTOR</label>'
+ 		+'<div class="col-sm-6">'
+ 		+'<input type="text" value="'+data.movie.actor+'"  class="form-control" />'
+ 		+'</div>'
+ 		+'</div>'
+ 		+'<div class="form-group">'
+ 		+'<label class="col-sm-3 control-label" for="content">SUMMARY</label>'
+ 		+'<div class="col-sm-6" >'
+ 		+'<input type="text" value="'+data.movie.content+'"  class="form-control" />' 
+ 		+'</div>'
+ 		+'</div>'
+ 		+'<div class="form-group">'
+ 		+'<label class="col-sm-3 control-label" for="image">POSTER</label>'
+ 		+'<div class="col-sm-6">'
+ 		+'<img src="'+context+'/resources/rainbow/images/main/'+data.movie.image+'" alt="" style="width:200px;height:230px"/>'
+ 		+'<div class="col-sm-2">'
+ 		+'<input type="file" id="image" name="image" />'
+ 		+'</div>' 
+ 		+'</div>'
+ 		+'<div class="form-group">'
+ 		+'<div class="col-sm-12 text-center">'
+ 		+'<button class="btn btn-primary" id="updateBtn" name="updateBtn">UPDATE<i class="fa fa-check spaceLeft"></i></button>'
+ 		+'<button class="btn btn-warning" id="cancelBtn" name="cancelBtn">CANCEL<i class="fa fa-times spaceLeft"></i></button>'
+ 		+'<button class="btn btn-warning" id="deleteBtn" name="deleteBtn">DELETE<i class="fa fa-times spaceLeft"></i></button>'
+ 		+'</div>'
+ 		+'</div>'
+ 		+'</form>'
+ 		+'</article>';
+     $('#content').empty();
+     $('#content').html(movieUpdateForm);
+     $('#updateBtn').click(function(e) {
+			e.preventDefault();
+			alert('영화수정 버튼클릭');
+		      var $form = $('#form')[0];
+	          var formData = new FormData(form);
+	        $.ajax({
+	               url: context+'/admin/update/'+movieSeq,
+	               mimeType: 'multipart/form-data',
+	               contentType: false, 
+	               processData : false,
+	               data: formData,
+	               type: 'POST',
+	               success : function(result) {
+	                    alert('영화 수정 완료 되었습니다 .');
+	                    location.href = context+'/rainbow';
+	               },
+	               error : function(xhr, status, msg) {
+	                  alert('에러발생상태 :' + status + ',내용 : ' + msg);
+	               }
+
+	            });
+		});
+	 $('#cancelBtn').click(function(e) {
+		e.preventDefault();
+		alert("취소버튼 클릭");
+		location.href = context+'/rainbow';
+	
+        });
+	 $('#deleteBtn').click(function(e) {
+ 		e.preventDefault();
+ 		alert("삭제버튼 클릭");
+ 		$.ajax({
+			url : context+'/admin/delete',
+			data : {
+				movieSeq : movieSeq
+			},
+			dataType : 'json',
+			type : 'post',
+			success : function() {
+				alert('성공하셨습니다. 메인 화면으로 이동합니다.');
+				location.href = context + "/rainbow";
+			},
+			error : function(xhr, status, msg) {
+				alert("삭제 시 에러발생 : " + msg);
+			}
+		});
+     });
 }
+	  });
+}
+	   	});
+	   	        }
+	   	  });
+}
+}
+
 	
