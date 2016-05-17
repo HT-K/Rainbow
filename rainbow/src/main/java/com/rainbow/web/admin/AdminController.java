@@ -196,14 +196,14 @@ public class AdminController {
 	}
    //===========TRANSPORTS MOVIE LIST =============
    @RequestMapping("/content")
-   public String getAdminPage(Model model){
+   public Model getAdminPage(Model model){
       logger.info("===movie-list(GET)===");
 		List<MovieDTO> list =  new ArrayList<MovieDTO>();
 		movie.setStart(0);
 		movie.setEnd(movieService.count());
 		list = movieService.getList(movie);
 		model.addAttribute("list",list);
-      return "admin/content.admin";
+      return model;
 	}
    
   /* @RequestMapping("/content")
@@ -218,28 +218,28 @@ public class AdminController {
    
    
    //========= ENTERS THE MOVIE TITLE BY SEQEUNSE============
-   @RequestMapping("/edit/{movieSeq}")
-	public String getBySeq(@PathVariable("movieSeq")int movieSeq, 
+   @RequestMapping("/update/{movieSeq}")
+	public Model getBySeq(@PathVariable("movieSeq")int movieSeq, 
 			Model model){
 		logger.info("=== movie-getBySeq() === {}", movieSeq);
 			movie.setMovieSeq(movieSeq);
 			movie = movieService.getBySeq(movie);
 			model.addAttribute("movie",movie);
 			
-		return "admin/edit.admin";
+		return model;
 	}
-   	//========TRANSPORTS UPDATE FORM===============
+   	/*//========TRANSPORTS UPDATE FORM===============
    	@RequestMapping("/update")
-	public String update ( 
+	public Model update ( 
 	Model model){
 	movie = movieService.getBySeq(movie);
 	model.addAttribute("movie",movie);
 
-		return "admin/update.admin";
-	}
+		return model;
+	}*/
    	//==========MOVIE UPADATE===========
    	@RequestMapping(value="/update", method=RequestMethod.POST)
-	public String  update (@RequestParam(value="title",required=false)String title,
+	public Model  update (@RequestParam(value="title",required=false)String title,
 			@RequestParam(value="rating",required=false)int rating,
 			@RequestParam(value="genre",required=false)String genre,
 			@RequestParam(value="openDate",required=false)String openDate,
@@ -285,61 +285,72 @@ public class AdminController {
 		movie.setContent(content);
 		movie.setImage(fileName);
 		int result = movieService.update(movie);
-		String view = "";
+		/*String view = "";*/
 		
 		if (result == 1) {
 			logger.info("업데이트 성공");
 			model.addAttribute("movie", movie);
-			view = "redirect:/admin/content";
+		/*	view = "redirect:/admin/content";*/
 		} else {
 			logger.info("업데이트 실패");
 			model.addAttribute("movie","");
-			view = "redirect:/admin/update";
+			/*view = "redirect:/admin/update";*/
 		}
-		return view;
+		return model;
 		
 	}
    	
    	//=========MOVIE DELETE=========== 
    	@RequestMapping("/delete")
-	public String delete(@RequestParam("movieSeq")int movieSeq, Model model){
+	public Model delete(@RequestParam("movieSeq")int movieSeq, Model model){
 		logger.info("=== movie-delete() ===");
 		logger.info("삭제 할 영화 번호 ={}",movie.getMovieSeq());
-		String view = "";
+		/*String view = "";*/
 		int result = movieService.remove(movie);
 		if (result == 1) {
 			model.addAttribute("movie",movie);
 			logger.info("영화삭제 성공");
-			view = "redirect:/admin/content";
+			/*view = "redirect:/admin/content";*/
 		} else {
 			logger.info("영화삭제 실패");
-			view = "redirect:/admin/content";
+			/*view = "redirect:/admin/content";*/
 		}
-		return view;
+		return model;
 	}	
    	
    	
    	// ================================= REPLY IS MANAGED BY ADMIN =====================================================
    	@RequestMapping("/reply_content/{movieSeq}")
-   	public String getReplyPage(@PathVariable("movieSeq")int movieSeq, Model model){
+   	public Model getReplyPage(@PathVariable("movieSeq")int movieSeq, Model model){
    		List<ReplyDTO> list =  new ArrayList<ReplyDTO>();
    		logger.info("댓글 영화순번 리스트 {}",movieSeq);
    		reply.setMovieSeq(movieSeq);
    		list = replyService.getBySeq(reply);
    		model.addAttribute("list", list);
-   		return "admin/reply_content.admin";
+   		/*return "admin/reply_content.admin";*/
+   		return model;
    	}
 	
-   	@RequestMapping("/Delete")
-	public String replyDelete(@RequestParam("replySeq")int[] replySeqs, Model model){
+   	@RequestMapping("/reply_delete")
+	public Model replyDelete(@RequestParam("replySeq")int[] replySeqs, Model model){
 		logger.info("=== replys-delete() ===");
 		logger.info("삭제 할 댓글 수 ={}"+replySeqs.length);
 		logger.info("삭제 할 댓글 번호 ={}"+reply.getReplySeq());
 		for( int replySeq : replySeqs){
 			reply.setReplySeq(replySeq);
 			replyService.delete(reply);
+			int result = replyService.delete(reply);
+			if (result == 1) {
+				model.addAttribute("reply",reply);
+				logger.info("삭제성공");
+			} else {
+				model.addAttribute("reply","");
+				logger.info("삭제실패");	
+			}
+			
 		}
-		return "redirect:/admin/content";
+		/*return "redirect:/admin/content";*/
+		return model;
 	}	
  
 }
