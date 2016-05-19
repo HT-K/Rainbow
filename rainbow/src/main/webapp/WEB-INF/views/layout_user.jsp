@@ -51,10 +51,23 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> <!-- 부트스트랩 홈페이지에서 CDN으로 가져온다. -->
 
+	<!-- magnific popup -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+	
 	<!--*** Google map  ***-->
 	<script src="https://maps.google.com/maps/api/js?sensor=true"></script> 
-	<%-- <!--*** Google map infobox  ***-->
-	<script src="${context}/resources/rainbow/js/external/infobox.js"></script> --%>
+
+	<style>
+		.test {
+			position: relative;
+			background: #FFF;
+			padding: 20px;
+			width: 70%;
+			height: 500px;
+			margin: 20px auto;
+		}
+	</style>
 </head>
 
 <body>
@@ -73,6 +86,11 @@
       <!-- tilse.xml에 설정된 푸터페이지가 들어가게 된다. -->
       <tiles:insertAttribute name="footer" />
    </div>
+   
+   <div id="test" class="test white-popup-block mfp-hide auto bg-white">
+   	<jsp:include page="popup.jsp"></jsp:include>
+   </div>
+   <a href="#test" class="popup">Open popup</a>
 </body>
 
 <script src="${context}/resources/js/Global.js"></script>
@@ -82,7 +100,21 @@
 <script src="${context}/resources/js/Member.js"></script>
 <script src="${context}/resources/js/Admin.js"></script>
 <script src="${context}/resources/js/Cinema.js"></script>
-
+<script>
+	// 팝업을 띄워주기 위한 스크립트 코드
+	$(function() {
+		$('.popup').magnificPopup({
+			type: 'inline',
+			preloader: false,
+			modal: true,
+			closeContentPos: true,
+			fixedContentPos: true,
+			alignTop: false,
+			showCloseBtn: true
+		});
+		$('.popup').click().css('display','none');
+	});
+</script>
 
 
 <c:choose>
@@ -290,11 +322,7 @@
 			e.preventDefault();
 			member.purchaseList(context, '/purchase/purchase_list/0');
 		});
-	 	$('#needLogin').click(function(e) { // 로그인 안한 상태에서 헤더의 티켓팅을 눌렀을 시
-			e.preventDefault();
-			alert("로그인이 필요합니다.");
-			member.loginForm(context);
-		});
+	 	
 	 	$('#cinema').click(function(e) { // 로그인 안한 상태에서 헤더의 티켓팅을 눌렀을 시
 			e.preventDefault();
 			cinema.init(context);

@@ -14,6 +14,12 @@ var member = {
 		    success : function(data) {
 				alert(data.member.name+ '님 로그인 성공');
 				location.href = context+'/';
+				
+				/*//nav 로그인 창에서 로그인 성공하면 화면 없어지고 바로 티켓팅 화면으로 넘어감
+				location.href = context+'/';
+				$('.overlay').removeClass('open').addClass('close');
+				var purchase = $.fn.purchase();
+				purchase.step1Form(context);*/
 			},
 			error : function(xhr, status, msg) {
 				alert("정보를 잘못입력하셨습니다. 다시 로그인 해주세요");
@@ -359,7 +365,7 @@ var member = {
 			dataType : 'json',
 			type : 'post',
 			success : function() {
-				alert('회원가입에 탈퇴에 성공하셨습니다. 메인 화면으로 이동합니다.');
+				alert('회원탈퇴에 성공하셨습니다. 메인 화면으로 이동합니다.');
 				location.href = context + "/";
 			},
 			error : function(xhr, status, msg) {

@@ -6,9 +6,7 @@
 Cinema.prototype.cinema = function(context) {*/
 var cinema = {
 	init : function(context) {
-	alert("ajex 화면진입");
 	$.getJSON(context+'/member/cinema', function(data) {
-		
 		function init() {
             // Basic options for a simple Google Map
             // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
@@ -37,34 +35,31 @@ var cinema = {
 					    <div class="wrap-theater" style= "padding-top: 40px" align="center">\
 					        <h3><img src="'+context+'/resources/rainbow/css/img/h3_theater.gif" alt="THEATER" /></h3>\
 					        <div class="sect-theater " >\
-					           \
 					            <div class="wrap-theaterinfo" align="center">\
 					                <div class="box-image">\
 					                    <div id="theater_img_container" class="contact">\
 					                    <img src="'+context+'/resources/rainbow/css/img/cinema.jpg" alt="cinema" /></div>\
-					                </div> \
+					                </div>\
 					          </div>\
 					            </div>\
 					        </div>\
 					       \
 					    </div>\
 					    <!-- 실컨텐츠 끝 --> \
-					\
-					 <!--      Main content -->\
+					 <!-- Main content -->\
 					 <section class="container">\
 					     <h2 class="page-heading heading--outcontainer">Contact</h2>\
 					     <div class="contact">\
 					         <p class="contact__title">You have any questions or need help, <br><span class="contact__describe">don’t be shy and contact us</span></p>\
 					         <span class="contact__mail">propose0915@gmail.com</span>\
-					         <span class="contact__tel">02)789-0000</span>\
+					         <span class="contact__tel">010-4303-1013</span>\
 					     </div>\
 					 </section>\
-					 \
 					 <div class="contact-form-wrapper">\
 					     <div class="container">\
 					         <div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">\
 					             <form id="contactsform" class="form row">\
-					                 <p class="form__title">Drop us a line</p>\
+					                 <p class="form__title">Please Send Your Questions</p>\
 					                 <div class="col-sm-6">\
 					                     <input type="text" placeholder="Your name" name="name" id="name" style="height: 35px;" value="'+data.member.name+'" class="form__name">\
 					                 </div>\
@@ -79,19 +74,14 @@ var cinema = {
 					         </div>\
 					     </div>\
 					 </div>\
-					\
 					 <section class="container">\
 					     <div class="contact">\
 					         <p class="contact__title">Trying to find our location? <br> <span class="contact__describe">we are here</span></p>\
 					     </div>\
 					 </section>\
-					\
-					     <div id="location-map" class="map">';
-					      
-		
-			
-	   
+					 <div id="location-map" class="map">';					   
 		$('#content').html(cinemaForm);
+		
 		$(document).ready(function() {
 		       // init_Contact ();
 		        initialize();    
@@ -124,42 +114,33 @@ var cinema = {
 	            infowindow.open(map, marker);
 	         });
 	      }
-		
-		
-		alert('들어오는  URL'+context +'/mail/send');
-		
+		 
+		 var id = $('#sessionVar').val();
 		$('#sendBtn').click(function(e) {
-			alert('보내기 버튼 클릭');
 			e.preventDefault();
-	        $.ajax({	        	
-	            url: context +'/mail/send',
-	            data : {					
-					name : $('#name').val(),
-					email : $('#email').val(),
-					contactsText : $('#contactsText').val()
-	            },
-				type : 'post',
-				dataType : 'json',
-	            success: function(){
-	            	alert('success');
-	            	alert('success2');
-	            	alert('success3');
-	            	cinema.init(context);
-	            	/*if (data != null) {
-						alert(data.member.name+'메일이 발송되었습니다.');
-						cinema(context);
-						//var reset = '<textarea placeholder="Your message" id="contactsText" name="contactsText" class="form__message"></textarea>';
-						//$('#reSet').html(reset);
-						$('#reSet').empty();
-					} else {
-						alert('메일이 발송이 실패했습니다.');
-						return false;
-					}*/
-	            },// end
-	            error : function(xhr, status, msg) { // 실패하면 이곳으로, 왼쪽 매개변수는 정해져 있다.
-	    			alert('에러 발생 상태 : '+status+' 내용 : '+msg);
-	    		},
-	        });// end ajax
+			if (id.length == 0) { // 회원일 경우 로그인 창 안띄워지게 하기!
+				alert("로그인이 필요합니다.");
+				member.loginForm(context);
+			} else { // 비회원일 경우 로그인창 띄우기
+				alert('보내기 버튼 클릭');
+		        $.ajax({	        	
+		            url: context +'/mail/send',
+		            data : {					
+						name : $('#name').val(),
+						email : $('#email').val(),
+						contactsText : $('#contactsText').val()
+		            },
+					type : 'post',
+					dataType : 'json',
+		            success: function(){
+		            	alert('관리자에게 메일이 전송되었습니다.');
+		            	cinema.init(context);
+		            },// end
+		            error : function(xhr, status, msg) { // 실패하면 이곳으로, 왼쪽 매개변수는 정해져 있다.
+		    			alert('에러 발생 상태 : '+status+' 내용 : '+msg);
+		    		},
+		        });// end ajax
+			}
 	    });
 	});
 	}
