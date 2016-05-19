@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!-- Banner -->
 <div class="banner-top">
-    <img alt='top banner' src="${context}/resources/rainbow/images/banners/main20.png">
+    <img alt='top banner' src="${context}/resources/rainbow/images/main/main_header.png">
 	<input type="hidden" id="sessionVar" value="${sessionScope.user.id}">
 </div>
 
@@ -9,8 +9,8 @@
 <header class="header-wrapper header-wrapper--home">
     <div class="container">
         <!-- Logo link-->
-     	<a href="${context}/" class="logo">
-        	<img alt='logo' src="${context}/resources/rainbow/images/banners/logo8.png">
+     	<a href="${context}" class="logo">
+        	<img alt='logo' src="${context}/resources/rainbow/images/main/logo.png">
      	</a>
 
 		<!-- Main website navigation-->
@@ -34,7 +34,7 @@
 		<div class="control-panel">
 			<div class="auth auth--home">
 				<div class="auth__show">
-				<span class="auth__image"><img alt="" src="${context}/resources/rainbow/images/main/cholong.jpg"></span>
+				<span class="auth__image"> <img alt="" src="${context}/resources/rainbow/images/main/cholong.jpg"></span>
 				</div>
 				<a href="#" class="btn btn--sign btn--singin">${sessionScope.user.name}</a>
 				<ul class="auth__function" id="dropBoxBtn">

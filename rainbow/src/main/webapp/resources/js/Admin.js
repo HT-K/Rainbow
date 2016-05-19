@@ -4,7 +4,7 @@ var admin = {
 	adminForm : function(context) {
 		$('body').empty();
 			  var addMovieForm = '<article class="container" style="margin-top: 30px">'
-					+'<div class="editTop"><h2 class="text-center"> THE MOIVE ADD PAGE</h2>'
+					+'<div class="editTop"><h2 class="text-center"> THE MOVIE ADD PAGE</h2>'
 					+'</div>'
 					+'<form class="form-horizontal" id="input" style="margin-top: 30px" enctype="multipart/form-data">'
 					+'<div class="form-group">'
@@ -27,7 +27,7 @@ var admin = {
 			          +'<div class="form-group">'
 			        	+'<label class="col-sm-3 control-label" for="openDate">RELEASE DATE</label>'
 				        +'<div class="col-sm-6">'
-				        	+'<input type="text"  id="openDate" name="openDate" class="form-control" /></div>'
+				        +'<input type="date"  id="openDate" name="openDate"  class="form-control" /></div>'
 			        +'</div><div class="form-group"><label class="col-sm-3 control-label" for="grade">AGE</label>'
 				       +'<div class="col-sm-6">'
 				        	+'<input type="text"  id="grade" name="grade" class="form-control" />'
@@ -70,6 +70,7 @@ var admin = {
 					$('#inputBtn').click(function(e) {
 						e.preventDefault();
 						alert('영화등록 버튼클릭');
+						alert($('openDate').val());
 						$.ajax(context+'/admin/input', {
 							data : {
 								title : $('#title').val(),
@@ -119,7 +120,7 @@ var admin = {
 	addVodForm :  function(context) {
 		var addVodForm = '<article class="container" style="margin-top: 30px">'
 			+ '<h2>　</h2>'
-			+ '<div class="editTop"><h2 class="text-center"> THE MOIVE ADD PAGE</h2>'
+			+ '<div class="editTop"><h2 class="text-center"> THE VOD ADD PAGE</h2>'
 			+ '</div>'
 	        +'<form class="form-horizontal"  id="form" style="margin-top: 30px" enctype="multipart/form-data" action="/admin/input" method="post">'
 			+ '<div class="form-group">'
@@ -254,7 +255,7 @@ var admin = {
                type: 'POST',
                success : function(result) {
                     alert('VOD 등록 완료 되었습니다 .');
-                     location.href = context+'/rainbow'; 
+                     location.href = context; 
                     
                },
                error : function(xhr, status, msg) {
@@ -271,7 +272,7 @@ var admin = {
 	addMovieForm :  function(context) {
 			var addMovieForm = '<article class="container" style="margin-top: 30px">'
 					+ '<h2>　</h2>'
-					+ '<div class="editTop"><h2 class="text-center"> THE MOIVE ADD PAGE</h2>'
+					+ '<div class="editTop"><h2 class="text-center"> THE MOVIE ADD PAGE</h2>'
 					+ '</div>'
 			        +'<form class="form-horizontal"  id="form" style="margin-top: 30px" enctype="multipart/form-data" action="/admin/input" method="post">'
 					+ '<div class="form-group">'
@@ -289,15 +290,28 @@ var admin = {
 					+ '<div class="form-group">'
 					+ '<label class="col-sm-3 control-label" for="genre">GENRE</label>'
 					+ '<div class="col-sm-6">'
-					+ '<input type="text"  id="genre" name="genre" class="form-control" /></div>'
+					+ '<select id ="genre" name="genre" class="form-control">'
+				    + '<option value="action">Action</option>'
+				    + '<option value="animation">Animation</option>'
+				    + '<option value="comedy">Comedy</option>'
+				    + '<option value="drama">Drama</option>'
+				    + '<option value="mellow">Mellow</option>'
+				    + '<option value="thriller">Thriller</option>'
+				    + '</select></div>'
 					+ '</div>'
 					+ '<div class="form-group">'
 					+ '<label class="col-sm-3 control-label" for="openDate">RELEASE DATE</label>'
 					+ '<div class="col-sm-6">'
-					+ '<input type="text"  id="openDate" name="openDate" class="form-control" /></div>'
+					+ '<input type="date"  id="openDate" name="openDate"  class="form-control" /></div>'
 					+ '</div><div class="form-group"><label class="col-sm-3 control-label" for="grade">AGE</label>'
 					+ '<div class="col-sm-6">'
-					+ '<input type="text"  id="grade" name="grade" class="form-control" />'
+					+ '<select id ="grade" name="grade" class="form-control">'
+				    + '<option value="[국내] 전체 관람가">[국내] 전체 관람가</option>'
+				    + '<option value="[국내] 12세 관람가">[국내] 12세 관람가</option>'
+				    + '<option value="[국내] 15세 관람가">[국내] 15세 관람가</option>'
+				    + '<option value="[국내] 18세 관람가">[국내] 18세 관람가</option>'
+				    + '<option value="[국내] 19세 관람가">[국내] 19세 관람가</option>'
+				    + '</select>'
 					+ '</div>'
 					+ '</div>'
 					+ '<div class="form-group">'
@@ -347,7 +361,7 @@ var admin = {
 		               type: 'POST',
 		               success : function(result) {
 		                    alert('영화 등록 완료 되었습니다 .');
-		                    location.href = context+'/rainbow';
+		                    location.href = context;
 		               },
 		               error : function(xhr, status, msg) {
 		                  alert('에러발생상태 :' + status + ',내용 : ' + msg);
@@ -358,7 +372,7 @@ var admin = {
 			$('#cancelBtn').click(function(e) {
 				e.preventDefault();
 				alert("취소버튼 클릭");
-				location.href = context+'/rainbow';
+				location.href = context;
 			});
 			
 	},
@@ -684,7 +698,7 @@ var admin = {
 	   	+'<form id = "replyContentForm" class="form-horizontal" style="margin-top: 30px" enctype="multipart/form-data" class="table table-striped">'
 	   	+'<div class="editTop" >'
 	   	+'<h1>　</h1>'
-	   	+'<h1 class="text-center" align="center">ADMIN REPLY Page</h1>'
+	   	+'<h1 class="text-center" align="center">ADMIN REPLY PAGE</h1>'
 	   	+'</div>'
 	   	+'<table id="content" style="width: 100%; margin-top: 30px">'
 	   	+'<tr style="background-color: gray;">'
@@ -772,18 +786,33 @@ var admin = {
 		              +'<div class="form-group">'
 		              +'<label class="col-sm-3 control-label" for="genre">GERNE</label>'
 		              +'<div class="col-sm-6">'
-		              +'<input type="text" value="'+data.movie.genre+'"  id="genre" name="genre"  class="form-control" />' 
+		    		  + '<select id ="genre" name="genre" class="form-control">'
+	        		  + '<option value="action">Action</option>'
+	        		  + '<option value="animation">Animation</option>'
+	        		  + '<option value="comedy">Comedy</option>'
+	        		  + '<option value="drama">Drama</option>'
+	        		  + '<option value="mellow">Mellow</option>'
+	        		  + '<option value="thriller">Thriller</option>'
+	        		  + '</select>'
 		              +'</div>'
 		              +'</div>'
 		              +'<div class="form-group">'
 		              +'<label class="col-sm-3 control-label" for="openDate">RELEASE DATE</label>'
 		              +'<div class="col-sm-6">'
-		              +'<input type="text" value="'+data.movie.openDate+'" id="openDate" name="openDate" class="form-control" /></div>'
+		              +'<input type="date"  id="openDate" name="openDate"  class="form-control" />'
+		              +'</div>'
 		              +'</div>'
 		              +'<div class="form-group">'
 		              +'<label class="col-sm-3 control-label" for="grade">AGE</label>'
 		              +'<div class="col-sm-6">'
-		              +'<input type="text" value="'+data.movie.grade+'" id="grade" name="grade" class="form-control" />'
+		  			  + '<select id ="grade" name="grade" class="form-control">'
+        		      + '<option value="[국내] 전체 관람가">[국내] 전체 관람가</option>'
+        		      + '<option value="[국내] 12세 관람가">[국내] 12세 관람가</option>'
+        		      + '<option value="[국내] 15세 관람가">[국내] 15세 관람가</option>'
+        		      + '<option value="[국내] 18세 관람가">[국내] 18세 관람가</option>'
+        		      + '<option value="[국내] 19세 관람가">[국내] 19세 관람가</option>'
+        		      + '<option value="[해외] R">[해외] R</option>'
+        		      + '</select>'
 		              +'</div>'
 		              +'</div>'
 		              +'<div class="form-group">'
@@ -813,7 +842,7 @@ var admin = {
 		              +'<div class="form-group">'
 		              +'<label class="col-sm-3 control-label" for="image">POSTER</label>'
 		              +'<div class="col-sm-2">'
-					  +'<img src="${context}/resources/rainbow/images/main/'+data.movie.image+'" id="uploadedImg" alt="" style="width:180px;height:230px"/>'
+					  +'<img src="'+context+'/resources/rainbow/images/main/'+data.movie.image+'" id="uploadedImg" alt="" style="width:180px;height:230px"/>'
 					  +'</div>'
 				 	  +'<div class="col-sm-2">'
 					  +'<input type="file" id="image" onchange="readURL(this);" name="image" />'
@@ -829,7 +858,11 @@ var admin = {
 		              +'</form>'
 		              +'</article>';
 				     $('#content').empty();
-				     $('#content').html(movieUpdateForm);
+				     $('#content').html(movieUpdateForm); 
+				        $('select[name="genre"]').val(data.movie.genre);
+	            		$('input[name="openDate"]').val(data.movie.openDate);
+	            		$('select[name="grade"]').val(data.movie.grade);
+				     
 				     $("#updateContent").text(data.movie.content);
 				     $('#updateBtn').click(function(e) {
 							e.preventDefault();
@@ -856,7 +889,7 @@ var admin = {
 					 $('#cancelBtn').click(function(e) {
 						e.preventDefault();
 						alert("취소버튼 클릭");
-						location.href = context+'/rainbow';
+						location.href = context;
 					
 				        });
 					 $('#deleteBtn').click(function(e) {
@@ -871,7 +904,7 @@ var admin = {
 							type : 'post',
 							success : function() {
 								alert('성공하셨습니다. 메인 화면으로 이동합니다.');
-								location.href = context + "/rainbow";
+								location.href = context;
 							},
 							error : function(xhr, status, msg) {
 								alert("삭제 시 에러발생 : " + msg);

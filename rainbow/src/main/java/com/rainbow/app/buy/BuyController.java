@@ -44,8 +44,7 @@ public class BuyController {
 		logger.info("=== getBuy () ===");
 		if (session.getAttribute("user") != null) { 
 			member = (MemberDTO) session.getAttribute("user");
-			model.addAttribute("CheckId", member);
-			model.addAttribute("result", memberService);
+			model.addAttribute("CheckId", member); 
 			 
 		} else {
 			model.addAttribute("CheckId", null);
