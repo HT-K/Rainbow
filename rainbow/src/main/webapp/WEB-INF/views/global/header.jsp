@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!-- Banner -->
 <div class="banner-top">
-    <img alt='top banner' src="${context}/resources/rainbow/images/main/main_header.png">
+    <img alt='top banner' src="${context}/resources/rainbow/images/banners/main10.png">
 	<input type="hidden" id="sessionVar" value="${sessionScope.user.id}">
 </div>
 
@@ -10,7 +10,7 @@
     <div class="container">
         <!-- Logo link-->
      	<a href="${context}" class="logo">
-        	<img alt='logo' src="${context}/resources/rainbow/images/main/logo.png">
+        	<img alt='logo' src="${context}/resources/rainbow/images/banners/logo8.png">
      	</a>
 
 		<!-- Main website navigation-->
