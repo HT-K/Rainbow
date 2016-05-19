@@ -121,9 +121,7 @@ var cinema = {
 	            infowindow.open(map, marker);
 	         });
 	      }
-		
-		
-		alert('들어오는  URL'+context +'/mail/send');
+		 
 		
 		$('#sendBtn').click(function(e) {
 			alert('보내기 버튼 클릭');
