@@ -110,13 +110,10 @@ var movie = {
 				
 				$('.bookBtn2').click(function(e) { // each문으로 버튼 여러개 생성 시 아이디로 구분하면 하나만 먹힘, 클래스로 접근해야함
 					e.preventDefault();
-					alert("예약버튼");
 					if (id.length != 0) { // 회원일 경우 로그인 창 안띄워지게 하기!
-						alert(1);
 						$.fn.purchase().step1Form(context);
 						$('.overlay').removeClass('open').addClass('close');
 					} else { // 비회원일 경우 로그인창 띄우기
-						alert(2);
 						$('.overlay').removeClass('close').addClass('open');
 					}
 				});
@@ -309,7 +306,7 @@ var movie = {
 				$('#content').html(movieDetail);
 				
 				
-				var id = $('#sessionVar').val();
+				var id = $('#sessionVar').val(); // 헤더에 미리 저장한 세션 값 가져오기
 				$('#commentBtn').click(function(e) {
 					e.preventDefault();
 					if (id.length != 0) { // 회원일 경우 댓글 등록할 수 있도록 허용!
@@ -334,10 +331,8 @@ var movie = {
 					                 alert("code:" + request.status+"\n"+"message:"+request.responseText+"\n"+"msg:"+msg);
 					            }
 					      });
-						
-						
-						
-					} else { // 비회원일 경우 로그인화면으로 !
+
+					} else { // 댓글 등록 클릭 시 비회원일 경우 로그인화면으로 !
 						alert("로그인이 필요합니다!");
 						member.loginForm(context);
 					}
@@ -346,11 +341,12 @@ var movie = {
 				$('#bookBtn3').click(function(e) {
 					e.preventDefault();
 					if (id.length != 0) { // 회원일 경우 로그인 창 안띄워지게 하기!
+						$.fn.purchase().step1Form(context);
 						$('.overlay').removeClass('open').addClass('close');
 						
 					} else { // 비회원일 경우 로그인창 띄우기
 						$('.overlay').removeClass('close').addClass('open');
-						member.loginForm(context);
+						//member.loginForm(context);
 					}
 				});
 				
