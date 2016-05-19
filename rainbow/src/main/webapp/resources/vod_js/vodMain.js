@@ -3,14 +3,13 @@
  */
 
 var vodMain = {	
-		vodDetailForm : function(context,vodName,cash) { 
+		vodDetailForm : function(context,vodName,cash) {  
 			document.getElementById('indexFooter').style.display = '';
 			$.ajax(context+'/vod/vodDetail/'+vodName,{
 				data : {}, 
 				dataType : 'json',
 				async : true,
-				success : function(data){ 
-				history.pushState(data,"detail",context+'/vod/vodDetail/'+vodName);
+				success : function(data){  
 				$('#content').empty(); 
 				var detailForm = '<div class="row"><br/>\
 					   <img class="col-xs-12" style="padding-left: 30%; padding-right: 30%; " src="'+context+'/resources/vod_image/advertising/ad.png">\
@@ -40,11 +39,10 @@ var vodMain = {
 					<div id="demo">\
 					<button id = "buyBtn" style="margin: auto;width: 95%"  class=" btn btn-lg btn-block purple-bg">구매하기</button>\
 					</div>';
-				 
 				$('#content').html(detailForm);
 				$('text').append(data.vodInfo.vodContent);
 				$('#buyBtn').click(function(e) {
-					e.preventDefault();
+					e.preventDefault(); 
 					$.ajax(context+'/buy/buyIdCheck',{
 						data : {
 							vodTitle : vodName
@@ -128,7 +126,7 @@ var vodMain = {
 				<div class="row">';
 			$.each(data.common,function(index,value){
 				mainForm +=	'<div class="col-xs-4 well" style="background: white;">\
-					<a class ="latestMovie" onclick="vodMain.vodDetailForm('+'\''+context+'\''+','+'\''+value.vodName+'\''+');"  href="#"><img class="col-xs-12" src="'+context+'/resources'+value.vodImage+'"></a>\
+					<a class ="latestMovie" onclick="vodMain.vodDetailForm('+'\''+context+'\''+','+'\''+value.vodName+'\''+','+'\''+value.vodPrice+'\''+');"  href="#"><img class="col-xs-12" src="'+context+'/resources'+value.vodImage+'"></a>\
 					</div>';
 			});
 			mainForm += '</div>\
@@ -138,7 +136,7 @@ var vodMain = {
 				<div class="row">';
 			$.each(data.free,function(index,value){
 				mainForm +=	'<div class="col-xs-4 well" style="background: white;">\
-					<a class ="latestMovie" onclick="vodMain.vodDetailForm('+'\''+context+'\''+','+'\''+value.vodName+'\''+');"  href="#"><img class="col-xs-12" src="'+context+'/resources'+value.vodImage+'"></a>\
+					<a class ="latestMovie" onclick="vodMain.vodDetailForm('+'\''+context+'\''+','+'\''+value.vodName+'\''+','+'\''+value.vodPrice+'\''+');"  href="#"><img class="col-xs-12" src="'+context+'/resources'+value.vodImage+'"></a>\
 					</div>';
 			});
 			mainForm += '</div>';
@@ -182,7 +180,7 @@ var vodMain = {
 			 $.each(data.serchList,function(index,value){
 				 searchView += '<div class="row">\
 					 <div class="col-xs-4">\
-					 <a class="searchMovie" href="#" onclick="vodMain.vodDetailForm('+'\''+context+'\''+','+'\''+value.vodName+'\''+');">\
+					 <a class="searchMovie" href="#" onclick="vodMain.vodDetailForm('+'\''+context+'\''+','+'\''+value.vodName+'\''+','+'\''+value.vodPrice+'\''+');">\
 					 <img style="width: 100%" src="'+context+'/resources/'+value.vodImage+'">\
 					 </a>\
 					 </div>\
@@ -220,11 +218,11 @@ var vodMain = {
 				dataType : 'json',
 				async : true,
 				success : function(data) {
-				 $.each(data.serchList,function(index,value){ 
+				 $.each(data.serchList,function(index,value){  
 					 searchView += '<div class="row">\
 						 <div class="col-xs-4">\
-						 <a href="#" onclick="vodMain.vodDetailForm('+'\''+context+'\''+','+'\''+value.vodName+'\''+');">\
-						 <img style="width: 100%" src="${context}/resources/'+value.vodImage+'">\
+						 <a href="#" onclick="vodMain.vodDetailForm('+'\''+context+'\''+','+'\''+value.vodName+'\''+','+'\''+value.vodPrice+'\''+');">\
+						 <img style="width: 100%" href="#" src="${context}/resources/'+value.vodImage+'">\
 						 </a>\
 						 </div>\
 						 <div class="col-xs-8" style="font-style:normal;">\

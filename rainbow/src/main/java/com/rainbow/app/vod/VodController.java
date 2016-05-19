@@ -89,9 +89,10 @@ public class VodController {
 	@RequestMapping("/vodDetail/{vodName}")
 	public Model vodDetail(@PathVariable("vodName")String vodName,Model model) {
 		logger.info(" === VodController <> vodDetail()===");  
-		logger.info(" === VodController <> vodName @{}===", vodName);  
+		logger.info(" === VodController <> vodName @{}===", vodName);   
 		vod.setVodName(vodName); 
-		 return model.addAttribute("vodInfo", service.getByName(vod));
+		VodDTO result = service.getByName(vod);  
+		 return model.addAttribute("vodInfo",result );
 	}
 
 }
