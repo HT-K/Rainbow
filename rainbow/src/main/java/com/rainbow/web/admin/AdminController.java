@@ -1,5 +1,6 @@
 package com.rainbow.web.admin;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -23,7 +24,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.rainbow.app.vod.VodDTO;
 import com.rainbow.app.vod.VodService;
-import com.rainbow.web.movie.Constants;
 import com.rainbow.web.movie.FileUpload;
 import com.rainbow.web.movie.MovieDTO;
 import com.rainbow.web.movie.MovieService;
@@ -73,23 +73,29 @@ public class AdminController {
 		logger.info("=== image {} ===",image);
 		Properties p = new Properties();
 		String filePath="";
+		String fileName="";
+		MultipartFile uploadfile = image;
 		try {
 			FileInputStream file = new FileInputStream(session.getServletContext().getRealPath("/WEB-INF/classes/config/fileUpload.properties"));
 			try {
 				p.load(file);
-				filePath = p.getProperty("fileUpload.moviePath");
+				filePath = p.getProperty("fileUpload.moviePath"); 
+		  	        if (uploadfile != null) {
+		  	            fileName = uploadfile.getOriginalFilename() ;
+		  	            try { 
+		  	                File realFileUp = new File(filePath+"/" + fileName);
+		  	                uploadfile.transferTo(realFileUp);
+		  	            } catch (IOException e) {
+		  	                e.printStackTrace();
+		  	            } // try - catch
+		  	        } //
 				file.close();
 			} catch (IOException e) { 
 				logger.info("파일 업로드 경로가 잘 못 되었습니다.");
 			}
 		} catch (FileNotFoundException e) { 
 			logger.info("파일 업로드 경로가 잘 못 되었습니다.");
-		}
-		FileUpload fileUpload = new FileUpload();
-		String fileName = image.getOriginalFilename();
-		logger.info("수정폼에서 넘어온 파일 = {}",fileName);
-		String fullPath = fileUpload.uploadFile(image,filePath, fileName);
-		logger.info("이미지 저장 경로 : {}",fullPath);
+		}    
 		
 		movie.setTitle(title);
 		movie.setRating(rating);
@@ -150,27 +156,35 @@ public class AdminController {
 		logger.info("=== vodDirectory {} ===",vodDirector);
 		logger.info("=== vodCounty {} ===",vodCountry);
 		logger.info("=== fileUpload Config Path {} ===",session.getServletContext().getRealPath("/WEB-INF/classes/config/fileUpload.properties"));
-		Properties p = new Properties();
-		FileUpload fileUpload = new FileUpload();
-		String filePath="";  
-		String fileName= "";
-			try {
-				FileInputStream propertyFile = new FileInputStream(session.getServletContext().getRealPath("/WEB-INF/classes/config/fileUpload.properties"));
-				try {
-					p.load(propertyFile); 
-					filePath = p.getProperty("fileUpload.vodPath");
-					 fileName = image.getOriginalFilename();
-					logger.info("수정폼에서 넘어온 파일 = {}",fileName);
-					String fullPath = fileUpload.uploadFile(image,filePath+"/"+vodCategory+"/", fileName);
-					logger.info("데이터베이스 이미지 저장 경로 : {}",filePath+"/"+vodCategory+"/");
-					logger.info("이미지 저장 경로 : {}",fullPath);
-					propertyFile.close();
-				} catch (IOException e) {
-					logger.info("파일 업로드 경로가 잘 못 되었습니다.");
-				} 
-			} catch (FileNotFoundException e) {
-				logger.info("파일 업로드 경로가 잘 못 되었습니다.");
-			} 
+		Properties p = new Properties(); 
+  		String filePath="";  
+  		String fileName= ""; 
+  			try {
+  				FileInputStream propertyFile = new FileInputStream(session.getServletContext().getRealPath("/WEB-INF/classes/config/fileUpload.properties"));
+  				try {
+  					p.load(propertyFile); 
+  					filePath = p.getProperty("fileUpload.vodPath");
+  					fileName = image.getOriginalFilename();
+  					logger.info("수정폼에서 넘어온 파일 = {}",fileName); 
+  					logger.info("데이터베이스 이미지 저장 경로 : {}",filePath+"/"+vodCategory+"/"); 
+  					
+  					 MultipartFile uploadfile = image;
+  		  	        if (uploadfile != null) {
+  		  	            fileName = uploadfile.getOriginalFilename() ;
+  		  	            try { 
+  		  	                File file = new File(filePath+"/"+vodCategory+"/" + fileName);
+  		  	                uploadfile.transferTo(file);
+  		  	            } catch (IOException e) {
+  		  	                e.printStackTrace();
+  		  	            } // try - catch
+  		  	        } //
+  					propertyFile.close();
+  				} catch (IOException e) { 
+  					logger.info("파일 업로드 경로가 잘 못 되었습니다.");
+  				} 
+  			} catch (FileNotFoundException e) { 
+  				logger.info("파일 업로드 경로가 잘 못 되었습니다.");
+  			} 
 			vod.setVodName(vodName);
 			vod.setVodContentTitle(vodSubTitle);
 			vod.setVodContent(vodContent);
@@ -186,7 +200,7 @@ public class AdminController {
 			vod.setVodDirector(vodDirector);
 			vod.setVodCountry(vodCountry);
 			vod.setVodImage("/vod_image/"+vodCategory+"/"+fileName);
- 
+			
 		int result = vodService.insert(vod); 
 		if (result == 1) {
 			logger.info("VOD 등록 성공!! ");
@@ -233,30 +247,37 @@ public class AdminController {
   		logger.info("=== vodDirectory {} ===",vodDirector);
   		logger.info("=== vodCounty {} ===",vodCountry);
   		logger.info("=== fileUpload Config Path {} ===",session.getServletContext().getRealPath("/WEB-INF/classes/config/fileUpload.properties"));
-  		Properties p = new Properties();
-  		FileUpload fileUpload = new FileUpload();
+  		Properties p = new Properties(); 
   		String filePath="";  
-  		String fileName= "";
-  		String fullPath ="";
+  		String fileName= ""; 
   			try {
   				FileInputStream propertyFile = new FileInputStream(session.getServletContext().getRealPath("/WEB-INF/classes/config/fileUpload.properties"));
   				try {
   					p.load(propertyFile); 
   					filePath = p.getProperty("fileUpload.vodPath");
-  					 fileName = image.getOriginalFilename();
-  					logger.info("수정폼에서 넘어온 파일 = {}",fileName);
-  					 fullPath = fileUpload.uploadFile(image,filePath+"/"+vodCategory+"/", fileName); 
-  					logger.info("데이터베이스 이미지 저장 경로 : {}",filePath+"/"+vodCategory+"/");
-  					logger.info("이미지 저장 경로 : {}",fullPath);
+  					fileName = image.getOriginalFilename();
+  					logger.info("수정폼에서 넘어온 파일 = {}",fileName); 
+  					logger.info("데이터베이스 이미지 저장 경로 : {}",filePath+"/"+vodCategory+"/"); 
+  					
+  					 MultipartFile uploadfile = image;
+  		  	        if (uploadfile != null) {
+  		  	            fileName = uploadfile.getOriginalFilename() ;
+  		  	            try { 
+  		  	                File file = new File(filePath+"/"+vodCategory+"/"+ fileName);
+  		  	                uploadfile.transferTo(file);
+  		  	            } catch (IOException e) {
+  		  	                e.printStackTrace();
+  		  	            }  
   					propertyFile.close();
-  				} catch (IOException e) {
-  					logger.info("이미지 저장 경로 : {}",fullPath);
-  					logger.info("파일 업로드 경로가 잘 못 되었습니다.");
   				} 
-  			} catch (FileNotFoundException e) {
-  				logger.info("이미지 저장 경로 : {}",fullPath);
-  				logger.info("파일 업로드 경로가 잘 못 되었습니다.");
-  			} 
+  				 
+  			} catch (IOException e) { 
+					logger.info("파일 업로드 경로가 잘 못 되었습니다.");
+  			}
+  			}catch (IOException e) { 
+				logger.info("파일 업로드 경로가 잘 못 되었습니다.");
+				}
+  			  
   			vod.setVodSeq(vodSeq);
   			vod.setVodName(vodName);
   			vod.setVodContentTitle(vodSubTitle);
@@ -272,8 +293,7 @@ public class AdminController {
   			vod.setVodActor(vodActor);
   			vod.setVodDirector(vodDirector);
   			vod.setVodCountry(vodCountry);
-  			vod.setVodImage("/vod_image/"+vodCategory+"/"+fileName);
-   
+  			vod.setVodImage("/vod_image/"+vodCategory+"/"+fileName);   
   		int result = vodService.update(vod); 
   		if (result == 1) {
   			logger.info("영화 수정 성공!! ");
@@ -346,29 +366,31 @@ public class AdminController {
 		
 		
 	 
-		Properties p = new Properties();
-  		FileUpload fileUpload = new FileUpload();
+		Properties p = new Properties(); 
   		String filePath="";  
-  		String fileName= "";
-  		String fullPath="";
-  			try {
-  				FileInputStream propertyFile = new FileInputStream(session.getServletContext().getRealPath("/WEB-INF/classes/config/fileUpload.properties"));
-  				try {
-  					p.load(propertyFile); 
-  					filePath = p.getProperty("fileUpload.moviePath");
-  					 fileName = image.getOriginalFilename();
-  					logger.info("수정폼에서 넘어온 파일 = {}",fileName);
-  					 fullPath = fileUpload.uploadFile(image,filePath, fileName); 
-  					logger.info("이미지 저장 경로 : {}",fullPath);
-  					propertyFile.close();
-  				} catch (IOException e) {
-  					logger.info("이미지 저장 경로 : {}",fullPath);
-  					logger.info("파일 업로드 경로가 잘 못 되었습니다.");
-  				} 
-  			} catch (FileNotFoundException e) {
-  				logger.info("이미지 저장 경로 : {}",fullPath);
-  				logger.info("파일 업로드 경로가 잘 못 되었습니다.");
-  			} 
+  		String fileName= ""; 
+  		MultipartFile uploadfile = image;
+		try {
+			FileInputStream file = new FileInputStream(session.getServletContext().getRealPath("/WEB-INF/classes/config/fileUpload.properties"));
+			try {
+				p.load(file);
+				filePath = p.getProperty("fileUpload.moviePath"); 
+		  	        if (uploadfile != null) {
+		  	            fileName = uploadfile.getOriginalFilename() ;
+		  	            try { 
+		  	                File realFileUp = new File(filePath+"/" + fileName);
+		  	                uploadfile.transferTo(realFileUp);
+		  	            } catch (IOException e) {
+		  	                e.printStackTrace();
+		  	            } // try - catch
+		  	        } //
+				file.close();
+			} catch (IOException e) { 
+				logger.info("파일 업로드 경로가 잘 못 되었습니다.");
+			}
+		} catch (FileNotFoundException e) { 
+			logger.info("파일 업로드 경로가 잘 못 되었습니다.");
+		} 
   			      
 		movie.setTitle(title);
 		movie.setRating(Integer.parseInt(rating));
@@ -385,12 +407,10 @@ public class AdminController {
 		
 		if (result == 1) {
 			logger.info("업데이트 성공");
-			model.addAttribute("movie", movie);
-		/*	view = "redirect:/admin/content";*/
+			model.addAttribute("movie", movie); 
 		} else {
 			logger.info("업데이트 실패");
-			model.addAttribute("movie","");
-			/*view = "redirect:/admin/update";*/
+			model.addAttribute("movie",""); 
 		}
 		return model;
 		

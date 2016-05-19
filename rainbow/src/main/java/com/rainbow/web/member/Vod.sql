@@ -379,3 +379,4 @@ set vod_country = '한국'
 WHERE vod_name ='친구 : Friend, 2001';
 
 SELECT * FROM Vod;
+SELECT * FROM Movie;
