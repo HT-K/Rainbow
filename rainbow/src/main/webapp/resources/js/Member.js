@@ -56,8 +56,7 @@ var member = {
 				dataType : 'json',
 				type : 'post',
 				success : function(data) {
-					alert(data.member.name+ '님 로그인 성공');
-					//history.pushState(data,"main",context+'/rainbow');
+					alert(data.member.name+ '님 로그인 성공'); 
 					location.href = context+'/';
 				},
 				error : function(xhr, status, msg) {
