@@ -2,11 +2,8 @@
  * cinema.js
  */
 
-/*function Cinema() {}
-Cinema.prototype.cinema = function(context) {*/
 var cinema = {
 	init : function(context) {
-	alert("ajex 화면진입");
 	$.getJSON(context+'/member/cinema', function(data) {
 		
 		function init() {
@@ -55,8 +52,8 @@ var cinema = {
 					     <h2 class="page-heading heading--outcontainer">Contact</h2>\
 					     <div class="contact">\
 					         <p class="contact__title">You have any questions or need help, <br><span class="contact__describe">don’t be shy and contact us</span></p>\
-					         <span class="contact__mail">propose0915@gmail.com</span>\
-					         <span class="contact__tel">02)789-0000</span>\
+					         <span class="contact__mail">sdwoo90@gmail.com</span>\
+					         <span class="contact__tel">010)5321-8026</span>\
 					     </div>\
 					 </section>\
 					 \
@@ -141,9 +138,7 @@ var cinema = {
 				type : 'post',
 				dataType : 'json',
 	            success: function(){
-	            	alert('success');
-	            	alert('success2');
-	            	alert('success3');
+	            	alert('메일 전송이 완료 되었습니다.');
 	            	cinema.init(context);
 	            	/*if (data != null) {
 						alert(data.member.name+'메일이 발송되었습니다.');

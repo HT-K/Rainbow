@@ -40,14 +40,15 @@ public class BuyController {
 	VodDTO vod;
 
 	@RequestMapping("/buyIdCheck")
-	public Model buyIdCheck(Model model, HttpSession session) {
+	public Model buyIdCheck(@RequestParam("vodTitle")String vodTitle,Model model, HttpSession session) {
 		logger.info("=== getBuy () ===");
-
-		if (session.getAttribute("user") != null) {
-			model.addAttribute("CheckId", session.getAttribute("user"));
+		if (session.getAttribute("user") != null) { 
+			member = (MemberDTO) session.getAttribute("user");
+			model.addAttribute("CheckId", member);
+			model.addAttribute("result", memberService);
+			 
 		} else {
 			model.addAttribute("CheckId", null);
-
 		}
 
 		return model;
