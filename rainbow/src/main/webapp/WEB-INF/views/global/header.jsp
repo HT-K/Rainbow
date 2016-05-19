@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!-- Banner -->
 <div class="banner-top">
-    <img alt='top banner' src="${context}/resources/rainbow/images/banners/main10.png">
+    <img alt='top banner' src="${context}/resources/rainbow/images/banners/main4.png">
 	<input type="hidden" id="sessionVar" value="${sessionScope.user.id}">
 </div>
 
