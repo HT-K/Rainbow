@@ -380,3 +380,7 @@ WHERE vod_name ='친구 : Friend, 2001';
 
 SELECT * FROM Vod;
 SELECT * FROM Movie;
+
+alter table Movie modify grade varchar(100);
+
+select * from Movie;
