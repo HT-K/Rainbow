@@ -254,7 +254,7 @@ var admin = {
                type: 'POST',
                success : function(result) {
                     alert('VOD 등록 완료 되었습니다 .');
-                     location.href = context+'/rainbow'; 
+                     location.href = context; 
                     
                },
                error : function(xhr, status, msg) {
@@ -347,7 +347,7 @@ var admin = {
 		               type: 'POST',
 		               success : function(result) {
 		                    alert('영화 등록 완료 되었습니다 .');
-		                    location.href = context+'/rainbow';
+		                    location.href = context;
 		               },
 		               error : function(xhr, status, msg) {
 		                  alert('에러발생상태 :' + status + ',내용 : ' + msg);
@@ -358,7 +358,7 @@ var admin = {
 			$('#cancelBtn').click(function(e) {
 				e.preventDefault();
 				alert("취소버튼 클릭");
-				location.href = context+'/rainbow';
+				location.href = context;
 			});
 			
 	},
@@ -813,7 +813,7 @@ var admin = {
 		              +'<div class="form-group">'
 		              +'<label class="col-sm-3 control-label" for="image">POSTER</label>'
 		              +'<div class="col-sm-2">'
-					  +'<img src="${context}/resources/rainbow/images/main/'+data.movie.image+'" id="uploadedImg" alt="" style="width:180px;height:230px"/>'
+					  +'<img src="'+context+'/resources/rainbow/images/main/'+data.movie.image+'" id="uploadedImg" alt="" style="width:180px;height:230px"/>'
 					  +'</div>'
 				 	  +'<div class="col-sm-2">'
 					  +'<input type="file" id="image" onchange="readURL(this);" name="image" />'
@@ -856,7 +856,7 @@ var admin = {
 					 $('#cancelBtn').click(function(e) {
 						e.preventDefault();
 						alert("취소버튼 클릭");
-						location.href = context+'/rainbow';
+						location.href = context;
 					
 				        });
 					 $('#deleteBtn').click(function(e) {
@@ -871,7 +871,7 @@ var admin = {
 							type : 'post',
 							success : function() {
 								alert('성공하셨습니다. 메인 화면으로 이동합니다.');
-								location.href = context + "/rainbow";
+								location.href = context;
 							},
 							error : function(xhr, status, msg) {
 								alert("삭제 시 에러발생 : " + msg);
