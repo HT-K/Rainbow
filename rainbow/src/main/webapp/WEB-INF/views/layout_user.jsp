@@ -64,7 +64,7 @@
 			background: #FFF;
 			padding: 20px;
 			width: 60%;
-			height: 50%;
+			height: 60%;
 			margin: 20px auto;
 		}
 	</style>
