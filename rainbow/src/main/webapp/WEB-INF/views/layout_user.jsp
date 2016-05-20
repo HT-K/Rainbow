@@ -63,8 +63,8 @@
 			position: relative;
 			background: #FFF;
 			padding: 20px;
-			width: 70%;
-			height: 500px;
+			width: 60%;
+			height: 50%;
 			margin: 20px auto;
 		}
 	</style>
