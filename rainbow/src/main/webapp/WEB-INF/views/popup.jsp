@@ -31,8 +31,7 @@
 	
 	$('#ppt').click(function(e) {
 		e.preventDefault();
-		location.href = "http://www.slideshare.net/heetaekim50/rainbow-62209819";
-		/*http://www.slideshare.net/heetaekim50/rainbow-62209819  */
+		location.href = "http://www.slideshare.net/heetaekim50/rainbow-cinema-62261055";
 	});
 	
 	$('#mobileURL').click(function(e) {
